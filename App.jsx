@@ -3,8 +3,8 @@ import { mediasOligarchiques, pantouflage, sessionsConfig, prochaineSession } fr
 
 // ═══════════════════════════════════════════════════════════════════════════
 // RÉFLEXION AUTOUR DU PROJET — R75
-// Application compagnon pour les sessions d'éducation politique
-// La Ruche 75 — Discord
+// Application pour les sessions de Rélexion autour du Projet de La Ruche 75
+// Discord
 // ═══════════════════════════════════════════════════════════════════════════
 
 const App = () => {
@@ -41,7 +41,7 @@ const App = () => {
       
       body, html {
         font-family: 'Distrampler', Georgia, 'Times New Roman', serif !important;
-        font-size: 14px;
+        font-size: 16px;
         background: #111111;
         color: #fae8a4;
         min-height: 100vh;
@@ -54,10 +54,10 @@ const App = () => {
         font-family: 'Flamengo', Georgia, serif !important;
       }
       
-      /* Force Distrampler sur le texte courant à 14px */
+      /* Force Distrampler sur le texte courant à 16px */
       p, span, div, li, a, input, textarea, button, label {
         font-family: 'Distrampler', Georgia, 'Times New Roman', serif;
-        font-size: 14px;
+        font-size: 16px;
       }
       
       ::-webkit-scrollbar { width: 8px; }
@@ -257,7 +257,7 @@ const App = () => {
                 }}>
                   {prochaineSession.titre}
                 </div>
-                <div style={{ fontSize: '14px', color: 'rgba(250, 232, 164, 0.7)' }}>
+                <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.7)' }}>
                   {prochaineSession.date}
                 </div>
               </div>
@@ -283,12 +283,12 @@ const App = () => {
               }}>
                 Les médias oligarchiques
               </h2>
-              <p style={{ color: 'rgba(250, 232, 164, 0.7)', fontSize: '14px', marginBottom: '16px', lineHeight: 1.6 }}>
+              <p style={{ color: 'rgba(250, 232, 164, 0.7)', fontSize: '16px', marginBottom: '16px', lineHeight: 1.6 }}>
                 Expropriation des médias oligarchiques et transformation en SCOP
               </p>
               <div style={{ 
                 display: 'inline-block',
-                padding: '6px 14px',
+                padding: '6px 16px',
                 background: 'rgba(238, 194, 29, 0.15)',
                 borderRadius: '20px',
                 fontSize: '13px',
@@ -318,12 +318,12 @@ const App = () => {
               }}>
                 Le pantouflage
               </h2>
-              <p style={{ color: 'rgba(250, 232, 164, 0.7)', fontSize: '14px', marginBottom: '16px', lineHeight: 1.6 }}>
+              <p style={{ color: 'rgba(250, 232, 164, 0.7)', fontSize: '16px', marginBottom: '16px', lineHeight: 1.6 }}>
                 Les allers-retours entre fonction publique et secteur privé
               </p>
               <div style={{ 
                 display: 'inline-block',
-                padding: '6px 14px',
+                padding: '6px 16px',
                 background: 'rgba(238, 194, 29, 0.15)',
                 borderRadius: '20px',
                 fontSize: '13px',
@@ -351,7 +351,7 @@ const App = () => {
                 background: 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)',
                 border: 'none',
                 borderRadius: '30px',
-                padding: '14px 32px',
+                padding: '16px 32px',
                 color: '#111',
                 fontFamily: "'Flamengo'",
                 fontSize: '16px',
@@ -382,9 +382,9 @@ const App = () => {
             fontSize: '13px',
             color: 'rgba(250, 232, 164, 0.5)'
           }}>
-            <p>🐝 Butiner le futur, abeille par abeille, réflexion après réflexion...</p>
+            <p>🐝 Butiner notre futur ensemble, abeille par abeille, réflexion après réflexion..</p>
             <p style={{ marginTop: '8px' }}>
-              Sessions : <strong style={{ color: '#eec21d' }}>Jeudis 18h</strong> et <strong style={{ color: '#eec21d' }}>Dimanches 17h</strong>
+              Sessions : <strong style={{ color: '#eec21d' }}>Jeudis 18h</strong> et <strong style={{ color: '#eec21d' }}>Dimanches 17h</strong> - sauf réunion
             </p>
           </footer>
         </div>
@@ -415,7 +415,7 @@ const App = () => {
             padding: '10px 20px',
             color: '#fae8a4',
             cursor: 'pointer',
-            fontSize: '14px',
+            fontSize: '16px',
             marginBottom: '32px',
             transition: 'all 0.3s ease'
           }}
@@ -437,7 +437,7 @@ const App = () => {
             {themeTitle}
           </h1>
           <p style={{ 
-            fontSize: '14px', 
+            fontSize: '16px', 
             color: 'rgba(250, 232, 164, 0.6)',
             textTransform: 'uppercase',
             letterSpacing: '0.1em'
@@ -478,7 +478,7 @@ const App = () => {
               }}>
                 {session.titre}
               </h3>
-              <p style={{ fontSize: '14px', color: 'rgba(250, 232, 164, 0.6)' }}>
+              <p style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.6)' }}>
                 {session.date}
               </p>
               {!session.available && (
@@ -522,7 +522,7 @@ const App = () => {
             padding: '10px 20px',
             color: '#fae8a4',
             cursor: 'pointer',
-            fontSize: '14px',
+            fontSize: '16px',
             marginBottom: '24px'
           }}
         >
@@ -559,7 +559,7 @@ const App = () => {
             display: 'flex', 
             gap: '24px', 
             flexWrap: 'wrap',
-            fontSize: '14px',
+            fontSize: '16px',
             color: 'rgba(250, 232, 164, 0.7)'
           }}>
             <span>📅 {sessionData.date}</span>
@@ -591,7 +591,7 @@ const App = () => {
                 color: currentSection === key ? '#111' : '#fae8a4',
                 cursor: 'pointer',
                 fontFamily: "'Flamengo'",
-                fontSize: '14px',
+                fontSize: '16px',
                 fontWeight: currentSection === key ? '600' : '400',
                 transition: 'all 0.3s ease',
                 whiteSpace: 'nowrap'
@@ -624,11 +624,10 @@ const App = () => {
           marginBottom: '32px'
         }}>
           {[
-            { key: 'pollen', emoji: '🌻', label: 'Pollen' },
-            { key: 'miel', emoji: '🍯', label: 'Miel' },
-            { key: 'alveole', emoji: '🐝', label: 'Mind blown' },
-            { key: 'reine', emoji: '👑', label: 'Reine' }
-          ].map(({ key, emoji, label }) => (
+            { key: 'pollen', emoji: '🌻' },
+            { key: 'miel', emoji: '🍯' },
+            { key: 'alveole', emoji: '🐝' }
+          ].map(({ key, emoji }) => (
             <button
               key={key}
               onClick={() => addReaction(key)}
@@ -639,11 +638,11 @@ const App = () => {
                 padding: '12px 20px',
                 color: '#fae8a4',
                 cursor: 'pointer',
-                fontSize: '14px',
+                fontSize: '16px',
                 transition: 'all 0.3s ease'
               }}
             >
-              {emoji} {label} {reactions[key] > 0 && `(${reactions[key]})`}
+              {emoji} {reactions[key] > 0 && `(${reactions[key]})`}
             </button>
           ))}
         </div>
@@ -672,7 +671,7 @@ const App = () => {
                 borderRadius: '12px',
                 padding: '12px 16px',
                 color: '#fae8a4',
-                fontSize: '14px',
+                fontSize: '16px',
                 outline: 'none'
               }}
             />
@@ -698,7 +697,7 @@ const App = () => {
                   background: 'rgba(238, 194, 29, 0.05)',
                   borderRadius: '10px',
                   padding: '12px',
-                  fontSize: '14px'
+                  fontSize: '16px'
                 }}>
                   <span style={{ color: 'rgba(250, 232, 164, 0.5)', marginRight: '8px' }}>{q.time}</span>
                   <span style={{ color: '#fae8a4' }}>{q.text}</span>
@@ -760,7 +759,7 @@ const App = () => {
           {item.etymology && (
             <div style={{ 
               color: 'rgba(250, 232, 164, 0.6)', 
-              fontSize: '14px', 
+              fontSize: '16px', 
               fontStyle: 'italic',
               marginBottom: '8px'
             }}>
@@ -783,7 +782,7 @@ const App = () => {
               padding: '12px',
               background: 'rgba(238, 194, 29, 0.1)',
               borderRadius: '10px',
-              fontSize: '14px',
+              fontSize: '16px',
               color: '#eec21d'
             }}>
               📎 {item.note}
@@ -793,7 +792,7 @@ const App = () => {
           {item.origine && (
             <div style={{ marginTop: '16px' }}>
               <div style={{ 
-                fontSize: '14px', 
+                fontSize: '16px', 
                 color: 'rgba(250, 232, 164, 0.6)',
                 marginBottom: '8px'
               }}>
@@ -816,7 +815,7 @@ const App = () => {
                   padding: '12px',
                   background: 'rgba(238, 194, 29, 0.1)',
                   borderRadius: '10px',
-                  fontSize: '14px'
+                  fontSize: '16px'
                 }}>
                   💰 <strong style={{ color: '#eec21d' }}>Aujourd'hui :</strong> {item.remboursement}
                 </div>
@@ -846,7 +845,7 @@ const App = () => {
           }}>
             {item.name}
           </div>
-          <div style={{ fontSize: '14px', color: 'rgba(250, 232, 164, 0.7)' }}>
+          <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.7)' }}>
             {item.detail || item.examples}
           </div>
         </div>
@@ -889,7 +888,7 @@ const App = () => {
             }}>
               {item.titre}
             </div>
-            <div style={{ fontSize: '14px', color: 'rgba(250, 232, 164, 0.7)', marginBottom: '6px' }}>
+            <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.7)', marginBottom: '6px' }}>
               {item.description}
             </div>
             {item.page && (
@@ -972,7 +971,7 @@ const App = () => {
           </div>
           <div style={{ fontSize: '18px', color: '#fff', marginTop: '8px' }}>{stat.label}</div>
           {stat.detail && (
-            <div style={{ fontSize: '14px', color: 'rgba(250, 232, 164, 0.6)', marginTop: '4px' }}>
+            <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.6)', marginTop: '4px' }}>
               {stat.detail}
             </div>
           )}
@@ -1062,7 +1061,7 @@ const App = () => {
                   padding: '16px'
                 }}>
                   <div style={{ fontWeight: '600', color: '#fff', marginBottom: '6px' }}>{ex.nom}</div>
-                  <div style={{ fontSize: '14px', color: 'rgba(250, 232, 164, 0.7)' }}>{ex.detail}</div>
+                  <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.7)' }}>{ex.detail}</div>
                 </div>
               ))}
             </div>
@@ -1125,7 +1124,7 @@ const App = () => {
                     Avant : {ex.avant}
                   </div>
                 )}
-                <div style={{ fontSize: '14px', color: '#fae8a4' }}>
+                <div style={{ fontSize: '16px', color: '#fae8a4' }}>
                   {ex.apres || ex.detail}
                 </div>
               </div>
@@ -1256,7 +1255,7 @@ const App = () => {
           }}>
             {item.nom}
           </div>
-          <div style={{ fontSize: '14px', color: 'rgba(250, 232, 164, 0.7)', marginBottom: '4px' }}>
+          <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.7)', marginBottom: '4px' }}>
             {item.modele}
           </div>
           {item.resultat && (
@@ -1276,7 +1275,7 @@ const App = () => {
           padding: '16px'
         }}>
           <div style={{ fontWeight: '600', color: '#fff', marginBottom: '6px' }}>{item.titre}</div>
-          <div style={{ fontSize: '14px', color: 'rgba(250, 232, 164, 0.7)', lineHeight: 1.6 }}>{item.detail}</div>
+          <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.7)', lineHeight: 1.6 }}>{item.detail}</div>
         </div>
       );
     }
@@ -1304,7 +1303,7 @@ const App = () => {
     return (
       <>
         <div style={{ fontWeight: '600', color: '#fff', marginBottom: '6px' }}>{ex.nom}</div>
-        <div style={{ fontSize: '14px', color: 'rgba(250, 232, 164, 0.7)' }}>{ex.detail}</div>
+        <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.7)' }}>{ex.detail}</div>
       </>
     );
   };
@@ -1330,8 +1329,8 @@ const App = () => {
             position: 'absolute',
             left: '-20px',
             top: '6px',
-            width: '14px',
-            height: '14px',
+            width: '16px',
+            height: '16px',
             borderRadius: '50%',
             background: item.type === 'privé' ? '#e74c3c' : item.type === 'formation' ? '#3498db' : '#eec21d',
             border: '3px solid #111'
@@ -1414,7 +1413,7 @@ const App = () => {
           </h2>
           <p style={{ 
             color: 'rgba(250, 232, 164, 0.6)', 
-            fontSize: '14px',
+            fontSize: '16px',
             marginBottom: '24px'
           }}>
             Programme politique — Version intégrale
@@ -1443,7 +1442,7 @@ const App = () => {
                 background: 'rgba(238, 194, 29, 0.05)',
                 border: '1px solid rgba(238, 194, 29, 0.15)',
                 borderRadius: '10px',
-                fontSize: '14px',
+                fontSize: '16px',
                 color: '#fae8a4',
                 marginBottom: '8px'
               }}>
@@ -1453,21 +1452,21 @@ const App = () => {
           </div>
 
           <a
-            href="https://www.leprojet2027.fr"
+            href="https://ruches.org/sites/default/files/mediatheque/documents/2025-12/le-projet-8.pdf"
             target="_blank"
             rel="noopener noreferrer"
             style={{
               display: 'inline-block',
-              padding: '14px 28px',
+              padding: '16px 28px',
               background: 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)',
               color: '#111',
               borderRadius: '12px',
               textDecoration: 'none',
               fontWeight: '600',
-              fontSize: '14px'
+              fontSize: '16px'
             }}
           >
-            📄 Télécharger le PDF complet
+            📄 Lire le Projet
           </a>
         </div>
       </div>
