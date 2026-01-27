@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 
 // ═══════════════════════════════════════════════════════════════════════════
 // RÉFLEXION AUTOUR DU PROJET — R75
-// Application compagnon pour les sessions d'éducation politique
+// Application pour les sessions de Rélexion autour du Projet de La Ruche 75 (Discord)
 // ═══════════════════════════════════════════════════════════════════════════
 
 // DONNÉES DES SESSIONS
 const prochaineSession = {
-  titre: "Session 5 : Les mesures du Projet",
-  date: "Jeudi 5 février à 18h",
+  titre: "Session 5 : La fin de l'oligarchie, les mesures du Projet",
+  date: "Jeudi 29 janvier à 18h",
   theme: "pantouflage"
 };
 
@@ -16,12 +16,12 @@ const sessionsConfig = {
   medias: [
     { id: 'session1', titre: "Introduction à l'oligarchie", date: "18/01", available: true },
     { id: 'session2', titre: "Modèle oligarchique vs SCOP", date: "22/01", available: true },
-    { id: 'session3', titre: "Approfondissement et synthèse", date: "25/01", available: true },
+    { id: 'session3', titre: "Questions et Réflexions", date: "25/01", available: true },
   ],
   pantouflage: [
     { id: 'session4', titre: "Introduction au pantouflage", date: "29/01", available: true },
-    { id: 'session5', titre: "Les mesures du Projet", date: "À venir", available: false },
-    { id: 'session6', titre: "Synthèse et perspectives", date: "À venir", available: false },
+    { id: 'session5', titre: "Les mesures du Projet", date: "05/02", available: false },
+    { id: 'session6', titre: "Questions et Réflexions", date: "08/02", available: false },
   ]
 };
 
@@ -60,10 +60,10 @@ const mediasOligarchiques = {
       oligarques: {
         title: "Les 8 propriétaires de médias",
         content: [
-          { name: "Martin Bouygues", medias: "TF1, LCI, TMC..." },
-          { name: "Vincent Bolloré", medias: "Canal+, CNews, C8..." },
-          { name: "Bernard Arnault", medias: "Les Échos, Le Parisien..." },
-          { name: "Xavier Niel", medias: "Le Monde, L'Obs..." }
+          { name: "Martin Bouygues", medias: "TF1, LCI, TMC.." },
+          { name: "Vincent Bolloré", medias: "Canal+, CNews, C8.." },
+          { name: "Bernard Arnault", medias: "Les Échos, Le Parisien.." },
+          { name: "Xavier Niel", medias: "Le Monde, L'Obs.." }
         ]
       }
     }
@@ -71,9 +71,9 @@ const mediasOligarchiques = {
   session2: {
     title: "Modèle oligarchique vs SCOP",
     date: "22 janvier 2025",
-    duration: "1h30",
+    duration: "1h",
     sections: {
-      rappel: { title: "Rappel", content: ["L'oligarchie = concentration de pouvoirs économique, politique, administratif et médiatique."] },
+      rappel: { title: "Rappel", content: ["L'oligarchie = concentration de pouvoirs économique, politique, administratif et médiatique"] },
       modeleActuel: {
         title: "Le modèle oligarchique actuel",
         content: { type: "comparaison", elements: [
@@ -88,9 +88,9 @@ const mediasOligarchiques = {
     }
   },
   session3: {
-    title: "Approfondissement et synthèse",
+    title: "Questions et Réflexions",
     date: "25 janvier 2025",
-    duration: "1h30",
+    duration: "2h",
     sections: {
       constat: {
         title: "Le constat",
@@ -108,7 +108,7 @@ const pantouflage = {
   session4: {
     title: "Introduction au pantouflage",
     date: "29 janvier 2025",
-    duration: "1h",
+    duration: "2h",
     sections: {
       definition: {
         title: "Qu'est-ce que le pantouflage ?",
@@ -203,15 +203,15 @@ export default function App() {
     subtitle: { fontFamily: "'Flamengo'", fontSize: '24px', color: '#eec21d', letterSpacing: '0.15em' },
     card: { background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)', backdropFilter: 'blur(20px)', border: '1px solid rgba(238, 194, 29, 0.15)', borderRadius: '24px', padding: '24px', cursor: 'pointer', transition: 'all 0.3s ease', marginBottom: '16px' },
     cardTitle: { fontFamily: "'Flamengo'", fontSize: '20px', color: '#fff', marginBottom: '8px' },
-    cardDesc: { color: 'rgba(250, 232, 164, 0.7)', fontSize: '14px', marginBottom: '12px' },
-    badge: { display: 'inline-block', padding: '6px 14px', background: 'rgba(238, 194, 29, 0.15)', borderRadius: '20px', fontSize: '13px', color: '#eec21d' },
-    button: { background: 'rgba(238, 194, 29, 0.1)', border: '1px solid rgba(238, 194, 29, 0.2)', borderRadius: '12px', padding: '10px 20px', color: '#fae8a4', cursor: 'pointer', fontSize: '14px' },
-    goldButton: { background: 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)', border: 'none', borderRadius: '30px', padding: '14px 32px', color: '#111', fontFamily: "'Flamengo'", fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' },
+    cardDesc: { color: 'rgba(250, 232, 164, 0.7)', fontSize: '16px', marginBottom: '12px' },
+    badge: { display: 'inline-block', padding: '6px 16px', background: 'rgba(238, 194, 29, 0.15)', borderRadius: '20px', fontSize: '15px', color: '#eec21d' },
+    button: { background: 'rgba(238, 194, 29, 0.1)', border: '1px solid rgba(238, 194, 29, 0.2)', borderRadius: '12px', padding: '10px 20px', color: '#fae8a4', cursor: 'pointer', fontSize: '16px' },
+    goldButton: { background: 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)', border: 'none', borderRadius: '30px', padding: '16px 32px', color: '#111', fontFamily: "'Flamengo'", fontSize: '16px', fontWeight: 'bold', cursor: 'pointer' },
     banner: { background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.12) 0%, rgba(238, 194, 29, 0.03) 100%)', border: '1px solid rgba(238, 194, 29, 0.25)', borderRadius: '24px', padding: '24px', marginBottom: '40px', display: 'flex', alignItems: 'center', gap: '16px' },
     nav: { display: 'flex', gap: '8px', flexWrap: 'wrap', marginBottom: '24px', padding: '8px', background: 'rgba(0,0,0,0.3)', borderRadius: '16px' },
-    navBtn: (active) => ({ background: active ? 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)' : 'rgba(238, 194, 29, 0.1)', border: 'none', borderRadius: '12px', padding: '10px 16px', color: active ? '#111' : '#fae8a4', cursor: 'pointer', fontSize: '13px', fontWeight: active ? '600' : '400' }),
+    navBtn: (active) => ({ background: active ? 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)' : 'rgba(238, 194, 29, 0.1)', border: 'none', borderRadius: '12px', padding: '10px 16px', color: active ? '#111' : '#fae8a4', cursor: 'pointer', fontSize: '15px', fontWeight: active ? '600' : '400' }),
     reactions: { display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginTop: '24px' },
-    reactionBtn: { background: 'rgba(238, 194, 29, 0.1)', border: '1px solid rgba(238, 194, 29, 0.2)', borderRadius: '24px', padding: '12px 20px', color: '#fae8a4', cursor: 'pointer', fontSize: '14px' },
+    reactionBtn: { background: 'rgba(238, 194, 29, 0.1)', border: '1px solid rgba(238, 194, 29, 0.2)', borderRadius: '24px', padding: '12px 20px', color: '#fae8a4', cursor: 'pointer', fontSize: '16px' },
     definition: { background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)', borderLeft: '4px solid #eec21d', borderRadius: '0 16px 16px 0', padding: '20px 24px', marginBottom: '16px' },
     defTerm: { fontFamily: "'Flamengo'", fontSize: '28px', color: '#eec21d', marginBottom: '8px' },
     stat: { background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)', borderRadius: '20px', padding: '32px', textAlign: 'center' },
@@ -221,7 +221,7 @@ export default function App() {
     mesureNum: { width: '40px', height: '40px', background: 'rgba(238, 194, 29, 0.2)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'Flamengo'", fontSize: '18px', color: '#eec21d', flexShrink: 0 },
     timeline: { position: 'relative', paddingLeft: '28px' },
     timelineLine: { position: 'absolute', left: '8px', top: '8px', bottom: '8px', width: '2px', background: 'linear-gradient(180deg, #eec21d 0%, rgba(238,194,29,0.2) 100%)' },
-    timelineDot: (type) => ({ position: 'absolute', left: '-20px', top: '6px', width: '14px', height: '14px', borderRadius: '50%', background: type === 'privé' ? '#e74c3c' : type === 'formation' ? '#3498db' : '#eec21d', border: '3px solid #111' }),
+    timelineDot: (type) => ({ position: 'absolute', left: '-20px', top: '6px', width: '16px', height: '16px', borderRadius: '50%', background: type === 'privé' ? '#e74c3c' : type === 'formation' ? '#3498db' : '#eec21d', border: '3px solid #111' }),
     modal: { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0,0,0,0.9)', backdropFilter: 'blur(10px)', display: 'flex', alignItems: 'center', justifyContent: 'center', zIndex: 1000, padding: '24px' },
     modalContent: { background: '#1a1a1a', border: '1px solid rgba(238, 194, 29, 0.3)', borderRadius: '24px', padding: '32px', maxWidth: '600px', width: '100%', maxHeight: '80vh', overflow: 'auto', position: 'relative' },
     closeBtn: { position: 'absolute', top: '16px', right: '16px', width: '36px', height: '36px', background: 'rgba(238, 194, 29, 0.1)', border: '1px solid rgba(238, 194, 29, 0.3)', borderRadius: '50%', color: '#fae8a4', cursor: 'pointer', fontSize: '20px' }
@@ -241,16 +241,16 @@ export default function App() {
       return (
         <div key={key} style={styles.definition}>
           <div style={styles.defTerm}>{item.term}</div>
-          {item.etymology && <div style={{ color: 'rgba(250,232,164,0.6)', fontSize: '14px', fontStyle: 'italic', marginBottom: '8px' }}>{item.etymology}</div>}
+          {item.etymology && <div style={{ color: 'rgba(250,232,164,0.6)', fontSize: '16px', fontStyle: 'italic', marginBottom: '8px' }}>{item.etymology}</div>}
           {item.meaning && <div style={{ color: '#fff', fontSize: '16px' }}>{item.meaning}</div>}
-          {item.origine && <div style={{ marginTop: '16px', fontSize: '14px', color: 'rgba(250,232,164,0.6)' }}><strong style={{ color: '#eec21d' }}>Origine :</strong> {item.origine.date} — {item.origine.contexte}</div>}
+          {item.origine && <div style={{ marginTop: '16px', fontSize: '16px', color: 'rgba(250,232,164,0.6)' }}><strong style={{ color: '#eec21d' }}>Origine :</strong> {item.origine.date} — {item.origine.contexte}</div>}
           {item.terminologie && item.terminologie.map((t, i) => (
             <div key={i} style={{ padding: '12px', background: 'rgba(0,0,0,0.2)', borderRadius: '10px', margin: '8px 0' }}>
               <span style={{ color: '#eec21d', fontWeight: '600' }}>{t.terme}</span>
               <span style={{ color: 'rgba(250,232,164,0.8)', marginLeft: '8px' }}>{t.signification}</span>
             </div>
           ))}
-          {item.remboursement && <div style={{ marginTop: '12px', padding: '12px', background: 'rgba(238,194,29,0.1)', borderRadius: '10px', fontSize: '14px' }}>💰 {item.remboursement}</div>}
+          {item.remboursement && <div style={{ marginTop: '12px', padding: '12px', background: 'rgba(238,194,29,0.1)', borderRadius: '10px', fontSize: '16px' }}>💰 {item.remboursement}</div>}
           {item.principes && <ul style={{ marginTop: '16px', paddingLeft: '20px' }}>{item.principes.map((p, i) => <li key={i} style={{ color: 'rgba(250,232,164,0.8)', marginBottom: '8px' }}>{p}</li>)}</ul>}
         </div>
       );
@@ -262,7 +262,7 @@ export default function App() {
         <div key={key} style={styles.stat}>
           <div style={styles.statNum}>{stat.number}</div>
           <div style={{ fontSize: '18px', color: '#fff', marginTop: '8px' }}>{stat.label}</div>
-          {stat.detail && <div style={{ fontSize: '14px', color: 'rgba(250,232,164,0.6)', marginTop: '4px' }}>{stat.detail}</div>}
+          {stat.detail && <div style={{ fontSize: '16px', color: 'rgba(250,232,164,0.6)', marginTop: '4px' }}>{stat.detail}</div>}
         </div>
       );
     }
@@ -272,7 +272,7 @@ export default function App() {
         <div key={key} style={styles.powerCard}>
           <div style={{ fontSize: '36px', marginBottom: '12px' }}>{item.icon}</div>
           <div style={{ fontFamily: "'Flamengo'", fontSize: '16px', color: '#eec21d', marginBottom: '8px' }}>{item.name}</div>
-          <div style={{ fontSize: '14px', color: 'rgba(250,232,164,0.7)' }}>{item.detail}</div>
+          <div style={{ fontSize: '16px', color: 'rgba(250,232,164,0.7)' }}>{item.detail}</div>
         </div>
       );
     }
@@ -283,7 +283,7 @@ export default function App() {
           <div style={styles.mesureNum}>{item.numero}</div>
           <div style={{ flex: 1 }}>
             <div style={{ fontFamily: "'Flamengo'", fontSize: '16px', color: '#fff', marginBottom: '6px' }}>{item.titre}</div>
-            <div style={{ fontSize: '14px', color: 'rgba(250,232,164,0.7)', marginBottom: '6px' }}>{item.description}</div>
+            <div style={{ fontSize: '16px', color: 'rgba(250,232,164,0.7)', marginBottom: '6px' }}>{item.description}</div>
             {item.page && <div style={{ fontSize: '12px', color: '#eec21d' }}>📄 {item.page}</div>}
           </div>
         </div>
@@ -294,7 +294,7 @@ export default function App() {
       return (
         <div key={key} style={{ background: 'rgba(238,194,29,0.05)', border: '1px solid rgba(238,194,29,0.15)', borderRadius: '12px', padding: '16px', marginBottom: '8px' }}>
           <div style={{ fontFamily: "'Flamengo'", fontSize: '15px', color: '#eec21d', marginBottom: '6px' }}>{item.name}</div>
-          <div style={{ fontSize: '13px', color: 'rgba(250,232,164,0.7)' }}>{item.medias}</div>
+          <div style={{ fontSize: '15px', color: 'rgba(250,232,164,0.7)' }}>{item.medias}</div>
         </div>
       );
     }
@@ -339,7 +339,7 @@ export default function App() {
               {item.autres.map((ex, i) => (
                 <div key={i} style={{ background: 'rgba(238,194,29,0.05)', border: '1px solid rgba(238,194,29,0.15)', borderRadius: '12px', padding: '16px' }}>
                   <div style={{ fontWeight: '600', color: '#fff', marginBottom: '6px' }}>{ex.nom}</div>
-                  <div style={{ fontSize: '14px', color: 'rgba(250,232,164,0.7)' }}>{ex.detail}</div>
+                  <div style={{ fontSize: '16px', color: 'rgba(250,232,164,0.7)' }}>{ex.detail}</div>
                 </div>
               ))}
             </div>
@@ -362,8 +362,8 @@ export default function App() {
             {item.exemples.map((ex, i) => (
               <div key={i} style={{ background: 'rgba(238,194,29,0.05)', border: '1px solid rgba(238,194,29,0.15)', borderRadius: '12px', padding: '16px' }}>
                 <div style={{ fontFamily: "'Flamengo'", fontSize: '16px', color: '#eec21d', marginBottom: '8px' }}>{ex.nom}</div>
-                {ex.avant && <div style={{ fontSize: '13px', color: 'rgba(250,232,164,0.6)', marginBottom: '4px' }}>Avant : {ex.avant}</div>}
-                <div style={{ fontSize: '14px', color: '#fae8a4' }}>{ex.apres || ex.detail}</div>
+                {ex.avant && <div style={{ fontSize: '15px', color: 'rgba(250,232,164,0.6)', marginBottom: '4px' }}>Avant : {ex.avant}</div>}
+                <div style={{ fontSize: '16px', color: '#fae8a4' }}>{ex.apres || ex.detail}</div>
               </div>
             ))}
           </div>
@@ -375,7 +375,7 @@ export default function App() {
                   <div key={i} style={{ background: 'rgba(238,194,29,0.05)', borderRadius: '10px', padding: '12px' }}>
                     <div style={{ fontSize: '12px', color: '#eec21d', marginBottom: '4px' }}>{m.pays}</div>
                     <div style={{ fontWeight: '600', color: '#fff' }}>{m.nom}</div>
-                    <div style={{ fontSize: '13px', color: 'rgba(250,232,164,0.7)' }}>{m.detail}</div>
+                    <div style={{ fontSize: '15px', color: 'rgba(250,232,164,0.7)' }}>{m.detail}</div>
                   </div>
                 ))}
               </div>
@@ -392,16 +392,16 @@ export default function App() {
           {item.citation && (
             <div style={{ background: 'rgba(238,194,29,0.08)', borderLeft: '4px solid #eec21d', borderRadius: '0 12px 12px 0', padding: '20px', marginBottom: '24px' }}>
               <div style={{ fontSize: '15px', color: '#fae8a4', fontStyle: 'italic', lineHeight: 1.7, marginBottom: '8px' }}>"{item.citation.texte}"</div>
-              <div style={{ fontSize: '13px', color: '#eec21d' }}>— {item.citation.auteur}, {item.citation.source}</div>
+              <div style={{ fontSize: '15px', color: '#eec21d' }}>— {item.citation.auteur}, {item.citation.source}</div>
             </div>
           )}
           {item.programmes.map((prog, i) => (
             <div key={i} style={{ background: 'rgba(238,194,29,0.05)', border: '1px solid rgba(238,194,29,0.15)', borderRadius: '16px', padding: '20px', marginBottom: '16px' }}>
               <div style={{ fontFamily: "'Flamengo'", fontSize: '18px', color: '#eec21d', marginBottom: '8px' }}>{prog.nom}</div>
-              <div style={{ fontSize: '13px', color: 'rgba(250,232,164,0.6)', marginBottom: '12px' }}>Depuis {prog.depuis} — {prog.format}</div>
+              <div style={{ fontSize: '15px', color: 'rgba(250,232,164,0.6)', marginBottom: '12px' }}>Depuis {prog.depuis} — {prog.format}</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                 {prog.exemples.map((ex, j) => (
-                  <span key={j} style={{ padding: '6px 12px', background: 'rgba(238,194,29,0.1)', borderRadius: '20px', fontSize: '13px', color: '#fae8a4' }}>
+                  <span key={j} style={{ padding: '6px 12px', background: 'rgba(238,194,29,0.1)', borderRadius: '20px', fontSize: '15px', color: '#fae8a4' }}>
                     {typeof ex === 'string' ? ex : `${ex.nom} → ${ex.delai}`}
                   </span>
                 ))}
@@ -437,7 +437,7 @@ export default function App() {
             <div style={{ flex: 1 }}>
               <div style={{ fontSize: '12px', color: '#eec21d', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '4px' }}>Prochaine session</div>
               <div style={{ fontFamily: "'Flamengo'", fontSize: '18px', color: '#fff', marginBottom: '4px' }}>{prochaineSession.titre}</div>
-              <div style={{ fontSize: '14px', color: 'rgba(250,232,164,0.7)' }}>{prochaineSession.date}</div>
+              <div style={{ fontSize: '16px', color: 'rgba(250,232,164,0.7)' }}>{prochaineSession.date}</div>
             </div>
           </div>
 
@@ -460,9 +460,9 @@ export default function App() {
             <button style={styles.goldButton} onClick={() => setShowProjet(true)}>📜 Consulter Le Projet</button>
           </div>
 
-          <footer style={{ marginTop: '64px', paddingTop: '24px', borderTop: '1px solid rgba(238,194,29,0.1)', textAlign: 'center', fontSize: '13px', color: 'rgba(250,232,164,0.5)' }}>
-            <p>🐝 Butiner le futur, abeille par abeille, réflexion après réflexion...</p>
-            <p style={{ marginTop: '8px' }}>Sessions : <strong style={{ color: '#eec21d' }}>Jeudis 18h</strong> et <strong style={{ color: '#eec21d' }}>Dimanches 17h</strong></p>
+          <footer style={{ marginTop: '64px', paddingTop: '24px', borderTop: '1px solid rgba(238,194,29,0.1)', textAlign: 'center', fontSize: '15px', color: 'rgba(250,232,164,0.5)' }}>
+            <p>🐝 Butiner notre futur ensemble, abeille par abeille, réflexion après réflexion..</p>
+            <p style={{ marginTop: '8px' }}>Sessions : <strong style={{ color: '#eec21d' }}>Jeudis 18h</strong> et <strong style={{ color: '#eec21d' }}>Dimanches 17h</strong></p> - sauf réunion
           </footer>
         </div>
 
@@ -472,9 +472,9 @@ export default function App() {
               <button style={styles.closeBtn} onClick={() => setShowProjet(false)}>×</button>
               <h2 style={{ fontFamily: "'Flamengo'", fontSize: '28px', color: '#eec21d', marginBottom: '24px' }}>Le Projet</h2>
               {['LUTTER — Fin de l\'oligarchie', 'VOTER — Souveraineté populaire', 'GRANDIR — Éducation, culture', 'PROTÉGER — Justice, sécurité', 'PRODUIRE — Réindustrialisation', 'SOIGNER — Santé publique', 'PARTAGER — Redistribution'].map((p, i) => (
-                <div key={i} style={{ padding: '12px', background: 'rgba(238,194,29,0.05)', borderRadius: '10px', marginBottom: '8px', fontSize: '14px' }}>{p}</div>
+                <div key={i} style={{ padding: '12px', background: 'rgba(238,194,29,0.05)', borderRadius: '10px', marginBottom: '8px', fontSize: '16px' }}>{p}</div>
               ))}
-              <a href="https://www.leprojet2027.fr" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '16px', padding: '14px 28px', background: '#eec21d', color: '#111', borderRadius: '12px', textDecoration: 'none', fontWeight: '600' }}>📄 Télécharger le PDF</a>
+              <a href="https://ruches.org/sites/default/files/mediatheque/documents/2025-12/le-projet-8.pdf" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', marginTop: '16px', padding: '16px 28px', background: '#eec21d', color: '#111', borderRadius: '12px', textDecoration: 'none', fontWeight: '600' }}>📄 Lire le Projet</a>
             </div>
           </div>
         )}
@@ -495,15 +495,15 @@ export default function App() {
           <header style={{ textAlign: 'center', margin: '32px 0 48px' }}>
             <div style={{ fontSize: '64px', marginBottom: '16px' }}>{isMedias ? '📺' : '🚪'}</div>
             <h1 style={styles.title}>{themeTitle}</h1>
-            <p style={{ fontSize: '14px', color: 'rgba(250,232,164,0.6)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>NOS PRIORITÉS › LUTTER › La fin de l'oligarchie</p>
+            <p style={{ fontSize: '16px', color: 'rgba(250,232,164,0.6)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>NOS PRIORITÉS › LUTTER › La fin de l'oligarchie</p>
           </header>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '20px' }}>
             {sessions.map((session, index) => (
               <div key={session.id} style={{ ...styles.card, opacity: session.available ? 1 : 0.5, cursor: session.available ? 'pointer' : 'not-allowed' }} onClick={session.available ? () => goToSession(session.id) : undefined}>
                 <div style={{ fontSize: '32px', fontFamily: "'Flamengo'", color: '#eec21d', marginBottom: '12px' }}>0{index + (isMedias ? 1 : 4)}</div>
                 <h3 style={{ fontFamily: "'Flamengo'", fontSize: '18px', color: '#fff', marginBottom: '8px' }}>{session.titre}</h3>
-                <p style={{ fontSize: '14px', color: 'rgba(250,232,164,0.6)' }}>{session.date}</p>
-                {!session.available && <div style={{ marginTop: '12px', fontSize: '13px', color: 'rgba(250,232,164,0.5)' }}>🔒 Bientôt</div>}
+                <p style={{ fontSize: '16px', color: 'rgba(250,232,164,0.6)' }}>{session.date}</p>
+                {!session.available && <div style={{ marginTop: '12px', fontSize: '15px', color: 'rgba(250,232,164,0.5)' }}>🔒 Bientôt</div>}
               </div>
             ))}
           </div>
@@ -528,7 +528,7 @@ export default function App() {
         <header style={{ background: 'linear-gradient(135deg, rgba(238,194,29,0.1) 0%, transparent 100%)', borderRadius: '20px', padding: '32px', margin: '24px 0' }}>
           <span style={styles.badge}>SESSION {currentSession.replace('session', '')}</span>
           <h1 style={{ ...styles.title, marginTop: '12px' }}>{sessionData.title}</h1>
-          <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', fontSize: '14px', color: 'rgba(250,232,164,0.7)' }}>
+          <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', fontSize: '16px', color: 'rgba(250,232,164,0.7)' }}>
             <span>📅 {sessionData.date}</span>
             <span>⏱️ {sessionData.duration}</span>
           </div>
@@ -552,9 +552,9 @@ export default function App() {
         </div>
 
         <div style={styles.reactions}>
-          {[{ key: 'pollen', emoji: '🌻', label: 'Pollen' }, { key: 'miel', emoji: '🍯', label: 'Miel' }, { key: 'alveole', emoji: '🐝', label: 'Mind blown' }].map(({ key, emoji, label }) => (
+          {[{ key: 'pollen', emoji: '🌻'}, { key: 'miel', emoji: '🍯' }, { key: 'alveole', emoji: '🐝' }].map(({ key, emoji }) => (
             <button key={key} onClick={() => addReaction(key)} style={styles.reactionBtn}>
-              {emoji} {label} {reactions[key] > 0 && `(${reactions[key]})`}
+              {emoji} {reactions[key] > 0 && `(${reactions[key]})`}
             </button>
           ))}
         </div>
