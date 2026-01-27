@@ -3,7 +3,7 @@ import { mediasOligarchiques, pantouflage, sessionsConfig, prochaineSession } fr
 
 // ═══════════════════════════════════════════════════════════════════════════
 // RÉFLEXION AUTOUR DU PROJET — R75
-// Application pour les sessions de Rélexion autour du Projet de La Ruche 75
+// Application pour les sessions de Rélexion autour du Projet de La Ruche 75 (Discord)
 // Discord
 // ═══════════════════════════════════════════════════════════════════════════
 
@@ -241,7 +241,7 @@ const App = () => {
               <span style={{ fontSize: '32px' }}>📅</span>
               <div style={{ flex: 1, minWidth: '200px' }}>
                 <div style={{ 
-                  fontSize: '12px', 
+                  fontSize: '14px', 
                   color: '#eec21d', 
                   textTransform: 'uppercase', 
                   letterSpacing: '0.1em',
@@ -291,7 +291,7 @@ const App = () => {
                 padding: '6px 16px',
                 background: 'rgba(238, 194, 29, 0.15)',
                 borderRadius: '20px',
-                fontSize: '13px',
+                fontSize: '15px',
                 color: '#eec21d'
               }}>
                 {mediasCount} session{mediasCount > 1 ? 's' : ''}
@@ -326,7 +326,7 @@ const App = () => {
                 padding: '6px 16px',
                 background: 'rgba(238, 194, 29, 0.15)',
                 borderRadius: '20px',
-                fontSize: '13px',
+                fontSize: '15px',
                 color: '#eec21d'
               }}>
                 {pantouflageCount} session{pantouflageCount > 1 ? 's' : ''}
@@ -379,7 +379,7 @@ const App = () => {
             paddingTop: '24px', 
             borderTop: '1px solid rgba(238, 194, 29, 0.1)',
             textAlign: 'center',
-            fontSize: '13px',
+            fontSize: '15px',
             color: 'rgba(250, 232, 164, 0.5)'
           }}>
             <p>🐝 Butiner notre futur ensemble, abeille par abeille, réflexion après réflexion..</p>
@@ -484,7 +484,7 @@ const App = () => {
               {!session.available && (
                 <div style={{ 
                   marginTop: '12px',
-                  fontSize: '13px',
+                  fontSize: '15px',
                   color: 'rgba(250, 232, 164, 0.5)'
                 }}>
                   🔒 Bientôt disponible
@@ -541,7 +541,7 @@ const App = () => {
             padding: '4px 12px',
             background: 'rgba(238, 194, 29, 0.2)',
             borderRadius: '20px',
-            fontSize: '12px',
+            fontSize: '14px',
             color: '#eec21d',
             marginBottom: '12px'
           }}>
@@ -625,8 +625,8 @@ const App = () => {
         }}>
           {[
             { key: 'pollen', emoji: '🌻' },
-            { key: 'miel', emoji: '🍯' },
-            { key: 'alveole', emoji: '🐝' }
+            { key: 'miel', emoji: '🍯'},
+            { key: 'alveole', emoji: '🐝' },
           ].map(({ key, emoji }) => (
             <button
               key={key}
@@ -892,7 +892,7 @@ const App = () => {
               {item.description}
             </div>
             {item.page && (
-              <div style={{ fontSize: '12px', color: '#eec21d' }}>
+              <div style={{ fontSize: '14px', color: '#eec21d' }}>
                 📄 {item.page}
               </div>
             )}
@@ -918,7 +918,7 @@ const App = () => {
           }}>
             {item.name}
           </div>
-          <div style={{ fontSize: '13px', color: 'rgba(250, 232, 164, 0.7)' }}>
+          <div style={{ fontSize: '15px', color: 'rgba(250, 232, 164, 0.7)' }}>
             {item.medias}
           </div>
         </div>
@@ -936,7 +936,7 @@ const App = () => {
               padding: '16px'
             }}>
               <div style={{ 
-                fontSize: '12px', 
+                fontSize: '14px', 
                 color: '#eec21d', 
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em',
@@ -997,7 +997,7 @@ const App = () => {
           }}>
             "{item.citation.texte}"
           </div>
-          <div style={{ fontSize: '13px', color: '#eec21d' }}>
+          <div style={{ fontSize: '15px', color: '#eec21d' }}>
             — {item.citation.source}
           </div>
         </div>
@@ -1120,7 +1120,7 @@ const App = () => {
                   {ex.nom}
                 </div>
                 {ex.avant && (
-                  <div style={{ fontSize: '13px', color: 'rgba(250, 232, 164, 0.6)', marginBottom: '4px' }}>
+                  <div style={{ fontSize: '15px', color: 'rgba(250, 232, 164, 0.6)', marginBottom: '4px' }}>
                     Avant : {ex.avant}
                   </div>
                 )}
@@ -1151,11 +1151,11 @@ const App = () => {
                     borderRadius: '10px',
                     padding: '12px'
                   }}>
-                    <div style={{ fontSize: '12px', color: '#eec21d', marginBottom: '4px' }}>
+                    <div style={{ fontSize: '14px', color: '#eec21d', marginBottom: '4px' }}>
                       {m.pays}
                     </div>
                     <div style={{ fontWeight: '600', color: '#fff' }}>{m.nom}</div>
-                    <div style={{ fontSize: '13px', color: 'rgba(250, 232, 164, 0.7)' }}>{m.detail}</div>
+                    <div style={{ fontSize: '15px', color: 'rgba(250, 232, 164, 0.7)' }}>{m.detail}</div>
                   </div>
                 ))}
               </div>
@@ -1190,7 +1190,7 @@ const App = () => {
               }}>
                 "{item.citation.texte}"
               </div>
-              <div style={{ fontSize: '13px', color: '#eec21d' }}>
+              <div style={{ fontSize: '15px', color: '#eec21d' }}>
                 — {item.citation.auteur}, {item.citation.source}
               </div>
             </div>
@@ -1212,7 +1212,7 @@ const App = () => {
               }}>
                 {prog.nom}
               </div>
-              <div style={{ fontSize: '13px', color: 'rgba(250, 232, 164, 0.6)', marginBottom: '12px' }}>
+              <div style={{ fontSize: '15px', color: 'rgba(250, 232, 164, 0.6)', marginBottom: '12px' }}>
                 Depuis {prog.depuis} — {prog.format}
               </div>
               <div style={{ 
@@ -1225,7 +1225,7 @@ const App = () => {
                     padding: '6px 12px',
                     background: 'rgba(238, 194, 29, 0.1)',
                     borderRadius: '20px',
-                    fontSize: '13px',
+                    fontSize: '15px',
                     color: '#fae8a4'
                   }}>
                     {typeof ex === 'string' ? ex : `${ex.nom} → ${ex.delai}`}
@@ -1259,7 +1259,7 @@ const App = () => {
             {item.modele}
           </div>
           {item.resultat && (
-            <div style={{ fontSize: '13px', color: '#8fc' }}>✓ {item.resultat}</div>
+            <div style={{ fontSize: '15px', color: '#8fc' }}>✓ {item.resultat}</div>
           )}
         </div>
       );
@@ -1289,6 +1289,160 @@ const App = () => {
           gap: '16px'
         }}>
           {item.map((subItem, i) => renderContentItem(subItem, `${key}-${i}`))}
+        </div>
+      );
+    }
+
+    // Avantages + Questions (Session 2)
+    if (item.avantages && item.questions) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div>
+            <h4 style={{ 
+              fontFamily: "'Flamengo'",
+              fontSize: '16px',
+              color: '#eec21d',
+              marginBottom: '12px'
+            }}>
+              ✅ Avantages
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {item.avantages.map((av, i) => (
+                <div key={i} style={{
+                  background: 'rgba(143, 255, 143, 0.1)',
+                  border: '1px solid rgba(143, 255, 143, 0.2)',
+                  borderRadius: '10px',
+                  padding: '12px 16px',
+                  color: '#8fc',
+                  fontSize: '16px'
+                }}>
+                  {av}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h4 style={{ 
+              fontFamily: "'Flamengo'",
+              fontSize: '16px',
+              color: '#eec21d',
+              marginBottom: '12px'
+            }}>
+              ❓ Questions ouvertes
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {item.questions.map((q, i) => (
+                <div key={i} style={{
+                  background: 'rgba(238, 194, 29, 0.1)',
+                  border: '1px solid rgba(238, 194, 29, 0.2)',
+                  borderRadius: '10px',
+                  padding: '12px 16px',
+                  color: '#fae8a4',
+                  fontSize: '16px'
+                }}>
+                  {q}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Double versant / Marché (Session 3)
+    if (item.explication && item.versants) {
+      return (
+        <div key={key}>
+          <p style={{ color: 'rgba(250, 232, 164, 0.85)', lineHeight: 1.7, marginBottom: '20px' }}>
+            {item.explication}
+          </p>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '16px',
+            marginBottom: '20px'
+          }}>
+            {item.versants.map((v, i) => (
+              <div key={i} style={{
+                background: 'rgba(238, 194, 29, 0.08)',
+                border: '1px solid rgba(238, 194, 29, 0.2)',
+                borderRadius: '16px',
+                padding: '20px'
+              }}>
+                <div style={{ 
+                  fontFamily: "'Flamengo'",
+                  fontSize: '16px',
+                  color: '#eec21d',
+                  marginBottom: '8px'
+                }}>
+                  {v.titre}
+                </div>
+                <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.8)', lineHeight: 1.6 }}>
+                  {v.detail}
+                </div>
+              </div>
+            ))}
+          </div>
+          {item.insight && (
+            <div style={{
+              background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)',
+              borderRadius: '12px',
+              padding: '16px 20px',
+              fontSize: '16px',
+              color: '#fff',
+              fontStyle: 'italic'
+            }}>
+              💡 {item.insight}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Exemples européens avec stat spéciale (source + chiffre)
+    if (item.exemples && item.stat && item.stat.source) {
+      return (
+        <div key={key}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px' }}>
+            {item.exemples.map((ex, i) => (
+              <div key={i} style={{
+                background: 'rgba(238, 194, 29, 0.05)',
+                border: '1px solid rgba(238, 194, 29, 0.15)',
+                borderRadius: '12px',
+                padding: '16px'
+              }}>
+                <div style={{ 
+                  fontFamily: "'Flamengo'",
+                  fontSize: '16px',
+                  color: '#eec21d',
+                  marginBottom: '6px'
+                }}>
+                  {ex.nom}
+                </div>
+                <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.8)' }}>
+                  {ex.detail}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)',
+            borderRadius: '16px',
+            padding: '20px',
+            textAlign: 'center'
+          }}>
+            <div style={{ 
+              fontSize: '15px', 
+              color: '#fff',
+              marginBottom: '8px',
+              lineHeight: 1.6
+            }}>
+              {item.stat.chiffre}
+            </div>
+            <div style={{ fontSize: '14px', color: '#eec21d' }}>
+              — {item.stat.source}
+            </div>
+          </div>
         </div>
       );
     }
@@ -1335,7 +1489,7 @@ const App = () => {
             background: item.type === 'privé' ? '#e74c3c' : item.type === 'formation' ? '#3498db' : '#eec21d',
             border: '3px solid #111'
           }} />
-          <div style={{ color: 'rgba(250, 232, 164, 0.5)', fontSize: '12px' }}>{item.periode}</div>
+          <div style={{ color: 'rgba(250, 232, 164, 0.5)', fontSize: '14px' }}>{item.periode}</div>
           <div style={{ color: '#fff', fontWeight: '500' }}>{item.poste}</div>
         </div>
       ))}
@@ -1344,7 +1498,7 @@ const App = () => {
         gap: '20px', 
         marginTop: '20px',
         paddingLeft: '16px',
-        fontSize: '12px',
+        fontSize: '14px',
         color: 'rgba(250, 232, 164, 0.7)'
       }}>
         <span><span style={{ color: '#eec21d' }}>●</span> Public</span>
@@ -1416,7 +1570,7 @@ const App = () => {
             fontSize: '16px',
             marginBottom: '24px'
           }}>
-            Programme politique — Version intégrale
+            Projet politique — Version intégrale
           </p>
 
           <div style={{ marginBottom: '24px' }}>
