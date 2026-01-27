@@ -384,7 +384,7 @@ const App = () => {
           }}>
            <p>🐝 Butiner notre futur ensemble, abeille par abeille, réflexion après réflexion...</p>
             <p style={{ marginTop: '8px' }}>
-              Sessions : <strong style={{ color: '#eec21d' }}>Jeudis 18h</strong> et <strong style={{ color: '#eec21d' }}>Dimanches 17h</strong> - sauf réunion
+              Sessions : <strong style={{ color: '#eec21d' }}>Jeudis 18h</strong> et <strong style={{ color: '#eec21d' }}>Dimanches 17h</strong> <br>sauf réunion</br> 
             </p>
           </footer>
         </div>
