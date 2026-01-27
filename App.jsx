@@ -950,7 +950,128 @@ const App = () => {
         </div>
       );
     }
+// Exemples européens avec stat spéciale (Session 4)
+    if (item.exemples && item.stat && item.stat.source) {
+      return (
+        <div key={key}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px' }}>
+            {item.exemples.map((ex, i) => (
+              <div key={i} style={{
+                background: 'rgba(238, 194, 29, 0.05)',
+                border: '1px solid rgba(238, 194, 29, 0.15)',
+                borderRadius: '12px',
+                padding: '16px'
+              }}>
+                <div style={{ 
+                  fontFamily: "'Flamengo'",
+                  fontSize: '16px',
+                  color: '#eec21d',
+                  marginBottom: '6px'
+                }}>
+                  {ex.nom}
+                </div>
+                <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.8)' }}>
+                  {ex.detail}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)',
+            borderRadius: '16px',
+            padding: '20px',
+            textAlign: 'center'
+          }}>
+            <div style={{ 
+              fontSize: '15px', 
+              color: '#fff',
+              marginBottom: '8px',
+              lineHeight: 1.6
+            }}>
+              {item.stat.chiffre}
+            </div>
+            <div style={{ fontSize: '16px', color: '#eec21d' }}>
+              — {item.stat.source}
+            </div>
+          </div>
+        </div>
+      );
+    }
 
+    // Government Sachs (Session 4)
+    if (item.intro && item.exemples) {
+      return (
+        <div key={key}>
+          <p style={{ color: 'rgba(250, 232, 164, 0.85)', lineHeight: 1.7, marginBottom: '20px' }}>
+            {item.intro}
+          </p>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '16px',
+            marginBottom: '24px'
+          }}>
+            {item.exemples.map((ex, i) => (
+              <div key={i} style={{
+                background: 'rgba(238, 194, 29, 0.05)',
+                border: '1px solid rgba(238, 194, 29, 0.15)',
+                borderRadius: '12px',
+                padding: '16px'
+              }}>
+                <div style={{ 
+                  fontFamily: "'Flamengo'",
+                  fontSize: '16px',
+                  color: '#eec21d',
+                  marginBottom: '8px'
+                }}>
+                  {ex.nom}
+                </div>
+                {ex.avant && (
+                  <div style={{ fontSize: '15px', color: 'rgba(250, 232, 164, 0.6)', marginBottom: '4px' }}>
+                    Avant : {ex.avant}
+                  </div>
+                )}
+                <div style={{ fontSize: '16px', color: '#fae8a4' }}>
+                  {ex.apres || ex.detail}
+                </div>
+              </div>
+            ))}
+          </div>
+          {item.mondial && (
+            <>
+              <h4 style={{ 
+                fontFamily: "'Flamengo'",
+                fontSize: '16px',
+                color: '#eec21d',
+                marginBottom: '12px'
+              }}>
+                Dans le monde
+              </h4>
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gap: '12px'
+              }}>
+                {item.mondial.map((m, i) => (
+                  <div key={i} style={{
+                    background: 'rgba(238, 194, 29, 0.05)',
+                    borderRadius: '10px',
+                    padding: '12px'
+                  }}>
+                    <div style={{ fontSize: '16px', color: '#eec21d', marginBottom: '4px' }}>
+                      {m.pays}
+                    </div>
+                    <div style={{ fontWeight: '600', color: '#fff' }}>{m.nom}</div>
+                    <div style={{ fontSize: '15px', color: 'rgba(250, 232, 164, 0.7)' }}>{m.detail}</div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      );
+    }
+ 
     // Stat
     if (item.stat || (item.number && item.label)) {
       const stat = item.stat || item;
@@ -1105,128 +1226,6 @@ const App = () => {
             }}>
               💡 {item.insight}
             </div>
-          )}
-        </div>
-      );
-    }
-
-    // Exemples européens avec stat spéciale (Session 4) — DOIT ÊTRE AVANT if (item.exemples)
-    if (item.exemples && item.stat && item.stat.source) {
-      return (
-        <div key={key}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px' }}>
-            {item.exemples.map((ex, i) => (
-              <div key={i} style={{
-                background: 'rgba(238, 194, 29, 0.05)',
-                border: '1px solid rgba(238, 194, 29, 0.15)',
-                borderRadius: '12px',
-                padding: '16px'
-              }}>
-                <div style={{ 
-                  fontFamily: "'Flamengo'",
-                  fontSize: '16px',
-                  color: '#eec21d',
-                  marginBottom: '6px'
-                }}>
-                  {ex.nom}
-                </div>
-                <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.8)' }}>
-                  {ex.detail}
-                </div>
-              </div>
-            ))}
-          </div>
-          <div style={{
-            background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)',
-            borderRadius: '16px',
-            padding: '20px',
-            textAlign: 'center'
-          }}>
-            <div style={{ 
-              fontSize: '15px', 
-              color: '#fff',
-              marginBottom: '8px',
-              lineHeight: 1.6
-            }}>
-              {item.stat.chiffre}
-            </div>
-            <div style={{ fontSize: '16px', color: '#eec21d' }}>
-              — {item.stat.source}
-            </div>
-          </div>
-        </div>
-      );
-    }
-
-    // Government Sachs (Session 4) — DOIT ÊTRE AVANT if (item.exemples)
-    if (item.intro && item.exemples) {
-      return (
-        <div key={key}>
-          <p style={{ color: 'rgba(250, 232, 164, 0.85)', lineHeight: 1.7, marginBottom: '20px' }}>
-            {item.intro}
-          </p>
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '16px',
-            marginBottom: '24px'
-          }}>
-            {item.exemples.map((ex, i) => (
-              <div key={i} style={{
-                background: 'rgba(238, 194, 29, 0.05)',
-                border: '1px solid rgba(238, 194, 29, 0.15)',
-                borderRadius: '12px',
-                padding: '16px'
-              }}>
-                <div style={{ 
-                  fontFamily: "'Flamengo'",
-                  fontSize: '16px',
-                  color: '#eec21d',
-                  marginBottom: '8px'
-                }}>
-                  {ex.nom}
-                </div>
-                {ex.avant && (
-                  <div style={{ fontSize: '15px', color: 'rgba(250, 232, 164, 0.6)', marginBottom: '4px' }}>
-                    Avant : {ex.avant}
-                  </div>
-                )}
-                <div style={{ fontSize: '16px', color: '#fae8a4' }}>
-                  {ex.apres || ex.detail}
-                </div>
-              </div>
-            ))}
-          </div>
-          {item.mondial && (
-            <>
-              <h4 style={{ 
-                fontFamily: "'Flamengo'",
-                fontSize: '16px',
-                color: '#eec21d',
-                marginBottom: '12px'
-              }}>
-                Dans le monde
-              </h4>
-              <div style={{ 
-                display: 'grid', 
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: '12px'
-              }}>
-                {item.mondial.map((m, i) => (
-                  <div key={i} style={{
-                    background: 'rgba(238, 194, 29, 0.05)',
-                    borderRadius: '10px',
-                    padding: '12px'
-                  }}>
-                    <div style={{ fontSize: '16px', color: '#eec21d', marginBottom: '4px' }}>
-                      {m.pays}
-                    </div>
-                    <div style={{ fontWeight: '600', color: '#fff' }}>{m.nom}</div>
-                    <div style={{ fontSize: '15px', color: 'rgba(250, 232, 164, 0.7)' }}>{m.detail}</div>
-                  </div>
-                ))}
-              </div>
-            </>
           )}
         </div>
       );
