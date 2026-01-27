@@ -1606,7 +1606,7 @@ const App = () => {
           </div>
 
           <a
-            href="https://www.leprojet2027.fr"
+            href="https://ruches.org/sites/default/files/mediatheque/documents/2025-12/le-projet-8.pdf"
             target="_blank"
             rel="noopener noreferrer"
             style={{
