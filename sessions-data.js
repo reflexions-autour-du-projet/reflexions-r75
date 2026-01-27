@@ -359,7 +359,7 @@ export const pantouflage = {
           citation: {
             auteur: "Klaus Schwab",
             texte: "Ce dont nous sommes très fiers maintenant, c'est que nous pénétrons les cabinets des gouvernements à travers le monde avec nos Young Global Leaders",
-            source: "Klaus Shwab - Harvard University, 2017"
+            source: "Klaus Shwab (Harvard University, 2017)"
           },
           programmes: [
             {
