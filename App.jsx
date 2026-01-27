@@ -655,7 +655,7 @@ const App = () => {
             color: '#eec21d',
             marginBottom: '16px'
           }}>
-            💬 Vos questions
+            💬 Idées et questions
           </h3>
           <div style={{ display: 'flex', gap: '12px', marginBottom: '16px' }}>
             <input
@@ -663,7 +663,7 @@ const App = () => {
               value={newQuestion}
               onChange={(e) => setNewQuestion(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && submitQuestion()}
-              placeholder="Posez votre question ou ajoutez une idée.."
+              placeholder="Une question ou une idée.."
               style={{
                 flex: 1,
                 background: 'rgba(0, 0, 0, 0.3)',
