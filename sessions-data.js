@@ -231,7 +231,7 @@ export const mediasOligarchiques = {
         content: {
           probleme: "Un écart s'est creusé entre ce qu'est censé être un média (information) et ce qu'il est devenu (influence).",
           exemples: [
-            "CNews : pas d'information factuelle, pas de sources, seulement de l'opinion présentée comme des faits",
+            "CNews : pas d'information factuelle, seulement de l'opinion présentée comme des faits",
             "Le Parisien pourrait être considéré comme un 'influenceur', non plus comme un vecteur d'information"
           ],
           proposition: "Les 'chaînes d'information' devraient s'appeler 'plateformes d'opinion'",
