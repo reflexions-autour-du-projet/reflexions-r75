@@ -663,7 +663,7 @@ const App = () => {
               value={newQuestion}
               onChange={(e) => setNewQuestion(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && submitQuestion()}
-              placeholder="Une question ou une idée.."
+              placeholder="Écris ici.."
               style={{
                 flex: 1,
                 background: 'rgba(0, 0, 0, 0.3)',
