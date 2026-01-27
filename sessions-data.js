@@ -358,8 +358,8 @@ export const pantouflage = {
           concept: "Identifier des individus 'à fort potentiel' dans différents secteurs (politique, économie, médias, culture), les réunir pour développer une vision commune et tisser des réseaux qui perdurent.",
           citation: {
             auteur: "Klaus Schwab",
-            texte: "Ce dont nous sommes très fiers maintenant, c'est que nous pénétrons les cabinets des gouvernements à travers le monde avec nos Young Global Leaders.",
-            source: "Harvard Kennedy School, 2017"
+            texte: "Ce dont nous sommes très fiers maintenant, c'est que nous pénétrons les cabinets des gouvernements à travers le monde avec nos Young Global Leaders",
+            source: "Klaus Shwab - Harvard University, 2017"
           },
           programmes: [
             {
