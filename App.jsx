@@ -143,7 +143,7 @@ const App = () => {
         x="50" y="68" 
         textAnchor="middle" 
         fill="url(#hexGold)" 
-        style={{ fontFamily: "'Flamengo'", fontSize: '28px', fontWeight: 'bold' }}
+        style={{ fontFamily: "'Flamengo'", fontSize: '22px', fontWeight: 'bold' }}
       >
         R75
       </text>
@@ -213,17 +213,17 @@ const App = () => {
             </div>
             <h1 style={{ 
               fontFamily: "'Flamengo'",
-              fontSize: 'clamp(28px, 6vw, 42px)',
+              fontSize: 'clamp(22px, 6vw, 42px)',
               color: '#fff',
               marginBottom: '8px',
               letterSpacing: '0.05em',
               textShadow: '0 2px 20px rgba(238, 194, 29, 0.3)'
             }}>
-              RÉFLEXION AUTOUR DU PROJET
+              RÉFLEXIONS AUTOUR DU PROJET
             </h1>
             <p style={{ 
               fontFamily: "'Flamengo'",
-              fontSize: 'clamp(20px, 4vw, 28px)',
+              fontSize: 'clamp(20px, 4vw, 22px)',
               color: '#eec21d',
               letterSpacing: '0.15em'
             }}>
@@ -241,7 +241,7 @@ const App = () => {
               <span style={{ fontSize: '32px' }}>📅</span>
               <div style={{ flex: 1, minWidth: '200px' }}>
                 <div style={{ 
-                  fontSize: '14px', 
+                  fontSize: '16px', 
                   color: '#eec21d', 
                   textTransform: 'uppercase', 
                   letterSpacing: '0.1em',
@@ -382,7 +382,7 @@ const App = () => {
             fontSize: '15px',
             color: 'rgba(250, 232, 164, 0.5)'
           }}>
-            <p>🐝 Butiner notre futur ensemble, abeille par abeille, réflexion après réflexion..</p>
+           <p>🐝 Butiner notre futur ensemble, abeille par abeille, réflexion après réflexion...</p>
             <p style={{ marginTop: '8px' }}>
               Sessions : <strong style={{ color: '#eec21d' }}>Jeudis 18h</strong> et <strong style={{ color: '#eec21d' }}>Dimanches 17h</strong> - sauf réunion
             </p>
@@ -541,7 +541,7 @@ const App = () => {
             padding: '4px 12px',
             background: 'rgba(238, 194, 29, 0.2)',
             borderRadius: '20px',
-            fontSize: '14px',
+            fontSize: '16px',
             color: '#eec21d',
             marginBottom: '12px'
           }}>
@@ -625,7 +625,7 @@ const App = () => {
         }}>
           {[
             { key: 'pollen', emoji: '🌻' },
-            { key: 'miel', emoji: '🍯'},
+            { key: 'miel', emoji: '🍯' },
             { key: 'alveole', emoji: '🐝' },
           ].map(({ key, emoji }) => (
             <button
@@ -663,7 +663,7 @@ const App = () => {
               value={newQuestion}
               onChange={(e) => setNewQuestion(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && submitQuestion()}
-              placeholder="Posez votre question..."
+              placeholder="Posez votre question ou ajoutez une idée.."
               style={{
                 flex: 1,
                 background: 'rgba(0, 0, 0, 0.3)',
@@ -750,7 +750,7 @@ const App = () => {
         }}>
           <div style={{ 
             fontFamily: "'Flamengo'",
-            fontSize: '28px',
+            fontSize: '22px',
             color: '#eec21d',
             marginBottom: '8px'
           }}>
@@ -892,7 +892,7 @@ const App = () => {
               {item.description}
             </div>
             {item.page && (
-              <div style={{ fontSize: '14px', color: '#eec21d' }}>
+              <div style={{ fontSize: '16px', color: '#eec21d' }}>
                 📄 {item.page}
               </div>
             )}
@@ -936,7 +936,7 @@ const App = () => {
               padding: '16px'
             }}>
               <div style={{ 
-                fontSize: '14px', 
+                fontSize: '16px', 
                 color: '#eec21d', 
                 textTransform: 'uppercase',
                 letterSpacing: '0.05em',
@@ -1004,7 +1004,235 @@ const App = () => {
       );
     }
 
-    // Exemples avec détails
+    // Avantages + Questions (Session 2) — DOIT ÊTRE AVANT les conditions génériques
+    if (item.avantages && item.questions) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <div>
+            <h4 style={{ 
+              fontFamily: "'Flamengo'",
+              fontSize: '16px',
+              color: '#eec21d',
+              marginBottom: '12px'
+            }}>
+              ✅ Avantages
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {item.avantages.map((av, i) => (
+                <div key={i} style={{
+                  background: 'rgba(143, 255, 143, 0.1)',
+                  border: '1px solid rgba(143, 255, 143, 0.2)',
+                  borderRadius: '10px',
+                  padding: '12px 16px',
+                  color: '#8fc',
+                  fontSize: '16px'
+                }}>
+                  {av}
+                </div>
+              ))}
+            </div>
+          </div>
+          <div>
+            <h4 style={{ 
+              fontFamily: "'Flamengo'",
+              fontSize: '16px',
+              color: '#eec21d',
+              marginBottom: '12px'
+            }}>
+              ❓ Questions ouvertes
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {item.questions.map((q, i) => (
+                <div key={i} style={{
+                  background: 'rgba(238, 194, 29, 0.1)',
+                  border: '1px solid rgba(238, 194, 29, 0.2)',
+                  borderRadius: '10px',
+                  padding: '12px 16px',
+                  color: '#fae8a4',
+                  fontSize: '16px'
+                }}>
+                  {q}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Double versant / Marché (Session 3) — DOIT ÊTRE AVANT les conditions génériques
+    if (item.explication && item.versants) {
+      return (
+        <div key={key}>
+          <p style={{ color: 'rgba(250, 232, 164, 0.85)', lineHeight: 1.7, marginBottom: '20px' }}>
+            {item.explication}
+          </p>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '16px',
+            marginBottom: '20px'
+          }}>
+            {item.versants.map((v, i) => (
+              <div key={i} style={{
+                background: 'rgba(238, 194, 29, 0.08)',
+                border: '1px solid rgba(238, 194, 29, 0.2)',
+                borderRadius: '16px',
+                padding: '20px'
+              }}>
+                <div style={{ 
+                  fontFamily: "'Flamengo'",
+                  fontSize: '16px',
+                  color: '#eec21d',
+                  marginBottom: '8px'
+                }}>
+                  {v.titre}
+                </div>
+                <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.8)', lineHeight: 1.6 }}>
+                  {v.detail}
+                </div>
+              </div>
+            ))}
+          </div>
+          {item.insight && (
+            <div style={{
+              background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)',
+              borderRadius: '12px',
+              padding: '16px 20px',
+              fontSize: '16px',
+              color: '#fff',
+              fontStyle: 'italic'
+            }}>
+              💡 {item.insight}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // Exemples européens avec stat spéciale (Session 4) — DOIT ÊTRE AVANT if (item.exemples)
+    if (item.exemples && item.stat && item.stat.source) {
+      return (
+        <div key={key}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px' }}>
+            {item.exemples.map((ex, i) => (
+              <div key={i} style={{
+                background: 'rgba(238, 194, 29, 0.05)',
+                border: '1px solid rgba(238, 194, 29, 0.15)',
+                borderRadius: '12px',
+                padding: '16px'
+              }}>
+                <div style={{ 
+                  fontFamily: "'Flamengo'",
+                  fontSize: '16px',
+                  color: '#eec21d',
+                  marginBottom: '6px'
+                }}>
+                  {ex.nom}
+                </div>
+                <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.8)' }}>
+                  {ex.detail}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{
+            background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)',
+            borderRadius: '16px',
+            padding: '20px',
+            textAlign: 'center'
+          }}>
+            <div style={{ 
+              fontSize: '15px', 
+              color: '#fff',
+              marginBottom: '8px',
+              lineHeight: 1.6
+            }}>
+              {item.stat.chiffre}
+            </div>
+            <div style={{ fontSize: '16px', color: '#eec21d' }}>
+              — {item.stat.source}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // Government Sachs (Session 4) — DOIT ÊTRE AVANT if (item.exemples)
+    if (item.intro && item.exemples) {
+      return (
+        <div key={key}>
+          <p style={{ color: 'rgba(250, 232, 164, 0.85)', lineHeight: 1.7, marginBottom: '20px' }}>
+            {item.intro}
+          </p>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+            gap: '16px',
+            marginBottom: '24px'
+          }}>
+            {item.exemples.map((ex, i) => (
+              <div key={i} style={{
+                background: 'rgba(238, 194, 29, 0.05)',
+                border: '1px solid rgba(238, 194, 29, 0.15)',
+                borderRadius: '12px',
+                padding: '16px'
+              }}>
+                <div style={{ 
+                  fontFamily: "'Flamengo'",
+                  fontSize: '16px',
+                  color: '#eec21d',
+                  marginBottom: '8px'
+                }}>
+                  {ex.nom}
+                </div>
+                {ex.avant && (
+                  <div style={{ fontSize: '15px', color: 'rgba(250, 232, 164, 0.6)', marginBottom: '4px' }}>
+                    Avant : {ex.avant}
+                  </div>
+                )}
+                <div style={{ fontSize: '16px', color: '#fae8a4' }}>
+                  {ex.apres || ex.detail}
+                </div>
+              </div>
+            ))}
+          </div>
+          {item.mondial && (
+            <>
+              <h4 style={{ 
+                fontFamily: "'Flamengo'",
+                fontSize: '16px',
+                color: '#eec21d',
+                marginBottom: '12px'
+              }}>
+                Dans le monde
+              </h4>
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gap: '12px'
+              }}>
+                {item.mondial.map((m, i) => (
+                  <div key={i} style={{
+                    background: 'rgba(238, 194, 29, 0.05)',
+                    borderRadius: '10px',
+                    padding: '12px'
+                  }}>
+                    <div style={{ fontSize: '16px', color: '#eec21d', marginBottom: '4px' }}>
+                      {m.pays}
+                    </div>
+                    <div style={{ fontWeight: '600', color: '#fff' }}>{m.nom}</div>
+                    <div style={{ fontSize: '15px', color: 'rgba(250, 232, 164, 0.7)' }}>{m.detail}</div>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      );
+    }
+
+    // Exemples avec détails (générique) — APRÈS les conditions spécifiques
     if (item.exemples) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -1086,80 +1314,6 @@ const App = () => {
                 {item.stat.label}
               </span>
             </div>
-          )}
-        </div>
-      );
-    }
-
-    // Government Sachs
-    if (item.intro && item.exemples) {
-      return (
-        <div key={key}>
-          <p style={{ color: 'rgba(250, 232, 164, 0.85)', lineHeight: 1.7, marginBottom: '20px' }}>
-            {item.intro}
-          </p>
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '16px',
-            marginBottom: '24px'
-          }}>
-            {item.exemples.map((ex, i) => (
-              <div key={i} style={{
-                background: 'rgba(238, 194, 29, 0.05)',
-                border: '1px solid rgba(238, 194, 29, 0.15)',
-                borderRadius: '12px',
-                padding: '16px'
-              }}>
-                <div style={{ 
-                  fontFamily: "'Flamengo'",
-                  fontSize: '16px',
-                  color: '#eec21d',
-                  marginBottom: '8px'
-                }}>
-                  {ex.nom}
-                </div>
-                {ex.avant && (
-                  <div style={{ fontSize: '15px', color: 'rgba(250, 232, 164, 0.6)', marginBottom: '4px' }}>
-                    Avant : {ex.avant}
-                  </div>
-                )}
-                <div style={{ fontSize: '16px', color: '#fae8a4' }}>
-                  {ex.apres || ex.detail}
-                </div>
-              </div>
-            ))}
-          </div>
-          {item.mondial && (
-            <>
-              <h4 style={{ 
-                fontFamily: "'Flamengo'",
-                fontSize: '16px',
-                color: '#eec21d',
-                marginBottom: '12px'
-              }}>
-                Dans le monde
-              </h4>
-              <div style={{ 
-                display: 'grid', 
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: '12px'
-              }}>
-                {item.mondial.map((m, i) => (
-                  <div key={i} style={{
-                    background: 'rgba(238, 194, 29, 0.05)',
-                    borderRadius: '10px',
-                    padding: '12px'
-                  }}>
-                    <div style={{ fontSize: '14px', color: '#eec21d', marginBottom: '4px' }}>
-                      {m.pays}
-                    </div>
-                    <div style={{ fontWeight: '600', color: '#fff' }}>{m.nom}</div>
-                    <div style={{ fontSize: '15px', color: 'rgba(250, 232, 164, 0.7)' }}>{m.detail}</div>
-                  </div>
-                ))}
-              </div>
-            </>
           )}
         </div>
       );
@@ -1293,160 +1447,6 @@ const App = () => {
       );
     }
 
-    // Avantages + Questions (Session 2)
-    if (item.avantages && item.questions) {
-      return (
-        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          <div>
-            <h4 style={{ 
-              fontFamily: "'Flamengo'",
-              fontSize: '16px',
-              color: '#eec21d',
-              marginBottom: '12px'
-            }}>
-              ✅ Avantages
-            </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {item.avantages.map((av, i) => (
-                <div key={i} style={{
-                  background: 'rgba(143, 255, 143, 0.1)',
-                  border: '1px solid rgba(143, 255, 143, 0.2)',
-                  borderRadius: '10px',
-                  padding: '12px 16px',
-                  color: '#8fc',
-                  fontSize: '16px'
-                }}>
-                  {av}
-                </div>
-              ))}
-            </div>
-          </div>
-          <div>
-            <h4 style={{ 
-              fontFamily: "'Flamengo'",
-              fontSize: '16px',
-              color: '#eec21d',
-              marginBottom: '12px'
-            }}>
-              ❓ Questions ouvertes
-            </h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {item.questions.map((q, i) => (
-                <div key={i} style={{
-                  background: 'rgba(238, 194, 29, 0.1)',
-                  border: '1px solid rgba(238, 194, 29, 0.2)',
-                  borderRadius: '10px',
-                  padding: '12px 16px',
-                  color: '#fae8a4',
-                  fontSize: '16px'
-                }}>
-                  {q}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      );
-    }
-
-    // Double versant / Marché (Session 3)
-    if (item.explication && item.versants) {
-      return (
-        <div key={key}>
-          <p style={{ color: 'rgba(250, 232, 164, 0.85)', lineHeight: 1.7, marginBottom: '20px' }}>
-            {item.explication}
-          </p>
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-            gap: '16px',
-            marginBottom: '20px'
-          }}>
-            {item.versants.map((v, i) => (
-              <div key={i} style={{
-                background: 'rgba(238, 194, 29, 0.08)',
-                border: '1px solid rgba(238, 194, 29, 0.2)',
-                borderRadius: '16px',
-                padding: '20px'
-              }}>
-                <div style={{ 
-                  fontFamily: "'Flamengo'",
-                  fontSize: '16px',
-                  color: '#eec21d',
-                  marginBottom: '8px'
-                }}>
-                  {v.titre}
-                </div>
-                <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.8)', lineHeight: 1.6 }}>
-                  {v.detail}
-                </div>
-              </div>
-            ))}
-          </div>
-          {item.insight && (
-            <div style={{
-              background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)',
-              borderRadius: '12px',
-              padding: '16px 20px',
-              fontSize: '16px',
-              color: '#fff',
-              fontStyle: 'italic'
-            }}>
-              💡 {item.insight}
-            </div>
-          )}
-        </div>
-      );
-    }
-
-    // Exemples européens avec stat spéciale (source + chiffre)
-    if (item.exemples && item.stat && item.stat.source) {
-      return (
-        <div key={key}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '20px' }}>
-            {item.exemples.map((ex, i) => (
-              <div key={i} style={{
-                background: 'rgba(238, 194, 29, 0.05)',
-                border: '1px solid rgba(238, 194, 29, 0.15)',
-                borderRadius: '12px',
-                padding: '16px'
-              }}>
-                <div style={{ 
-                  fontFamily: "'Flamengo'",
-                  fontSize: '16px',
-                  color: '#eec21d',
-                  marginBottom: '6px'
-                }}>
-                  {ex.nom}
-                </div>
-                <div style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.8)' }}>
-                  {ex.detail}
-                </div>
-              </div>
-            ))}
-          </div>
-          <div style={{
-            background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)',
-            borderRadius: '16px',
-            padding: '20px',
-            textAlign: 'center'
-          }}>
-            <div style={{ 
-              fontSize: '15px', 
-              color: '#fff',
-              marginBottom: '8px',
-              lineHeight: 1.6
-            }}>
-              {item.stat.chiffre}
-            </div>
-            <div style={{ fontSize: '14px', color: '#eec21d' }}>
-              — {item.stat.source}
-            </div>
-          </div>
-        </div>
-      );
-    }
-
     return null;
   };
 
@@ -1464,7 +1464,7 @@ const App = () => {
 
   // Timeline component
   const Timeline = ({ parcours }) => (
-    <div style={{ position: 'relative', paddingLeft: '28px' }}>
+    <div style={{ position: 'relative', paddingLeft: '22px' }}>
       <div style={{
         position: 'absolute',
         left: '8px',
@@ -1489,7 +1489,7 @@ const App = () => {
             background: item.type === 'privé' ? '#e74c3c' : item.type === 'formation' ? '#3498db' : '#eec21d',
             border: '3px solid #111'
           }} />
-          <div style={{ color: 'rgba(250, 232, 164, 0.5)', fontSize: '14px' }}>{item.periode}</div>
+          <div style={{ color: 'rgba(250, 232, 164, 0.5)', fontSize: '16px' }}>{item.periode}</div>
           <div style={{ color: '#fff', fontWeight: '500' }}>{item.poste}</div>
         </div>
       ))}
@@ -1498,7 +1498,7 @@ const App = () => {
         gap: '20px', 
         marginTop: '20px',
         paddingLeft: '16px',
-        fontSize: '14px',
+        fontSize: '16px',
         color: 'rgba(250, 232, 164, 0.7)'
       }}>
         <span><span style={{ color: '#eec21d' }}>●</span> Public</span>
@@ -1559,7 +1559,7 @@ const App = () => {
           
           <h2 style={{ 
             fontFamily: "'Flamengo'",
-            fontSize: '28px',
+            fontSize: '22px',
             color: '#eec21d',
             marginBottom: '8px'
           }}>
@@ -1570,7 +1570,7 @@ const App = () => {
             fontSize: '16px',
             marginBottom: '24px'
           }}>
-            Projet politique — Version intégrale
+            Projet politique — La dernière Version
           </p>
 
           <div style={{ marginBottom: '24px' }}>
@@ -1606,12 +1606,12 @@ const App = () => {
           </div>
 
           <a
-            href="https://ruches.org/sites/default/files/mediatheque/documents/2025-12/le-projet-8.pdf"
+            href="https://www.leprojet2027.fr"
             target="_blank"
             rel="noopener noreferrer"
             style={{
               display: 'inline-block',
-              padding: '16px 28px',
+              padding: '16px 22px',
               background: 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)',
               color: '#111',
               borderRadius: '12px',
