@@ -40,8 +40,8 @@ export const sessionsConfig = {
   ],
   pantouflage: [
     { id: 'session4', titre: "Introduction au pantouflage", date: "29/01", available: true },
-    { id: 'session5', titre: "Les mesures du Projet", date: "À venir", available: false },
-    { id: 'session6', titre: "Questions et Réflexions", date: "À venir", available: false },
+    { id: 'session5', titre: "Les mesures du Projet", date: "05/02", available: false },
+    { id: 'session6', titre: "Questions et Réflexions", date: "08/02", available: false },
   ]
 };
 
