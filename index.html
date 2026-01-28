@@ -1,136 +1,145 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Application pour les sessions de Rélexion autour du Projet de La Ruche 75">
-  <meta name="theme-color" content="#111111">
-  
-  <!-- Préchargement des polices -->
-  <link rel="preload" href="/fonts/Flamengo.otf" as="font" type="font/otf" crossorigin>
-  <link rel="preload" href="/fonts/Distrampler.otf" as="font" type="font/otf" crossorigin>
-  
-  <!-- Favicons -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐝</text></svg>">
-  
-  <title>R75 — Réflexions autour du Projet</title>
-  
-  <style>
-    @font-face {
-      font-family: 'Flamengo';
-      src: url('/fonts/Flamengo.otf') format('opentype');
-      font-weight: 100 900;
-      font-style: normal;
-      font-display: block;
-    }
-    
-    @font-face {
-      font-family: 'Distrampler';
-      src: url('/fonts/Distrampler.otf') format('opentype');
-      font-weight: 100 900;
-      font-style: normal;
-      font-display: block;
-    }
-    
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-    
-    body {
-      font-family: 'Distrampler', Georgia, 'Times New Roman', serif !important;
-      font-size: 16px;
-      background: #111111;
-      color: #fae8a4;
-      min-height: 100vh;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-    
-    /* Titres avec Flamengo */
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Flamengo', Georgia, serif !important;
-    }
-    
-    /* Texte courant avec Distrampler à 16px */
-    p, span, div, li, a, input, textarea, button, label {
-      font-family: 'Distrampler', Georgia, 'Times New Roman', serif;
-      font-size: 16px;
-    }
-    
-    #root {
-      min-height: 100vh;
-    }
-    
-    /* Loading state */
-    .loading {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      flex-direction: column;
-      gap: 16px;
-    }
-    
-    .loading-hex {
-      animation: pulse 2s ease-in-out infinite;
-    }
-    
-    @keyframes pulse {
-      0%, 100% { opacity: 0.5; transform: scale(1); }
-      50% { opacity: 1; transform: scale(1.05); }
-    }
-    
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    
-    ::-webkit-scrollbar-track {
-      background: rgba(238, 194, 29, 0.05);
-    }
-    
-    ::-webkit-scrollbar-thumb {
-      background: rgba(238, 194, 29, 0.3);
-      border-radius: 4px;
-    }
-    
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(238, 194, 29, 0.5);
-    }
-    
-    /* Selection */
-    ::selection {
-      background: rgba(238, 194, 29, 0.3);
-      color: #fff;
-    }
-    
-    /* Focus states */
-    button:focus-visible,
-    input:focus-visible {
-      outline: 2px solid #eec21d;
-      outline-offset: 2px;
-    }
-  </style>
-</head>
-<body>
-  <div id="root">
-    <div class="loading">
-      <svg class="loading-hex" width="80" height="92" viewBox="0 0 100 115">
-        <polygon 
-          points="50,2 95,28 95,87 50,113 5,87 5,28" 
-          fill="none" 
-          stroke="#eec21d" 
-          stroke-width="4"
-        />
-        <text x="50" y="68" text-anchor="middle" fill="#eec21d" font-family="'Flamengo'" font-size="28" font-weight="bold">
-          R75
-        </text>
-      </svg>
-      <span style="color: #fae8a4; font-size: 16px;">Chargement..</span>
-    </div>
-  </div>
-  <script type="module" src="/main.jsx"></script>
-</body>
-</html>
+/* ═══════════════════════════════════════════════════════════════════════════
+   R75 — RÉFLEXION AUTOUR DU PROJET
+   Styles globaux et polices
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   POLICES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Flamengo';
+  src: url('/fonts/Flamengo.otf') format('opentype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Distrampler';
+  src: url('/fonts/Distrampler.otf') format('opentype');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   RESET & BASE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  min-height: 100vh;
+  background: #111111;
+  color: #fae8a4;
+}
+
+body {
+  font-family: 'Distrampler', Georgia, 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   TYPOGRAPHIE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Flamengo', Georgia, serif;
+  font-weight: normal;
+}
+
+p, span, div, li, a, input, textarea, button, label {
+  font-family: 'Distrampler', Georgia, 'Times New Roman', serif;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SCROLLBAR PERSONNALISÉE
+   ───────────────────────────────────────────────────────────────────────────── */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(238, 194, 29, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(238, 194, 29, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(238, 194, 29, 0.5);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(238, 194, 29, 0.3) rgba(238, 194, 29, 0.05);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   ANIMATIONS
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   UTILITAIRES
+   ───────────────────────────────────────────────────────────────────────────── */
+
+.font-flamengo {
+  font-family: 'Flamengo', Georgia, serif;
+}
+
+.font-distrampler {
+  font-family: 'Distrampler', Georgia, 'Times New Roman', serif;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   FOCUS & ACCESSIBILITÉ
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:focus-visible {
+  outline: 2px solid #eec21d;
+  outline-offset: 2px;
+}
+
+button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   SÉLECTION
+   ───────────────────────────────────────────────────────────────────────────── */
+
+::selection {
+  background: rgba(238, 194, 29, 0.3);
+  color: #fff;
+}
