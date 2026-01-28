@@ -1397,7 +1397,7 @@ const App = () => {
               <h2 style={{ 
                 fontFamily: "'Flamengo', Georgia, serif",
                 fontSize: '18px',
-                color: '#eec21d',
+                color: '#2e7323',
                 marginBottom: '16px'
               }}>
                 Idées émergentes
