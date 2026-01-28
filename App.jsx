@@ -3,8 +3,239 @@ import { mediasOligarchiques, pantouflage, sessionsConfig, prochaineSession } fr
 
 // ═══════════════════════════════════════════════════════════════════════════
 // RÉFLEXION AUTOUR DU PROJET — R75
-// Application pour les sessions de Rélexion autour du Projet de La Ruche 75 (Discord)
-// Discord
+// Application pour les sessions de Réflexion autour du Projet de La Ruche 75
+// ═══════════════════════════════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DONNÉES DE SYNTHÈSE PAR SESSION
+// ═══════════════════════════════════════════════════════════════════════════
+
+const sessionsSyntheses = {
+  // Sessions Médias Oligarchiques
+  session1: {
+    titre: "Synthèse — Session #001",
+    grandesIdees: [
+      "L'oligarchie = interpénétration des pouvoirs économique, politique, administratif et médiatique",
+      "28 familles/entités possèdent tous les médias français",
+      "La SCOP comme modèle alternatif : salariés propriétaires, 1 personne = 1 voix",
+      "Les écoles de journalisme créent une forme de pensée unique"
+    ],
+    questionsOuvertes: [
+      "La SCOP est-elle le modèle le plus approprié ou faut-il explorer d'autres alternatives ?",
+      "Transformation des médias existants vs création de nouveaux médias coopératifs ?",
+      "Comment capitaliser au départ sans investisseur ?",
+      "Les salariés seraient-ils mieux à même de gérer qu'un propriétaire unique ?",
+      "Comment définir précisément 'média oligarchique' ?",
+      "Quel processus pour l'expropriation ?"
+    ],
+    pistesAction: [
+      "Approfondir la notion de SCOP avec Gigi lors de la prochaine session",
+      "Étudier la charte déontologique d'Alternatives Économiques",
+      "Complémentarité avec les ateliers physiques de Gersende et Sophie"
+    ]
+  },
+  session2: {
+    titre: "Synthèse — Session #002",
+    grandesIdees: [
+      "Les médias sont des marchés à double versant : vente au public + vente d'audience aux annonceurs",
+      "L'influence est la première raison d'acheter un média, pas la rentabilité",
+      "Médias structurellement déficitaires → +1 Md€/an de subventions publiques aux groupes milliardaires",
+      "Le déficit peut être orchestré comme outil de contrôle sur les journalistes",
+      "Distinction fondamentale entre 'informer' et 'chercher à convaincre'",
+      "La charte de Munich comme base déontologique potentielle"
+    ],
+    questionsOuvertes: [
+      "Le déficit est-il mis en place sciemment pour prétendre aux subventions ET contrôler les journalistes ?",
+      "Faut-il interdire aux groupes bénéficiaires de posséder des médias subventionnés ?",
+      "Comment auditer les financements indirects (programmes TV, etc.) ?",
+      "Est-ce un cadeau empoisonné de rendre les salariés propriétaires de dettes ?",
+      "Quid de l'indemnisation si rétrocession gratuite ?"
+    ],
+    pistesAction: [
+      "Contacter les médias du Mouvement 5 Étoiles en Italie (via Gigi)",
+      "Étudier les modèles : Mediapart (SAS), Alternatives Éco (SCOP), XXI (niche sans pub)",
+      "Explorer la charte de Munich comme condition d'accès aux subventions"
+    ]
+  },
+  session3: {
+    titre: "Synthèse — Session #003",
+    grandesIdees: [
+      "Les codes déontologiques abandonnés depuis 40 ans par le politique et l'économique",
+      "Sociocratie : organisation en cercles de 6-8 personnes autonomes, méthode agile",
+      "Exemples : Octo (500+ salariés), Cirque du Soleil, coopératives Émilie-Romagne",
+      "Neutralité = illusion → mieux vaut assumer sa ligne éditoriale",
+      "'Edit' = couper — une ligne éditoriale est une ligne qui coupe",
+      "L'AFP comme marché à double versant : info pour le gouvernement + abonnement presse",
+      "Guerre cognitive : l'information instrumentalisée pour déstabiliser",
+      "L'IA brouille le réel et le fictif (nouveau réflexe de doute)"
+    ],
+    questionsOuvertes: [
+      "Comment intégrer l'IA dans la réflexion sur l'avenir des médias ?",
+      "Un label 'conçu sans IA' serait-il pertinent pour les médias coopératifs ?",
+      "Faut-il un organe de contrôle contraignant ? L'ARCOM ne fonctionne pas",
+      "Transformation vs création : quel est le modèle le plus pertinent ?",
+      "Comment faire recroître la rentabilité sans impacter les salariés ?"
+    ],
+    pistesAction: [
+      "Contacter Nexus : média indépendant sans publicité, modèle économique à étudier",
+      "Explorer aurore.org (nouveau média lié à Nexus)",
+      "Interviewer une coopérative opérant en sociocratie",
+      "Omerta et Karl Zero : médias sans subvention vivant de la qualité"
+    ],
+    citation: {
+      texte: "L'utopie ne signifie pas l'irréalisable, mais l'irréalisé. L'utopie d'hier peut devenir la réalité de demain.",
+      auteur: "Jacques Monod"
+    }
+  },
+  // Sessions Pantouflage (à compléter selon tes sessions)
+  session4: {
+    titre: "Synthèse — Session #004",
+    grandesIdees: [
+      "Pantouflage = allers-retours entre fonction publique et secteur privé",
+      "Origine : obligation de remboursement des frais de formation (pantoufle)",
+      "Le système actuel permet des passages rapides vers le privé",
+      "Macron : exemple emblématique du parcours public → privé → politique"
+    ],
+    questionsOuvertes: [
+      "La période de carence de 5 ans est-elle suffisante ?",
+      "Comment contrôler les conflits d'intérêts post-mandat ?",
+      "Faut-il interdire aux hauts fonctionnaires de devenir élus sans démission ?"
+    ],
+    pistesAction: [
+      "Documenter les parcours types des pantoufleurs français",
+      "Étudier les modèles de régulation européens"
+    ]
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// DONNÉES DU DOSSIER DE SYNTHÈSE GLOBAL
+// ═══════════════════════════════════════════════════════════════════════════
+
+const dossierSyntheseData = {
+  themes: [
+    {
+      id: 'oligarchie',
+      title: '🏛️ Oligarchie médiatique',
+      color: '#dc2626',
+      summary: '28 familles/entités contrôlent tous les médias français',
+      details: [
+        'Concentration des pouvoirs : économique, politique, administratif, médiatique',
+        'Propriétaires : Bouygues, Bolloré, Arnault, Niel, Drahi, Lagardère, Saadé, Kretinsky...',
+        'L\'influence est devenue la première raison d\'acheter un média, pas la rentabilité',
+        'Glissement de "vecteur d\'information" à "vecteur d\'opinion"'
+      ],
+      questions: [
+        'Comment définir précisément "média oligarchique" ?',
+        'Quel processus juridique pour l\'expropriation ?',
+        'Rétrocession gratuite : quid de la légalité ?'
+      ]
+    },
+    {
+      id: 'financement',
+      title: '💰 Financement',
+      color: '#ea580c',
+      summary: 'Le nerf de la guerre : +1 Md€/an de subventions publiques',
+      details: [
+        'Médias structurellement déficitaires malgré les milliards de bénéfices des groupes',
+        'Arnault : 17,8M€ de subventions (2023) vs 14 Mds€ de bénéfices LVMH',
+        'Déficit possiblement orchestré : outil de contrôle sur les journalistes',
+        'Marché à double versant : vente au public + vente d\'audience aux annonceurs'
+      ],
+      questions: [
+        'Interdire les subventions aux groupes bénéficiaires ?',
+        'Auditer qui prend combien via quelles structures ?',
+        'Le déficit est-il volontaire pour maintenir la pression ?'
+      ]
+    },
+    {
+      id: 'deontologie',
+      title: '⚖️ Déontologie',
+      color: '#ca8a04',
+      summary: 'Codes abandonnés depuis 40 ans, pensée unique',
+      details: [
+        'Plus personne ne légifère sur les conflits d\'intérêts',
+        'Écoles de journalisme : formatage de la pensée',
+        'Charte de Munich (1971) : n\'engage que ceux qui la lisent',
+        'ARCOM : si elle a cette mission, ça ne fonctionne pas'
+      ],
+      questions: [
+        'Faut-il un nouvel organe de contrôle contraignant ?',
+        'Interdire aux oligarques d\'être actionnaires des écoles ?',
+        'La charte de Munich comme condition d\'accès aux subventions ?'
+      ]
+    },
+    {
+      id: 'scop',
+      title: '🤝 SCOP & Sociocratie',
+      color: '#16a34a',
+      summary: 'Modèle coopératif : salariés propriétaires, 1 personne = 1 voix',
+      details: [
+        'SCOP : 51% capital + 65% droits de vote aux salariés, dirigeants élus',
+        'Sociocratie : cercles de 6-8 personnes autonomes, référents inter-cercles',
+        'Exemples : Octo (500+ salariés), Cirque du Soleil (Holacracy)',
+        'Parmigiano-Reggiano : 50 ans de coopératives qui fonctionnent'
+      ],
+      questions: [
+        'Transformer les médias existants OU créer de nouveaux médias coopératifs ?',
+        'Cadeau empoisonné si le média est déjà déficitaire ?',
+        'Les salariés seraient-ils mieux à même de gérer ?'
+      ]
+    },
+    {
+      id: 'neutralite',
+      title: '📝 Neutralité & Sémantique',
+      color: '#2563eb',
+      summary: 'Informer ≠ Convaincre — La neutralité n\'existe pas',
+      details: [
+        'Distinction fondamentale : information vs opinion (CNEWS = opinion pure)',
+        'Ligne éditoriale : chacun en a une, la neutralité est un piège',
+        '"Edit" = couper — une ligne éditoriale coupe',
+        'Le choix même d\'un sujet est déjà un parti pris'
+      ],
+      questions: [
+        'Réappropriation des mots : qu\'est-ce que l\'information à l\'ère digitale ?',
+        'Inclure la distinction informer/convaincre dans les statuts SCOP ?',
+        'Est-ce le système ou une croyance populaire qui fait croire à la neutralité ?'
+      ]
+    },
+    {
+      id: 'ia',
+      title: '🤖 IA & Guerre cognitive',
+      color: '#7c3aed',
+      summary: 'Brouillage réel/fictif, information weaponisée',
+      details: [
+        'Nouveau réflexe : on doute de chaque info/photo (vraie ou générée ?)',
+        'Exemple : photo Macron Ray-Ban crue fake mais vraie',
+        'Risque : l\'État produit des fake news et accuse les autres',
+        'Guerre cognitive : info instrumentalisée (ex: "puces de lit" pour impacter tourisme)'
+      ],
+      questions: [
+        'Comment intégrer l\'IA dans la réflexion sur l\'avenir des médias ?',
+        'Un label "conçu sans IA" serait-il pertinent ?',
+        'Comment protéger les petits médias de ces attaques ?'
+      ]
+    }
+  ],
+  contacts: [
+    { name: 'Nexus', desc: 'Média indépendant sans pub', status: 'À contacter' },
+    { name: 'aurore.org', desc: 'Nouveau média lié à Nexus', status: 'À contacter' },
+    { name: 'Médias M5S', desc: 'Via ruche Europe (Italie)', status: 'À contacter' },
+    { name: 'Omerta / Karl Zero', desc: 'Sans subvention', status: 'À étudier' },
+    { name: 'Mediapart', desc: 'SAS actionnariat mixte', status: 'Modèle' },
+    { name: 'Alternatives Éco', desc: 'SCOP avec charte', status: 'Modèle' },
+    { name: 'Magazine XXI', desc: 'Bimestriel sans pub', status: 'Modèle' }
+  ],
+  idees: [
+    'Label « conçu sans IA » pour les médias coopératifs',
+    'Charte de Munich = condition d\'accès aux subventions',
+    'Outils sociocratiques (7 piliers + 80 patterns)',
+    'Audit public : qui prend combien via quelle structure'
+  ]
+};
+
+// ═══════════════════════════════════════════════════════════════════════════
+// COMPOSANT PRINCIPAL
 // ═══════════════════════════════════════════════════════════════════════════
 
 const App = () => {
@@ -15,10 +246,14 @@ const App = () => {
   const [showProjet, setShowProjet] = useState(false);
   const [questions, setQuestions] = useState([]);
   const [newQuestion, setNewQuestion] = useState('');
+  
+  // États pour le dossier de synthèse global
+  const [showDossierSynthese, setShowDossierSynthese] = useState(false);
+  const [activeSyntheseTheme, setActiveSyntheseTheme] = useState(null);
+  const [syntheseView, setSyntheseView] = useState('carte');
 
   // Charger les polices Flamengo et Distrampler
   useEffect(() => {
-    // Ajouter les styles globaux
     const style = document.createElement('style');
     style.textContent = `
       @font-face {
@@ -47,14 +282,12 @@ const App = () => {
         min-height: 100vh;
       }
       
-      /* Force Flamengo sur tous les titres */
       h1, h2, h3, h4, h5, h6,
       [class*="title"],
       [class*="heading"] {
         font-family: 'Flamengo', Georgia, serif !important;
       }
       
-      /* Force Distrampler sur le texte courant à 16px */
       p, span, div, li, a, input, textarea, button, label {
         font-family: 'Distrampler', Georgia, 'Times New Roman', serif;
         font-size: 16px;
@@ -107,6 +340,7 @@ const App = () => {
     setCurrentTheme(null);
     setCurrentSession(null);
     setCurrentSection(null);
+    setShowDossierSynthese(false);
   };
 
   const addReaction = (type) => {
@@ -185,6 +419,80 @@ const App = () => {
     </div>
   );
 
+  // Mind Map SVG pour le dossier global
+  const MindMapSVG = () => {
+    const nodes = [
+      { id: 1, label: '🏛️ Oligarchie', sub: '28 propriétaires', x: 50, y: 15, color: '#dc2626' },
+      { id: 2, label: '💰 Financement', sub: 'Subventions + Déficit', x: 15, y: 40, color: '#ea580c' },
+      { id: 3, label: '⚖️ Déontologie', sub: 'Codes abandonnés', x: 85, y: 40, color: '#ca8a04' },
+      { id: 4, label: '📝 Sémantique', sub: 'Info → Opinion', x: 50, y: 55, color: '#2563eb' },
+      { id: 5, label: '⚠️ Menaces', sub: 'IA + Guerre cognitive', x: 15, y: 75, color: '#7c3aed' },
+      { id: 6, label: '✅ Solutions', sub: 'SCOP + Sociocratie', x: 85, y: 75, color: '#16a34a' }
+    ];
+    
+    const links = [
+      { from: 1, to: 2 }, { from: 1, to: 3 }, { from: 2, to: 3 },
+      { from: 2, to: 4 }, { from: 3, to: 4 }, { from: 4, to: 5 },
+      { from: 4, to: 6 }, { from: 5, to: 6 }, { from: 1, to: 6, dashed: true }
+    ];
+
+    return (
+      <svg viewBox="0 0 100 90" style={{ width: '100%', height: '280px' }}>
+        <defs>
+          <marker id="arrowGold" markerWidth="6" markerHeight="6" refX="6" refY="3" orient="auto">
+            <path d="M0,0 L6,3 L0,6 Z" fill="rgba(238, 194, 29, 0.5)" />
+          </marker>
+        </defs>
+        
+        {links.map((link, i) => {
+          const from = nodes.find(n => n.id === link.from);
+          const to = nodes.find(n => n.id === link.to);
+          return (
+            <line
+              key={i}
+              x1={from.x} y1={from.y + 6}
+              x2={to.x} y2={to.y - 4}
+              stroke="rgba(238, 194, 29, 0.3)"
+              strokeWidth="0.5"
+              strokeDasharray={link.dashed ? "2,2" : "none"}
+              markerEnd="url(#arrowGold)"
+            />
+          );
+        })}
+        
+        {nodes.map(node => (
+          <g key={node.id}>
+            <rect
+              x={node.x - 18} y={node.y - 6}
+              width="36" height="14"
+              rx="3" ry="3"
+              fill="rgba(17, 17, 17, 0.9)"
+              stroke={node.color}
+              strokeWidth="0.8"
+            />
+            <text
+              x={node.x} y={node.y}
+              textAnchor="middle"
+              fontSize="3.5"
+              fill="#fae8a4"
+              fontFamily="Flamengo"
+            >
+              {node.label}
+            </text>
+            <text
+              x={node.x} y={node.y + 4.5}
+              textAnchor="middle"
+              fontSize="2.2"
+              fill="rgba(250, 232, 164, 0.6)"
+            >
+              {node.sub}
+            </text>
+          </g>
+        ))}
+      </svg>
+    );
+  };
+
   // ═══════════════════════════════════════════════════════════════════════════
   // PAGE D'ACCUEIL
   // ═══════════════════════════════════════════════════════════════════════════
@@ -195,7 +503,6 @@ const App = () => {
 
     return (
       <div style={{ minHeight: '100vh', position: 'relative' }}>
-        {/* Background effects */}
         <div style={{
           position: 'fixed',
           top: 0, left: 0, right: 0, bottom: 0,
@@ -206,7 +513,6 @@ const App = () => {
         
         <div style={{ position: 'relative', zIndex: 1, padding: '40px 24px', maxWidth: '900px', margin: '0 auto' }}>
           
-          {/* Header avec logo */}
           <header style={{ textAlign: 'center', marginBottom: '48px' }}>
             <div style={{ marginBottom: '24px', animation: 'float 6s ease-in-out infinite' }}>
               <HexLogo size={100} />
@@ -231,7 +537,6 @@ const App = () => {
             </p>
           </header>
 
-          {/* Bannière prochaine session */}
           <GlassCard hover={false} style={{ 
             marginBottom: '40px',
             background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.12) 0%, rgba(238, 194, 29, 0.03) 100%)',
@@ -264,7 +569,6 @@ const App = () => {
             </div>
           </GlassCard>
 
-          {/* Cartes des thèmes */}
           <div style={{ 
             display: 'grid', 
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
@@ -272,7 +576,6 @@ const App = () => {
             marginBottom: '48px'
           }}>
             
-            {/* Thème 1 : Médias oligarchiques */}
             <GlassCard onClick={() => goToTheme('medias')}>
               <div style={{ fontSize: '48px', marginBottom: '16px' }}>📺</div>
               <h2 style={{ 
@@ -307,7 +610,6 @@ const App = () => {
               </div>
             </GlassCard>
 
-            {/* Thème 2 : Pantouflage */}
             <GlassCard onClick={() => goToTheme('pantouflage')}>
               <div style={{ fontSize: '48px', marginBottom: '16px' }}>🚪</div>
               <h2 style={{ 
@@ -343,7 +645,6 @@ const App = () => {
             </GlassCard>
           </div>
 
-          {/* Bouton Le Projet */}
           <div style={{ textAlign: 'center' }}>
             <button
               onClick={() => setShowProjet(true)}
@@ -373,7 +674,6 @@ const App = () => {
             </button>
           </div>
 
-          {/* Footer */}
           <footer style={{ 
             marginTop: '64px', 
             paddingTop: '24px', 
@@ -405,7 +705,6 @@ const App = () => {
     return (
       <div style={{ minHeight: '100vh', padding: '24px', maxWidth: '900px', margin: '0 auto' }}>
         
-        {/* Bouton retour */}
         <button
           onClick={goHome}
           style={{
@@ -425,7 +724,6 @@ const App = () => {
           ← Retour à l'accueil
         </button>
 
-        {/* Header du thème */}
         <header style={{ textAlign: 'center', marginBottom: '48px' }}>
           <div style={{ fontSize: '64px', marginBottom: '16px' }}>{themeIcon}</div>
           <h1 style={{ 
@@ -446,7 +744,6 @@ const App = () => {
           </p>
         </header>
 
-        {/* Grille des sessions */}
         <div style={{ 
           display: 'grid', 
           gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', 
@@ -493,12 +790,53 @@ const App = () => {
             </GlassCard>
           ))}
         </div>
+
+        {/* Card Dossier de synthèse global (uniquement pour médias) */}
+        {currentTheme === 'medias' && (
+          <div style={{ marginTop: '32px' }}>
+            <GlassCard 
+              onClick={() => setShowDossierSynthese(true)}
+              style={{
+                background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)',
+                border: '1px solid rgba(238, 194, 29, 0.3)',
+                textAlign: 'center'
+              }}
+            >
+              <div style={{ fontSize: '48px', marginBottom: '12px' }}>📋</div>
+              <h3 style={{ 
+                fontFamily: "'Flamengo'",
+                fontSize: '20px',
+                color: '#eec21d',
+                marginBottom: '8px'
+              }}>
+                Dossier de synthèse global
+              </h3>
+              <p style={{ 
+                fontSize: '15px', 
+                color: 'rgba(250, 232, 164, 0.7)',
+                marginBottom: '12px'
+              }}>
+                Cartographie interactive des enjeux, questions ouvertes et pistes d'action
+              </p>
+              <div style={{ 
+                display: 'inline-block',
+                padding: '8px 20px',
+                background: 'rgba(238, 194, 29, 0.2)',
+                borderRadius: '20px',
+                fontSize: '14px',
+                color: '#eec21d'
+              }}>
+                Sessions #001 → #003
+              </div>
+            </GlassCard>
+          </div>
+        )}
       </div>
     );
   };
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // VUE SESSION
+  // VUE SESSION (avec onglet Synthèse)
   // ═══════════════════════════════════════════════════════════════════════════
 
   const renderSession = () => {
@@ -506,13 +844,16 @@ const App = () => {
     const sessionData = data[currentSession];
     if (!sessionData) return null;
 
+    // Récupérer les sections + ajouter "synthese" si disponible
     const sections = Object.keys(sessionData.sections);
-    const sectionData = sessionData.sections[currentSection];
+    const synthese = sessionsSyntheses[currentSession];
+    const allSections = synthese ? [...sections, 'synthese'] : sections;
+    
+    const sectionData = currentSection === 'synthese' ? null : sessionData.sections[currentSection];
 
     return (
       <div style={{ minHeight: '100vh', padding: '24px', maxWidth: '1000px', margin: '0 auto' }}>
         
-        {/* Bouton retour */}
         <button
           onClick={() => { setCurrentSession(null); setCurrentSection(null); }}
           style={{
@@ -529,7 +870,6 @@ const App = () => {
           ← Retour aux sessions
         </button>
 
-        {/* Header de session */}
         <header style={{ 
           background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)',
           borderRadius: '20px',
@@ -567,7 +907,7 @@ const App = () => {
           </div>
         </header>
 
-        {/* Navigation des sections */}
+        {/* Navigation des sections (avec onglet Synthèse) */}
         <nav style={{ 
           display: 'flex', 
           gap: '8px', 
@@ -577,43 +917,174 @@ const App = () => {
           background: 'rgba(0, 0, 0, 0.3)',
           borderRadius: '16px'
         }}>
-          {sections.map(key => (
-            <button
-              key={key}
-              onClick={() => setCurrentSection(key)}
-              style={{
-                background: currentSection === key 
-                  ? 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)' 
-                  : 'rgba(238, 194, 29, 0.1)',
-                border: 'none',
-                borderRadius: '12px',
-                padding: '10px 16px',
-                color: currentSection === key ? '#111' : '#fae8a4',
-                cursor: 'pointer',
-                fontFamily: "'Flamengo'",
-                fontSize: '16px',
-                fontWeight: currentSection === key ? '600' : '400',
-                transition: 'all 0.3s ease',
-                whiteSpace: 'nowrap'
-              }}
-            >
-              {sessionData.sections[key].title}
-            </button>
-          ))}
+          {allSections.map(key => {
+            const isSynthese = key === 'synthese';
+            const label = isSynthese ? '📋 Synthèse' : sessionData.sections[key].title;
+            
+            return (
+              <button
+                key={key}
+                onClick={() => setCurrentSection(key)}
+                style={{
+                  background: currentSection === key 
+                    ? isSynthese 
+                      ? 'linear-gradient(135deg, #16a34a 0%, #15803d 100%)'
+                      : 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)' 
+                    : isSynthese
+                      ? 'rgba(22, 163, 74, 0.2)'
+                      : 'rgba(238, 194, 29, 0.1)',
+                  border: isSynthese && currentSection !== key ? '1px solid rgba(22, 163, 74, 0.3)' : 'none',
+                  borderRadius: '12px',
+                  padding: '10px 16px',
+                  color: currentSection === key ? '#111' : isSynthese ? '#4ade80' : '#fae8a4',
+                  cursor: 'pointer',
+                  fontFamily: "'Flamengo'",
+                  fontSize: '16px',
+                  fontWeight: currentSection === key ? '600' : '400',
+                  transition: 'all 0.3s ease',
+                  whiteSpace: 'nowrap'
+                }}
+              >
+                {label}
+              </button>
+            );
+          })}
         </nav>
 
-        {/* Contenu de la section */}
-        <GlassCard hover={false} style={{ marginBottom: '32px' }}>
-          <h2 style={{ 
-            fontFamily: "'Flamengo'",
-            fontSize: '24px',
-            color: '#eec21d',
-            marginBottom: '24px'
+        {/* Contenu : section normale OU synthèse */}
+        {currentSection === 'synthese' && synthese ? (
+          // Affichage de la synthèse de session
+          <GlassCard hover={false} style={{ 
+            marginBottom: '32px',
+            background: 'linear-gradient(135deg, rgba(22, 163, 74, 0.1) 0%, rgba(22, 163, 74, 0.02) 100%)',
+            border: '1px solid rgba(22, 163, 74, 0.2)'
           }}>
-            {sectionData.title}
-          </h2>
-          {renderSectionContent(sectionData.content)}
-        </GlassCard>
+            <h2 style={{ 
+              fontFamily: "'Flamengo'",
+              fontSize: '24px',
+              color: '#4ade80',
+              marginBottom: '24px'
+            }}>
+              {synthese.titre}
+            </h2>
+
+            {/* Grandes idées */}
+            <div style={{ marginBottom: '24px' }}>
+              <h3 style={{ 
+                fontFamily: "'Flamengo'",
+                fontSize: '18px',
+                color: '#eec21d',
+                marginBottom: '12px'
+              }}>
+                💡 Grandes idées
+              </h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {synthese.grandesIdees.map((idee, i) => (
+                  <div key={i} style={{
+                    background: 'rgba(238, 194, 29, 0.08)',
+                    borderLeft: '3px solid #eec21d',
+                    borderRadius: '0 10px 10px 0',
+                    padding: '12px 16px',
+                    color: '#fae8a4',
+                    fontSize: '15px',
+                    lineHeight: 1.6
+                  }}>
+                    {idee}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Questions ouvertes */}
+            <div style={{ marginBottom: '24px' }}>
+              <h3 style={{ 
+                fontFamily: "'Flamengo'",
+                fontSize: '18px',
+                color: '#eec21d',
+                marginBottom: '12px'
+              }}>
+                ❓ Questions ouvertes
+              </h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {synthese.questionsOuvertes.map((q, i) => (
+                  <div key={i} style={{
+                    background: 'rgba(234, 88, 12, 0.1)',
+                    border: '1px solid rgba(234, 88, 12, 0.2)',
+                    borderRadius: '10px',
+                    padding: '12px 16px',
+                    color: '#fb923c',
+                    fontSize: '15px'
+                  }}>
+                    {q}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Pistes d'action */}
+            <div style={{ marginBottom: synthese.citation ? '24px' : '0' }}>
+              <h3 style={{ 
+                fontFamily: "'Flamengo'",
+                fontSize: '18px',
+                color: '#eec21d',
+                marginBottom: '12px'
+              }}>
+                🎯 Pistes d'action
+              </h3>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                {synthese.pistesAction.map((piste, i) => (
+                  <div key={i} style={{
+                    background: 'rgba(22, 163, 74, 0.1)',
+                    border: '1px solid rgba(22, 163, 74, 0.2)',
+                    borderRadius: '10px',
+                    padding: '12px 16px',
+                    color: '#4ade80',
+                    fontSize: '15px'
+                  }}>
+                    ✓ {piste}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Citation (si présente) */}
+            {synthese.citation && (
+              <div style={{
+                marginTop: '24px',
+                padding: '20px',
+                background: 'rgba(238, 194, 29, 0.05)',
+                borderLeft: '4px solid #eec21d',
+                borderRadius: '0 12px 12px 0'
+              }}>
+                <p style={{ 
+                  fontStyle: 'italic', 
+                  color: 'rgba(250, 232, 164, 0.9)',
+                  fontSize: '16px',
+                  lineHeight: 1.6,
+                  marginBottom: '8px'
+                }}>
+                  « {synthese.citation.texte} »
+                </p>
+                <p style={{ color: '#eec21d', fontSize: '15px' }}>
+                  — {synthese.citation.auteur}
+                </p>
+              </div>
+            )}
+          </GlassCard>
+        ) : sectionData ? (
+          // Affichage normal d'une section
+          <GlassCard hover={false} style={{ marginBottom: '32px' }}>
+            <h2 style={{ 
+              fontFamily: "'Flamengo'",
+              fontSize: '24px',
+              color: '#eec21d',
+              marginBottom: '24px'
+            }}>
+              {sectionData.title}
+            </h2>
+            {renderSectionContent(sectionData.content)}
+          </GlassCard>
+        ) : null}
 
         {/* Barre de réactions */}
         <div style={{ 
@@ -711,13 +1182,341 @@ const App = () => {
   };
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // RENDU DU CONTENU
+  // DOSSIER DE SYNTHÈSE GLOBAL
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  const renderDossierSynthese = () => {
+    return (
+      <div style={{ minHeight: '100vh', padding: '24px', maxWidth: '1000px', margin: '0 auto' }}>
+        
+        <button
+          onClick={() => { setShowDossierSynthese(false); setSyntheseView('carte'); setActiveSyntheseTheme(null); }}
+          style={{
+            background: 'rgba(238, 194, 29, 0.1)',
+            border: '1px solid rgba(238, 194, 29, 0.2)',
+            borderRadius: '12px',
+            padding: '10px 20px',
+            color: '#fae8a4',
+            cursor: 'pointer',
+            fontSize: '16px',
+            marginBottom: '24px',
+            transition: 'all 0.3s ease'
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(238, 194, 29, 0.2)'}
+          onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(238, 194, 29, 0.1)'}
+        >
+          ← Retour aux sessions
+        </button>
+
+        <header style={{ 
+          background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)',
+          borderRadius: '20px',
+          padding: '32px',
+          marginBottom: '24px',
+          textAlign: 'center'
+        }}>
+          <div style={{ 
+            display: 'inline-block',
+            padding: '4px 12px',
+            background: 'rgba(238, 194, 29, 0.2)',
+            borderRadius: '20px',
+            fontSize: '16px',
+            color: '#eec21d',
+            marginBottom: '12px'
+          }}>
+            📋 DOSSIER DE SYNTHÈSE GLOBAL
+          </div>
+          <h1 style={{ 
+            fontFamily: "'Flamengo'",
+            fontSize: 'clamp(22px, 5vw, 32px)',
+            color: '#fff',
+            marginBottom: '8px'
+          }}>
+            Expropriation des médias oligarchiques
+          </h1>
+          <p style={{ 
+            fontSize: '16px', 
+            color: 'rgba(250, 232, 164, 0.6)'
+          }}>
+            Synthèse des sessions #001, #002, #003 — Ruche 75
+          </p>
+        </header>
+
+        <nav style={{ 
+          display: 'flex', 
+          gap: '8px', 
+          flexWrap: 'wrap',
+          marginBottom: '24px',
+          padding: '8px',
+          background: 'rgba(0, 0, 0, 0.3)',
+          borderRadius: '16px',
+          justifyContent: 'center'
+        }}>
+          {[
+            { key: 'carte', label: '🗺️ Carte' },
+            { key: 'themes', label: '📂 Thèmes' },
+            { key: 'actions', label: '📋 Actions' }
+          ].map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => { setSyntheseView(key); setActiveSyntheseTheme(null); }}
+              style={{
+                background: syntheseView === key 
+                  ? 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)' 
+                  : 'rgba(238, 194, 29, 0.1)',
+                border: 'none',
+                borderRadius: '12px',
+                padding: '10px 20px',
+                color: syntheseView === key ? '#111' : '#fae8a4',
+                cursor: 'pointer',
+                fontFamily: "'Flamengo'",
+                fontSize: '16px',
+                fontWeight: syntheseView === key ? '600' : '400',
+                transition: 'all 0.3s ease'
+              }}
+            >
+              {label}
+            </button>
+          ))}
+        </nav>
+
+        {/* Vue Carte */}
+        {syntheseView === 'carte' && (
+          <GlassCard hover={false} style={{ marginBottom: '24px' }}>
+            <h2 style={{ 
+              fontFamily: "'Flamengo'",
+              fontSize: '20px',
+              color: '#eec21d',
+              marginBottom: '16px',
+              textAlign: 'center'
+            }}>
+              Cartographie des enjeux
+            </h2>
+            <MindMapSVG />
+            <p style={{ 
+              textAlign: 'center', 
+              color: 'rgba(250, 232, 164, 0.5)', 
+              fontSize: '15px',
+              marginTop: '16px'
+            }}>
+              Cliquez sur "Thèmes" pour explorer chaque sujet en détail
+            </p>
+          </GlassCard>
+        )}
+
+        {/* Vue Thèmes */}
+        {syntheseView === 'themes' && (
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
+            gap: '16px',
+            marginBottom: '24px'
+          }}>
+            {dossierSyntheseData.themes.map(theme => (
+              <div
+                key={theme.id}
+                onClick={() => setActiveSyntheseTheme(activeSyntheseTheme === theme.id ? null : theme.id)}
+                style={{
+                  background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
+                  backdropFilter: 'blur(20px)',
+                  border: `1px solid ${activeSyntheseTheme === theme.id ? theme.color : 'rgba(238, 194, 29, 0.15)'}`,
+                  borderLeft: `4px solid ${theme.color}`,
+                  borderRadius: '16px',
+                  padding: '20px',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease'
+                }}
+              >
+                <h3 style={{ 
+                  fontFamily: "'Flamengo'",
+                  fontSize: '18px',
+                  color: '#fff',
+                  marginBottom: '8px'
+                }}>
+                  {theme.title}
+                </h3>
+                <p style={{ 
+                  fontSize: '15px', 
+                  color: 'rgba(250, 232, 164, 0.7)',
+                  lineHeight: 1.5
+                }}>
+                  {theme.summary}
+                </p>
+                
+                {activeSyntheseTheme === theme.id && (
+                  <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid rgba(238, 194, 29, 0.1)' }}>
+                    <div style={{ marginBottom: '16px' }}>
+                      <p style={{ 
+                        fontSize: '13px', 
+                        color: '#eec21d', 
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em',
+                        marginBottom: '8px'
+                      }}>
+                        Constats
+                      </p>
+                      {theme.details.map((d, i) => (
+                        <div key={i} style={{
+                          fontSize: '14px',
+                          color: 'rgba(250, 232, 164, 0.8)',
+                          marginBottom: '6px',
+                          paddingLeft: '12px',
+                          borderLeft: '2px solid rgba(238, 194, 29, 0.2)'
+                        }}>
+                          {d}
+                        </div>
+                      ))}
+                    </div>
+                    <div>
+                      <p style={{ 
+                        fontSize: '13px', 
+                        color: '#eec21d', 
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.05em',
+                        marginBottom: '8px'
+                      }}>
+                        Questions ouvertes
+                      </p>
+                      {theme.questions.map((q, i) => (
+                        <div key={i} style={{
+                          background: 'rgba(238, 194, 29, 0.08)',
+                          borderRadius: '8px',
+                          padding: '10px 12px',
+                          fontSize: '14px',
+                          color: '#fae8a4',
+                          marginBottom: '6px'
+                        }}>
+                          ❓ {q}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Vue Actions */}
+        {syntheseView === 'actions' && (
+          <>
+            <GlassCard hover={false} style={{ marginBottom: '24px' }}>
+              <h2 style={{ 
+                fontFamily: "'Flamengo'",
+                fontSize: '20px',
+                color: '#eec21d',
+                marginBottom: '20px'
+              }}>
+                📞 Contacts & Modèles à explorer
+              </h2>
+              <div style={{ 
+                display: 'grid', 
+                gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', 
+                gap: '12px' 
+              }}>
+                {dossierSyntheseData.contacts.map((c, i) => (
+                  <div key={i} style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    background: 'rgba(238, 194, 29, 0.05)',
+                    borderRadius: '12px',
+                    padding: '14px'
+                  }}>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ 
+                        fontWeight: '600', 
+                        color: '#fff',
+                        fontSize: '15px',
+                        marginBottom: '4px'
+                      }}>
+                        {c.name}
+                      </div>
+                      <div style={{ fontSize: '14px', color: 'rgba(250, 232, 164, 0.6)' }}>
+                        {c.desc}
+                      </div>
+                    </div>
+                    <span style={{
+                      padding: '4px 10px',
+                      borderRadius: '20px',
+                      fontSize: '13px',
+                      whiteSpace: 'nowrap',
+                      background: c.status.includes('contacter') 
+                        ? 'rgba(234, 88, 12, 0.2)' 
+                        : 'rgba(22, 163, 74, 0.2)',
+                      color: c.status.includes('contacter') 
+                        ? '#fb923c' 
+                        : '#4ade80'
+                    }}>
+                      {c.status}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+
+            <GlassCard hover={false} style={{ 
+              background: 'linear-gradient(135deg, rgba(22, 163, 74, 0.1) 0%, rgba(22, 163, 74, 0.02) 100%)',
+              border: '1px solid rgba(22, 163, 74, 0.2)'
+            }}>
+              <h2 style={{ 
+                fontFamily: "'Flamengo'",
+                fontSize: '20px',
+                color: '#4ade80',
+                marginBottom: '16px'
+              }}>
+                💡 Idées émergentes
+              </h2>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {dossierSyntheseData.idees.map((idee, i) => (
+                  <div key={i} style={{
+                    background: 'rgba(22, 163, 74, 0.1)',
+                    borderRadius: '10px',
+                    padding: '12px 16px',
+                    fontSize: '15px',
+                    color: '#fae8a4'
+                  }}>
+                    • {idee}
+                  </div>
+                ))}
+              </div>
+            </GlassCard>
+          </>
+        )}
+
+        {/* Citation */}
+        <div style={{ 
+          marginTop: '32px', 
+          textAlign: 'center',
+          padding: '24px',
+          background: 'rgba(238, 194, 29, 0.05)',
+          borderRadius: '16px'
+        }}>
+          <p style={{ 
+            fontStyle: 'italic', 
+            color: 'rgba(250, 232, 164, 0.8)',
+            fontSize: '16px',
+            lineHeight: 1.6,
+            marginBottom: '8px'
+          }}>
+            « L'utopie ne signifie pas l'irréalisable, mais l'irréalisé.<br/>
+            L'utopie d'hier peut devenir la réalité de demain. »
+          </p>
+          <p style={{ color: '#eec21d', fontSize: '15px' }}>
+            — Jacques Monod
+          </p>
+        </div>
+      </div>
+    );
+  };
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // RENDU DU CONTENU (inchangé)
   // ═══════════════════════════════════════════════════════════════════════════
 
   const renderSectionContent = (content) => {
     if (!content) return null;
 
-    // Array de contenus mixtes
     if (Array.isArray(content)) {
       return (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -726,7 +1525,6 @@ const App = () => {
       );
     }
 
-    // Objet unique
     return renderContentItem(content, 0);
   };
 
@@ -788,7 +1586,6 @@ const App = () => {
               📎 {item.note}
             </div>
           )}
-          {/* Pour la définition du pantouflage avec origine et terminologie */}
           {item.origine && (
             <div style={{ marginTop: '16px' }}>
               <div style={{ 
@@ -950,7 +1747,8 @@ const App = () => {
         </div>
       );
     }
-// Exemples européens avec stat spéciale (Session 4)
+
+    // Exemples européens avec stat spéciale
     if (item.exemples && item.stat && item.stat.source) {
       return (
         <div key={key}>
@@ -998,7 +1796,7 @@ const App = () => {
       );
     }
 
-    // Government Sachs (Session 4)
+    // Government Sachs
     if (item.intro && item.exemples) {
       return (
         <div key={key}>
@@ -1071,7 +1869,7 @@ const App = () => {
         </div>
       );
     }
- 
+
     // Stat
     if (item.stat || (item.number && item.label)) {
       const stat = item.stat || item;
@@ -1125,7 +1923,7 @@ const App = () => {
       );
     }
 
-    // Avantages + Questions (Session 2) — DOIT ÊTRE AVANT les conditions génériques
+    // Avantages + Questions
     if (item.avantages && item.questions) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -1181,7 +1979,7 @@ const App = () => {
       );
     }
 
-    // Double versant / Marché (Session 3) — DOIT ÊTRE AVANT les conditions génériques
+    // Double versant / Marché
     if (item.explication && item.versants) {
       return (
         <div key={key}>
@@ -1231,7 +2029,7 @@ const App = () => {
       );
     }
 
-    // Exemples avec détails (générique) — APRÈS les conditions spécifiques
+    // Exemples avec détails (générique)
     if (item.exemples) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -1391,7 +2189,7 @@ const App = () => {
       );
     }
 
-    // Modèle coopératif avec nom, modele, resultat
+    // Modèle coopératif
     if (item.nom && item.modele) {
       return (
         <div key={key} style={{
@@ -1433,7 +2231,7 @@ const App = () => {
       );
     }
 
-    // Fallback pour les arrays d'items avec icon
+    // Fallback pour les arrays
     if (Array.isArray(item)) {
       return (
         <div key={key} style={{ 
@@ -1636,7 +2434,14 @@ const App = () => {
       background: '#111111',
       color: '#fae8a4'
     }}>
-      {currentSession ? renderSession() : currentTheme ? renderThemeHub() : renderAccueil()}
+      {showDossierSynthese 
+        ? renderDossierSynthese() 
+        : currentSession 
+          ? renderSession() 
+          : currentTheme 
+            ? renderThemeHub() 
+            : renderAccueil()
+      }
       {renderProjetModal()}
     </div>
   );
