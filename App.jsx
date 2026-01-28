@@ -1361,7 +1361,7 @@ const App = () => {
                     <div style={{ flex: 1 }}>
                       <div style={{ 
                         fontWeight: '600', 
-                        color: '#fff',
+                        color: '#eec21d',
                         fontSize: '15px',
                         marginBottom: '4px'
                       }}>
