@@ -489,6 +489,9 @@ const App = () => {
             </div>
           </GlassCard>
 
+          {/* ═══════════════════════════════════════════════════════════════════
+              GRID DES DEUX CARDS - CORRIGÉ
+              ═══════════════════════════════════════════════════════════════════ */}
           <div style={{ 
             display: 'grid', 
             gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', 
@@ -529,8 +532,6 @@ const App = () => {
                 →
               </div>
             </GlassCard>
-          </div>
-
 
             <GlassCard onClick={() => goToTheme('medias')}>
               <div style={{ fontSize: '48px', marginBottom: '16px' }}>📺</div>
@@ -565,6 +566,11 @@ const App = () => {
                 →
               </div>
             </GlassCard>
+
+          </div>
+          {/* ═══════════════════════════════════════════════════════════════════
+              FIN DE LA GRID
+              ═══════════════════════════════════════════════════════════════════ */}
 
           <div style={{ textAlign: 'center' }}>
             <button
@@ -603,10 +609,11 @@ const App = () => {
             fontSize: '15px',
             color: 'rgba(250, 232, 164, 0.5)'
           }}>
-           <p>Butiner notre futur ensemble, abeille par abeille, réflexion après réflexion...</p>
+            <p>Butiner notre futur ensemble, abeille par abeille, réflexion après réflexion...</p>
             <p style={{ marginTop: '8px' }}>
-              Sessions : <strong style={{ color: '#eec21d' }}>Jeudis 18h</strong> et <strong style={{ color: '#eec21d' }}>Dimanches 17h</strong></p>
-	    <p>sauf si réunion</p>
+              Sessions : <strong style={{ color: '#eec21d' }}>Jeudis 18h</strong> et <strong style={{ color: '#eec21d' }}>Dimanches 17h</strong>
+            </p>
+            <p>sauf si réunion</p>
           </footer>
         </div>
       </div>
@@ -1439,7 +1446,7 @@ const App = () => {
   };
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // RENDU DU CONTENU (inchangé)
+  // RENDU DU CONTENU
   // ═══════════════════════════════════════════════════════════════════════════
 
   const renderSectionContent = (content) => {
@@ -2309,7 +2316,7 @@ const App = () => {
             </h3>
             {[
               "LUTTER — Fin de l'oligarchie, commissions d'enquête, levée du secret défense",
-              'VOTER — Souveraineté populaire, référendums d\'initiative citoyenne',
+              "VOTER — Souveraineté populaire, référendums d'initiative citoyenne",
               'GRANDIR — Éducation nationale, formation, culture',
               'PROTÉGER — Justice, sécurité, défense nationale',
               'PRODUIRE — Réindustrialisation, agriculture, économie',
