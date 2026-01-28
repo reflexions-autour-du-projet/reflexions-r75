@@ -15,23 +15,22 @@ const sessionsSyntheses = {
   session1: {
     titre: "Synthèse — Session #001",
     grandesIdees: [
-      "L'oligarchie = interpénétration des pouvoirs économique, politique, administratif et médiatique",
+      "L'oligarchie = concentration des pouvoirs économique, politique, administratif et médiatique",
       "28 familles/entités possèdent tous les médias français",
       "La SCOP comme modèle alternatif : salariés propriétaires, 1 personne = 1 voix",
       "Les écoles de journalisme créent une forme de pensée unique"
     ],
     questionsOuvertes: [
-      "La SCOP est-elle le modèle le plus approprié ou faut-il explorer d'autres alternatives ?",
-      "Transformation des médias existants vs création de nouveaux médias coopératifs ?",
-      "Comment capitaliser au départ sans investisseur ?",
-      "Les salariés seraient-ils mieux à même de gérer qu'un propriétaire unique ?",
-      "Comment définir précisément 'média oligarchique' ?",
-      "Quel processus pour l'expropriation ?"
+      "La SCOP est-elle le modèle le plus approprié ou faut-il explorer d'autres alternatives?",
+      "Transformation des médias existants vs création de nouveaux médias coopératifs?",
+      "Comment capitaliser au départ sans investisseur?",
+      "Les salariés seraient-ils mieux à même de gérer qu'un propriétaire unique?",
+      "Comment définir précisément 'média oligarchique'?",
+      "Quel processus pour l'expropriation?"
     ],
     pistesAction: [
-      "Approfondir la notion de SCOP avec Gigi lors de la prochaine session",
-      "Étudier la charte déontologique d'Alternatives Économiques",
-      "Complémentarité avec les ateliers physiques de Gersende et Sophie"
+      "Approfondir la notion de SCOP lors de la prochaine session",
+      "Étudier la charte déontologique d'Alternatives Économiques ou autres SCOP"
     ]
   },
   session2: {
@@ -39,20 +38,19 @@ const sessionsSyntheses = {
     grandesIdees: [
       "Les médias sont des marchés à double versant : vente au public + vente d'audience aux annonceurs",
       "L'influence est la première raison d'acheter un média, pas la rentabilité",
-      "Médias structurellement déficitaires → +1 Md€/an de subventions publiques aux groupes milliardaires",
+      "Médias structurellement déficitaires → +1 Md€/an de subventions publiques aux groupes",
       "Le déficit peut être orchestré comme outil de contrôle sur les journalistes",
       "Distinction fondamentale entre 'informer' et 'chercher à convaincre'",
-      "La charte de Munich comme base déontologique potentielle"
+      "Quid de la charte de Munich"
     ],
     questionsOuvertes: [
-      "Le déficit est-il mis en place sciemment pour prétendre aux subventions ET contrôler les journalistes ?",
-      "Faut-il interdire aux groupes bénéficiaires de posséder des médias subventionnés ?",
-      "Comment auditer les financements indirects (programmes TV, etc.) ?",
-      "Est-ce un cadeau empoisonné de rendre les salariés propriétaires de dettes ?",
-      "Quid de l'indemnisation si rétrocession gratuite ?"
+      "Le déficit est-il mis en place sciemment pour prétendre aux subventions ET contrôler les journalistes?",
+      "Faut-il interdire aux groupes bénéficiaires de posséder des médias subventionnés?",
+      "Comment auditer les financements indirects (programmes TV, etc.)?",
+      "Est-ce un cadeau empoisonné de rendre les salariés propriétaires de dettes?",
+      "Quid de l'indemnisation si rétrocession gratuite?"
     ],
     pistesAction: [
-      "Contacter les médias du Mouvement 5 Étoiles en Italie (via Gigi)",
       "Étudier les modèles : Mediapart (SAS), Alternatives Éco (SCOP), XXI (niche sans pub)",
       "Explorer la charte de Munich comme condition d'accès aux subventions"
     ]
@@ -61,8 +59,8 @@ const sessionsSyntheses = {
     titre: "Synthèse — Session #003",
     grandesIdees: [
       "Les codes déontologiques abandonnés depuis 40 ans par le politique et l'économique",
-      "Sociocratie : organisation en cercles de 6-8 personnes autonomes, méthode agile",
-      "Exemples : Octo (500+ salariés), Cirque du Soleil, coopératives Émilie-Romagne",
+      "Sociocratie : organisation en cercles de personnes autonomes, méthode agile",
+      "Exemples : Octo (500+ salariés), Cirque du Soleil",
       "Neutralité = illusion → mieux vaut assumer sa ligne éditoriale",
       "'Edit' = couper — une ligne éditoriale est une ligne qui coupe",
       "L'AFP comme marché à double versant : info pour le gouvernement + abonnement presse",
@@ -70,21 +68,20 @@ const sessionsSyntheses = {
       "L'IA brouille le réel et le fictif (nouveau réflexe de doute)"
     ],
     questionsOuvertes: [
-      "Comment intégrer l'IA dans la réflexion sur l'avenir des médias ?",
-      "Un label 'conçu sans IA' serait-il pertinent pour les médias coopératifs ?",
-      "Faut-il un organe de contrôle contraignant ? L'ARCOM ne fonctionne pas",
-      "Transformation vs création : quel est le modèle le plus pertinent ?",
-      "Comment faire recroître la rentabilité sans impacter les salariés ?"
+      "Comment intégrer l'IA dans la réflexion sur l'avenir des médias?",
+      "Un label 'conçu sans IA' serait-il intéressant pour les médias coopératifs?",
+      "Faut-il un organe de contrôle contraignant?,
+      "Transformation vs création : quel est le modèle le plus pertinent?",
+      "Comment faire recroître la rentabilité sans impacter les salariés?"
     ],
     pistesAction: [
       "Contacter Nexus : média indépendant sans publicité, modèle économique à étudier",
-      "Explorer aurore.org (nouveau média lié à Nexus)",
       "Interviewer une coopérative opérant en sociocratie",
       "Omerta et Karl Zero : médias sans subvention vivant de la qualité"
     ],
     citation: {
-      texte: "L'utopie ne signifie pas l'irréalisable, mais l'irréalisé. L'utopie d'hier peut devenir la réalité de demain.",
-      auteur: "Jacques Monod"
+      texte: "L'utopie ne signifie pas l'irréalisable, mais l'irréalisé. L'utopie d'hier peut devenir la réalité de demain",
+      auteur: "Monod"
     }
   },
   // Sessions Pantouflage (à compléter selon tes sessions)
@@ -94,12 +91,12 @@ const sessionsSyntheses = {
       "Pantouflage = allers-retours entre fonction publique et secteur privé",
       "Origine : obligation de remboursement des frais de formation (pantoufle)",
       "Le système actuel permet des passages rapides vers le privé",
-      "Macron : exemple emblématique du parcours public → privé → politique"
+      "Macron : exemple du parcours public → privé → politique"
     ],
     questionsOuvertes: [
-      "La période de carence de 5 ans est-elle suffisante ?",
-      "Comment contrôler les conflits d'intérêts post-mandat ?",
-      "Faut-il interdire aux hauts fonctionnaires de devenir élus sans démission ?"
+      "La période de carence de 5 ans est-elle suffisante?",
+      "Comment contrôler les conflits d'intérêts post-mandat?",
+      "Faut-il interdire aux hauts fonctionnaires de devenir élus sans démission?"
     ],
     pistesAction: [
       "Documenter les parcours types des pantoufleurs français",
@@ -117,11 +114,11 @@ const dossierSyntheseData = {
     {
       id: 'oligarchie',
       title: '🏛️ Oligarchie médiatique',
-      color: '#dc2626',
+      color: '#ffebc0',
       summary: '28 familles/entités contrôlent tous les médias français',
       details: [
         'Concentration des pouvoirs : économique, politique, administratif, médiatique',
-        'Propriétaires : Bouygues, Bolloré, Arnault, Niel, Drahi, Lagardère, Saadé, Kretinsky...',
+        'Propriétaires : Bouygues, Bolloré, Arnault, Niel, Drahi, Lagardère, Saadé, Kretinsky..',
         'L\'influence est devenue la première raison d\'acheter un média, pas la rentabilité',
         'Glissement de "vecteur d\'information" à "vecteur d\'opinion"'
       ],
@@ -134,8 +131,8 @@ const dossierSyntheseData = {
     {
       id: 'financement',
       title: '💰 Financement',
-      color: '#ea580c',
-      summary: 'Le nerf de la guerre : +1 Md€/an de subventions publiques',
+      color: '#ebc471',
+      summary: '+1 Md€/an de subventions publiques',
       details: [
         'Médias structurellement déficitaires malgré les milliards de bénéfices des groupes',
         'Arnault : 17,8M€ de subventions (2023) vs 14 Mds€ de bénéfices LVMH',
@@ -151,7 +148,7 @@ const dossierSyntheseData = {
     {
       id: 'deontologie',
       title: '⚖️ Déontologie',
-      color: '#ca8a04',
+      color: '#d9a22c',
       summary: 'Codes abandonnés depuis 40 ans, pensée unique',
       details: [
         'Plus personne ne légifère sur les conflits d\'intérêts',
@@ -160,67 +157,64 @@ const dossierSyntheseData = {
         'ARCOM : si elle a cette mission, ça ne fonctionne pas'
       ],
       questions: [
-        'Faut-il un nouvel organe de contrôle contraignant ?',
-        'Interdire aux oligarques d\'être actionnaires des écoles ?',
-        'La charte de Munich comme condition d\'accès aux subventions ?'
+        'Faut-il un nouvel organe de contrôle contraignant?',
+        'Interdire aux oligarques d\'être actionnaires des écoles?',
+        'La charte de Munich comme condition d\'accès aux subventions?'
       ]
     },
     {
       id: 'scop',
       title: '🤝 SCOP & Sociocratie',
-      color: '#16a34a',
+      color: '#b08b3d',
       summary: 'Modèle coopératif : salariés propriétaires, 1 personne = 1 voix',
       details: [
         'SCOP : 51% capital + 65% droits de vote aux salariés, dirigeants élus',
         'Sociocratie : cercles de 6-8 personnes autonomes, référents inter-cercles',
-        'Exemples : Octo (500+ salariés), Cirque du Soleil (Holacracy)',
         'Parmigiano-Reggiano : 50 ans de coopératives qui fonctionnent'
       ],
       questions: [
-        'Transformer les médias existants OU créer de nouveaux médias coopératifs ?',
-        'Cadeau empoisonné si le média est déjà déficitaire ?',
-        'Les salariés seraient-ils mieux à même de gérer ?'
+        'Transformer les médias existants OU créer de nouveaux médias coopératifs?',
+        'Cadeau empoisonné si le média est déjà déficitaire?',
+        'Les salariés seraient-ils mieux à même de gérer?'
       ]
     },
     {
       id: 'neutralite',
       title: '📝 Neutralité & Sémantique',
-      color: '#2563eb',
+      color: '#a0751a',
       summary: 'Informer ≠ Convaincre — La neutralité n\'existe pas',
       details: [
-        'Distinction fondamentale : information vs opinion (CNEWS = opinion pure)',
-        'Ligne éditoriale : chacun en a une, la neutralité est un piège',
+        'Distinction fondamentale : information vs opinion',
+        'Ligne éditoriale : chacun en a une, la neutralité est une illusion',
         '"Edit" = couper — une ligne éditoriale coupe',
         'Le choix même d\'un sujet est déjà un parti pris'
       ],
       questions: [
-        'Réappropriation des mots : qu\'est-ce que l\'information à l\'ère digitale ?',
-        'Inclure la distinction informer/convaincre dans les statuts SCOP ?',
-        'Est-ce le système ou une croyance populaire qui fait croire à la neutralité ?'
+        'Réappropriation des mots : qu\'est-ce que l\'information à l\'ère digitale?',
+        'Inclure la distinction informer/convaincre dans les statuts SCOP?',
+        'Est-ce le système ou une croyance populaire qui fait croire à la neutralité?'
       ]
     },
     {
       id: 'ia',
       title: '🤖 IA & Guerre cognitive',
-      color: '#7c3aed',
-      summary: 'Brouillage réel/fictif, information weaponisée',
+      color: '#835c07',
+      summary: 'Brouillage réel/fictif, information instumentalisée',
       details: [
-        'Nouveau réflexe : on doute de chaque info/photo (vraie ou générée ?)',
+        'Nouveau réflexe : on doute de chaque info/photo (vraie ou générée?)',
         'Exemple : photo Macron Ray-Ban crue fake mais vraie',
-        'Risque : l\'État produit des fake news et accuse les autres',
-        'Guerre cognitive : info instrumentalisée (ex: "puces de lit" pour impacter tourisme)'
+        'Risque : Guerre cognitive'
       ],
       questions: [
-        'Comment intégrer l\'IA dans la réflexion sur l\'avenir des médias ?',
-        'Un label "conçu sans IA" serait-il pertinent ?',
-        'Comment protéger les petits médias de ces attaques ?'
+        'Comment intégrer l\'IA dans la réflexion sur l\'avenir des médias?',
+        'Un label "conçu sans IA" serait-il intéressant?',
+        'Comment protéger les petits médias?'
       ]
     }
   ],
   contacts: [
-    { name: 'Nexus', desc: 'Média indépendant sans pub', status: 'À contacter' },
-    { name: 'aurore.org', desc: 'Nouveau média lié à Nexus', status: 'À contacter' },
-    { name: 'Médias M5S', desc: 'Via ruche Europe (Italie)', status: 'À contacter' },
+    { name: 'Nexus', desc: 'Média indépendant sans pub', status: 'À étudier' },
+    { name: 'Médias M5S', desc: 'Via ruche Europe (Italie)', status: 'À étudier' },
     { name: 'Omerta / Karl Zero', desc: 'Sans subvention', status: 'À étudier' },
     { name: 'Mediapart', desc: 'SAS actionnariat mixte', status: 'Modèle' },
     { name: 'Alternatives Éco', desc: 'SCOP avec charte', status: 'Modèle' },
@@ -373,14 +367,6 @@ const App = () => {
         stroke="url(#hexGold)" 
         strokeWidth="4"
       />
-      <text 
-        x="50" y="68" 
-        textAnchor="middle" 
-        fill="url(#hexGold)" 
-        style={{ fontFamily: "'Flamengo'", fontSize: '22px', fontWeight: 'bold' }}
-      >
-        R75
-      </text>
     </svg>
   );
 
@@ -422,12 +408,12 @@ const App = () => {
   // Mind Map SVG pour le dossier global
   const MindMapSVG = () => {
     const nodes = [
-      { id: 1, label: '🏛️ Oligarchie', sub: '28 propriétaires', x: 50, y: 15, color: '#dc2626' },
-      { id: 2, label: '💰 Financement', sub: 'Subventions + Déficit', x: 15, y: 40, color: '#ea580c' },
-      { id: 3, label: '⚖️ Déontologie', sub: 'Codes abandonnés', x: 85, y: 40, color: '#ca8a04' },
-      { id: 4, label: '📝 Sémantique', sub: 'Info → Opinion', x: 50, y: 55, color: '#2563eb' },
-      { id: 5, label: '⚠️ Menaces', sub: 'IA + Guerre cognitive', x: 15, y: 75, color: '#7c3aed' },
-      { id: 6, label: '✅ Solutions', sub: 'SCOP + Sociocratie', x: 85, y: 75, color: '#16a34a' }
+      { id: 1, label: 'Oligarchie', sub: '28 propriétaires', x: 50, y: 15, color: '#ffebc0' },
+      { id: 2, label: 'Financement', sub: 'Subventions + Déficit', x: 15, y: 40, color: '#ebc471' },
+      { id: 3, label: 'Déontologie', sub: 'Codes abandonnés', x: 85, y: 40, color: '#d9a22c' },
+      { id: 4, label: 'Sémantique', sub: 'Info → Opinion', x: 50, y: 55, color: '#a0751a' },
+      { id: 5, label: 'Menaces', sub: 'IA + Guerre cognitive', x: 15, y: 75, color: '#835c07' },
+      { id: 6, label: 'Solutions', sub: 'SCOP + Sociocratie', x: 85, y: 75, color: '#b08b3d' }
     ];
     
     const links = [
@@ -520,7 +506,7 @@ const App = () => {
             <h1 style={{ 
               fontFamily: "'Flamengo'",
               fontSize: 'clamp(22px, 6vw, 42px)',
-              color: '#fff',
+              color: '#eec21d',
               marginBottom: '8px',
               letterSpacing: '0.05em',
               textShadow: '0 2px 20px rgba(238, 194, 29, 0.3)'
@@ -546,7 +532,8 @@ const App = () => {
               <span style={{ fontSize: '32px' }}>📅</span>
               <div style={{ flex: 1, minWidth: '200px' }}>
                 <div style={{ 
-                  fontSize: '16px', 
+                  fontFamily: "'Flamengo'",
+                  fontSize: '11px', 
                   color: '#eec21d', 
                   textTransform: 'uppercase', 
                   letterSpacing: '0.1em',
@@ -556,8 +543,8 @@ const App = () => {
                 </div>
                 <div style={{ 
                   fontFamily: "'Flamengo'",
-                  fontSize: '18px', 
-                  color: '#fff',
+                  fontSize: '16px', 
+                  color: '#eec21d',
                   marginBottom: '4px'
                 }}>
                   {prochaineSession.titre}
@@ -575,47 +562,13 @@ const App = () => {
             gap: '24px',
             marginBottom: '48px'
           }}>
-            
-            <GlassCard onClick={() => goToTheme('medias')}>
-              <div style={{ fontSize: '48px', marginBottom: '16px' }}>📺</div>
-              <h2 style={{ 
-                fontFamily: "'Flamengo'",
-                fontSize: '22px',
-                color: '#fff',
-                marginBottom: '12px'
-              }}>
-                Les médias oligarchiques
-              </h2>
-              <p style={{ color: 'rgba(250, 232, 164, 0.7)', fontSize: '16px', marginBottom: '16px', lineHeight: 1.6 }}>
-                Expropriation des médias oligarchiques et transformation en SCOP
-              </p>
-              <div style={{ 
-                display: 'inline-block',
-                padding: '6px 16px',
-                background: 'rgba(238, 194, 29, 0.15)',
-                borderRadius: '20px',
-                fontSize: '15px',
-                color: '#eec21d'
-              }}>
-                {mediasCount} session{mediasCount > 1 ? 's' : ''}
-              </div>
-              <div style={{ 
-                position: 'absolute', 
-                right: '24px', 
-                bottom: '24px',
-                fontSize: '24px',
-                color: 'rgba(238, 194, 29, 0.5)'
-              }}>
-                →
-              </div>
-            </GlassCard>
 
             <GlassCard onClick={() => goToTheme('pantouflage')}>
-              <div style={{ fontSize: '48px', marginBottom: '16px' }}>🚪</div>
+              <div style={{ fontSize: '48px', marginBottom: '16px' }}>🧦</div>
               <h2 style={{ 
                 fontFamily: "'Flamengo'",
-                fontSize: '22px',
-                color: '#fff',
+                fontSize: '18px',
+                color: '#eec21d',
                 marginBottom: '12px'
               }}>
                 Le pantouflage
@@ -645,6 +598,42 @@ const App = () => {
             </GlassCard>
           </div>
 
+
+            <GlassCard onClick={() => goToTheme('medias')}>
+              <div style={{ fontSize: '48px', marginBottom: '16px' }}>📺</div>
+              <h2 style={{ 
+                fontFamily: "'Flamengo'",
+                fontSize: '18px',
+                color: '#eec21d',
+                marginBottom: '12px'
+              }}>
+                Les médias oligarchiques
+              </h2>
+              <p style={{ color: 'rgba(250, 232, 164, 0.7)', fontSize: '16px', marginBottom: '16px', lineHeight: 1.6 }}>
+                Expropriation des médias oligarchiques et transformation en SCOP
+              </p>
+              <div style={{ 
+                display: 'inline-block',
+                padding: '6px 16px',
+                background: 'rgba(238, 194, 29, 0.15)',
+                borderRadius: '20px',
+                fontSize: '15px',
+                color: '#eec21d'
+              }}>
+                {mediasCount} session{mediasCount > 1 ? 's' : ''}
+              </div>
+              <div style={{ 
+                position: 'absolute', 
+                right: '24px', 
+                bottom: '24px',
+                fontSize: '24px',
+                color: 'rgba(238, 194, 29, 0.5)'
+              }}>
+                →
+              </div>
+            </GlassCard>
+
+
           <div style={{ textAlign: 'center' }}>
             <button
               onClick={() => setShowProjet(true)}
@@ -670,7 +659,7 @@ const App = () => {
                 e.currentTarget.style.boxShadow = '0 4px 20px rgba(238, 194, 29, 0.3)';
               }}
             >
-              📜 Consulter Le Projet
+              Consulter Le Projet
             </button>
           </div>
 
@@ -682,10 +671,10 @@ const App = () => {
             fontSize: '15px',
             color: 'rgba(250, 232, 164, 0.5)'
           }}>
-           <p>🐝 Butiner notre futur ensemble, abeille par abeille, réflexion après réflexion...</p>
+           <p>Butiner notre futur ensemble, abeille par abeille, réflexion après réflexion...</p>
             <p style={{ marginTop: '8px' }}>
-              Sessions : <strong style={{ color: '#eec21d' }}>Jeudis 18h</strong> et <strong style={{ color: '#eec21d' }}>Dimanches 17h</strong> - sauf réunion
-            </p>
+              Sessions : <strong style={{ color: '#eec21d' }}>Jeudis 18h</strong> et <strong style={{ color: '#eec21d' }}>Dimanches 17h</strong></p>
+	    <p>sauf si réunion</p>
           </footer>
         </div>
       </div>
@@ -700,7 +689,7 @@ const App = () => {
     const isMedias = currentTheme === 'medias';
     const sessions = isMedias ? sessionsConfig.medias : sessionsConfig.pantouflage;
     const themeTitle = isMedias ? "Les médias oligarchiques" : "Le pantouflage";
-    const themeIcon = isMedias ? "📺" : "🚪";
+    const themeIcon = isMedias ? "📺" : "🧦";
 
     return (
       <div style={{ minHeight: '100vh', padding: '24px', maxWidth: '900px', margin: '0 auto' }}>
@@ -712,9 +701,10 @@ const App = () => {
             border: '1px solid rgba(238, 194, 29, 0.2)',
             borderRadius: '12px',
             padding: '10px 20px',
-            color: '#fae8a4',
+            color: '#eec21d',
+            fontFamily: "'Flamengo'",
             cursor: 'pointer',
-            fontSize: '16px',
+            fontSize: '14px',
             marginBottom: '32px',
             transition: 'all 0.3s ease'
           }}
@@ -729,14 +719,15 @@ const App = () => {
           <h1 style={{ 
             fontFamily: "'Flamengo'",
             fontSize: 'clamp(24px, 5vw, 36px)',
-            color: '#fff',
+            color: '#eec21d',
             marginBottom: '8px'
           }}>
             {themeTitle}
           </h1>
           <p style={{ 
-            fontSize: '16px', 
-            color: 'rgba(250, 232, 164, 0.6)',
+            fontFamily: "'Flamengo'",
+            fontSize: '14px', 
+            color: '#fae8a4',
             textTransform: 'uppercase',
             letterSpacing: '0.1em'
           }}>
@@ -760,7 +751,7 @@ const App = () => {
               hover={session.available}
             >
               <div style={{ 
-                fontSize: '32px', 
+                fontSize: '22px', 
                 fontFamily: "'Flamengo'",
                 color: '#eec21d',
                 marginBottom: '12px'
@@ -769,20 +760,20 @@ const App = () => {
               </div>
               <h3 style={{ 
                 fontFamily: "'Flamengo'",
-                fontSize: '18px',
-                color: '#fff',
+                fontSize: '16px',
+                color: '#eec21d',
                 marginBottom: '8px'
               }}>
                 {session.titre}
               </h3>
-              <p style={{ fontSize: '16px', color: 'rgba(250, 232, 164, 0.6)' }}>
+              <p style={{ fontSize: '16px', color: '#fae8a4' }}>
                 {session.date}
               </p>
               {!session.available && (
                 <div style={{ 
                   marginTop: '12px',
-                  fontSize: '15px',
-                  color: 'rgba(250, 232, 164, 0.5)'
+                  fontSize: '14px',
+                  color: '#fae8a4',
                 }}>
                   🔒 Bientôt disponible
                 </div>
@@ -802,18 +793,17 @@ const App = () => {
                 textAlign: 'center'
               }}
             >
-              <div style={{ fontSize: '48px', marginBottom: '12px' }}>📋</div>
               <h3 style={{ 
                 fontFamily: "'Flamengo'",
                 fontSize: '20px',
                 color: '#eec21d',
                 marginBottom: '8px'
               }}>
-                Dossier de synthèse global
+                Dossier de synthèse
               </h3>
               <p style={{ 
-                fontSize: '15px', 
-                color: 'rgba(250, 232, 164, 0.7)',
+                fontSize: '16px', 
+                color: '#fae8a4',
                 marginBottom: '12px'
               }}>
                 Cartographie interactive des enjeux, questions ouvertes et pistes d'action
@@ -823,7 +813,8 @@ const App = () => {
                 padding: '8px 20px',
                 background: 'rgba(238, 194, 29, 0.2)',
                 borderRadius: '20px',
-                fontSize: '14px',
+                fontFamily: "'Flamengo'",
+                fontSize: '11px',
                 color: '#eec21d'
               }}>
                 Sessions #001 → #003
@@ -861,9 +852,10 @@ const App = () => {
             border: '1px solid rgba(238, 194, 29, 0.2)',
             borderRadius: '12px',
             padding: '10px 20px',
-            color: '#fae8a4',
+            color: '#eec21d',
             cursor: 'pointer',
-            fontSize: '16px',
+            fontFamily: "'Flamengo'",
+            fontSize: '14px',
             marginBottom: '24px'
           }}
         >
@@ -890,7 +882,7 @@ const App = () => {
           <h1 style={{ 
             fontFamily: "'Flamengo'",
             fontSize: 'clamp(24px, 5vw, 32px)',
-            color: '#fff',
+            color: '#eec21d',
             marginBottom: '16px'
           }}>
             {sessionData.title}
@@ -900,7 +892,7 @@ const App = () => {
             gap: '24px', 
             flexWrap: 'wrap',
             fontSize: '16px',
-            color: 'rgba(250, 232, 164, 0.7)'
+            color: '#fae8a4',
           }}>
             <span>📅 {sessionData.date}</span>
             <span>⏱️ {sessionData.duration}</span>
@@ -914,12 +906,12 @@ const App = () => {
           flexWrap: 'wrap',
           marginBottom: '24px',
           padding: '8px',
-          background: 'rgba(0, 0, 0, 0.3)',
+          background: '#eec21d',
           borderRadius: '16px'
         }}>
           {allSections.map(key => {
             const isSynthese = key === 'synthese';
-            const label = isSynthese ? '📋 Synthèse' : sessionData.sections[key].title;
+            const label = isSynthese ? 'Synthèse' : sessionData.sections[key].title;
             
             return (
               <button
@@ -936,7 +928,7 @@ const App = () => {
                   border: isSynthese && currentSection !== key ? '1px solid rgba(22, 163, 74, 0.3)' : 'none',
                   borderRadius: '12px',
                   padding: '10px 16px',
-                  color: currentSection === key ? '#111' : isSynthese ? '#4ade80' : '#fae8a4',
+                  color: currentSection === key ? '#111' : isSynthese ? '#eec21d' : '#fae8a4',
                   cursor: 'pointer',
                   fontFamily: "'Flamengo'",
                   fontSize: '16px',
@@ -961,8 +953,8 @@ const App = () => {
           }}>
             <h2 style={{ 
               fontFamily: "'Flamengo'",
-              fontSize: '24px',
-              color: '#4ade80',
+              fontSize: '22px',
+              color: '#eec21d',
               marginBottom: '24px'
             }}>
               {synthese.titre}
@@ -972,11 +964,11 @@ const App = () => {
             <div style={{ marginBottom: '24px' }}>
               <h3 style={{ 
                 fontFamily: "'Flamengo'",
-                fontSize: '18px',
+                fontSize: '16px',
                 color: '#eec21d',
                 marginBottom: '12px'
               }}>
-                💡 Grandes idées
+                Grandes idées
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {synthese.grandesIdees.map((idee, i) => (
@@ -985,8 +977,9 @@ const App = () => {
                     borderLeft: '3px solid #eec21d',
                     borderRadius: '0 10px 10px 0',
                     padding: '12px 16px',
+                    fontFamily: "'Flamengo'",
                     color: '#fae8a4',
-                    fontSize: '15px',
+                    fontSize: '14px',
                     lineHeight: 1.6
                   }}>
                     {idee}
@@ -999,11 +992,11 @@ const App = () => {
             <div style={{ marginBottom: '24px' }}>
               <h3 style={{ 
                 fontFamily: "'Flamengo'",
-                fontSize: '18px',
-                color: '#eec21d',
+                fontSize: '16px',
+                color: '#e9d176',
                 marginBottom: '12px'
               }}>
-                ❓ Questions ouvertes
+                Questions ouvertes
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {synthese.questionsOuvertes.map((q, i) => (
@@ -1012,8 +1005,9 @@ const App = () => {
                     border: '1px solid rgba(234, 88, 12, 0.2)',
                     borderRadius: '10px',
                     padding: '12px 16px',
-                    color: '#fb923c',
-                    fontSize: '15px'
+                    fontFamily: "'Flamengo'",
+                    color: '#fae8a4',
+                    fontSize: '14px'
                   }}>
                     {q}
                   </div>
@@ -1025,11 +1019,11 @@ const App = () => {
             <div style={{ marginBottom: synthese.citation ? '24px' : '0' }}>
               <h3 style={{ 
                 fontFamily: "'Flamengo'",
-                fontSize: '18px',
-                color: '#eec21d',
+                fontSize: '16px',
+                color: '#f8e8ab',
                 marginBottom: '12px'
               }}>
-                🎯 Pistes d'action
+                Pistes d'action
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {synthese.pistesAction.map((piste, i) => (
@@ -1038,8 +1032,9 @@ const App = () => {
                     border: '1px solid rgba(22, 163, 74, 0.2)',
                     borderRadius: '10px',
                     padding: '12px 16px',
-                    color: '#4ade80',
-                    fontSize: '15px'
+                    fontFamily: "'Flamengo'",
+                    color: '#fae8a4',
+                    fontSize: '14px'
                   }}>
                     ✓ {piste}
                   </div>
@@ -1058,14 +1053,14 @@ const App = () => {
               }}>
                 <p style={{ 
                   fontStyle: 'italic', 
-                  color: 'rgba(250, 232, 164, 0.9)',
-                  fontSize: '16px',
+                  color: '#eec21d',
+                  fontSize: '14px',
                   lineHeight: 1.6,
                   marginBottom: '8px'
                 }}>
                   « {synthese.citation.texte} »
                 </p>
-                <p style={{ color: '#eec21d', fontSize: '15px' }}>
+                <p style={{ color: '#eec21d', fontSize: '14px' }}>
                   — {synthese.citation.auteur}
                 </p>
               </div>
@@ -1076,7 +1071,7 @@ const App = () => {
           <GlassCard hover={false} style={{ marginBottom: '32px' }}>
             <h2 style={{ 
               fontFamily: "'Flamengo'",
-              fontSize: '24px',
+              fontSize: '22px',
               color: '#eec21d',
               marginBottom: '24px'
             }}>
@@ -1122,11 +1117,11 @@ const App = () => {
         <GlassCard hover={false}>
           <h3 style={{ 
             fontFamily: "'Flamengo'",
-            fontSize: '18px',
+            fontSize: '16px',
             color: '#eec21d',
             marginBottom: '16px'
           }}>
-            💬 Idées et questions
+            Idées et questions
           </h3>
           <div style={{ display: 'flex', gap: '12px', marginBottom: '16px' }}>
             <input
@@ -1141,6 +1136,7 @@ const App = () => {
                 border: '1px solid rgba(238, 194, 29, 0.2)',
                 borderRadius: '12px',
                 padding: '12px 16px',
+     	        fontFamily: "'Flamengo'",
                 color: '#fae8a4',
                 fontSize: '16px',
                 outline: 'none'
@@ -1168,7 +1164,8 @@ const App = () => {
                   background: 'rgba(238, 194, 29, 0.05)',
                   borderRadius: '10px',
                   padding: '12px',
-                  fontSize: '16px'
+          	  fontFamily: "'Flamengo'",
+                  fontSize: '14px'
                 }}>
                   <span style={{ color: 'rgba(250, 232, 164, 0.5)', marginRight: '8px' }}>{q.time}</span>
                   <span style={{ color: '#fae8a4' }}>{q.text}</span>
@@ -1196,9 +1193,10 @@ const App = () => {
             border: '1px solid rgba(238, 194, 29, 0.2)',
             borderRadius: '12px',
             padding: '10px 20px',
-            color: '#fae8a4',
+            fontFamily: "'Flamengo'",
+            color: '#eec21d',
             cursor: 'pointer',
-            fontSize: '16px',
+            fontSize: '14px',
             marginBottom: '24px',
             transition: 'all 0.3s ease'
           }}
@@ -1220,23 +1218,24 @@ const App = () => {
             padding: '4px 12px',
             background: 'rgba(238, 194, 29, 0.2)',
             borderRadius: '20px',
-            fontSize: '16px',
+            fontFamily: "'Flamengo'",
+            fontSize: '14px',
             color: '#eec21d',
             marginBottom: '12px'
           }}>
-            📋 DOSSIER DE SYNTHÈSE GLOBAL
+            DOSSIER DE SYNTHÈSE GLOBAL
           </div>
           <h1 style={{ 
             fontFamily: "'Flamengo'",
             fontSize: 'clamp(22px, 5vw, 32px)',
-            color: '#fff',
+            color: '#eec21d',
             marginBottom: '8px'
           }}>
             Expropriation des médias oligarchiques
           </h1>
           <p style={{ 
             fontSize: '16px', 
-            color: 'rgba(250, 232, 164, 0.6)'
+            color: '#fae8a4',
           }}>
             Synthèse des sessions #001, #002, #003 — Ruche 75
           </p>
@@ -1270,7 +1269,7 @@ const App = () => {
                 color: syntheseView === key ? '#111' : '#fae8a4',
                 cursor: 'pointer',
                 fontFamily: "'Flamengo'",
-                fontSize: '16px',
+                fontSize: '14px',
                 fontWeight: syntheseView === key ? '600' : '400',
                 transition: 'all 0.3s ease'
               }}
@@ -1295,11 +1294,12 @@ const App = () => {
             <MindMapSVG />
             <p style={{ 
               textAlign: 'center', 
-              color: 'rgba(250, 232, 164, 0.5)', 
-              fontSize: '15px',
+              fontFamily: "'Flamengo'",
+              color: '#fae8a4',
+              fontSize: '16px',
               marginTop: '16px'
             }}>
-              Cliquez sur "Thèmes" pour explorer chaque sujet en détail
+              Cliquez sur "Thèmes" pour explorer chaque sujet
             </p>
           </GlassCard>
         )}
@@ -1329,15 +1329,15 @@ const App = () => {
               >
                 <h3 style={{ 
                   fontFamily: "'Flamengo'",
-                  fontSize: '18px',
-                  color: '#fff',
+                  fontSize: '16px',
+                  color: '#eec21d',
                   marginBottom: '8px'
                 }}>
                   {theme.title}
                 </h3>
                 <p style={{ 
-                  fontSize: '15px', 
-                  color: 'rgba(250, 232, 164, 0.7)',
+                  fontSize: '14px', 
+                  color: '#eec21d',
                   lineHeight: 1.5
                 }}>
                   {theme.summary}
@@ -1347,7 +1347,8 @@ const App = () => {
                   <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid rgba(238, 194, 29, 0.1)' }}>
                     <div style={{ marginBottom: '16px' }}>
                       <p style={{ 
-                        fontSize: '13px', 
+                        fontSize: '14px', 
+        	        fontFamily: "'Flamengo'",
                         color: '#eec21d', 
                         textTransform: 'uppercase',
                         letterSpacing: '0.05em',
@@ -1369,7 +1370,8 @@ const App = () => {
                     </div>
                     <div>
                       <p style={{ 
-                        fontSize: '13px', 
+                        fontSize: '14px', 
+        	        fontFamily: "'Flamengo'",
                         color: '#eec21d', 
                         textTransform: 'uppercase',
                         letterSpacing: '0.05em',
@@ -1386,7 +1388,7 @@ const App = () => {
                           color: '#fae8a4',
                           marginBottom: '6px'
                         }}>
-                          ❓ {q}
+                          {q}
                         </div>
                       ))}
                     </div>
@@ -1403,11 +1405,11 @@ const App = () => {
             <GlassCard hover={false} style={{ marginBottom: '24px' }}>
               <h2 style={{ 
                 fontFamily: "'Flamengo'",
-                fontSize: '20px',
+                fontSize: '18px',
                 color: '#eec21d',
                 marginBottom: '20px'
               }}>
-                📞 Contacts & Modèles à explorer
+                Modèles à explorer
               </h2>
               <div style={{ 
                 display: 'grid', 
@@ -1461,11 +1463,11 @@ const App = () => {
             }}>
               <h2 style={{ 
                 fontFamily: "'Flamengo'",
-                fontSize: '20px',
-                color: '#4ade80',
+                fontSize: '18px',
+                color: '#eec21d',
                 marginBottom: '16px'
               }}>
-                💡 Idées émergentes
+                Idées émergentes
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {dossierSyntheseData.idees.map((idee, i) => (
@@ -1500,10 +1502,10 @@ const App = () => {
             marginBottom: '8px'
           }}>
             « L'utopie ne signifie pas l'irréalisable, mais l'irréalisé.<br/>
-            L'utopie d'hier peut devenir la réalité de demain. »
+            L'utopie d'hier peut devenir la réalité de demain »
           </p>
           <p style={{ color: '#eec21d', fontSize: '15px' }}>
-            — Jacques Monod
+            — Monod
           </p>
         </div>
       </div>
