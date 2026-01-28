@@ -774,10 +774,13 @@ const App = () => {
     const sessionData = data[currentSession];
     if (!sessionData) return null;
 
-    // Récupérer les sections + ajouter "synthese" si disponible
+    // Récupérer les sections + ajouter "synthese" si disponible (et pas déjà présent)
     const sections = Object.keys(sessionData.sections);
     const synthese = sessionsSyntheses[currentSession];
-    const allSections = synthese ? [...sections, 'synthese'] : sections;
+    // Éviter le doublon : n'ajouter 'synthese' que si pas déjà dans les sections
+    const allSections = synthese && !sections.includes('synthese') 
+      ? [...sections, 'synthese'] 
+      : sections;
     
     const sectionData = currentSection === 'synthese' ? null : sessionData.sections[currentSection];
 
@@ -1361,7 +1364,7 @@ const App = () => {
                     <div style={{ flex: 1 }}>
                       <div style={{ 
                         fontWeight: '600', 
-                        color: '#eec21d',
+                        color: '#fff',
                         fontSize: '15px',
                         marginBottom: '4px'
                       }}>
@@ -1397,7 +1400,7 @@ const App = () => {
               <h2 style={{ 
                 fontFamily: "'Flamengo', Georgia, serif",
                 fontSize: '18px',
-                color: '#2e7323',
+                color: '#eec21d',
                 marginBottom: '16px'
               }}>
                 Idées émergentes
