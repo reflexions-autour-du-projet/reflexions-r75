@@ -3,8 +3,11 @@ import { mediasOligarchiques, pantouflage, sessionsConfig, prochaineSession } fr
 
 // ═══════════════════════════════════════════════════════════════════════════
 // RÉFLEXION AUTOUR DU PROJET — R75
-// Application pour les sessions de Réflexion autour du Projet de La Ruche 75
+// Application pour les sessions de Réflexion autour du Projet de la Ruche 75
 // ═══════════════════════════════════════════════════════════════════════════
+
+// Lien Discord pour les questions et discussions
+const DISCORD_FORUM_URL = "https://discord.com/channels/1426932365896454337/1462537887592743096";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // DONNÉES DE SYNTHÈSE PAR SESSION
@@ -238,8 +241,6 @@ const App = () => {
   const [currentSection, setCurrentSection] = useState(null);
   const [reactions, setReactions] = useState({ pollen: 0, miel: 0, alveole: 0, reine: 0 });
   const [showProjet, setShowProjet] = useState(false);
-  const [questions, setQuestions] = useState([]);
-  const [newQuestion, setNewQuestion] = useState('');
   
   // États pour le dossier de synthèse global
   const [showDossierSynthese, setShowDossierSynthese] = useState(false);
@@ -272,13 +273,6 @@ const App = () => {
 
   const addReaction = (type) => {
     setReactions(prev => ({ ...prev, [type]: prev[type] + 1 }));
-  };
-
-  const submitQuestion = () => {
-    if (newQuestion.trim()) {
-      setQuestions(prev => [...prev, { text: newQuestion, time: new Date().toLocaleTimeString('fr-FR', { hour: '2-digit', minute: '2-digit' }) }]);
-      setNewQuestion('');
-    }
   };
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -1052,64 +1046,66 @@ const App = () => {
           ))}
         </div>
 
-        {/* Zone de questions */}
-        <GlassCard hover={false}>
+        {/* ═══════════════════════════════════════════════════════════════════
+            BOUTON DISCORD - Remplace la zone de questions
+            ═══════════════════════════════════════════════════════════════════ */}
+        <GlassCard hover={false} style={{
+          background: 'linear-gradient(135deg, rgba(88, 101, 242, 0.15) 0%, rgba(88, 101, 242, 0.05) 100%)',
+          border: '1px solid rgba(88, 101, 242, 0.3)',
+          textAlign: 'center'
+        }}>
+          <div style={{ fontSize: '40px', marginBottom: '12px' }}>💬</div>
           <h3 style={{ 
             fontFamily: "'Flamengo', Georgia, serif",
-            fontSize: '16px',
+            fontSize: '18px',
             color: '#eec21d',
-            marginBottom: '16px'
+            marginBottom: '8px'
           }}>
-            Idées et questions
+            Une idée ? Une question ?
           </h3>
-          <div style={{ display: 'flex', gap: '12px', marginBottom: '16px' }}>
-            <input
-              type="text"
-              value={newQuestion}
-              onChange={(e) => setNewQuestion(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && submitQuestion()}
-              placeholder="Écris ici.."
-              style={{
-                flex: 1,
-                background: 'rgba(0, 0, 0, 0.3)',
-                border: '1px solid rgba(238, 194, 29, 0.2)',
-                borderRadius: '12px',
-                padding: '12px 16px',
-                color: '#fae8a4',
-                fontSize: '16px',
-                outline: 'none'
-              }}
-            />
-            <button
-              onClick={submitQuestion}
-              style={{
-                background: '#eec21d',
-                border: 'none',
-                borderRadius: '12px',
-                padding: '12px 20px',
-                color: '#111',
-                fontWeight: '600',
-                cursor: 'pointer'
-              }}
-            >
-              Envoyer
-            </button>
-          </div>
-          {questions.length > 0 && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              {questions.map((q, i) => (
-                <div key={i} style={{
-                  background: 'rgba(238, 194, 29, 0.05)',
-                  borderRadius: '10px',
-                  padding: '12px',
-                  fontSize: '14px'
-                }}>
-                  <span style={{ color: 'rgba(250, 232, 164, 0.5)', marginRight: '8px' }}>{q.time}</span>
-                  <span style={{ color: '#fae8a4' }}>{q.text}</span>
-                </div>
-              ))}
-            </div>
-          )}
+          <p style={{ 
+            fontSize: '15px', 
+            color: 'rgba(250, 232, 164, 0.7)',
+            marginBottom: '20px',
+            lineHeight: 1.6
+          }}>
+            Retrouvons-nous sur Discord pour centraliser nos échanges et construire notre savoir collectif !
+          </p>
+          <a
+            href={DISCORD_FORUM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              padding: '14px 28px',
+              background: 'linear-gradient(135deg, #5865F2 0%, #4752C4 100%)',
+              border: 'none',
+              borderRadius: '12px',
+              color: '#fff',
+              fontFamily: "'Flamengo', Georgia, serif",
+              fontSize: '16px',
+              fontWeight: '600',
+              textDecoration: 'none',
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              boxShadow: '0 4px 15px rgba(88, 101, 242, 0.3)'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 6px 20px rgba(88, 101, 242, 0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow = '0 4px 15px rgba(88, 101, 242, 0.3)';
+            }}
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+            </svg>
+            Rejoindre la discussion
+          </a>
         </GlassCard>
       </div>
     );
