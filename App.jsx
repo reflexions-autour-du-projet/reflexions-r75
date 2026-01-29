@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Tv, Briefcase, Calendar, Clock, Landmark, Coins, Scale, Handshake, FileText, Bot, 
   Search, Lightbulb, HelpCircle, Check, Lock, Map, FolderOpen, ClipboardList,
-  ArrowRight, ArrowLeft, Paperclip, CheckCircle, X, Sun, Moon, History
+  ArrowRight, ArrowLeft, Paperclip, CheckCircle, X, Sun, Moon, History, Quote, Users, Globe, Award
 } from 'lucide-react';
 import { mediasOligarchiques, pantouflage, sessionsConfig, prochaineSession } from './sessions-data.js';
 
@@ -1427,7 +1427,7 @@ const App = () => {
   );
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // RENDU - CONTENU DE SECTION
+  // RENDU - CONTENU DE SECTION (CORRIGÉ AVEC TOUS LES HANDLERS)
   // ═══════════════════════════════════════════════════════════════════════════
   const renderSectionContent = (content) => {
     if (!content) return null;
@@ -1446,7 +1446,10 @@ const App = () => {
       return <p key={key} style={{ color: colors.textMuted, lineHeight: 1.7, fontSize: fs.base + 'px' }}>{item}</p>;
     }
 
-    if (item.type === 'definition' || item.term) {
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Définition classique (term, meaning, etymology)
+    // ═══════════════════════════════════════════════════════════════════════
+    if ((item.type === 'definition' && item.term) || (item.term && item.meaning)) {
       return (
         <div key={key} style={{
           background: darkMode
@@ -1486,6 +1489,65 @@ const App = () => {
       );
     }
 
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Définition pantouflage (origine, terminologie, remboursement)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.type === 'definition' && item.origine && item.terminologie) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {/* Origine */}
+          <div style={{
+            background: darkMode
+              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)'
+              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
+            borderLeft: `4px solid ${colors.primary}`,
+            borderRadius: '0 16px 16px 0',
+            padding: '20px 24px'
+          }}>
+            <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <History size={18} color={ICON_COLOR} /> Origine historique
+            </div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '6px' }}><strong>Date :</strong> {item.origine.date}</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '6px' }}><strong>Contexte :</strong> {item.origine.contexte}</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text }}><strong>École :</strong> {item.origine.ecole}</div>
+          </div>
+
+          {/* Terminologie */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '12px' }}>
+            {item.terminologie.map((t, i) => (
+              <div key={i} style={{
+                background: colors.buttonBg,
+                border: `1px solid ${colors.cardBorder}`,
+                borderRadius: '12px',
+                padding: '16px'
+              }}>
+                <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{t.terme}</div>
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5 }}>{t.signification}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Remboursement */}
+          {item.remboursement && (
+            <div style={{
+              background: colors.buttonBg,
+              borderRadius: '12px',
+              padding: '16px',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '12px'
+            }}>
+              <Coins size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6 }}>{item.remboursement}</div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Numéroté (numero, titre, description, page)
+    // ═══════════════════════════════════════════════════════════════════════
     if (item.numero !== undefined) {
       return (
         <div key={key} style={{
@@ -1523,6 +1585,236 @@ const App = () => {
       );
     }
 
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Pouvoirs oligarchiques (icon, name, detail)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.icon && item.name && item.detail) {
+      return (
+        <div key={key} style={{
+          background: colors.buttonBg,
+          border: `1px solid ${colors.cardBorder}`,
+          borderRadius: '12px',
+          padding: '16px',
+          display: 'flex',
+          alignItems: 'flex-start',
+          gap: '12px'
+        }}>
+          <span style={{ fontSize: '24px' }}>{item.icon}</span>
+          <div style={{ flex: 1 }}>
+            <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '4px' }}>{item.name}</div>
+            <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted }}>{item.detail}</div>
+          </div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Comparaison (type: "comparaison", elements)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.type === 'comparaison' && item.elements) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          {item.elements.map((el, i) => (
+            <div key={i} style={{
+              background: colors.buttonBg,
+              border: `1px solid ${colors.cardBorder}`,
+              borderRadius: '12px',
+              padding: '16px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '4px'
+            }}>
+              <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.base - 1) + 'px', color: colors.primary, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{el.label}</div>
+              <div style={{ fontSize: fs.base + 'px', color: colors.text }}>{el.value}</div>
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Subventions (stat, citation, exemples)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.stat && item.citation && item.exemples) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {/* Stat principale */}
+          <div style={{
+            background: darkMode
+              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)'
+              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0.05) 100%)',
+            borderRadius: '16px',
+            padding: '24px',
+            textAlign: 'center'
+          }}>
+            <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.large + 8) + 'px', color: colors.primary, marginBottom: '8px' }}>{item.stat.number}</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text }}>{item.stat.label}</div>
+          </div>
+
+          {/* Citation */}
+          <div style={{
+            background: colors.buttonBg,
+            borderLeft: `4px solid ${colors.primary}`,
+            borderRadius: '0 12px 12px 0',
+            padding: '20px'
+          }}>
+            <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px' }}>
+              « {item.citation.texte} »
+            </p>
+            <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px' }}>— {item.citation.source}</p>
+          </div>
+
+          {/* Exemples */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {item.exemples.map((ex, i) => (
+              <div key={i} style={{
+                background: colors.buttonBg,
+                border: `1px solid ${colors.cardBorder}`,
+                borderRadius: '12px',
+                padding: '16px'
+              }}>
+                <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{ex.nom}</div>
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5 }}>{ex.detail}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Type stat seul (type: "stat", number, label, detail)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.type === 'stat' && item.number) {
+      return (
+        <div key={key} style={{
+          background: darkMode
+            ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)'
+            : 'linear-gradient(135deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0.05) 100%)',
+          borderRadius: '16px',
+          padding: '24px',
+          textAlign: 'center'
+        }}>
+          <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.large + 16) + 'px', color: colors.primary, marginBottom: '8px' }}>{item.number}</div>
+          <div style={{ fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', marginBottom: '8px' }}>{item.label}</div>
+          {item.detail && <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.6 }}>{item.detail}</div>}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Marché à double versant (explication, versants, insight)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.explication && item.versants) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px' }}>{item.explication}</p>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px' }}>
+            {item.versants.map((v, i) => (
+              <div key={i} style={{
+                background: colors.buttonBg,
+                border: `1px solid ${colors.cardBorder}`,
+                borderRadius: '12px',
+                padding: '20px'
+              }}>
+                <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{v.titre}</div>
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5 }}>{v.detail}</div>
+              </div>
+            ))}
+          </div>
+
+          {item.insight && (
+            <div style={{
+              background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
+              borderRadius: '12px',
+              padding: '16px',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '12px'
+            }}>
+              <Lightbulb size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6 }}>{item.insight}</div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Info vs Opinion (probleme, exemples, proposition, reference)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.probleme && item.exemples && item.proposition) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px' }}>{item.probleme}</p>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {item.exemples.map((ex, i) => (
+              <div key={i} style={{
+                background: colors.buttonBg,
+                borderLeft: `3px solid ${colors.primary}`,
+                borderRadius: '0 10px 10px 0',
+                padding: '12px 16px',
+                color: colors.text,
+                fontSize: (fs.base - 1) + 'px'
+              }}>{ex}</div>
+            ))}
+          </div>
+
+          <div style={{
+            background: darkMode ? 'rgba(68, 112, 29, 0.15)' : 'rgba(68, 112, 29, 0.1)',
+            border: '1px solid rgba(68, 112, 29, 0.3)',
+            borderRadius: '12px',
+            padding: '16px',
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '12px'
+          }}>
+            <CheckCircle size={20} color="#44701D" style={{ flexShrink: 0, marginTop: '2px' }} />
+            <div style={{ fontSize: fs.base + 'px', color: colors.text }}><strong>Proposition :</strong> {item.proposition}</div>
+          </div>
+
+          {item.reference && (
+            <div style={{
+              background: colors.buttonBg,
+              borderRadius: '10px',
+              padding: '12px 16px',
+              fontSize: (fs.base - 1) + 'px',
+              color: colors.textMuted,
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '8px'
+            }}>
+              <FileText size={16} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
+              {item.reference}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Médias coopératifs (nom, modele, resultat)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.nom && item.modele && item.resultat) {
+      return (
+        <div key={key} style={{
+          background: colors.buttonBg,
+          border: `1px solid ${colors.cardBorder}`,
+          borderRadius: '12px',
+          padding: '16px'
+        }}>
+          <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{item.nom}</div>
+          <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, marginBottom: '6px' }}><strong>Modèle :</strong> {item.modele}</div>
+          <div style={{ fontSize: (fs.base - 1) + 'px', color: '#44701D' }}>✓ {item.resultat}</div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Avantages et questions
+    // ═══════════════════════════════════════════════════════════════════════
     if (item.avantages && item.questions) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -1580,6 +1872,9 @@ const App = () => {
       );
     }
 
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Oligarques médias (name, medias)
+    // ═══════════════════════════════════════════════════════════════════════
     if (item.name && item.medias) {
       return (
         <div key={key} style={{
@@ -1594,7 +1889,10 @@ const App = () => {
       );
     }
 
-    if (item.titre && item.detail) {
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Titre + detail simple
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.titre && item.detail && !item.numero) {
       return (
         <div key={key} style={{
           background: colors.buttonBg,
@@ -1608,6 +1906,248 @@ const App = () => {
       );
     }
 
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Exemples français pantouflage (principal, autres, stat)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.principal && item.autres) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          {/* Principal - Macron */}
+          <div style={{
+            background: darkMode
+              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)'
+              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
+            borderRadius: '16px',
+            padding: '24px'
+          }}>
+            <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.title + 'px', color: colors.primary, marginBottom: '16px' }}>{item.principal.nom}</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {item.principal.parcours.map((p, i) => (
+                <div key={i} style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                  padding: '8px 12px',
+                  background: p.type === 'public' ? 'rgba(59, 130, 246, 0.1)' : p.type === 'privé' ? 'rgba(239, 68, 68, 0.1)' : colors.buttonBg,
+                  borderRadius: '8px',
+                  borderLeft: `3px solid ${p.type === 'public' ? '#3b82f6' : p.type === 'privé' ? '#ef4444' : colors.primary}`
+                }}>
+                  <span style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, minWidth: '80px' }}>{p.periode}</span>
+                  <span style={{ fontSize: (fs.base - 1) + 'px', color: colors.text }}>{p.poste}</span>
+                  <span style={{
+                    marginLeft: 'auto',
+                    fontSize: '10px',
+                    padding: '2px 8px',
+                    borderRadius: '10px',
+                    background: p.type === 'public' ? 'rgba(59, 130, 246, 0.2)' : p.type === 'privé' ? 'rgba(239, 68, 68, 0.2)' : colors.buttonBgHover,
+                    color: p.type === 'public' ? '#3b82f6' : p.type === 'privé' ? '#ef4444' : colors.primary,
+                    textTransform: 'uppercase'
+                  }}>{p.type}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Autres exemples */}
+          <div>
+            <h4 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Autres exemples</h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {item.autres.map((a, i) => (
+                <div key={i} style={{
+                  background: colors.buttonBg,
+                  border: `1px solid ${colors.cardBorder}`,
+                  borderRadius: '12px',
+                  padding: '16px'
+                }}>
+                  <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{a.nom}</div>
+                  <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5 }}>{a.detail}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Stat */}
+          {item.stat && (
+            <div style={{
+              background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+              border: '1px solid rgba(239, 68, 68, 0.3)',
+              borderRadius: '12px',
+              padding: '20px',
+              textAlign: 'center'
+            }}>
+              <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.large + 8) + 'px', color: '#ef4444', marginBottom: '8px' }}>{item.stat.number}</div>
+              <div style={{ fontSize: fs.base + 'px', color: colors.text }}>{item.stat.label}</div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Exemples européens (exemples, stat avec source/chiffre)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.exemples && item.stat && item.stat.source) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {item.exemples.map((ex, i) => (
+              <div key={i} style={{
+                background: colors.buttonBg,
+                border: `1px solid ${colors.cardBorder}`,
+                borderRadius: '12px',
+                padding: '16px'
+              }}>
+                <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{ex.nom}</div>
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5 }}>{ex.detail}</div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{
+            background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
+            borderRadius: '12px',
+            padding: '20px',
+            textAlign: 'center'
+          }}>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '8px' }}>{item.stat.chiffre}</div>
+            <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted }}>— {item.stat.source}</div>
+          </div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Government Sachs (intro, exemples, mondial)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.intro && item.exemples && item.mondial) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px' }}>{item.intro}</p>
+
+          <div>
+            <h4 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Users size={18} color={ICON_COLOR} /> Exemples américains
+            </h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {item.exemples.map((ex, i) => (
+                <div key={i} style={{
+                  background: colors.buttonBg,
+                  border: `1px solid ${colors.cardBorder}`,
+                  borderRadius: '12px',
+                  padding: '16px',
+                  display: 'grid',
+                  gridTemplateColumns: '1fr auto 1fr',
+                  gap: '12px',
+                  alignItems: 'center'
+                }}>
+                  <div>
+                    <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, marginBottom: '2px' }}>Avant</div>
+                    <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text }}>{ex.avant}</div>
+                  </div>
+                  <ArrowRight size={16} color={colors.textVeryMuted} />
+                  <div>
+                    <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, marginBottom: '2px' }}>Après</div>
+                    <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text }}>{ex.apres}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <h4 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Globe size={18} color={ICON_COLOR} /> Influence mondiale
+            </h4>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
+              {item.mondial.map((m, i) => (
+                <div key={i} style={{
+                  background: colors.buttonBg,
+                  border: `1px solid ${colors.cardBorder}`,
+                  borderRadius: '12px',
+                  padding: '14px'
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                    <span style={{ fontSize: (fs.base - 1) + 'px', color: colors.primary, fontWeight: '600' }}>{m.nom}</span>
+                    <span style={{ fontSize: '10px', padding: '2px 8px', background: colors.buttonBgHover, borderRadius: '10px', color: colors.textMuted }}>{m.pays}</span>
+                  </div>
+                  <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted }}>{m.detail}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Young Leaders (concept, citation, programmes)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.concept && item.citation && item.programmes) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px' }}>{item.concept}</p>
+
+          {/* Citation */}
+          <div style={{
+            background: colors.buttonBg,
+            borderLeft: `4px solid ${colors.primary}`,
+            borderRadius: '0 12px 12px 0',
+            padding: '20px'
+          }}>
+            <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px' }}>
+              « {item.citation.texte} »
+            </p>
+            <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px' }}>— {item.citation.auteur}</p>
+            {item.citation.source && <p style={{ color: colors.textVeryMuted, fontSize: (fs.base - 3) + 'px', marginTop: '4px' }}>{item.citation.source}</p>}
+          </div>
+
+          {/* Programmes */}
+          {item.programmes.map((prog, i) => (
+            <div key={i} style={{
+              background: colors.buttonBg,
+              border: `1px solid ${colors.cardBorder}`,
+              borderRadius: '16px',
+              padding: '20px'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                <Award size={24} color={ICON_COLOR} />
+                <div>
+                  <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary }}>{prog.nom}</div>
+                  <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted }}>Depuis {prog.depuis}</div>
+                </div>
+              </div>
+              
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '12px', padding: '10px', background: darkMode ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.3)', borderRadius: '8px' }}>
+                {prog.format}
+              </div>
+
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                {prog.exemples.map((ex, j) => {
+                  const isObject = typeof ex === 'object';
+                  return (
+                    <div key={j} style={{
+                      padding: '6px 12px',
+                      background: colors.buttonBgHover,
+                      borderRadius: '20px',
+                      fontSize: (fs.base - 2) + 'px',
+                      color: colors.text
+                    }}>
+                      {isObject ? (
+                        <span>{ex.nom} <span style={{ color: colors.textMuted, fontSize: '10px' }}>({ex.delai})</span></span>
+                      ) : ex}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Array générique
+    // ═══════════════════════════════════════════════════════════════════════
     if (Array.isArray(item)) {
       return (
         <div key={key} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
@@ -1616,6 +2156,10 @@ const App = () => {
       );
     }
 
+    // ═══════════════════════════════════════════════════════════════════════
+    // FALLBACK: Affichage JSON pour debug
+    // ═══════════════════════════════════════════════════════════════════════
+    console.warn('Unhandled content item:', item);
     return null;
   };
 
