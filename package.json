@@ -1,7 +1,7 @@
 {
   "name": "r75-reflexion-projet",
   "version": "1.0.0",
-  "description": "Application pour les sessions de Réflexion autour du Projet de La Ruche 75",
+  "description": "Application pour les sessions de Réflexion autour du Projet de la Ruche 75",
   "private": true,
   "type": "module",
   "scripts": {
@@ -11,7 +11,8 @@
   },
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "lucide-react": "^0.468.0"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
