@@ -249,6 +249,9 @@ const App = () => {
   };
 
   const ICON_COLOR = colors.primary;
+  
+  // Police Avenir pour le texte courant
+  const textFont = "'Avenir', 'Avenir Next', -apple-system, BlinkMacSystemFont, sans-serif";
 
   const fontSizes = {
     small: { base: 14, title: 18, large: 20 },
@@ -309,7 +312,7 @@ const App = () => {
       });
       session.pistesAction?.forEach((p) => {
         if (p.toLowerCase().includes(query.toLowerCase())) {
-          results.push({ sessionId, sessionLabel, theme: session.theme, type: "Piste d'action", typeIcon: 'check', content: p });
+          results.push({ sessionId, sessionLabel, theme: session.theme, type: "Angle d'action", typeIcon: 'check', content: p });
         }
       });
     });
@@ -493,7 +496,7 @@ const App = () => {
             flex: 1, background: 'transparent', border: 'none', outline: 'none',
             marginLeft: '10px', color: colors.text,
             fontSize: (fs.base - 2) + 'px',
-            fontFamily: "'Flamengo', Georgia, serif"
+            fontFamily: textFont
           }}
         />
         {searchQuery && (
@@ -505,6 +508,14 @@ const App = () => {
           </button>
         )}
       </div>
+      
+      {/* Style pour le placeholder en #eec21d */}
+      <style>{`
+        input::placeholder {
+          color: #eec21d !important;
+          opacity: 0.8;
+        }
+      `}</style>
       
       {showSearchResults && searchResults.length > 0 && (
         <div style={{
@@ -541,7 +552,7 @@ const App = () => {
                   <span style={{ fontSize: '10px', color: colors.primary, fontFamily: "'Flamengo', Georgia, serif", textTransform: 'uppercase', letterSpacing: '0.03em' }}>{result.sessionLabel}</span>
                   <span style={{ fontSize: '9px', color: colors.textVeryMuted, padding: '2px 6px', background: colors.buttonBg, borderRadius: '8px' }}>{result.type}</span>
                 </div>
-                <div style={{ fontSize: '13px', color: colors.text, lineHeight: 1.4 }}>{highlightMatch(result.content, searchQuery)}</div>
+                <div style={{ fontSize: '13px', color: colors.text, lineHeight: 1.4, fontFamily: textFont }}>{highlightMatch(result.content, searchQuery)}</div>
               </div>
             ))}
           </div>
@@ -557,7 +568,7 @@ const App = () => {
           borderRadius: '14px', padding: '16px', textAlign: 'center', zIndex: 100
         }}>
           <div style={{ marginBottom: '6px' }}><Search size={20} color={ICON_COLOR} style={{ opacity: 0.5 }} /></div>
-          <div style={{ color: colors.textVeryMuted, fontSize: '13px' }}>Aucun résultat pour "{searchQuery}"</div>
+          <div style={{ color: colors.textVeryMuted, fontSize: '13px', fontFamily: textFont }}>Aucun résultat pour "{searchQuery}"</div>
         </div>
       )}
     </div>
@@ -620,12 +631,12 @@ const App = () => {
                   color: colors.primary,
                   marginBottom: '4px'
                 }}>{prochaineSession.titre}</div>
-                <div style={{ fontSize: fs.base + 'px', color: colors.textMuted }}>{prochaineSession.date}</div>
+                <div style={{ fontSize: fs.base + 'px', color: colors.textMuted, fontFamily: textFont }}>{prochaineSession.date}</div>
                 {(countdown.days > 0 || countdown.hours > 0 || countdown.minutes > 0) && (
                   <div style={{ marginTop: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                     <Clock size={16} color={ICON_COLOR} />
                     <span style={{
-                      fontFamily: "'Flamengo', Georgia, serif",
+                      fontFamily: textFont,
                       fontSize: (fs.base - 2) + 'px',
                       color: colors.primary,
                       fontWeight: '600'
@@ -643,16 +654,16 @@ const App = () => {
             <GlassCard onClick={() => goToTheme('pantouflage')}>
               <div style={{ marginBottom: '16px' }}><Briefcase size={48} color={ICON_COLOR} strokeWidth={1.5} /></div>
               <h2 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '12px' }}>Le pantouflage</h2>
-              <p style={{ color: colors.textMuted, fontSize: fs.base + 'px', marginBottom: '16px', lineHeight: 1.6 }}>Les allers-retours entre fonction publique et secteur privé</p>
-              <div style={{ display: 'inline-block', padding: '6px 16px', background: colors.buttonBg, borderRadius: '20px', fontSize: (fs.base - 1) + 'px', color: colors.primary }}>{pantouflageCount} session{pantouflageCount > 1 ? 's' : ''}</div>
+              <p style={{ color: colors.textMuted, fontSize: fs.base + 'px', marginBottom: '16px', lineHeight: 1.6, fontFamily: textFont }}>Les allers-retours entre fonction publique et secteur privé</p>
+              <div style={{ display: 'inline-block', padding: '6px 16px', background: colors.buttonBg, borderRadius: '20px', fontSize: (fs.base - 1) + 'px', color: colors.primary, fontFamily: textFont }}>{pantouflageCount} session{pantouflageCount > 1 ? 's' : ''}</div>
               <div style={{ position: 'absolute', right: '24px', bottom: '24px', color: colors.textVeryMuted }}><ArrowRight size={24} /></div>
             </GlassCard>
 
             <GlassCard onClick={() => goToTheme('medias')}>
               <div style={{ marginBottom: '16px' }}><Tv size={48} color={ICON_COLOR} strokeWidth={1.5} /></div>
               <h2 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '12px' }}>Les médias oligarchiques</h2>
-              <p style={{ color: colors.textMuted, fontSize: fs.base + 'px', marginBottom: '16px', lineHeight: 1.6 }}>Expropriation des médias oligarchiques et transformation en SCOP</p>
-              <div style={{ display: 'inline-block', padding: '6px 16px', background: colors.buttonBg, borderRadius: '20px', fontSize: (fs.base - 1) + 'px', color: colors.primary }}>{mediasCount} session{mediasCount > 1 ? 's' : ''}</div>
+              <p style={{ color: colors.textMuted, fontSize: fs.base + 'px', marginBottom: '16px', lineHeight: 1.6, fontFamily: textFont }}>Expropriation des médias oligarchiques et transformation en SCOP</p>
+              <div style={{ display: 'inline-block', padding: '6px 16px', background: colors.buttonBg, borderRadius: '20px', fontSize: (fs.base - 1) + 'px', color: colors.primary, fontFamily: textFont }}>{mediasCount} session{mediasCount > 1 ? 's' : ''}</div>
               <div style={{ position: 'absolute', right: '24px', bottom: '24px', color: colors.textVeryMuted }}><ArrowRight size={24} /></div>
             </GlassCard>
           </div>
@@ -688,7 +699,8 @@ const App = () => {
             borderTop: `1px solid ${colors.cardBorder}`,
             textAlign: 'center',
             fontSize: (fs.base - 1) + 'px',
-            color: colors.textVeryMuted
+            color: colors.textVeryMuted,
+            fontFamily: textFont
           }}>
             <p>Butiner notre futur ensemble, abeille par abeille, réflexion après réflexion...</p>
             <p style={{ marginTop: '8px' }}>
@@ -723,7 +735,7 @@ const App = () => {
               borderRadius: '12px',
               padding: '10px 20px',
               color: colors.primary,
-              fontFamily: "'Flamengo', Georgia, serif",
+              fontFamily: textFont,
               cursor: 'pointer',
               fontSize: (fs.base - 2) + 'px',
               display: 'flex',
@@ -744,7 +756,7 @@ const App = () => {
               borderRadius: '12px',
               padding: '10px 16px',
               color: colors.textMuted,
-              fontFamily: "'Flamengo', Georgia, serif",
+              fontFamily: textFont,
               cursor: 'pointer',
               fontSize: (fs.base - 2) + 'px',
               display: 'flex',
@@ -766,7 +778,7 @@ const App = () => {
             marginBottom: '8px'
           }}>{themeTitle}</h1>
           <p style={{
-            fontFamily: "'Flamengo', Georgia, serif",
+            fontFamily: textFont,
             fontSize: (fs.base - 2) + 'px',
             color: colors.text,
             textTransform: 'uppercase',
@@ -819,9 +831,9 @@ const App = () => {
                     background: colors.primary,
                     border: `3px solid ${colors.background}`
                   }} />
-                  <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textVeryMuted, marginBottom: '4px' }}>{session.date}</div>
+                  <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textVeryMuted, marginBottom: '4px', fontFamily: textFont }}>{session.date}</div>
                   <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '2px' }}>Session #{session.numero}</div>
-                  <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text }}>{session.titre}</div>
+                  <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{session.titre}</div>
                 </div>
               ))}
             </div>
@@ -841,9 +853,9 @@ const App = () => {
                 0{idx + (isMedias ? 1 : 4)}
               </div>
               <h3 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{session.titre}</h3>
-              <p style={{ fontSize: fs.base + 'px', color: colors.text }}>{session.date}</p>
+              <p style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{session.date}</p>
               {!session.available && (
-                <div style={{ marginTop: '12px', fontSize: (fs.base - 2) + 'px', color: colors.text, display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <div style={{ marginTop: '12px', fontSize: (fs.base - 2) + 'px', color: colors.text, display: 'flex', alignItems: 'center', gap: '6px', fontFamily: textFont }}>
                   <Lock size={14} color={colors.text} /> Bientôt disponible
                 </div>
               )}
@@ -865,7 +877,7 @@ const App = () => {
               }}
             >
               <h3 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.title - 2) + 'px', color: colors.primary, marginBottom: '8px' }}>Dossier de synthèse</h3>
-              <p style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '12px' }}>Cartographie interactive des enjeux, questions ouvertes et pistes d'action</p>
+              <p style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '12px', fontFamily: textFont }}>Cartographie interactive des enjeux, questions ouvertes et angles d'action</p>
               <div style={{
                 display: 'inline-block',
                 padding: '8px 20px',
@@ -907,7 +919,7 @@ const App = () => {
             padding: '10px 20px',
             color: colors.primary,
             cursor: 'pointer',
-            fontFamily: "'Flamengo', Georgia, serif",
+            fontFamily: textFont,
             fontSize: (fs.base - 2) + 'px',
             marginBottom: '24px',
             display: 'flex',
@@ -934,7 +946,8 @@ const App = () => {
             borderRadius: '20px',
             fontSize: fs.base + 'px',
             color: colors.primary,
-            marginBottom: '12px'
+            marginBottom: '12px',
+            fontFamily: textFont
           }}>SESSION {currentSession.replace('session', '')}</div>
           <h1 style={{
             fontFamily: "'Flamengo', Georgia, serif",
@@ -942,7 +955,7 @@ const App = () => {
             color: colors.primary,
             marginBottom: '16px'
           }}>{sessionData.title}</h1>
-          <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', fontSize: fs.base + 'px', color: colors.text }}>
+          <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>
             <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Calendar size={16} color={ICON_COLOR} /> {sessionData.date}</span>
             <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}><Clock size={16} color={ICON_COLOR} /> {sessionData.duration}</span>
           </div>
@@ -978,7 +991,7 @@ const App = () => {
                     ? (isSynthese ? '#fff' : (darkMode ? '#111' : '#EEC21D'))
                     : (isSynthese ? '#44701D' : colors.primary),
                   cursor: 'pointer',
-                  fontFamily: "'Flamengo', Georgia, serif",
+                  fontFamily: textFont,
                   fontSize: (fs.base - 2) + 'px',
                   fontWeight: isActive ? '600' : '400',
                   transition: 'all 0.3s ease',
@@ -998,7 +1011,8 @@ const App = () => {
             background: 'linear-gradient(135deg, rgba(68, 112, 29, 0.1) 0%, rgba(68, 112, 29, 0.02) 100%)',
             border: '1px solid rgba(68, 112, 29, 0.2)'
           }}>
-            <h2 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.title + 'px', color: '#44701D', marginBottom: '24px' }}>{synthese.titre}</h2>
+            {/* Titre header en #eec21d */}
+            <h2 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.title + 'px', color: '#eec21d', marginBottom: '24px' }}>{synthese.titre}</h2>
             
             {/* Grandes idées */}
             <div style={{ marginBottom: '24px' }}>
@@ -1022,66 +1036,69 @@ const App = () => {
                     padding: '12px 16px',
                     color: colors.text,
                     fontSize: (fs.base - 2) + 'px',
-                    lineHeight: 1.6
+                    lineHeight: 1.6,
+                    fontFamily: textFont
                   }}>{idee}</div>
                 ))}
               </div>
             </div>
 
-            {/* Questions ouvertes */}
+            {/* Questions ouvertes - #9E876E */}
             <div style={{ marginBottom: '24px' }}>
               <h3 style={{
                 fontFamily: "'Flamengo', Georgia, serif",
                 fontSize: fs.base + 'px',
-                color: darkMode ? '#e9d176' : '#6b5a20',
+                color: '#9E876E',
                 marginBottom: '12px',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px'
               }}>
-                <HelpCircle size={18} color={darkMode ? '#e9d176' : '#6b5a20'} /> Questions ouvertes
+                <HelpCircle size={18} color="#9E876E" /> Questions ouvertes
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {synthese.questionsOuvertes.map((q, i) => (
                   <div key={i} style={{
-                    background: 'rgba(234, 88, 12, 0.1)',
-                    border: '1px solid rgba(234, 88, 12, 0.2)',
+                    background: 'rgba(158, 135, 110, 0.15)',
+                    border: '1px solid rgba(158, 135, 110, 0.3)',
                     borderRadius: '10px',
                     padding: '12px 16px',
                     color: colors.text,
-                    fontSize: (fs.base - 2) + 'px'
+                    fontSize: (fs.base - 2) + 'px',
+                    fontFamily: textFont
                   }}>{q}</div>
                 ))}
               </div>
             </div>
 
-            {/* Pistes d'action */}
+            {/* Angles d'action - #5F7E43 */}
             <div style={{ marginBottom: synthese.citation ? '24px' : '0' }}>
               <h3 style={{
                 fontFamily: "'Flamengo', Georgia, serif",
                 fontSize: fs.base + 'px',
-                color: darkMode ? '#f8e8ab' : '#5a4a00',
+                color: '#5F7E43',
                 marginBottom: '12px',
                 display: 'flex',
                 alignItems: 'center',
                 gap: '8px'
               }}>
-                <Check size={18} color={darkMode ? '#f8e8ab' : '#5a4a00'} /> Pistes d'action
+                <Check size={18} color="#5F7E43" /> Angles d'action
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {synthese.pistesAction.map((piste, i) => (
                   <div key={i} style={{
-                    background: 'rgba(22, 163, 74, 0.1)',
-                    border: '1px solid rgba(22, 163, 74, 0.2)',
+                    background: 'rgba(95, 126, 67, 0.15)',
+                    border: '1px solid rgba(95, 126, 67, 0.3)',
                     borderRadius: '10px',
                     padding: '12px 16px',
                     color: colors.text,
                     fontSize: (fs.base - 2) + 'px',
                     display: 'flex',
                     alignItems: 'flex-start',
-                    gap: '8px'
+                    gap: '8px',
+                    fontFamily: textFont
                   }}>
-                    <Check size={16} color="#4ade80" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    <Check size={16} color="#5F7E43" style={{ flexShrink: 0, marginTop: '2px' }} />
                     {piste}
                   </div>
                 ))}
@@ -1097,10 +1114,10 @@ const App = () => {
                 borderLeft: `4px solid ${colors.primary}`,
                 borderRadius: '0 12px 12px 0'
               }}>
-                <p style={{ fontStyle: 'italic', color: colors.primary, fontSize: (fs.base - 2) + 'px', lineHeight: 1.6, marginBottom: '8px' }}>
+                <p style={{ fontStyle: 'italic', color: colors.primary, fontSize: (fs.base - 2) + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>
                   « {synthese.citation.texte} »
                 </p>
-                <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px' }}>— {synthese.citation.auteur}</p>
+                <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px', fontFamily: textFont }}>— {synthese.citation.auteur}</p>
               </div>
             )}
           </GlassCard>
@@ -1118,7 +1135,7 @@ const App = () => {
           textAlign: 'center'
         }}>
           <h3 style={{ fontFamily: "'Flamengo'", fontSize: (fs.title - 4) + 'px', color: '#7289da', marginBottom: '8px' }}>Une idée, une question?</h3>
-          <p style={{ fontFamily: "'Flamengo'", fontSize: (fs.base - 2) + 'px', color: '#7289da', marginBottom: '20px', lineHeight: 1.6 }}>
+          <p style={{ fontFamily: textFont, fontSize: (fs.base - 2) + 'px', color: '#7289da', marginBottom: '20px', lineHeight: 1.6 }}>
             Retrouvons-nous sur le thread Discord pour centraliser nos ressources et nos idées!
           </p>
           <a
@@ -1134,7 +1151,7 @@ const App = () => {
               border: 'none',
               borderRadius: '12px',
               color: '#fff',
-              fontFamily: "'Flamengo', Georgia, serif",
+              fontFamily: textFont,
               fontSize: fs.base + 'px',
               fontWeight: '600',
               textDecoration: 'none',
@@ -1166,7 +1183,7 @@ const App = () => {
           border: `1px solid ${colors.cardBorder}`,
           borderRadius: '12px',
           padding: '10px 20px',
-          fontFamily: "'Flamengo', Georgia, serif",
+          fontFamily: textFont,
           color: colors.primary,
           cursor: 'pointer',
           fontSize: (fs.base - 2) + 'px',
@@ -1205,7 +1222,7 @@ const App = () => {
           color: colors.primary,
           marginBottom: '8px'
         }}>Expropriation des médias oligarchiques</h1>
-        <p style={{ fontSize: fs.base + 'px', color: colors.text }}>Synthèse des sessions #001, #002, #003 — Ruche 75</p>
+        <p style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>Synthèse des sessions #001, #002, #003 — Ruche 75</p>
       </header>
 
       {/* Navigation tabs */}
@@ -1238,7 +1255,7 @@ const App = () => {
                 padding: '10px 20px',
                 color: isActive ? (darkMode ? '#111' : '#EEC21D') : colors.text,
                 cursor: 'pointer',
-                fontFamily: "'Flamengo', Georgia, serif",
+                fontFamily: textFont,
                 fontSize: (fs.base - 2) + 'px',
                 fontWeight: isActive ? '600' : '400',
                 display: 'flex',
@@ -1259,7 +1276,7 @@ const App = () => {
           <h2 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.title - 2) + 'px', color: colors.primary, marginBottom: '16px' }}>
             Cartographie des enjeux
           </h2>
-          <p style={{ color: colors.text, fontSize: fs.base + 'px', marginBottom: '24px' }}>
+          <p style={{ color: colors.text, fontSize: fs.base + 'px', marginBottom: '24px', fontFamily: textFont }}>
             Cliquez sur "Thèmes" pour explorer chaque sujet en détail
           </p>
           {/* Mini preview des thèmes */}
@@ -1283,7 +1300,7 @@ const App = () => {
                   }}
                 >
                   <IconComp size={16} color={darkMode ? theme.color : '#333'} />
-                  <span style={{ fontSize: (fs.base - 2) + 'px', color: colors.text }}>{theme.title}</span>
+                  <span style={{ fontSize: (fs.base - 2) + 'px', color: colors.text, fontFamily: textFont }}>{theme.title}</span>
                 </div>
               );
             })}
@@ -1326,7 +1343,7 @@ const App = () => {
                   <IconComp size={20} color={themeColor} />
                   {theme.title}
                 </h3>
-                <p style={{ fontSize: (fs.base - 2) + 'px', color: colors.text, lineHeight: 1.5 }}>{theme.summary}</p>
+                <p style={{ fontSize: (fs.base - 2) + 'px', color: colors.text, lineHeight: 1.5, fontFamily: textFont }}>{theme.summary}</p>
                 
                 {isExpanded && (
                   <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: `1px solid ${colors.cardBorder}` }}>
@@ -1344,7 +1361,8 @@ const App = () => {
                         color: colors.textMuted,
                         marginBottom: '6px',
                         paddingLeft: '12px',
-                        borderLeft: `2px solid ${colors.cardBorder}`
+                        borderLeft: `2px solid ${colors.cardBorder}`,
+                        fontFamily: textFont
                       }}>{d}</div>
                     ))}
                     <p style={{
@@ -1363,7 +1381,8 @@ const App = () => {
                         padding: '10px 12px',
                         fontSize: (fs.base - 2) + 'px',
                         color: colors.text,
-                        marginBottom: '6px'
+                        marginBottom: '6px',
+                        fontFamily: textFont
                       }}>{q}</div>
                     ))}
                   </div>
@@ -1391,8 +1410,8 @@ const App = () => {
                 padding: '14px'
               }}>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: '600', color: darkMode ? '#fff' : '#111', fontSize: (fs.base - 1) + 'px', marginBottom: '4px' }}>{c.name}</div>
-                  <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.primary }}>{c.desc}</div>
+                  <div style={{ fontWeight: '600', color: darkMode ? '#fff' : '#111', fontSize: (fs.base - 1) + 'px', marginBottom: '4px', fontFamily: textFont }}>{c.name}</div>
+                  <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.primary, fontFamily: textFont }}>{c.desc}</div>
                 </div>
                 <span style={{
                   padding: '4px 10px',
@@ -1400,7 +1419,8 @@ const App = () => {
                   fontSize: '13px',
                   whiteSpace: 'nowrap',
                   background: colors.buttonBgHover,
-                  color: colors.primary
+                  color: colors.primary,
+                  fontFamily: textFont
                 }}>{c.status}</span>
               </div>
             ))}
@@ -1417,7 +1437,8 @@ const App = () => {
                 borderRadius: '0 10px 10px 0',
                 padding: '12px 16px',
                 color: colors.text,
-                fontSize: (fs.base - 2) + 'px'
+                fontSize: (fs.base - 2) + 'px',
+                fontFamily: textFont
               }}>{idee}</div>
             ))}
           </div>
@@ -1443,7 +1464,7 @@ const App = () => {
 
   const renderContentItem = (item, key) => {
     if (typeof item === 'string') {
-      return <p key={key} style={{ color: colors.textMuted, lineHeight: 1.7, fontSize: fs.base + 'px' }}>{item}</p>;
+      return <p key={key} style={{ color: colors.textMuted, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item}</p>;
     }
 
     // ═══════════════════════════════════════════════════════════════════════
@@ -1460,12 +1481,12 @@ const App = () => {
           padding: '20px 24px'
         }}>
           <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.title + 'px', color: colors.primary, marginBottom: '8px' }}>{item.term}</div>
-          {item.etymology && <div style={{ color: colors.textMuted, fontSize: fs.base + 'px', fontStyle: 'italic', marginBottom: '8px' }}>{item.etymology}</div>}
-          <div style={{ color: darkMode ? '#fff' : '#111', fontSize: fs.base + 'px' }}>{item.meaning}</div>
+          {item.etymology && <div style={{ color: colors.textMuted, fontSize: fs.base + 'px', fontStyle: 'italic', marginBottom: '8px', fontFamily: textFont }}>{item.etymology}</div>}
+          <div style={{ color: darkMode ? '#fff' : '#111', fontSize: fs.base + 'px', fontFamily: textFont }}>{item.meaning}</div>
           {item.principes && (
             <ul style={{ marginTop: '16px', paddingLeft: '20px' }}>
               {item.principes.map((p, i) => (
-                <li key={i} style={{ color: colors.textMuted, marginBottom: '8px', lineHeight: 1.6, fontSize: fs.base + 'px' }}>{p}</li>
+                <li key={i} style={{ color: colors.textMuted, marginBottom: '8px', lineHeight: 1.6, fontSize: fs.base + 'px', fontFamily: textFont }}>{p}</li>
               ))}
             </ul>
           )}
@@ -1479,7 +1500,8 @@ const App = () => {
               color: colors.primary,
               display: 'flex',
               alignItems: 'flex-start',
-              gap: '8px'
+              gap: '8px',
+              fontFamily: textFont
             }}>
               <Paperclip size={16} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
               {item.note}
@@ -1507,9 +1529,9 @@ const App = () => {
             <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <History size={18} color={ICON_COLOR} /> Origine historique
             </div>
-            <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '6px' }}><strong>Date :</strong> {item.origine.date}</div>
-            <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '6px' }}><strong>Contexte :</strong> {item.origine.contexte}</div>
-            <div style={{ fontSize: fs.base + 'px', color: colors.text }}><strong>École :</strong> {item.origine.ecole}</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}><strong>Date :</strong> {item.origine.date}</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}><strong>Contexte :</strong> {item.origine.contexte}</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}><strong>École :</strong> {item.origine.ecole}</div>
           </div>
 
           {/* Terminologie */}
@@ -1522,7 +1544,7 @@ const App = () => {
                 padding: '16px'
               }}>
                 <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{t.terme}</div>
-                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5 }}>{t.signification}</div>
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{t.signification}</div>
               </div>
             ))}
           </div>
@@ -1538,7 +1560,7 @@ const App = () => {
               gap: '12px'
             }}>
               <Coins size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
-              <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6 }}>{item.remboursement}</div>
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.remboursement}</div>
             </div>
           )}
         </div>
@@ -1574,9 +1596,9 @@ const App = () => {
           }}>{item.numero}</div>
           <div style={{ flex: 1 }}>
             <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '6px' }}>{item.titre}</div>
-            <div style={{ fontSize: fs.base + 'px', color: colors.textMuted, marginBottom: '6px' }}>{item.description}</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.textMuted, marginBottom: '6px', fontFamily: textFont }}>{item.description}</div>
             {item.page && (
-              <div style={{ fontSize: fs.base + 'px', color: colors.primary, display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <div style={{ fontSize: fs.base + 'px', color: colors.primary, display: 'flex', alignItems: 'center', gap: '6px', fontFamily: textFont }}>
                 <FileText size={14} color={ICON_COLOR} /> {item.page}
               </div>
             )}
@@ -1602,7 +1624,7 @@ const App = () => {
           <span style={{ fontSize: '24px' }}>{item.icon}</span>
           <div style={{ flex: 1 }}>
             <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '4px' }}>{item.name}</div>
-            <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted }}>{item.detail}</div>
+            <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.detail}</div>
           </div>
         </div>
       );
@@ -1625,7 +1647,7 @@ const App = () => {
               gap: '4px'
             }}>
               <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.base - 1) + 'px', color: colors.primary, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{el.label}</div>
-              <div style={{ fontSize: fs.base + 'px', color: colors.text }}>{el.value}</div>
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{el.value}</div>
             </div>
           ))}
         </div>
@@ -1648,7 +1670,7 @@ const App = () => {
             textAlign: 'center'
           }}>
             <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.large + 8) + 'px', color: colors.primary, marginBottom: '8px' }}>{item.stat.number}</div>
-            <div style={{ fontSize: fs.base + 'px', color: colors.text }}>{item.stat.label}</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{item.stat.label}</div>
           </div>
 
           {/* Citation */}
@@ -1658,10 +1680,10 @@ const App = () => {
             borderRadius: '0 12px 12px 0',
             padding: '20px'
           }}>
-            <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px' }}>
+            <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>
               « {item.citation.texte} »
             </p>
-            <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px' }}>— {item.citation.source}</p>
+            <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px', fontFamily: textFont }}>— {item.citation.source}</p>
           </div>
 
           {/* Exemples */}
@@ -1674,7 +1696,7 @@ const App = () => {
                 padding: '16px'
               }}>
                 <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{ex.nom}</div>
-                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5 }}>{ex.detail}</div>
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{ex.detail}</div>
               </div>
             ))}
           </div>
@@ -1696,8 +1718,8 @@ const App = () => {
           textAlign: 'center'
         }}>
           <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.large + 16) + 'px', color: colors.primary, marginBottom: '8px' }}>{item.number}</div>
-          <div style={{ fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', marginBottom: '8px' }}>{item.label}</div>
-          {item.detail && <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.6 }}>{item.detail}</div>}
+          <div style={{ fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', marginBottom: '8px', fontFamily: textFont }}>{item.label}</div>
+          {item.detail && <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.6, fontFamily: textFont }}>{item.detail}</div>}
         </div>
       );
     }
@@ -1708,7 +1730,7 @@ const App = () => {
     if (item.explication && item.versants) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px' }}>{item.explication}</p>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.explication}</p>
           
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px' }}>
             {item.versants.map((v, i) => (
@@ -1719,7 +1741,7 @@ const App = () => {
                 padding: '20px'
               }}>
                 <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{v.titre}</div>
-                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5 }}>{v.detail}</div>
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{v.detail}</div>
               </div>
             ))}
           </div>
@@ -1734,7 +1756,7 @@ const App = () => {
               gap: '12px'
             }}>
               <Lightbulb size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
-              <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6 }}>{item.insight}</div>
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.insight}</div>
             </div>
           )}
         </div>
@@ -1747,7 +1769,7 @@ const App = () => {
     if (item.probleme && item.exemples && item.proposition) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px' }}>{item.probleme}</p>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.probleme}</p>
           
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {item.exemples.map((ex, i) => (
@@ -1757,7 +1779,8 @@ const App = () => {
                 borderRadius: '0 10px 10px 0',
                 padding: '12px 16px',
                 color: colors.text,
-                fontSize: (fs.base - 1) + 'px'
+                fontSize: (fs.base - 1) + 'px',
+                fontFamily: textFont
               }}>{ex}</div>
             ))}
           </div>
@@ -1772,7 +1795,7 @@ const App = () => {
             gap: '12px'
           }}>
             <CheckCircle size={20} color="#44701D" style={{ flexShrink: 0, marginTop: '2px' }} />
-            <div style={{ fontSize: fs.base + 'px', color: colors.text }}><strong>Proposition :</strong> {item.proposition}</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}><strong>Proposition :</strong> {item.proposition}</div>
           </div>
 
           {item.reference && (
@@ -1784,7 +1807,8 @@ const App = () => {
               color: colors.textMuted,
               display: 'flex',
               alignItems: 'flex-start',
-              gap: '8px'
+              gap: '8px',
+              fontFamily: textFont
             }}>
               <FileText size={16} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
               {item.reference}
@@ -1806,14 +1830,14 @@ const App = () => {
           padding: '16px'
         }}>
           <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{item.nom}</div>
-          <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, marginBottom: '6px' }}><strong>Modèle :</strong> {item.modele}</div>
-          <div style={{ fontSize: (fs.base - 1) + 'px', color: '#44701D' }}>✓ {item.resultat}</div>
+          <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, marginBottom: '6px', fontFamily: textFont }}><strong>Modèle :</strong> {item.modele}</div>
+          <div style={{ fontSize: (fs.base - 1) + 'px', color: '#44701D', fontFamily: textFont }}>✓ {item.resultat}</div>
         </div>
       );
     }
 
     // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Avantages et questions
+    // HANDLER: Avantages et questions - #5F7E43 pour avantages
     // ═══════════════════════════════════════════════════════════════════════
     if (item.avantages && item.questions) {
       return (
@@ -1822,23 +1846,24 @@ const App = () => {
             <h4 style={{
               fontFamily: "'Flamengo', Georgia, serif",
               fontSize: fs.base + 'px',
-              color: '#44701D',
+              color: '#5F7E43',
               marginBottom: '12px',
               display: 'flex',
               alignItems: 'center',
               gap: '8px'
             }}>
-              <CheckCircle size={18} color="#44701D" /> Avantages
+              <CheckCircle size={18} color="#5F7E43" /> Avantages
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.avantages.map((av, i) => (
                 <div key={i} style={{
-                  background: 'rgba(68, 112, 29, 0.1)',
-                  border: '1px solid rgba(68, 112, 29, 0.2)',
+                  background: 'rgba(95, 126, 67, 0.1)',
+                  border: '1px solid rgba(95, 126, 67, 0.2)',
                   borderRadius: '10px',
                   padding: '12px 16px',
-                  color: '#44701D',
-                  fontSize: fs.base + 'px'
+                  color: '#5F7E43',
+                  fontSize: fs.base + 'px',
+                  fontFamily: textFont
                 }}>{av}</div>
               ))}
             </div>
@@ -1863,7 +1888,8 @@ const App = () => {
                   borderRadius: '10px',
                   padding: '12px 16px',
                   color: colors.primary,
-                  fontSize: fs.base + 'px'
+                  fontSize: fs.base + 'px',
+                  fontFamily: textFont
                 }}>{q}</div>
               ))}
             </div>
@@ -1884,7 +1910,7 @@ const App = () => {
           padding: '16px'
         }}>
           <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{item.name}</div>
-          <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted }}>{item.medias}</div>
+          <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.medias}</div>
         </div>
       );
     }
@@ -1900,8 +1926,8 @@ const App = () => {
           borderRadius: '12px',
           padding: '16px'
         }}>
-          <div style={{ fontWeight: '600', color: darkMode ? '#fff' : '#111', marginBottom: '6px', fontSize: fs.base + 'px' }}>{item.titre}</div>
-          <div style={{ fontSize: fs.base + 'px', color: colors.textMuted, lineHeight: 1.6 }}>{item.detail}</div>
+          <div style={{ fontWeight: '600', color: darkMode ? '#fff' : '#111', marginBottom: '6px', fontSize: fs.base + 'px', fontFamily: textFont }}>{item.titre}</div>
+          <div style={{ fontSize: fs.base + 'px', color: colors.textMuted, lineHeight: 1.6, fontFamily: textFont }}>{item.detail}</div>
         </div>
       );
     }
@@ -1932,8 +1958,8 @@ const App = () => {
                   borderRadius: '8px',
                   borderLeft: `3px solid ${p.type === 'public' ? '#3b82f6' : p.type === 'privé' ? '#ef4444' : colors.primary}`
                 }}>
-                  <span style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, minWidth: '80px' }}>{p.periode}</span>
-                  <span style={{ fontSize: (fs.base - 1) + 'px', color: colors.text }}>{p.poste}</span>
+                  <span style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, minWidth: '80px', fontFamily: textFont }}>{p.periode}</span>
+                  <span style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{p.poste}</span>
                   <span style={{
                     marginLeft: 'auto',
                     fontSize: '10px',
@@ -1941,7 +1967,8 @@ const App = () => {
                     borderRadius: '10px',
                     background: p.type === 'public' ? 'rgba(59, 130, 246, 0.2)' : p.type === 'privé' ? 'rgba(239, 68, 68, 0.2)' : colors.buttonBgHover,
                     color: p.type === 'public' ? '#3b82f6' : p.type === 'privé' ? '#ef4444' : colors.primary,
-                    textTransform: 'uppercase'
+                    textTransform: 'uppercase',
+                    fontFamily: textFont
                   }}>{p.type}</span>
                 </div>
               ))}
@@ -1960,7 +1987,7 @@ const App = () => {
                   padding: '16px'
                 }}>
                   <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{a.nom}</div>
-                  <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5 }}>{a.detail}</div>
+                  <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{a.detail}</div>
                 </div>
               ))}
             </div>
@@ -1976,7 +2003,7 @@ const App = () => {
               textAlign: 'center'
             }}>
               <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.large + 8) + 'px', color: '#ef4444', marginBottom: '8px' }}>{item.stat.number}</div>
-              <div style={{ fontSize: fs.base + 'px', color: colors.text }}>{item.stat.label}</div>
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{item.stat.label}</div>
             </div>
           )}
         </div>
@@ -1998,7 +2025,7 @@ const App = () => {
                 padding: '16px'
               }}>
                 <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{ex.nom}</div>
-                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5 }}>{ex.detail}</div>
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{ex.detail}</div>
               </div>
             ))}
           </div>
@@ -2009,8 +2036,8 @@ const App = () => {
             padding: '20px',
             textAlign: 'center'
           }}>
-            <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '8px' }}>{item.stat.chiffre}</div>
-            <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted }}>— {item.stat.source}</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '8px', fontFamily: textFont }}>{item.stat.chiffre}</div>
+            <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>— {item.stat.source}</div>
           </div>
         </div>
       );
@@ -2022,7 +2049,7 @@ const App = () => {
     if (item.intro && item.exemples && item.mondial) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px' }}>{item.intro}</p>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.intro}</p>
 
           <div>
             <h4 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -2041,13 +2068,13 @@ const App = () => {
                   alignItems: 'center'
                 }}>
                   <div>
-                    <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, marginBottom: '2px' }}>Avant</div>
-                    <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text }}>{ex.avant}</div>
+                    <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, marginBottom: '2px', fontFamily: textFont }}>Avant</div>
+                    <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{ex.avant}</div>
                   </div>
                   <ArrowRight size={16} color={colors.textVeryMuted} />
                   <div>
-                    <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, marginBottom: '2px' }}>Après</div>
-                    <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text }}>{ex.apres}</div>
+                    <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, marginBottom: '2px', fontFamily: textFont }}>Après</div>
+                    <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{ex.apres}</div>
                   </div>
                 </div>
               ))}
@@ -2067,10 +2094,10 @@ const App = () => {
                   padding: '14px'
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
-                    <span style={{ fontSize: (fs.base - 1) + 'px', color: colors.primary, fontWeight: '600' }}>{m.nom}</span>
-                    <span style={{ fontSize: '10px', padding: '2px 8px', background: colors.buttonBgHover, borderRadius: '10px', color: colors.textMuted }}>{m.pays}</span>
+                    <span style={{ fontSize: (fs.base - 1) + 'px', color: colors.primary, fontWeight: '600', fontFamily: textFont }}>{m.nom}</span>
+                    <span style={{ fontSize: '10px', padding: '2px 8px', background: colors.buttonBgHover, borderRadius: '10px', color: colors.textMuted, fontFamily: textFont }}>{m.pays}</span>
                   </div>
-                  <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted }}>{m.detail}</div>
+                  <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>{m.detail}</div>
                 </div>
               ))}
             </div>
@@ -2085,7 +2112,7 @@ const App = () => {
     if (item.concept && item.citation && item.programmes) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px' }}>{item.concept}</p>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.concept}</p>
 
           {/* Citation */}
           <div style={{
@@ -2094,11 +2121,11 @@ const App = () => {
             borderRadius: '0 12px 12px 0',
             padding: '20px'
           }}>
-            <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px' }}>
+            <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>
               « {item.citation.texte} »
             </p>
-            <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px' }}>— {item.citation.auteur}</p>
-            {item.citation.source && <p style={{ color: colors.textVeryMuted, fontSize: (fs.base - 3) + 'px', marginTop: '4px' }}>{item.citation.source}</p>}
+            <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px', fontFamily: textFont }}>— {item.citation.auteur}</p>
+            {item.citation.source && <p style={{ color: colors.textVeryMuted, fontSize: (fs.base - 3) + 'px', marginTop: '4px', fontFamily: textFont }}>{item.citation.source}</p>}
           </div>
 
           {/* Programmes */}
@@ -2113,11 +2140,11 @@ const App = () => {
                 <Award size={24} color={ICON_COLOR} />
                 <div>
                   <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary }}>{prog.nom}</div>
-                  <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted }}>Depuis {prog.depuis}</div>
+                  <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>Depuis {prog.depuis}</div>
                 </div>
               </div>
               
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '12px', padding: '10px', background: darkMode ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.3)', borderRadius: '8px' }}>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '12px', padding: '10px', background: darkMode ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.3)', borderRadius: '8px', fontFamily: textFont }}>
                 {prog.format}
               </div>
 
@@ -2130,7 +2157,8 @@ const App = () => {
                       background: colors.buttonBgHover,
                       borderRadius: '20px',
                       fontSize: (fs.base - 2) + 'px',
-                      color: colors.text
+                      color: colors.text,
+                      fontFamily: textFont
                     }}>
                       {isObject ? (
                         <span>{ex.nom} <span style={{ color: colors.textMuted, fontSize: '10px' }}>({ex.delai})</span></span>
@@ -2214,7 +2242,7 @@ const App = () => {
           </button>
 
           <h2 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.title + 'px', color: colors.primary, marginBottom: '8px' }}>Le Projet</h2>
-          <p style={{ color: colors.textMuted, fontSize: fs.base + 'px', marginBottom: '24px' }}>Projet politique — La dernière Version</p>
+          <p style={{ color: colors.textMuted, fontSize: fs.base + 'px', marginBottom: '24px', fontFamily: textFont }}>Projet politique — La dernière Version</p>
 
           <div style={{ marginBottom: '24px' }}>
             <h3 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>NOS PRIORITÉS</h3>
@@ -2234,7 +2262,8 @@ const App = () => {
                 borderRadius: '10px',
                 fontSize: fs.base + 'px',
                 color: colors.text,
-                marginBottom: '8px'
+                marginBottom: '8px',
+                fontFamily: textFont
               }}>{item}</div>
             ))}
           </div>
@@ -2253,7 +2282,8 @@ const App = () => {
               borderRadius: '12px',
               textDecoration: 'none',
               fontWeight: '600',
-              fontSize: fs.base + 'px'
+              fontSize: fs.base + 'px',
+              fontFamily: textFont
             }}
           >
             <FileText size={18} /> Lire le Projet
@@ -2271,7 +2301,7 @@ const App = () => {
   }
 
   return (
-    <div style={{ minHeight: '100vh', background: colors.background, color: colors.text }}>
+    <div style={{ minHeight: '100vh', background: colors.background, color: colors.text, fontFamily: textFont }}>
       <AccessibilityControls />
       {showDossierSynthese 
         ? renderDossierSynthese() 
