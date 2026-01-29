@@ -991,7 +991,7 @@ const App = () => {
                     ? (isSynthese ? '#fff' : (darkMode ? '#111' : '#EEC21D'))
                     : (isSynthese ? '#44701D' : colors.primary),
                   cursor: 'pointer',
-                  fontFamily: textFont,
+                  fontFamily: "'Flamengo', Georgia, serif",
                   fontSize: (fs.base - 2) + 'px',
                   fontWeight: isActive ? '600' : '400',
                   transition: 'all 0.3s ease',
