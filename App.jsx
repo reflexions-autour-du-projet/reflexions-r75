@@ -22,9 +22,6 @@ import {
   ArrowLeft,
   Paperclip,
   CheckCircle,
-  Flower2,
-  Droplets,
-  Bug,
   X
 } from 'lucide-react';
 import { mediasOligarchiques, pantouflage, sessionsConfig, prochaineSession } from './sessions-data.js';
@@ -280,7 +277,6 @@ const App = () => {
   const [currentTheme, setCurrentTheme] = useState(null);
   const [currentSession, setCurrentSession] = useState(null);
   const [currentSection, setCurrentSection] = useState(null);
-  const [reactions, setReactions] = useState({ pollen: 0, miel: 0, alveole: 0, reine: 0 });
   const [showProjet, setShowProjet] = useState(false);
   
   // États pour le dossier de synthèse global
@@ -315,10 +311,6 @@ const App = () => {
     setCurrentSession(null);
     setCurrentSection(null);
     setShowDossierSynthese(false);
-  };
-
-  const addReaction = (type) => {
-    setReactions(prev => ({ ...prev, [type]: prev[type] + 1 }));
   };
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -1207,15 +1199,15 @@ const App = () => {
                 style={{
                   background: currentSection === key 
                     ? isSynthese 
-                      ? 'linear-gradient(135deg, #16a34a 0%, #15803d 100%)'
+                      ? 'linear-gradient(135deg, #44701D 0%, #365a17 100%)'
                       : 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)' 
                     : isSynthese
-                      ? 'rgba(22, 163, 74, 0.2)'
+                      ? 'rgba(68, 112, 29, 0.2)'
                       : 'rgba(238, 194, 29, 0.1)',
-                  border: isSynthese && currentSection !== key ? '1px solid rgba(22, 163, 74, 0.3)' : 'none',
+                  border: isSynthese && currentSection !== key ? '1px solid rgba(68, 112, 29, 0.3)' : 'none',
                   borderRadius: '12px',
                   padding: '10px 16px',
-                  color: currentSection === key ? '#111' : isSynthese ? '#4ade80' : '#fae8a4',
+                  color: currentSection === key ? '#111' : isSynthese ? '#44701D' : '#eec21d',
                   cursor: 'pointer',
                   fontFamily: "'Flamengo', Georgia, serif",
                   fontSize: '14px',
@@ -1235,13 +1227,13 @@ const App = () => {
           // Affichage de la synthèse de session
           <GlassCard hover={false} style={{ 
             marginBottom: '32px',
-            background: 'linear-gradient(135deg, rgba(22, 163, 74, 0.1) 0%, rgba(22, 163, 74, 0.02) 100%)',
-            border: '1px solid rgba(22, 163, 74, 0.2)'
+            background: 'linear-gradient(135deg, rgba(68, 112, 29, 0.1) 0%, rgba(68, 112, 29, 0.02) 100%)',
+            border: '1px solid rgba(68, 112, 29, 0.2)'
           }}>
             <h2 style={{ 
               fontFamily: "'Flamengo', Georgia, serif",
               fontSize: '22px',
-              color: '#eec21d',
+              color: '#44701D',
               marginBottom: '24px'
             }}>
               {synthese.titre}
@@ -1377,42 +1369,6 @@ const App = () => {
             {renderSectionContent(sectionData.content)}
           </GlassCard>
         ) : null}
-
-        {/* Barre de réactions */}
-        <div style={{ 
-          display: 'flex', 
-          gap: '12px', 
-          justifyContent: 'center',
-          flexWrap: 'wrap',
-          marginBottom: '32px'
-        }}>
-          {[
-            { key: 'pollen', icon: Flower2 },
-            { key: 'miel', icon: Droplets },
-            { key: 'alveole', icon: Bug },
-          ].map(({ key, icon: IconComp }) => (
-            <button
-              key={key}
-              onClick={() => addReaction(key)}
-              style={{
-                background: 'rgba(238, 194, 29, 0.1)',
-                border: '1px solid rgba(238, 194, 29, 0.2)',
-                borderRadius: '24px',
-                padding: '12px 20px',
-                color: '#fae8a4',
-                cursor: 'pointer',
-                fontSize: '16px',
-                transition: 'all 0.3s ease',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}
-            >
-              <IconComp size={20} color={ICON_COLOR} />
-              {reactions[key] > 0 && `(${reactions[key]})`}
-            </button>
-          ))}
-        </div>
 
         {/* ═══════════════════════════════════════════════════════════════════
             BOUTON DISCORD - Remplace la zone de questions
@@ -2011,7 +1967,7 @@ const App = () => {
             <div style={{ 
               fontFamily: "'Flamengo', Georgia, serif",
               fontSize: '16px',
-              color: '#fff',
+              color: '#eec21d',
               marginBottom: '6px'
             }}>
               {item.titre}
@@ -2262,22 +2218,22 @@ const App = () => {
             <h4 style={{ 
               fontFamily: "'Flamengo', Georgia, serif",
               fontSize: '16px',
-              color: '#eec21d',
+              color: '#44701D',
               marginBottom: '12px',
               display: 'flex',
               alignItems: 'center',
               gap: '8px'
             }}>
-              <CheckCircle size={18} color="#4ade80" /> Avantages
+              <CheckCircle size={18} color="#44701D" /> Avantages
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.avantages.map((av, i) => (
                 <div key={i} style={{
-                  background: 'rgba(143, 255, 143, 0.1)',
-                  border: '1px solid rgba(143, 255, 143, 0.2)',
+                  background: 'rgba(68, 112, 29, 0.1)',
+                  border: '1px solid rgba(68, 112, 29, 0.2)',
                   borderRadius: '10px',
                   padding: '12px 16px',
-                  color: '#8fc',
+                  color: '#44701D',
                   fontSize: '16px'
                 }}>
                   {av}
@@ -2295,7 +2251,7 @@ const App = () => {
               alignItems: 'center',
               gap: '8px'
             }}>
-              <HelpCircle size={18} color={ICON_COLOR} /> Questions ouvertes
+              <HelpCircle size={18} color="#eec21d" /> Questions ouvertes
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.questions.map((q, i) => (
@@ -2304,7 +2260,7 @@ const App = () => {
                   border: '1px solid rgba(238, 194, 29, 0.2)',
                   borderRadius: '10px',
                   padding: '12px 16px',
-                  color: '#fae8a4',
+                  color: '#eec21d',
                   fontSize: '16px'
                 }}>
                   {q}
