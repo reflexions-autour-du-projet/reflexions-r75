@@ -133,7 +133,7 @@ export const mediasOligarchiques = {
         title: "Rappel",
         content: [
           "L'oligarchie s'illustre par une concentration de différents pouvoirs : économique, politique, administratif et médiatique.",
-          "Les médias oligarchiques = le pouvoir sur l'espace médiatique par un petit nombre de milliardaires."
+          "Les médias oligarchiques = le pouvoir sur l'espace médiatique par un petit nombre."
         ]
       },
       modeleActuel: {
@@ -141,7 +141,7 @@ export const mediasOligarchiques = {
         content: {
           type: "comparaison",
           elements: [
-            { label: "Structure", value: "Un ou quelques propriétaires milliardaires" },
+            { label: "Structure", value: "Un ou quelques propriétaires" },
             { label: "Gouvernance", value: "Décisions stratégiques prises par le propriétaire seul" },
             { label: "Éditorial", value: "Ligne dite 'indépendante' MAIS le propriétaire nomme le directeur" },
             { label: "Financement", value: "Publicités + abonnements + subventions publiques" },
