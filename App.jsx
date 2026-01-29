@@ -1,4 +1,32 @@
 import React, { useState, useEffect } from 'react';
+import { 
+  Tv, 
+  Briefcase, 
+  Calendar, 
+  Clock, 
+  Landmark, 
+  Coins, 
+  Scale, 
+  Handshake, 
+  FileText, 
+  Bot, 
+  Search, 
+  Lightbulb, 
+  HelpCircle, 
+  Check, 
+  Lock, 
+  Map, 
+  FolderOpen, 
+  ClipboardList,
+  ArrowRight,
+  ArrowLeft,
+  Paperclip,
+  CheckCircle,
+  Flower2,
+  Droplets,
+  Bug,
+  X
+} from 'lucide-react';
 import { mediasOligarchiques, pantouflage, sessionsConfig, prochaineSession } from './sessions-data.js';
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -8,6 +36,9 @@ import { mediasOligarchiques, pantouflage, sessionsConfig, prochaineSession } fr
 
 // Lien Discord pour les questions et discussions
 const DISCORD_FORUM_URL = "https://discord.com/channels/1426932365896454337/1462537887592743096";
+
+// Couleur principale pour les icônes
+const ICON_COLOR = "#eec21d";
 
 // ═══════════════════════════════════════════════════════════════════════════
 // DONNÉES DE SYNTHÈSE PAR SESSION
@@ -120,7 +151,8 @@ const dossierSyntheseData = {
   themes: [
     {
       id: 'oligarchie',
-      title: '🏛️ Oligarchie médiatique',
+      title: 'Oligarchie médiatique',
+      icon: Landmark,
       color: '#ffebc0',
       summary: '28 familles/entités contrôlent tous les médias français',
       details: [
@@ -137,7 +169,8 @@ const dossierSyntheseData = {
     },
     {
       id: 'financement',
-      title: '💰 Financement',
+      title: 'Financement',
+      icon: Coins,
       color: '#ebc471',
       summary: "+1 Md€/an de subventions publiques",
       details: [
@@ -154,7 +187,8 @@ const dossierSyntheseData = {
     },
     {
       id: 'deontologie',
-      title: '⚖️ Déontologie',
+      title: 'Déontologie',
+      icon: Scale,
       color: '#d9a22c',
       summary: 'Codes abandonnés depuis 40 ans, pensée unique',
       details: [
@@ -171,7 +205,8 @@ const dossierSyntheseData = {
     },
     {
       id: 'scop',
-      title: '🤝 SCOP & Sociocratie',
+      title: 'SCOP & Sociocratie',
+      icon: Handshake,
       color: '#b08b3d',
       summary: 'Modèle coopératif : salariés propriétaires, 1 personne = 1 voix',
       details: [
@@ -187,7 +222,8 @@ const dossierSyntheseData = {
     },
     {
       id: 'neutralite',
-      title: '📝 Neutralité & Sémantique',
+      title: 'Neutralité & Sémantique',
+      icon: FileText,
       color: '#a0751a',
       summary: "Informer ≠ Convaincre — La neutralité n'existe pas",
       details: [
@@ -204,7 +240,8 @@ const dossierSyntheseData = {
     },
     {
       id: 'ia',
-      title: '🤖 IA & Guerre cognitive',
+      title: 'IA & Guerre cognitive',
+      icon: Bot,
       color: '#835c07',
       summary: 'Brouillage réel/fictif, information instrumentalisée',
       details: [
@@ -310,7 +347,7 @@ const App = () => {
             sessionLabel,
             theme: session.theme,
             type: 'Grande idée',
-            typeIcon: '💡',
+            typeIcon: 'lightbulb',
             content: idee
           });
         }
@@ -324,7 +361,7 @@ const App = () => {
             sessionLabel,
             theme: session.theme,
             type: 'Question ouverte',
-            typeIcon: '❓',
+            typeIcon: 'help',
             content: question
           });
         }
@@ -338,7 +375,7 @@ const App = () => {
             sessionLabel,
             theme: session.theme,
             type: "Piste d'action",
-            typeIcon: '✓',
+            typeIcon: 'check',
             content: piste
           });
         }
@@ -384,6 +421,17 @@ const App = () => {
         {text.slice(index + query.length)}
       </>
     );
+  };
+
+  // Fonction pour rendre l'icône de résultat de recherche
+  const renderSearchResultIcon = (typeIcon) => {
+    const iconProps = { size: 12, color: ICON_COLOR, strokeWidth: 2 };
+    switch(typeIcon) {
+      case 'lightbulb': return <Lightbulb {...iconProps} />;
+      case 'help': return <HelpCircle {...iconProps} />;
+      case 'check': return <Check {...iconProps} />;
+      default: return <Lightbulb {...iconProps} />;
+    }
   };
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -458,18 +506,7 @@ const App = () => {
         padding: '10px 14px',
         transition: 'all 0.3s ease'
       }}>
-        <svg 
-          width="16" 
-          height="16" 
-          viewBox="0 0 24 24" 
-          fill="none" 
-          stroke="#eec21d" 
-          strokeWidth="2"
-          style={{ opacity: 0.6, flexShrink: 0 }}
-        >
-          <circle cx="11" cy="11" r="8"/>
-          <path d="M21 21l-4.35-4.35"/>
-        </svg>
+        <Search size={16} color={ICON_COLOR} strokeWidth={2} style={{ opacity: 0.6, flexShrink: 0 }} />
         <input
           type="text"
           value={searchQuery}
@@ -501,10 +538,12 @@ const App = () => {
               cursor: 'pointer',
               padding: '2px 6px',
               fontSize: '14px',
-              lineHeight: 1
+              lineHeight: 1,
+              display: 'flex',
+              alignItems: 'center'
             }}
           >
-            ×
+            <X size={14} color="rgba(250, 232, 164, 0.4)" />
           </button>
         )}
       </div>
@@ -556,7 +595,9 @@ const App = () => {
                   gap: '6px',
                   marginBottom: '4px'
                 }}>
-                  <span style={{ fontSize: '11px' }}>{result.typeIcon}</span>
+                  <span style={{ display: 'flex', alignItems: 'center' }}>
+                    {renderSearchResultIcon(result.typeIcon)}
+                  </span>
                   <span style={{ 
                     fontSize: '10px', 
                     color: '#eec21d',
@@ -605,7 +646,9 @@ const App = () => {
           textAlign: 'center',
           zIndex: 100
         }}>
-          <div style={{ fontSize: '20px', marginBottom: '6px' }}>🔍</div>
+          <div style={{ marginBottom: '6px' }}>
+            <Search size={20} color={ICON_COLOR} style={{ opacity: 0.5 }} />
+          </div>
           <div style={{ 
             color: 'rgba(250, 232, 164, 0.5)',
             fontSize: '13px'
@@ -747,7 +790,7 @@ const App = () => {
             border: '1px solid rgba(238, 194, 29, 0.25)'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
-              <span style={{ fontSize: '32px' }}>📅</span>
+              <Calendar size={32} color={ICON_COLOR} strokeWidth={1.5} />
               <div style={{ flex: 1, minWidth: '200px' }}>
                 <div style={{ 
                   fontFamily: "'Flamengo', Georgia, serif",
@@ -775,7 +818,7 @@ const App = () => {
           </GlassCard>
 
           {/* ═══════════════════════════════════════════════════════════════════
-              GRID DES DEUX CARDS - CORRIGÉ
+              GRID DES DEUX CARDS
               ═══════════════════════════════════════════════════════════════════ */}
           <div style={{ 
             display: 'grid', 
@@ -785,7 +828,9 @@ const App = () => {
           }}>
 
             <GlassCard onClick={() => goToTheme('pantouflage')}>
-              <div style={{ fontSize: '48px', marginBottom: '16px' }}>🧦</div>
+              <div style={{ marginBottom: '16px' }}>
+                <Briefcase size={48} color={ICON_COLOR} strokeWidth={1.5} />
+              </div>
               <h2 style={{ 
                 fontFamily: "'Flamengo', Georgia, serif",
                 fontSize: '18px',
@@ -811,15 +856,16 @@ const App = () => {
                 position: 'absolute', 
                 right: '24px', 
                 bottom: '24px',
-                fontSize: '24px',
                 color: 'rgba(238, 194, 29, 0.5)'
               }}>
-                →
+                <ArrowRight size={24} />
               </div>
             </GlassCard>
 
             <GlassCard onClick={() => goToTheme('medias')}>
-              <div style={{ fontSize: '48px', marginBottom: '16px' }}>📺</div>
+              <div style={{ marginBottom: '16px' }}>
+                <Tv size={48} color={ICON_COLOR} strokeWidth={1.5} />
+              </div>
               <h2 style={{ 
                 fontFamily: "'Flamengo', Georgia, serif",
                 fontSize: '18px',
@@ -845,10 +891,9 @@ const App = () => {
                 position: 'absolute', 
                 right: '24px', 
                 bottom: '24px',
-                fontSize: '24px',
                 color: 'rgba(238, 194, 29, 0.5)'
               }}>
-                →
+                <ArrowRight size={24} />
               </div>
             </GlassCard>
 
@@ -913,7 +958,7 @@ const App = () => {
     const isMedias = currentTheme === 'medias';
     const sessions = isMedias ? sessionsConfig.medias : sessionsConfig.pantouflage;
     const themeTitle = isMedias ? "Les médias oligarchiques" : "Le pantouflage";
-    const themeIcon = isMedias ? "📺" : "🧦";
+    const ThemeIcon = isMedias ? Tv : Briefcase;
 
     return (
       <div style={{ minHeight: '100vh', padding: '24px', maxWidth: '900px', margin: '0 auto' }}>
@@ -930,16 +975,21 @@ const App = () => {
             cursor: 'pointer',
             fontSize: '14px',
             marginBottom: '32px',
-            transition: 'all 0.3s ease'
+            transition: 'all 0.3s ease',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
           }}
           onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(238, 194, 29, 0.2)'}
           onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(238, 194, 29, 0.1)'}
         >
-          ← Retour à l'accueil
+          <ArrowLeft size={16} /> Retour à l'accueil
         </button>
 
         <header style={{ textAlign: 'center', marginBottom: '48px' }}>
-          <div style={{ fontSize: '64px', marginBottom: '16px' }}>{themeIcon}</div>
+          <div style={{ marginBottom: '16px' }}>
+            <ThemeIcon size={64} color={ICON_COLOR} strokeWidth={1.5} />
+          </div>
           <h1 style={{ 
             fontFamily: "'Flamengo', Georgia, serif",
             fontSize: 'clamp(24px, 5vw, 36px)',
@@ -998,8 +1048,11 @@ const App = () => {
                   marginTop: '12px',
                   fontSize: '14px',
                   color: '#fae8a4',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px'
                 }}>
-                  🔒 Bientôt disponible
+                  <Lock size={14} color="#fae8a4" /> Bientôt disponible
                 </div>
               )}
             </GlassCard>
@@ -1083,10 +1136,13 @@ const App = () => {
             cursor: 'pointer',
             fontFamily: "'Flamengo', Georgia, serif",
             fontSize: '14px',
-            marginBottom: '24px'
+            marginBottom: '24px',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
           }}
         >
-          ← Retour aux sessions
+          <ArrowLeft size={16} /> Retour aux sessions
         </button>
 
         <header style={{ 
@@ -1121,8 +1177,12 @@ const App = () => {
             fontSize: '16px',
             color: '#fae8a4',
           }}>
-            <span>📅 {sessionData.date}</span>
-            <span>⏱️ {sessionData.duration}</span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Calendar size={16} color={ICON_COLOR} /> {sessionData.date}
+            </span>
+            <span style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <Clock size={16} color={ICON_COLOR} /> {sessionData.duration}
+            </span>
           </div>
         </header>
 
@@ -1193,9 +1253,12 @@ const App = () => {
                 fontFamily: "'Flamengo', Georgia, serif",
                 fontSize: '16px',
                 color: '#eec21d',
-                marginBottom: '12px'
+                marginBottom: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
               }}>
-                Grandes idées
+                <Lightbulb size={18} color={ICON_COLOR} /> Grandes idées
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {synthese.grandesIdees.map((idee, i) => (
@@ -1220,9 +1283,12 @@ const App = () => {
                 fontFamily: "'Flamengo', Georgia, serif",
                 fontSize: '16px',
                 color: '#e9d176',
-                marginBottom: '12px'
+                marginBottom: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
               }}>
-                Questions ouvertes
+                <HelpCircle size={18} color="#e9d176" /> Questions ouvertes
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {synthese.questionsOuvertes.map((q, i) => (
@@ -1246,9 +1312,12 @@ const App = () => {
                 fontFamily: "'Flamengo', Georgia, serif",
                 fontSize: '16px',
                 color: '#f8e8ab',
-                marginBottom: '12px'
+                marginBottom: '12px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
               }}>
-                Pistes d'action
+                <Check size={18} color="#f8e8ab" /> Pistes d'action
               </h3>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {synthese.pistesAction.map((piste, i) => (
@@ -1258,9 +1327,13 @@ const App = () => {
                     borderRadius: '10px',
                     padding: '12px 16px',
                     color: '#fae8a4',
-                    fontSize: '14px'
+                    fontSize: '14px',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '8px'
                   }}>
-                    ✓ {piste}
+                    <Check size={16} color="#4ade80" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    {piste}
                   </div>
                 ))}
               </div>
@@ -1314,10 +1387,10 @@ const App = () => {
           marginBottom: '32px'
         }}>
           {[
-            { key: 'pollen', emoji: '🌻' },
-            { key: 'miel', emoji: '🍯' },
-            { key: 'alveole', emoji: '🐝' },
-          ].map(({ key, emoji }) => (
+            { key: 'pollen', icon: Flower2 },
+            { key: 'miel', icon: Droplets },
+            { key: 'alveole', icon: Bug },
+          ].map(({ key, icon: IconComp }) => (
             <button
               key={key}
               onClick={() => addReaction(key)}
@@ -1329,10 +1402,14 @@ const App = () => {
                 color: '#fae8a4',
                 cursor: 'pointer',
                 fontSize: '16px',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
               }}
             >
-              {emoji} {reactions[key] > 0 && `(${reactions[key]})`}
+              <IconComp size={20} color={ICON_COLOR} />
+              {reactions[key] > 0 && `(${reactions[key]})`}
             </button>
           ))}
         </div>
@@ -1422,12 +1499,15 @@ const App = () => {
             cursor: 'pointer',
             fontSize: '14px',
             marginBottom: '24px',
-            transition: 'all 0.3s ease'
+            transition: 'all 0.3s ease',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
           }}
           onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(238, 194, 29, 0.2)'}
           onMouseLeave={(e) => e.currentTarget.style.background = 'rgba(238, 194, 29, 0.1)'}
         >
-          ← Retour aux sessions
+          <ArrowLeft size={16} /> Retour aux sessions
         </button>
 
         <header style={{ 
@@ -1476,10 +1556,10 @@ const App = () => {
           justifyContent: 'center'
         }}>
           {[
-            { key: 'carte', label: '🗺️ Carte' },
-            { key: 'themes', label: '📂 Thèmes' },
-            { key: 'actions', label: '📋 Actions' }
-          ].map(({ key, label }) => (
+            { key: 'carte', label: 'Carte', icon: Map },
+            { key: 'themes', label: 'Thèmes', icon: FolderOpen },
+            { key: 'actions', label: 'Actions', icon: ClipboardList }
+          ].map(({ key, label, icon: IconComp }) => (
             <button
               key={key}
               onClick={() => { setSyntheseView(key); setActiveSyntheseTheme(null); }}
@@ -1495,9 +1575,13 @@ const App = () => {
                 fontFamily: "'Flamengo', Georgia, serif",
                 fontSize: '14px',
                 fontWeight: syntheseView === key ? '600' : '400',
-                transition: 'all 0.3s ease'
+                transition: 'all 0.3s ease',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
               }}
             >
+              <IconComp size={16} color={syntheseView === key ? '#111' : '#fae8a4'} />
               {label}
             </button>
           ))}
@@ -1535,90 +1619,97 @@ const App = () => {
             gap: '16px',
             marginBottom: '24px'
           }}>
-            {dossierSyntheseData.themes.map(theme => (
-              <div
-                key={theme.id}
-                onClick={() => setActiveSyntheseTheme(activeSyntheseTheme === theme.id ? null : theme.id)}
-                style={{
-                  background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
-                  backdropFilter: 'blur(20px)',
-                  border: `1px solid ${activeSyntheseTheme === theme.id ? theme.color : 'rgba(238, 194, 29, 0.15)'}`,
-                  borderLeft: `4px solid ${theme.color}`,
-                  borderRadius: '16px',
-                  padding: '20px',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease'
-                }}
-              >
-                <h3 style={{ 
-                  fontFamily: "'Flamengo', Georgia, serif",
-                  fontSize: '16px',
-                  color: '#eec21d',
-                  marginBottom: '8px'
-                }}>
-                  {theme.title}
-                </h3>
-                <p style={{ 
-                  fontSize: '14px', 
-                  color: '#fae8a4',
-                  lineHeight: 1.5
-                }}>
-                  {theme.summary}
-                </p>
-                
-                {activeSyntheseTheme === theme.id && (
-                  <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid rgba(238, 194, 29, 0.1)' }}>
-                    <div style={{ marginBottom: '16px' }}>
-                      <p style={{ 
-                        fontSize: '12px', 
-                        fontFamily: "'Flamengo', Georgia, serif",
-                        color: '#eec21d', 
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.05em',
-                        marginBottom: '8px'
-                      }}>
-                        Constats
-                      </p>
-                      {theme.details.map((d, i) => (
-                        <div key={i} style={{
-                          fontSize: '14px',
-                          color: 'rgba(250, 232, 164, 0.8)',
-                          marginBottom: '6px',
-                          paddingLeft: '12px',
-                          borderLeft: '2px solid rgba(238, 194, 29, 0.2)'
+            {dossierSyntheseData.themes.map(theme => {
+              const IconComp = theme.icon;
+              return (
+                <div
+                  key={theme.id}
+                  onClick={() => setActiveSyntheseTheme(activeSyntheseTheme === theme.id ? null : theme.id)}
+                  style={{
+                    background: 'linear-gradient(135deg, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.02) 100%)',
+                    backdropFilter: 'blur(20px)',
+                    border: `1px solid ${activeSyntheseTheme === theme.id ? theme.color : 'rgba(238, 194, 29, 0.15)'}`,
+                    borderLeft: `4px solid ${theme.color}`,
+                    borderRadius: '16px',
+                    padding: '20px',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <h3 style={{ 
+                    fontFamily: "'Flamengo', Georgia, serif",
+                    fontSize: '16px',
+                    color: '#eec21d',
+                    marginBottom: '8px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '10px'
+                  }}>
+                    <IconComp size={20} color={theme.color} />
+                    {theme.title}
+                  </h3>
+                  <p style={{ 
+                    fontSize: '14px', 
+                    color: '#fae8a4',
+                    lineHeight: 1.5
+                  }}>
+                    {theme.summary}
+                  </p>
+                  
+                  {activeSyntheseTheme === theme.id && (
+                    <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid rgba(238, 194, 29, 0.1)' }}>
+                      <div style={{ marginBottom: '16px' }}>
+                        <p style={{ 
+                          fontSize: '12px', 
+                          fontFamily: "'Flamengo', Georgia, serif",
+                          color: '#eec21d', 
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.05em',
+                          marginBottom: '8px'
                         }}>
-                          {d}
-                        </div>
-                      ))}
-                    </div>
-                    <div>
-                      <p style={{ 
-                        fontSize: '12px', 
-                        fontFamily: "'Flamengo', Georgia, serif",
-                        color: '#eec21d', 
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.05em',
-                        marginBottom: '8px'
-                      }}>
-                        Questions ouvertes
-                      </p>
-                      {theme.questions.map((q, i) => (
-                        <div key={i} style={{
-                          background: 'rgba(238, 194, 29, 0.08)',
-                          borderRadius: '8px',
-                          padding: '10px 12px',
-                          fontSize: '14px',
-                          color: '#fae8a4',
-                          marginBottom: '6px'
+                          Constats
+                        </p>
+                        {theme.details.map((d, i) => (
+                          <div key={i} style={{
+                            fontSize: '14px',
+                            color: 'rgba(250, 232, 164, 0.8)',
+                            marginBottom: '6px',
+                            paddingLeft: '12px',
+                            borderLeft: '2px solid rgba(238, 194, 29, 0.2)'
+                          }}>
+                            {d}
+                          </div>
+                        ))}
+                      </div>
+                      <div>
+                        <p style={{ 
+                          fontSize: '12px', 
+                          fontFamily: "'Flamengo', Georgia, serif",
+                          color: '#eec21d', 
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.05em',
+                          marginBottom: '8px'
                         }}>
-                          {q}
-                        </div>
-                      ))}
+                          Questions ouvertes
+                        </p>
+                        {theme.questions.map((q, i) => (
+                          <div key={i} style={{
+                            background: 'rgba(238, 194, 29, 0.08)',
+                            borderRadius: '8px',
+                            padding: '10px 12px',
+                            fontSize: '14px',
+                            color: '#fae8a4',
+                            marginBottom: '6px'
+                          }}>
+                            {q}
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            ))}
+                  )}
+                </div>
+              );
+            })}
           </div>
         )}
 
@@ -1688,9 +1779,12 @@ const App = () => {
                 fontFamily: "'Flamengo', Georgia, serif",
                 fontSize: '18px',
                 color: '#48892c',
-                marginBottom: '16px'
+                marginBottom: '16px',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '10px'
               }}>
-                Idées émergentes
+                <Lightbulb size={20} color="#48892c" /> Idées émergentes
               </h2>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {dossierSyntheseData.idees.map((idee, i) => (
@@ -1699,9 +1793,13 @@ const App = () => {
                     borderRadius: '10px',
                     padding: '12px 16px',
                     fontSize: '15px',
-                    color: '#fae8a4'
+                    color: '#fae8a4',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '10px'
                   }}>
-                    • {idee}
+                    <Check size={16} color="#4ade80" style={{ flexShrink: 0, marginTop: '2px' }} />
+                    {idee}
                   </div>
                 ))}
               </div>
@@ -1806,9 +1904,13 @@ const App = () => {
               background: 'rgba(238, 194, 29, 0.1)',
               borderRadius: '10px',
               fontSize: '16px',
-              color: '#eec21d'
+              color: '#eec21d',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '8px'
             }}>
-              📎 {item.note}
+              <Paperclip size={16} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
+              {item.note}
             </div>
           )}
           {item.origine && (
@@ -1837,9 +1939,13 @@ const App = () => {
                   padding: '12px',
                   background: 'rgba(238, 194, 29, 0.1)',
                   borderRadius: '10px',
-                  fontSize: '16px'
+                  fontSize: '16px',
+                  display: 'flex',
+                  alignItems: 'flex-start',
+                  gap: '8px'
                 }}>
-                  💰 <strong style={{ color: '#eec21d' }}>Aujourd'hui :</strong> {item.remboursement}
+                  <Coins size={16} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
+                  <span><strong style={{ color: '#eec21d' }}>Aujourd'hui :</strong> {item.remboursement}</span>
                 </div>
               )}
             </div>
@@ -1914,8 +2020,8 @@ const App = () => {
               {item.description}
             </div>
             {item.page && (
-              <div style={{ fontSize: '16px', color: '#eec21d' }}>
-                📄 {item.page}
+              <div style={{ fontSize: '16px', color: '#eec21d', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <FileText size={14} color={ICON_COLOR} /> {item.page}
               </div>
             )}
           </div>
@@ -2157,9 +2263,12 @@ const App = () => {
               fontFamily: "'Flamengo', Georgia, serif",
               fontSize: '16px',
               color: '#eec21d',
-              marginBottom: '12px'
+              marginBottom: '12px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
             }}>
-              ✅ Avantages
+              <CheckCircle size={18} color="#4ade80" /> Avantages
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.avantages.map((av, i) => (
@@ -2181,9 +2290,12 @@ const App = () => {
               fontFamily: "'Flamengo', Georgia, serif",
               fontSize: '16px',
               color: '#eec21d',
-              marginBottom: '12px'
+              marginBottom: '12px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px'
             }}>
-              ❓ Questions ouvertes
+              <HelpCircle size={18} color={ICON_COLOR} /> Questions ouvertes
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.questions.map((q, i) => (
@@ -2245,9 +2357,13 @@ const App = () => {
               padding: '16px 20px',
               fontSize: '16px',
               color: '#fff',
-              fontStyle: 'italic'
+              fontStyle: 'italic',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '10px'
             }}>
-              💡 {item.insight}
+              <Lightbulb size={18} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
+              {item.insight}
             </div>
           )}
         </div>
@@ -2435,7 +2551,9 @@ const App = () => {
             {item.modele}
           </div>
           {item.resultat && (
-            <div style={{ fontSize: '15px', color: '#8fc' }}>✓ {item.resultat}</div>
+            <div style={{ fontSize: '15px', color: '#8fc', display: 'flex', alignItems: 'center', gap: '6px' }}>
+              <Check size={14} color="#8fc" /> {item.resultat}
+            </div>
           )}
         </div>
       );
@@ -2573,10 +2691,12 @@ const App = () => {
               borderRadius: '50%',
               color: '#fae8a4',
               cursor: 'pointer',
-              fontSize: '20px'
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
             }}
           >
-            ×
+            <X size={20} />
           </button>
           
           <h2 style={{ 
@@ -2632,7 +2752,9 @@ const App = () => {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              display: 'inline-block',
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '8px',
               padding: '16px 22px',
               background: 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)',
               color: '#111',
@@ -2642,7 +2764,7 @@ const App = () => {
               fontSize: '16px'
             }}
           >
-            📄 Lire le Projet
+            <FileText size={18} /> Lire le Projet
           </a>
         </div>
       </div>
