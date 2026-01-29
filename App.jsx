@@ -1668,7 +1668,7 @@ const App = () => {
                       whiteSpace: 'nowrap',
                       background: c.status.includes('contacter') 
                         ? 'rgba(234, 88, 12, 0.2)' 
-                        : '#eec21d'
+                        : '#eec21d',
                       color: c.status.includes('contacter') 
                         ? '#fb923c' 
                         : '#eec21d'
