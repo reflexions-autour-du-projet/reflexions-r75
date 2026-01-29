@@ -27,8 +27,8 @@
 // └─────────────────────────────────────────────────────────────────────────┘
 
 export const prochaineSession = {
-  titre: "Session 4 : Les mesures du Projet",
-  date: "Jeudi 29 janvier à 18h",
+  titre: "Session 5 : Les mesures du Projet",
+  date: "Jeudi 5 février à 18h",
   theme: "pantouflage"
 };
 
