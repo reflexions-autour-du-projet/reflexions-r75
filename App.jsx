@@ -252,6 +252,8 @@ const App = () => {
   
   // Police Avenir pour le texte courant
   const textFont = "'Avenir', 'Avenir Next', -apple-system, BlinkMacSystemFont, sans-serif";
+  // Police Flamengo pour les titres et boutons de navigation
+  const titleFont = "'Flamengo', Georgia, serif";
 
   const fontSizes = {
     small: { base: 14, title: 18, large: 20 },
@@ -371,7 +373,7 @@ const App = () => {
       </div>
       <p style={{
         marginTop: '24px',
-        fontFamily: "'Flamengo', Georgia, serif",
+        fontFamily: titleFont,
         fontSize: fs.base + 'px',
         color: colors.textMuted,
         letterSpacing: '0.1em'
@@ -463,7 +465,7 @@ const App = () => {
               border: 'none',
               color: fontSize === size ? (darkMode ? '#111' : '#EEC21D') : colors.primary,
               cursor: 'pointer',
-              fontFamily: "'Flamengo', Georgia, serif",
+              fontFamily: titleFont,
               fontSize: i === 0 ? '12px' : i === 1 ? '14px' : '16px',
               fontWeight: fontSize === size ? '600' : '400',
               transition: 'all 0.3s ease'
@@ -496,7 +498,7 @@ const App = () => {
             flex: 1, background: 'transparent', border: 'none', outline: 'none',
             marginLeft: '10px', color: colors.text,
             fontSize: (fs.base - 2) + 'px',
-            fontFamily: textFont
+            fontFamily: titleFont
           }}
         />
         {searchQuery && (
@@ -512,8 +514,9 @@ const App = () => {
       {/* Style pour le placeholder en #eec21d */}
       <style>{`
         input::placeholder {
-          color: #eec21d !important;
+          color: ${colors.primary} !important;
           opacity: 0.8;
+          font-family: 'Flamengo', Georgia, serif !important;
         }
       `}</style>
       
@@ -529,7 +532,7 @@ const App = () => {
           <div style={{
             padding: '10px 14px', borderBottom: `1px solid ${colors.cardBorder}`,
             fontSize: '11px', color: colors.textVeryMuted,
-            fontFamily: "'Flamengo', Georgia, serif",
+            fontFamily: titleFont,
             textTransform: 'uppercase', letterSpacing: '0.05em'
           }}>
             {searchResults.length} résultat{searchResults.length > 1 ? 's' : ''}
@@ -549,7 +552,7 @@ const App = () => {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '4px' }}>
                   <span style={{ display: 'flex', alignItems: 'center' }}>{renderSearchResultIcon(result.typeIcon)}</span>
-                  <span style={{ fontSize: '10px', color: colors.primary, fontFamily: "'Flamengo', Georgia, serif", textTransform: 'uppercase', letterSpacing: '0.03em' }}>{result.sessionLabel}</span>
+                  <span style={{ fontSize: '10px', color: colors.primary, fontFamily: titleFont, textTransform: 'uppercase', letterSpacing: '0.03em' }}>{result.sessionLabel}</span>
                   <span style={{ fontSize: '9px', color: colors.textVeryMuted, padding: '2px 6px', background: colors.buttonBg, borderRadius: '8px' }}>{result.type}</span>
                 </div>
                 <div style={{ fontSize: '13px', color: colors.text, lineHeight: 1.4, fontFamily: textFont }}>{highlightMatch(result.content, searchQuery)}</div>
@@ -568,7 +571,7 @@ const App = () => {
           borderRadius: '14px', padding: '16px', textAlign: 'center', zIndex: 100
         }}>
           <div style={{ marginBottom: '6px' }}><Search size={20} color={ICON_COLOR} style={{ opacity: 0.5 }} /></div>
-          <div style={{ color: colors.textVeryMuted, fontSize: '13px', fontFamily: textFont }}>Aucun résultat pour "{searchQuery}"</div>
+          <div style={{ color: colors.textVeryMuted, fontSize: '13px', fontFamily: titleFont }}>Aucun résultat pour "{searchQuery}"</div>
         </div>
       )}
     </div>
@@ -589,7 +592,7 @@ const App = () => {
           <header style={{ textAlign: 'center', marginBottom: '32px' }}>
             <div style={{ marginBottom: '24px' }}><HexLogo size={100} color={colors.primary} /></div>
             <h1 style={{
-              fontFamily: "'Flamengo', Georgia, serif",
+              fontFamily: titleFont,
               fontSize: `clamp(22px, 6vw, ${fs.large + 18}px)`,
               color: colors.primary,
               marginBottom: '8px',
@@ -597,7 +600,7 @@ const App = () => {
               textShadow: darkMode ? '0 2px 20px rgba(238, 194, 29, 0.3)' : '0 2px 20px rgba(17, 17, 17, 0.2)'
             }}>RÉFLEXIONS AUTOUR DU PROJET</h1>
             <p style={{
-              fontFamily: "'Flamengo', Georgia, serif",
+              fontFamily: titleFont,
               fontSize: `clamp(20px, 4vw, ${fs.title}px)`,
               color: colors.primary,
               letterSpacing: '0.15em',
@@ -618,7 +621,7 @@ const App = () => {
               <Calendar size={32} color={ICON_COLOR} strokeWidth={1.5} />
               <div style={{ flex: 1, minWidth: '200px' }}>
                 <div style={{
-                  fontFamily: "'Flamengo', Georgia, serif",
+                  fontFamily: titleFont,
                   fontSize: '11px',
                   color: colors.primary,
                   textTransform: 'uppercase',
@@ -626,7 +629,7 @@ const App = () => {
                   marginBottom: '4px'
                 }}>Prochaine session</div>
                 <div style={{
-                  fontFamily: "'Flamengo', Georgia, serif",
+                  fontFamily: titleFont,
                   fontSize: fs.base + 'px',
                   color: colors.primary,
                   marginBottom: '4px'
@@ -653,7 +656,7 @@ const App = () => {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', marginBottom: '48px' }}>
             <GlassCard onClick={() => goToTheme('pantouflage')}>
               <div style={{ marginBottom: '16px' }}><Briefcase size={48} color={ICON_COLOR} strokeWidth={1.5} /></div>
-              <h2 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '12px' }}>Le pantouflage</h2>
+              <h2 style={{ fontFamily: titleFont, fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '12px' }}>Le pantouflage</h2>
               <p style={{ color: colors.textMuted, fontSize: fs.base + 'px', marginBottom: '16px', lineHeight: 1.6, fontFamily: textFont }}>Les allers-retours entre fonction publique et secteur privé</p>
               <div style={{ display: 'inline-block', padding: '6px 16px', background: colors.buttonBg, borderRadius: '20px', fontSize: (fs.base - 1) + 'px', color: colors.primary, fontFamily: textFont }}>{pantouflageCount} session{pantouflageCount > 1 ? 's' : ''}</div>
               <div style={{ position: 'absolute', right: '24px', bottom: '24px', color: colors.textVeryMuted }}><ArrowRight size={24} /></div>
@@ -661,7 +664,7 @@ const App = () => {
 
             <GlassCard onClick={() => goToTheme('medias')}>
               <div style={{ marginBottom: '16px' }}><Tv size={48} color={ICON_COLOR} strokeWidth={1.5} /></div>
-              <h2 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '12px' }}>Les médias oligarchiques</h2>
+              <h2 style={{ fontFamily: titleFont, fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '12px' }}>Les médias oligarchiques</h2>
               <p style={{ color: colors.textMuted, fontSize: fs.base + 'px', marginBottom: '16px', lineHeight: 1.6, fontFamily: textFont }}>Expropriation des médias oligarchiques et transformation en SCOP</p>
               <div style={{ display: 'inline-block', padding: '6px 16px', background: colors.buttonBg, borderRadius: '20px', fontSize: (fs.base - 1) + 'px', color: colors.primary, fontFamily: textFont }}>{mediasCount} session{mediasCount > 1 ? 's' : ''}</div>
               <div style={{ position: 'absolute', right: '24px', bottom: '24px', color: colors.textVeryMuted }}><ArrowRight size={24} /></div>
@@ -678,7 +681,7 @@ const App = () => {
                 borderRadius: '30px',
                 padding: '16px 32px',
                 color: darkMode ? '#111' : '#EEC21D',
-                fontFamily: "'Flamengo', Georgia, serif",
+                fontFamily: titleFont,
                 fontSize: fs.base + 'px',
                 fontWeight: 'bold',
                 cursor: 'pointer',
@@ -735,7 +738,7 @@ const App = () => {
               borderRadius: '12px',
               padding: '10px 20px',
               color: colors.primary,
-              fontFamily: textFont,
+              fontFamily: titleFont,
               cursor: 'pointer',
               fontSize: (fs.base - 2) + 'px',
               display: 'flex',
@@ -756,7 +759,7 @@ const App = () => {
               borderRadius: '12px',
               padding: '10px 16px',
               color: colors.textMuted,
-              fontFamily: textFont,
+              fontFamily: titleFont,
               cursor: 'pointer',
               fontSize: (fs.base - 2) + 'px',
               display: 'flex',
@@ -772,7 +775,7 @@ const App = () => {
         <header style={{ textAlign: 'center', marginBottom: '48px' }}>
           <div style={{ marginBottom: '16px' }}><ThemeIcon size={64} color={ICON_COLOR} strokeWidth={1.5} /></div>
           <h1 style={{
-            fontFamily: "'Flamengo', Georgia, serif",
+            fontFamily: titleFont,
             fontSize: `clamp(24px, 5vw, ${fs.large + 12}px)`,
             color: colors.primary,
             marginBottom: '8px'
@@ -790,7 +793,7 @@ const App = () => {
         {showHistorique && (
           <GlassCard hover={false} style={{ marginBottom: '32px' }}>
             <h3 style={{
-              fontFamily: "'Flamengo', Georgia, serif",
+              fontFamily: titleFont,
               fontSize: (fs.title - 4) + 'px',
               color: colors.primary,
               marginBottom: '20px',
@@ -832,7 +835,7 @@ const App = () => {
                     border: `3px solid ${colors.background}`
                   }} />
                   <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textVeryMuted, marginBottom: '4px', fontFamily: textFont }}>{session.date}</div>
-                  <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '2px' }}>Session #{session.numero}</div>
+                  <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '2px' }}>Session #{session.numero}</div>
                   <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{session.titre}</div>
                 </div>
               ))}
@@ -849,10 +852,10 @@ const App = () => {
               style={{ opacity: session.available ? 1 : 0.5, cursor: session.available ? 'pointer' : 'not-allowed' }}
               hover={session.available}
             >
-              <div style={{ fontSize: fs.title + 'px', fontFamily: "'Flamengo', Georgia, serif", color: colors.primary, marginBottom: '12px' }}>
+              <div style={{ fontSize: fs.title + 'px', fontFamily: titleFont, color: colors.primary, marginBottom: '12px' }}>
                 0{idx + (isMedias ? 1 : 4)}
               </div>
-              <h3 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{session.titre}</h3>
+              <h3 style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{session.titre}</h3>
               <p style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{session.date}</p>
               {!session.available && (
                 <div style={{ marginTop: '12px', fontSize: (fs.base - 2) + 'px', color: colors.text, display: 'flex', alignItems: 'center', gap: '6px', fontFamily: textFont }}>
@@ -876,14 +879,14 @@ const App = () => {
                 textAlign: 'center'
               }}
             >
-              <h3 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.title - 2) + 'px', color: colors.primary, marginBottom: '8px' }}>Dossier de synthèse</h3>
+              <h3 style={{ fontFamily: titleFont, fontSize: (fs.title - 2) + 'px', color: colors.primary, marginBottom: '8px' }}>Dossier de synthèse</h3>
               <p style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '12px', fontFamily: textFont }}>Cartographie interactive des enjeux, questions ouvertes et angles d'action</p>
               <div style={{
                 display: 'inline-block',
                 padding: '8px 20px',
                 background: colors.buttonBgHover,
                 borderRadius: '20px',
-                fontFamily: "'Flamengo', Georgia, serif",
+                fontFamily: titleFont,
                 fontSize: '11px',
                 color: colors.primary
               }}>Sessions #001 → #003</div>
@@ -919,7 +922,7 @@ const App = () => {
             padding: '10px 20px',
             color: colors.primary,
             cursor: 'pointer',
-            fontFamily: textFont,
+            fontFamily: titleFont,
             fontSize: (fs.base - 2) + 'px',
             marginBottom: '24px',
             display: 'flex',
@@ -950,7 +953,7 @@ const App = () => {
             fontFamily: textFont
           }}>SESSION {currentSession.replace('session', '')}</div>
           <h1 style={{
-            fontFamily: "'Flamengo', Georgia, serif",
+            fontFamily: titleFont,
             fontSize: `clamp(24px, 5vw, ${fs.large + 8}px)`,
             color: colors.primary,
             marginBottom: '16px'
@@ -991,7 +994,7 @@ const App = () => {
                     ? (isSynthese ? '#fff' : (darkMode ? '#111' : '#EEC21D'))
                     : (isSynthese ? '#44701D' : colors.primary),
                   cursor: 'pointer',
-                  fontFamily: "'Flamengo', Georgia, serif",
+                  fontFamily: titleFont,
                   fontSize: (fs.base - 2) + 'px',
                   fontWeight: isActive ? '600' : '400',
                   transition: 'all 0.3s ease',
@@ -1012,12 +1015,12 @@ const App = () => {
             border: '1px solid rgba(68, 112, 29, 0.2)'
           }}>
             {/* Titre header en #eec21d */}
-            <h2 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.title + 'px', color: '#eec21d', marginBottom: '24px' }}>{synthese.titre}</h2>
+            <h2 style={{ fontFamily: titleFont, fontSize: fs.title + 'px', color: '#eec21d', marginBottom: '24px' }}>{synthese.titre}</h2>
             
             {/* Grandes idées */}
             <div style={{ marginBottom: '24px' }}>
               <h3 style={{
-                fontFamily: "'Flamengo', Georgia, serif",
+                fontFamily: titleFont,
                 fontSize: fs.base + 'px',
                 color: colors.primary,
                 marginBottom: '12px',
@@ -1046,7 +1049,7 @@ const App = () => {
             {/* Questions ouvertes - #9E876E */}
             <div style={{ marginBottom: '24px' }}>
               <h3 style={{
-                fontFamily: "'Flamengo', Georgia, serif",
+                fontFamily: titleFont,
                 fontSize: fs.base + 'px',
                 color: '#9E876E',
                 marginBottom: '12px',
@@ -1074,7 +1077,7 @@ const App = () => {
             {/* Angles d'action - #5F7E43 */}
             <div style={{ marginBottom: synthese.citation ? '24px' : '0' }}>
               <h3 style={{
-                fontFamily: "'Flamengo', Georgia, serif",
+                fontFamily: titleFont,
                 fontSize: fs.base + 'px',
                 color: '#5F7E43',
                 marginBottom: '12px',
@@ -1123,7 +1126,7 @@ const App = () => {
           </GlassCard>
         ) : sectionData ? (
           <GlassCard hover={false} style={{ marginBottom: '32px' }}>
-            <h2 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.title + 'px', color: colors.primary, marginBottom: '24px' }}>{sectionData.title}</h2>
+            <h2 style={{ fontFamily: titleFont, fontSize: fs.title + 'px', color: colors.primary, marginBottom: '24px' }}>{sectionData.title}</h2>
             {renderSectionContent(sectionData.content)}
           </GlassCard>
         ) : null}
@@ -1134,7 +1137,7 @@ const App = () => {
           border: '1px solid rgba(88, 101, 242, 0.3)',
           textAlign: 'center'
         }}>
-          <h3 style={{ fontFamily: "'Flamengo'", fontSize: (fs.title - 4) + 'px', color: '#7289da', marginBottom: '8px' }}>Une idée, une question?</h3>
+          <h3 style={{ fontFamily: titleFont, fontSize: (fs.title - 4) + 'px', color: '#7289da', marginBottom: '8px' }}>Une idée, une question?</h3>
           <p style={{ fontFamily: textFont, fontSize: (fs.base - 2) + 'px', color: '#7289da', marginBottom: '20px', lineHeight: 1.6 }}>
             Retrouvons-nous sur le thread Discord pour centraliser nos ressources et nos idées!
           </p>
@@ -1151,7 +1154,7 @@ const App = () => {
               border: 'none',
               borderRadius: '12px',
               color: '#fff',
-              fontFamily: textFont,
+              fontFamily: titleFont,
               fontSize: fs.base + 'px',
               fontWeight: '600',
               textDecoration: 'none',
@@ -1183,7 +1186,7 @@ const App = () => {
           border: `1px solid ${colors.cardBorder}`,
           borderRadius: '12px',
           padding: '10px 20px',
-          fontFamily: textFont,
+          fontFamily: titleFont,
           color: colors.primary,
           cursor: 'pointer',
           fontSize: (fs.base - 2) + 'px',
@@ -1211,13 +1214,13 @@ const App = () => {
           padding: '4px 12px',
           background: colors.buttonBgHover,
           borderRadius: '20px',
-          fontFamily: "'Flamengo', Georgia, serif",
+          fontFamily: titleFont,
           fontSize: (fs.base - 2) + 'px',
           color: colors.primary,
           marginBottom: '12px'
         }}>DOSSIER DE SYNTHÈSE GLOBAL</div>
         <h1 style={{
-          fontFamily: "'Flamengo', Georgia, serif",
+          fontFamily: titleFont,
           fontSize: `clamp(22px, 5vw, ${fs.large + 8}px)`,
           color: colors.primary,
           marginBottom: '8px'
@@ -1255,7 +1258,7 @@ const App = () => {
                 padding: '10px 20px',
                 color: isActive ? (darkMode ? '#111' : '#EEC21D') : colors.text,
                 cursor: 'pointer',
-                fontFamily: textFont,
+                fontFamily: titleFont,
                 fontSize: (fs.base - 2) + 'px',
                 fontWeight: isActive ? '600' : '400',
                 display: 'flex',
@@ -1273,7 +1276,7 @@ const App = () => {
       {/* Vue Carte */}
       {syntheseView === 'carte' && (
         <GlassCard hover={false} style={{ marginBottom: '24px', textAlign: 'center' }}>
-          <h2 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.title - 2) + 'px', color: colors.primary, marginBottom: '16px' }}>
+          <h2 style={{ fontFamily: titleFont, fontSize: (fs.title - 2) + 'px', color: colors.primary, marginBottom: '16px' }}>
             Cartographie des enjeux
           </h2>
           <p style={{ color: colors.text, fontSize: fs.base + 'px', marginBottom: '24px', fontFamily: textFont }}>
@@ -1332,7 +1335,7 @@ const App = () => {
                 }}
               >
                 <h3 style={{
-                  fontFamily: "'Flamengo', Georgia, serif",
+                  fontFamily: titleFont,
                   fontSize: fs.base + 'px',
                   color: colors.primary,
                   marginBottom: '8px',
@@ -1349,7 +1352,7 @@ const App = () => {
                   <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: `1px solid ${colors.cardBorder}` }}>
                     <p style={{
                       fontSize: '12px',
-                      fontFamily: "'Flamengo', Georgia, serif",
+                      fontFamily: titleFont,
                       color: colors.primary,
                       textTransform: 'uppercase',
                       letterSpacing: '0.05em',
@@ -1367,7 +1370,7 @@ const App = () => {
                     ))}
                     <p style={{
                       fontSize: '12px',
-                      fontFamily: "'Flamengo', Georgia, serif",
+                      fontFamily: titleFont,
                       color: colors.primary,
                       textTransform: 'uppercase',
                       letterSpacing: '0.05em',
@@ -1396,7 +1399,7 @@ const App = () => {
       {/* Vue Actions */}
       {syntheseView === 'actions' && (
         <GlassCard hover={false}>
-          <h2 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '20px' }}>
+          <h2 style={{ fontFamily: titleFont, fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '20px' }}>
             Modèles à explorer
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '12px', marginBottom: '24px' }}>
@@ -1426,7 +1429,7 @@ const App = () => {
             ))}
           </div>
           
-          <h3 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', marginTop: '24px' }}>
+          <h3 style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', marginTop: '24px' }}>
             Idées à creuser
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -1480,7 +1483,7 @@ const App = () => {
           borderRadius: '0 16px 16px 0',
           padding: '20px 24px'
         }}>
-          <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.title + 'px', color: colors.primary, marginBottom: '8px' }}>{item.term}</div>
+          <div style={{ fontFamily: titleFont, fontSize: fs.title + 'px', color: colors.primary, marginBottom: '8px' }}>{item.term}</div>
           {item.etymology && <div style={{ color: colors.textMuted, fontSize: fs.base + 'px', fontStyle: 'italic', marginBottom: '8px', fontFamily: textFont }}>{item.etymology}</div>}
           <div style={{ color: darkMode ? '#fff' : '#111', fontSize: fs.base + 'px', fontFamily: textFont }}>{item.meaning}</div>
           {item.principes && (
@@ -1526,7 +1529,7 @@ const App = () => {
             borderRadius: '0 16px 16px 0',
             padding: '20px 24px'
           }}>
-            <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <History size={18} color={ICON_COLOR} /> Origine historique
             </div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}><strong>Date :</strong> {item.origine.date}</div>
@@ -1543,7 +1546,7 @@ const App = () => {
                 borderRadius: '12px',
                 padding: '16px'
               }}>
-                <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{t.terme}</div>
+                <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{t.terme}</div>
                 <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{t.signification}</div>
               </div>
             ))}
@@ -1589,13 +1592,13 @@ const App = () => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            fontFamily: "'Flamengo', Georgia, serif",
+            fontFamily: titleFont,
             fontSize: (fs.title - 4) + 'px',
             color: colors.primary,
             flexShrink: 0
           }}>{item.numero}</div>
           <div style={{ flex: 1 }}>
-            <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '6px' }}>{item.titre}</div>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '6px' }}>{item.titre}</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.textMuted, marginBottom: '6px', fontFamily: textFont }}>{item.description}</div>
             {item.page && (
               <div style={{ fontSize: fs.base + 'px', color: colors.primary, display: 'flex', alignItems: 'center', gap: '6px', fontFamily: textFont }}>
@@ -1623,7 +1626,7 @@ const App = () => {
         }}>
           <span style={{ fontSize: '24px' }}>{item.icon}</span>
           <div style={{ flex: 1 }}>
-            <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '4px' }}>{item.name}</div>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '4px' }}>{item.name}</div>
             <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.detail}</div>
           </div>
         </div>
@@ -1646,7 +1649,7 @@ const App = () => {
               flexDirection: 'column',
               gap: '4px'
             }}>
-              <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.base - 1) + 'px', color: colors.primary, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{el.label}</div>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{el.label}</div>
               <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{el.value}</div>
             </div>
           ))}
@@ -1669,7 +1672,7 @@ const App = () => {
             padding: '24px',
             textAlign: 'center'
           }}>
-            <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.large + 8) + 'px', color: colors.primary, marginBottom: '8px' }}>{item.stat.number}</div>
+            <div style={{ fontFamily: titleFont, fontSize: (fs.large + 8) + 'px', color: colors.primary, marginBottom: '8px' }}>{item.stat.number}</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{item.stat.label}</div>
           </div>
 
@@ -1695,7 +1698,7 @@ const App = () => {
                 borderRadius: '12px',
                 padding: '16px'
               }}>
-                <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{ex.nom}</div>
+                <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{ex.nom}</div>
                 <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{ex.detail}</div>
               </div>
             ))}
@@ -1717,7 +1720,7 @@ const App = () => {
           padding: '24px',
           textAlign: 'center'
         }}>
-          <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.large + 16) + 'px', color: colors.primary, marginBottom: '8px' }}>{item.number}</div>
+          <div style={{ fontFamily: titleFont, fontSize: (fs.large + 16) + 'px', color: colors.primary, marginBottom: '8px' }}>{item.number}</div>
           <div style={{ fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', marginBottom: '8px', fontFamily: textFont }}>{item.label}</div>
           {item.detail && <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.6, fontFamily: textFont }}>{item.detail}</div>}
         </div>
@@ -1740,7 +1743,7 @@ const App = () => {
                 borderRadius: '12px',
                 padding: '20px'
               }}>
-                <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{v.titre}</div>
+                <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{v.titre}</div>
                 <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{v.detail}</div>
               </div>
             ))}
@@ -1829,7 +1832,7 @@ const App = () => {
           borderRadius: '12px',
           padding: '16px'
         }}>
-          <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{item.nom}</div>
+          <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{item.nom}</div>
           <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, marginBottom: '6px', fontFamily: textFont }}><strong>Modèle :</strong> {item.modele}</div>
           <div style={{ fontSize: (fs.base - 1) + 'px', color: '#44701D', fontFamily: textFont }}>✓ {item.resultat}</div>
         </div>
@@ -1844,7 +1847,7 @@ const App = () => {
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <div>
             <h4 style={{
-              fontFamily: "'Flamengo', Georgia, serif",
+              fontFamily: titleFont,
               fontSize: fs.base + 'px',
               color: '#5F7E43',
               marginBottom: '12px',
@@ -1870,7 +1873,7 @@ const App = () => {
           </div>
           <div>
             <h4 style={{
-              fontFamily: "'Flamengo', Georgia, serif",
+              fontFamily: titleFont,
               fontSize: fs.base + 'px',
               color: colors.primary,
               marginBottom: '12px',
@@ -1909,7 +1912,7 @@ const App = () => {
           borderRadius: '12px',
           padding: '16px'
         }}>
-          <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{item.name}</div>
+          <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{item.name}</div>
           <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.medias}</div>
         </div>
       );
@@ -1946,7 +1949,7 @@ const App = () => {
             borderRadius: '16px',
             padding: '24px'
           }}>
-            <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.title + 'px', color: colors.primary, marginBottom: '16px' }}>{item.principal.nom}</div>
+            <div style={{ fontFamily: titleFont, fontSize: fs.title + 'px', color: colors.primary, marginBottom: '16px' }}>{item.principal.nom}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.principal.parcours.map((p, i) => (
                 <div key={i} style={{
@@ -1977,7 +1980,7 @@ const App = () => {
 
           {/* Autres exemples */}
           <div>
-            <h4 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Autres exemples</h4>
+            <h4 style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Autres exemples</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {item.autres.map((a, i) => (
                 <div key={i} style={{
@@ -1986,7 +1989,7 @@ const App = () => {
                   borderRadius: '12px',
                   padding: '16px'
                 }}>
-                  <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{a.nom}</div>
+                  <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{a.nom}</div>
                   <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{a.detail}</div>
                 </div>
               ))}
@@ -2002,7 +2005,7 @@ const App = () => {
               padding: '20px',
               textAlign: 'center'
             }}>
-              <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.large + 8) + 'px', color: '#ef4444', marginBottom: '8px' }}>{item.stat.number}</div>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.large + 8) + 'px', color: '#ef4444', marginBottom: '8px' }}>{item.stat.number}</div>
               <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{item.stat.label}</div>
             </div>
           )}
@@ -2024,7 +2027,7 @@ const App = () => {
                 borderRadius: '12px',
                 padding: '16px'
               }}>
-                <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{ex.nom}</div>
+                <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{ex.nom}</div>
                 <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{ex.detail}</div>
               </div>
             ))}
@@ -2052,7 +2055,7 @@ const App = () => {
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.intro}</p>
 
           <div>
-            <h4 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <h4 style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Users size={18} color={ICON_COLOR} /> Exemples américains
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -2082,7 +2085,7 @@ const App = () => {
           </div>
 
           <div>
-            <h4 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <h4 style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Globe size={18} color={ICON_COLOR} /> Influence mondiale
             </h4>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
@@ -2139,7 +2142,7 @@ const App = () => {
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                 <Award size={24} color={ICON_COLOR} />
                 <div>
-                  <div style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary }}>{prog.nom}</div>
+                  <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary }}>{prog.nom}</div>
                   <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>Depuis {prog.depuis}</div>
                 </div>
               </div>
@@ -2241,11 +2244,11 @@ const App = () => {
             <X size={20} />
           </button>
 
-          <h2 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.title + 'px', color: colors.primary, marginBottom: '8px' }}>Le Projet</h2>
+          <h2 style={{ fontFamily: titleFont, fontSize: fs.title + 'px', color: colors.primary, marginBottom: '8px' }}>Le Projet</h2>
           <p style={{ color: colors.textMuted, fontSize: fs.base + 'px', marginBottom: '24px', fontFamily: textFont }}>Projet politique — La dernière Version</p>
 
           <div style={{ marginBottom: '24px' }}>
-            <h3 style={{ fontFamily: "'Flamengo', Georgia, serif", fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>NOS PRIORITÉS</h3>
+            <h3 style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>NOS PRIORITÉS</h3>
             {[
               "LUTTER — Fin de l'oligarchie, commissions d'enquête, levée du secret défense",
               "VOTER — Souveraineté populaire, référendums d'initiative citoyenne",
@@ -2283,7 +2286,7 @@ const App = () => {
               textDecoration: 'none',
               fontWeight: '600',
               fontSize: fs.base + 'px',
-              fontFamily: textFont
+              fontFamily: titleFont
             }}
           >
             <FileText size={18} /> Lire le Projet
