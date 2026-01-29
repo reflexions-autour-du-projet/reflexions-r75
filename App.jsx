@@ -17,6 +17,7 @@ const sessionsSyntheses = {
   // Sessions Médias Oligarchiques
   session1: {
     titre: "Synthèse — Session #001",
+    theme: 'medias',
     grandesIdees: [
       "L'oligarchie = concentration des pouvoirs économique, politique, administratif et médiatique",
       "28 familles/entités possèdent tous les médias français",
@@ -38,6 +39,7 @@ const sessionsSyntheses = {
   },
   session2: {
     titre: "Synthèse — Session #002",
+    theme: 'medias',
     grandesIdees: [
       "Les médias sont des marchés à double versant : vente au public + vente d'audience aux annonceurs",
       "L'influence est la première raison d'acheter un média, pas la rentabilité",
@@ -60,6 +62,7 @@ const sessionsSyntheses = {
   },
   session3: {
     titre: "Synthèse — Session #003",
+    theme: 'medias',
     grandesIdees: [
       "Les codes déontologiques abandonnés depuis 40 ans par le politique et l'économique",
       "Sociocratie : organisation en cercles de personnes autonomes, méthode agile",
@@ -87,9 +90,10 @@ const sessionsSyntheses = {
       auteur: "Monod"
     }
   },
-  // Sessions Pantouflage (à compléter selon tes sessions)
+  // Sessions Pantouflage
   session4: {
     titre: "Synthèse — Session #004",
+    theme: 'pantouflage',
     grandesIdees: [
       "Pantouflage = allers-retours entre fonction publique et secteur privé",
       "Origine : obligation de remboursement des frais de formation (pantoufle)",
@@ -247,6 +251,11 @@ const App = () => {
   const [activeSyntheseTheme, setActiveSyntheseTheme] = useState(null);
   const [syntheseView, setSyntheseView] = useState('carte');
 
+  // États pour la recherche
+  const [searchQuery, setSearchQuery] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  const [showSearchResults, setShowSearchResults] = useState(false);
+
   // Navigation
   const goToTheme = (theme) => {
     setCurrentTheme(theme);
@@ -273,6 +282,108 @@ const App = () => {
 
   const addReaction = (type) => {
     setReactions(prev => ({ ...prev, [type]: prev[type] + 1 }));
+  };
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // FONCTIONS DE RECHERCHE
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  const performSearch = (query) => {
+    if (!query || query.length < 2) {
+      setSearchResults([]);
+      setShowSearchResults(false);
+      return;
+    }
+
+    const results = [];
+    const lowerQuery = query.toLowerCase();
+
+    Object.entries(sessionsSyntheses).forEach(([sessionId, session]) => {
+      const sessionNum = sessionId.replace('session', '');
+      const sessionLabel = `Session #00${sessionNum}`;
+      
+      // Chercher dans les grandes idées
+      session.grandesIdees?.forEach((idee) => {
+        if (idee.toLowerCase().includes(lowerQuery)) {
+          results.push({
+            sessionId,
+            sessionLabel,
+            theme: session.theme,
+            type: 'Grande idée',
+            typeIcon: '💡',
+            content: idee
+          });
+        }
+      });
+
+      // Chercher dans les questions ouvertes
+      session.questionsOuvertes?.forEach((question) => {
+        if (question.toLowerCase().includes(lowerQuery)) {
+          results.push({
+            sessionId,
+            sessionLabel,
+            theme: session.theme,
+            type: 'Question ouverte',
+            typeIcon: '❓',
+            content: question
+          });
+        }
+      });
+
+      // Chercher dans les pistes d'action
+      session.pistesAction?.forEach((piste) => {
+        if (piste.toLowerCase().includes(lowerQuery)) {
+          results.push({
+            sessionId,
+            sessionLabel,
+            theme: session.theme,
+            type: "Piste d'action",
+            typeIcon: '✓',
+            content: piste
+          });
+        }
+      });
+    });
+
+    setSearchResults(results.slice(0, 10));
+    setShowSearchResults(true);
+  };
+
+  const handleSearchChange = (e) => {
+    const query = e.target.value;
+    setSearchQuery(query);
+    performSearch(query);
+  };
+
+  const goToSearchResult = (result) => {
+    setSearchQuery('');
+    setSearchResults([]);
+    setShowSearchResults(false);
+    setCurrentTheme(result.theme);
+    setCurrentSession(result.sessionId);
+    setCurrentSection('synthese');
+  };
+
+  const highlightMatch = (text, query) => {
+    if (!query) return text;
+    const lowerText = text.toLowerCase();
+    const lowerQuery = query.toLowerCase();
+    const index = lowerText.indexOf(lowerQuery);
+    if (index === -1) return text;
+    
+    return (
+      <>
+        {text.slice(0, index)}
+        <span style={{ 
+          background: 'rgba(238, 194, 29, 0.4)', 
+          borderRadius: '2px',
+          padding: '0 2px'
+        }}>
+          {text.slice(index, index + query.length)}
+        </span>
+        {text.slice(index + query.length)}
+      </>
+    );
   };
 
   // ═══════════════════════════════════════════════════════════════════════════
@@ -329,6 +440,180 @@ const App = () => {
       }}
     >
       {children}
+    </div>
+  );
+
+  // ═══════════════════════════════════════════════════════════════════════════
+  // BARRE DE RECHERCHE
+  // ═══════════════════════════════════════════════════════════════════════════
+
+  const SearchBar = () => (
+    <div style={{ position: 'relative', width: '100%', maxWidth: '380px', margin: '0 auto' }}>
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        background: 'rgba(238, 194, 29, 0.06)',
+        border: '1px solid rgba(238, 194, 29, 0.15)',
+        borderRadius: '14px',
+        padding: '10px 14px',
+        transition: 'all 0.3s ease'
+      }}>
+        <svg 
+          width="16" 
+          height="16" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="#eec21d" 
+          strokeWidth="2"
+          style={{ opacity: 0.6, flexShrink: 0 }}
+        >
+          <circle cx="11" cy="11" r="8"/>
+          <path d="M21 21l-4.35-4.35"/>
+        </svg>
+        <input
+          type="text"
+          value={searchQuery}
+          onChange={handleSearchChange}
+          onFocus={() => searchQuery.length >= 2 && setShowSearchResults(true)}
+          placeholder="Rechercher..."
+          style={{
+            flex: 1,
+            background: 'transparent',
+            border: 'none',
+            outline: 'none',
+            marginLeft: '10px',
+            color: '#fae8a4',
+            fontSize: '14px',
+            fontFamily: "'Flamengo', Georgia, serif"
+          }}
+        />
+        {searchQuery && (
+          <button
+            onClick={() => {
+              setSearchQuery('');
+              setSearchResults([]);
+              setShowSearchResults(false);
+            }}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'rgba(250, 232, 164, 0.4)',
+              cursor: 'pointer',
+              padding: '2px 6px',
+              fontSize: '14px',
+              lineHeight: 1
+            }}
+          >
+            ×
+          </button>
+        )}
+      </div>
+
+      {/* Résultats de recherche */}
+      {showSearchResults && searchResults.length > 0 && (
+        <div style={{
+          position: 'absolute',
+          top: '100%',
+          left: 0,
+          right: 0,
+          marginTop: '8px',
+          background: 'rgba(17, 17, 17, 0.98)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(238, 194, 29, 0.2)',
+          borderRadius: '14px',
+          overflow: 'hidden',
+          zIndex: 100,
+          boxShadow: '0 10px 40px rgba(0, 0, 0, 0.5)'
+        }}>
+          <div style={{
+            padding: '10px 14px',
+            borderBottom: '1px solid rgba(238, 194, 29, 0.1)',
+            fontSize: '11px',
+            color: 'rgba(250, 232, 164, 0.5)',
+            fontFamily: "'Flamengo', Georgia, serif",
+            textTransform: 'uppercase',
+            letterSpacing: '0.05em'
+          }}>
+            {searchResults.length} résultat{searchResults.length > 1 ? 's' : ''}
+          </div>
+          <div style={{ maxHeight: '280px', overflowY: 'auto' }}>
+            {searchResults.map((result, index) => (
+              <div
+                key={index}
+                onClick={() => goToSearchResult(result)}
+                style={{
+                  padding: '12px 14px',
+                  cursor: 'pointer',
+                  borderBottom: index < searchResults.length - 1 ? '1px solid rgba(238, 194, 29, 0.06)' : 'none',
+                  transition: 'background 0.2s ease'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.background = 'rgba(238, 194, 29, 0.08)'}
+                onMouseLeave={(e) => e.currentTarget.style.background = 'transparent'}
+              >
+                <div style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '6px',
+                  marginBottom: '4px'
+                }}>
+                  <span style={{ fontSize: '11px' }}>{result.typeIcon}</span>
+                  <span style={{ 
+                    fontSize: '10px', 
+                    color: '#eec21d',
+                    fontFamily: "'Flamengo', Georgia, serif",
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.03em'
+                  }}>
+                    {result.sessionLabel}
+                  </span>
+                  <span style={{ 
+                    fontSize: '9px', 
+                    color: 'rgba(250, 232, 164, 0.4)',
+                    padding: '2px 6px',
+                    background: 'rgba(238, 194, 29, 0.08)',
+                    borderRadius: '8px'
+                  }}>
+                    {result.type}
+                  </span>
+                </div>
+                <div style={{ 
+                  fontSize: '13px', 
+                  color: '#fae8a4',
+                  lineHeight: 1.4
+                }}>
+                  {highlightMatch(result.content, searchQuery)}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Aucun résultat */}
+      {showSearchResults && searchQuery.length >= 2 && searchResults.length === 0 && (
+        <div style={{
+          position: 'absolute',
+          top: '100%',
+          left: 0,
+          right: 0,
+          marginTop: '8px',
+          background: 'rgba(17, 17, 17, 0.98)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid rgba(238, 194, 29, 0.2)',
+          borderRadius: '14px',
+          padding: '16px',
+          textAlign: 'center',
+          zIndex: 100
+        }}>
+          <div style={{ fontSize: '20px', marginBottom: '6px' }}>🔍</div>
+          <div style={{ 
+            color: 'rgba(250, 232, 164, 0.5)',
+            fontSize: '13px'
+          }}>
+            Aucun résultat pour "{searchQuery}"
+          </div>
+        </div>
+      )}
     </div>
   );
 
@@ -426,7 +711,7 @@ const App = () => {
         
         <div style={{ position: 'relative', zIndex: 1, padding: '40px 24px', maxWidth: '900px', margin: '0 auto' }}>
           
-          <header style={{ textAlign: 'center', marginBottom: '48px' }}>
+          <header style={{ textAlign: 'center', marginBottom: '32px' }}>
             <div style={{ marginBottom: '24px' }} className="animate-float">
               <HexLogo size={100} />
             </div>
@@ -444,10 +729,16 @@ const App = () => {
               fontFamily: "'Flamengo', Georgia, serif",
               fontSize: 'clamp(20px, 4vw, 22px)',
               color: '#eec21d',
-              letterSpacing: '0.15em'
+              letterSpacing: '0.15em',
+              marginBottom: '20px'
             }}>
               R75
             </p>
+
+            {/* ════════════════════════════════════════════════════════════════
+                BARRE DE RECHERCHE
+                ════════════════════════════════════════════════════════════════ */}
+            <SearchBar />
           </header>
 
           <GlassCard hover={false} style={{ 
@@ -1366,7 +1657,7 @@ const App = () => {
                       }}>
                         {c.name}
                       </div>
-                      <div style={{ fontSize: '14px', color: 'rgba(250, 232, 164, 0.6)' }}>
+                      <div style={{ fontSize: '14px', color: '#eec21d' }}>
                         {c.desc}
                       </div>
                     </div>
@@ -1377,10 +1668,10 @@ const App = () => {
                       whiteSpace: 'nowrap',
                       background: c.status.includes('contacter') 
                         ? 'rgba(234, 88, 12, 0.2)' 
-                        : 'rgba(22, 163, 74, 0.2)',
+                        : '#eec21d'
                       color: c.status.includes('contacter') 
                         ? '#fb923c' 
-                        : '#4ade80'
+                        : '#eec21d'
                     }}>
                       {c.status}
                     </span>
@@ -1396,7 +1687,7 @@ const App = () => {
               <h2 style={{ 
                 fontFamily: "'Flamengo', Georgia, serif",
                 fontSize: '18px',
-                color: '#eec21d',
+                color: '#48892c',
                 marginBottom: '16px'
               }}>
                 Idées émergentes
