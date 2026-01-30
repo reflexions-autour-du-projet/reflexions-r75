@@ -359,7 +359,7 @@ export const pantouflage = {
           citation: {
             auteur: "Klaus Schwab",
             texte: "Ce dont nous sommes très fiers maintenant, c'est que nous pénétrons les cabinets des gouvernements à travers le monde avec nos Young Global Leaders",
-            source: "Klaus Shwab (Harvard University, 2017)"
+            source: "Harvard University, 2017"
           },
           programmes: [
             {
@@ -390,8 +390,7 @@ export const pantouflage = {
           { numero: 2, titre: "Démission définitive du corps", description: "Obligation pour tout haut fonctionnaire devenant élu (fin de la 'disponibilité' qui permet les retours)", page: "p.14" },
           { numero: 3, titre: "Transparence du patrimoine", description: "Déclaration décennale pour tous les hauts fonctionnaires des grands corps", page: "p.14" },
           { numero: 4, titre: "Publication des avis de déontologie", description: "Tous les avis rendus publics, y compris rétroactivement", page: "p.14" },
-          { numero: 5, titre: "Interdiction des appartenances secrètes", description: "Plus d'association non déclarée ou réclamant l'anonymat de ses membres", page: "p.44" },
-          { numero: 6, titre: "Base de données des conflits d'intérêts", description: "Déclaration obligatoire pour tout fonctionnaire, accessible au public", page: "p.44" }
+          { numero: 5, titre: "Base de données des conflits d'intérêts", description: "Déclaration obligatoire pour tout fonctionnaire, accessible au public", page: "p.44" }
         ]
       }
     }
