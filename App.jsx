@@ -144,7 +144,7 @@ const dossierSyntheseData = {
     { id: 'ia', title: 'IA & Guerre cognitive', icon: Bot, color: '#835c07', summary: 'Brouillage réel/fictif, information instrumentalisée',
       details: ['Nouveau réflexe : on doute de chaque info/photo (vraie ou générée?)', 'Exemple : photo Macron Ray-Ban crue fake mais vraie', 'Risque : Guerre cognitive'],
       questions: ["Comment intégrer l'IA dans la réflexion sur l'avenir des médias?", 'Un label "conçu sans IA" serait-il intéressant?', 'Comment protéger les petits médias?'] },
-    { id: 'reseaux', title: 'Réseaux sociaux & Ingérences', icon: Share2, color: '#c9a227', summary: "Effet arroseur arrosé : outil d'ingénierie sociale devenu vecteur d'info alternative",
+    { id: 'reseaux', title: 'Réseaux sociaux & Ingérences', icon: Share2, color: '#523f02', summary: "Effet arroseur arrosé : outil d'ingénierie sociale devenu vecteur d'info alternative",
       details: [
         'Réseaux sociaux originellement conçus pour "débiliser" les populations (ingénierie sociale)',
         'Effet inverse : ont permis de révéler des informations ignorées par les médias mainstream',
@@ -175,7 +175,7 @@ const dossierSyntheseData = {
     'Outils sociocratiques (7 piliers + 80 patterns)', 
     'Audit public : qui prend combien via quelle structure',
     'Étudier le système de mise en avant algorithmique sur X et autres plateformes',
-    'Documenter les comptes de propagande : origine, financement, réseaux',
+    'Documenter les comptes 'propagandesques' : origine, financement, réseaux',
     'Réflexion sur la régulation différenciée : réseaux sociaux vs TV traditionnelle'
   ]
 };
