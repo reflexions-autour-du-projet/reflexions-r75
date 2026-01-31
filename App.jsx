@@ -149,7 +149,7 @@ const dossierSyntheseData = {
         'Réseaux sociaux originellement conçus pour "débiliser" les populations (ingénierie sociale)',
         'Effet inverse : ont permis de révéler des informations ignorées par les médias mainstream',
         'Régulation massive et urgente récente — coïncidence ou volonté de contrôle ?',
-        'Comptes "propagandesques" (ex: Josiane Lepine sur X) : contenus absurdes mais très mis en avant',
+        'Comptes propagandesques (ex: Josiane Lepine sur X) : contenus absurdes mais très mis en avant',
         'Ces comptes ont un réel following/engagement et sont gérés par des personnes physiques'
       ],
       questions: [
