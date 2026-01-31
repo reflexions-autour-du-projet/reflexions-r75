@@ -1450,8 +1450,8 @@ const App = () => {
                 padding: '14px'
               }}>
                 <div style={{ flex: 1 }}>
-                  {/* MODIFICATION: fontFamily: titleFont et color: '#EEC21D' */}
-                  <div style={{ fontFamily: titleFont, color: '#EEC21D', fontSize: (fs.base - 1) + 'px', marginBottom: '4px' }}>{c.name}</div>
+                  {/* MODIFICATION: fontFamily: titleFont et color toggle dark/light */}
+                  <div style={{ fontFamily: titleFont, color: darkMode ? '#EEC21D' : '#111111', fontSize: (fs.base - 1) + 'px', marginBottom: '4px' }}>{c.name}</div>
                   <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.primary, fontFamily: textFont }}>{c.desc}</div>
                 </div>
                 <span style={{
