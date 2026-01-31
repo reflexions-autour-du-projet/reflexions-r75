@@ -81,20 +81,33 @@ const sessionsSyntheses = {
   session4: {
     titre: "Synthèse — Session #004", theme: 'pantouflage',
     grandesIdees: [
-      "Pantouflage = allers-retours entre fonction publique et secteur privé",
-      "Origine : obligation de remboursement des frais de formation (pantoufle)",
-      "Le système actuel permet des passages rapides vers le privé",
-      "Macron : exemple du parcours public → privé → politique"
+      "Origine historique : « la botte » (servir l'État 10 ans) vs « la pantoufle » (partir vers le privé) — École Polytechnique militarisée par Napoléon en 1814",
+      "Environ 31 000€ à rembourser si l'on ne sert pas l'État pendant 10 ans — faille réglementaire 2000-2015 qui exemptait tous les élèves",
+      "Depuis 2017, +40 conseillers ministériels ont quitté le public pour le privé : du jamais vu dans l'Histoire",
+      "Exemples français : Macron (Rothschild), Kohler (mis en examen, nommé DG adjoint Société Générale), Djebbari (retoqué par la HATVP), Pénicaud (Galileo), Leprettre (lobby Phytéis)",
+      "« Government Sachs » : aux USA, 88% des lobbyistes de Goldman Sachs avaient travaillé pour le gouvernement fédéral en 2016",
+      "Influence mondiale de Goldman : Draghi (BCE puis PM italien), Carney (PM canadien), Sunak (PM britannique), Monti, Turnbull...",
+      "50% des ex-commissaires européens et 30% des ex-eurodéputés travaillent pour des lobbyistes de l'UE (Transparency International)",
+      "Programmes Young Leaders : French-American Foundation (1981) et WEF Young Global Leaders (1992/2004) créent les conditions préalables au pantouflage",
+      "Klaus Schwab (2017) : « Nous pénétrons les cabinets des gouvernements à travers le monde avec nos Young Global Leaders »",
+      "Le pantouflage n'est pas une dérive marginale mais un mécanisme structurel de concentration des pouvoirs"
     ],
     questionsOuvertes: [
-      "La période de carence de 5 ans est-elle suffisante?",
+      "La période de carence de 5 ans (contre 3 actuellement) est-elle suffisante?",
+      "Peut-on réguler le pantouflage sans s'intéresser à ce qui le prépare (Young Leaders)?",
+      "Faut-il exiger la transparence sur la participation aux programmes Young Leaders?",
+      "Un élu ou haut fonctionnaire formé dans ces réseaux est-il en situation de conflit d'intérêts structurel?",
       "Comment contrôler les conflits d'intérêts post-mandat?",
-      "Faut-il interdire aux hauts fonctionnaires de devenir élus sans démission?"
+      "Le système crée-t-il intentionnellement la confusion entre intérêt général et intérêts particuliers?"
     ],
     pistesAction: [
       "Documenter les parcours types des pantoufleurs français",
-      "Étudier les modèles de régulation européens"
-    ]
+      "Étudier les modèles de régulation européens et leurs limites",
+      "Créer un registre public des participants aux programmes de formation des élites",
+      "Rendre obligatoire la déclaration de participation aux programmes Young Leaders pour tout candidat à une fonction publique",
+      "Consulter les sites Legifrance et Europa Lex pour suivre les textes en discussion"
+    ],
+    citation: { texte: "Ce dont nous sommes très fiers maintenant, c'est que nous pénétrons les cabinets des gouvernements à travers le monde avec nos Young Global Leaders", auteur: "Klaus Schwab", source: "Harvard University, 2017" }
   }
 };
 
@@ -189,7 +202,7 @@ const App = () => {
   useEffect(() => {
     const calculateCountdown = () => {
       const dateStr = prochaineSession.date;
-      const match = dateStr.match(/(\d{1,2})\s+(\w+)\s+(\d{4})/);
+      const match = dateStr.match(/(\d{1,2})\s+(\w+)\s+à\s+(\d{1,2})h/);
       if (match) {
         const moisFr = {
           'janvier': 0, 'février': 1, 'mars': 2, 'avril': 3, 'mai': 4, 'juin': 5,
@@ -197,8 +210,9 @@ const App = () => {
         };
         const jour = parseInt(match[1]);
         const mois = moisFr[match[2].toLowerCase()];
-        const annee = parseInt(match[3]);
-        const heure = dateStr.toLowerCase().includes('jeudi') ? 18 : 17;
+        const heure = parseInt(match[3]);
+        // Année 2026 pour les sessions à venir
+        const annee = 2026;
         const targetDate = new Date(annee, mois, jour, heure, 0, 0);
         const diff = targetDate - new Date();
         if (diff > 0) {
@@ -1120,7 +1134,10 @@ const App = () => {
                 <p style={{ fontStyle: 'italic', color: colors.primary, fontSize: (fs.base - 2) + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>
                   « {synthese.citation.texte} »
                 </p>
-                <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px', fontFamily: textFont }}>— {synthese.citation.auteur}</p>
+                <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px', fontFamily: textFont }}>
+                  — {synthese.citation.auteur}
+                  {synthese.citation.source && <span style={{ color: colors.textMuted, marginLeft: '8px' }}>({synthese.citation.source})</span>}
+                </p>
               </div>
             )}
           </GlassCard>
