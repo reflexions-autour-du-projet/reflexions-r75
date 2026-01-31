@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { 
   Tv, Briefcase, Calendar, Clock, Landmark, Coins, Scale, Handshake, FileText, Bot, 
   Search, Lightbulb, HelpCircle, Check, Lock, Map, FolderOpen, ClipboardList,
-  ArrowRight, ArrowLeft, Paperclip, CheckCircle, X, Sun, Moon, History, Quote, Users, Globe, Award
+  ArrowRight, ArrowLeft, Paperclip, CheckCircle, X, Sun, Moon, History, Quote, Users, Globe, Award,
+  Share2
 } from 'lucide-react';
 import { mediasOligarchiques, pantouflage, sessionsConfig, prochaineSession } from './sessions-data.js';
 
@@ -142,7 +143,23 @@ const dossierSyntheseData = {
       questions: ["Réappropriation des mots : qu'est-ce que l'information à l'ère digitale?", 'Inclure la distinction informer/convaincre dans les statuts SCOP?', 'Est-ce le système ou une croyance populaire qui fait croire à la neutralité?'] },
     { id: 'ia', title: 'IA & Guerre cognitive', icon: Bot, color: '#835c07', summary: 'Brouillage réel/fictif, information instrumentalisée',
       details: ['Nouveau réflexe : on doute de chaque info/photo (vraie ou générée?)', 'Exemple : photo Macron Ray-Ban crue fake mais vraie', 'Risque : Guerre cognitive'],
-      questions: ["Comment intégrer l'IA dans la réflexion sur l'avenir des médias?", 'Un label "conçu sans IA" serait-il intéressant?', 'Comment protéger les petits médias?'] }
+      questions: ["Comment intégrer l'IA dans la réflexion sur l'avenir des médias?", 'Un label "conçu sans IA" serait-il intéressant?', 'Comment protéger les petits médias?'] },
+    { id: 'reseaux', title: 'Réseaux sociaux & Ingérences', icon: Share2, color: '#c9a227', summary: "Effet arroseur arrosé : outil d'ingénierie sociale devenu vecteur d'info alternative",
+      details: [
+        'Réseaux sociaux originellement conçus pour "débiliser" les populations (ingénierie sociale)',
+        'Effet inverse : ont permis de révéler des informations ignorées par les médias mainstream',
+        'Régulation massive et urgente récente — coïncidence ou volonté de contrôle ?',
+        'Comptes "propagandesques" (ex: Josiane Lepine sur X) : contenus absurdes mais très mis en avant',
+        'Ces comptes ont un réel following/engagement et sont gérés par des personnes physiques'
+      ],
+      questions: [
+        'Qui définit l\'information à laquelle nous avons le droit d\'accéder ?',
+        'Pourquoi réguler les réseaux sociaux mais pas certaines chaînes TV ?',
+        'La régulation vise-t-elle à censurer les discours "dissidents" avant 2027 ?',
+        'Quid du libre arbitre et de l\'esprit critique face à la régulation ?',
+        'Par qui sont gérés les comptes de propagande mis en avant par X ?',
+        'Quel est ce système parallèle de mise en avant algorithmique ?'
+      ] }
   ],
   contacts: [
     { name: 'Nexus', desc: 'Média indépendant sans pub', status: 'À étudier' },
@@ -156,7 +173,10 @@ const dossierSyntheseData = {
     'Label « conçu sans IA » pour les médias coopératifs', 
     "Charte de Munich = condition d'accès aux subventions", 
     'Outils sociocratiques (7 piliers + 80 patterns)', 
-    'Audit public : qui prend combien via quelle structure'
+    'Audit public : qui prend combien via quelle structure',
+    'Étudier le système de mise en avant algorithmique sur X et autres plateformes',
+    'Documenter les comptes de propagande : origine, financement, réseaux',
+    'Réflexion sur la régulation différenciée : réseaux sociaux vs TV traditionnelle'
   ]
 };
 
