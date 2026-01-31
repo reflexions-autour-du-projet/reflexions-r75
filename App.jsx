@@ -126,30 +126,30 @@ const sessionsHistorique = {
 
 const dossierSyntheseData = {
   themes: [
-    { id: 'oligarchie', title: 'Oligarchie médiatique', icon: Landmark, color: '#ffebc0', summary: '28 familles/entités contrôlent tous les médias français',
+    { id: 'oligarchie', title: 'Oligarchie médiatique', icon: Landmark, color: '#FFEBC0', summary: '28 familles/entités contrôlent tous les médias français',
       details: ['Concentration des pouvoirs : économique, politique, administratif, médiatique', 'Propriétaires : Bouygues, Bolloré, Arnault, Niel, Drahi, Lagardère, Saadé, Kretinsky..', "L'influence est devenue la première raison d'acheter un média, pas la rentabilité", 'Glissement de "vecteur d\'information" à "vecteur d\'opinion"'],
       questions: ['Comment définir précisément "média oligarchique" ?', "Quel processus juridique pour l'expropriation ?", 'Rétrocession gratuite : quid de la légalité ?'] },
-    { id: 'financement', title: 'Financement', icon: Coins, color: '#ebc471', summary: "+1 Md€/an de subventions publiques",
+    { id: 'financement', title: 'Financement', icon: Coins, color: '#EBC471', summary: "+1 Md€/an de subventions publiques",
       details: ['Médias structurellement déficitaires malgré les milliards de bénéfices des groupes', 'Arnault : 17,8M€ de subventions (2023) vs 14 Mds€ de bénéfices LVMH', 'Déficit possiblement orchestré : outil de contrôle sur les journalistes', "Marché à double versant : vente au public + vente d'audience aux annonceurs"],
       questions: ['Interdire les subventions aux groupes bénéficiaires ?', 'Auditer qui prend combien via quelles structures ?', 'Le déficit est-il volontaire pour maintenir la pression ?'] },
-    { id: 'deontologie', title: 'Déontologie', icon: Scale, color: '#d9a22c', summary: 'Codes abandonnés depuis 40 ans, pensée unique',
+    { id: 'deontologie', title: 'Déontologie', icon: Scale, color: '#D9A22C', summary: 'Codes abandonnés depuis 40 ans, pensée unique',
       details: ["Plus personne ne légifère sur les conflits d'intérêts", 'Écoles de journalisme : formatage de la pensée', "Charte de Munich (1971) : n'engage que ceux qui la lisent", 'ARCOM : si elle a cette mission, ça ne fonctionne pas'],
       questions: ['Faut-il un nouvel organe de contrôle contraignant?', "Interdire aux oligarques d'être actionnaires des écoles?", "La charte de Munich comme condition d'accès aux subventions?"] },
-    { id: 'scop', title: 'SCOP & Sociocratie', icon: Handshake, color: '#b08b3d', summary: 'Modèle coopératif : salariés propriétaires, 1 personne = 1 voix',
+    { id: 'scop', title: 'SCOP & Sociocratie', icon: Handshake, color: '#B08B3D', summary: 'Modèle coopératif : salariés propriétaires, 1 personne = 1 voix',
       details: ['SCOP : 51% capital + 65% droits de vote aux salariés, dirigeants élus', 'Sociocratie : cercles de 6-8 personnes autonomes, référents inter-cercles', 'Parmigiano-Reggiano : 50 ans de coopératives qui fonctionnent'],
       questions: ['Transformer les médias existants OU créer de nouveaux médias coopératifs?', 'Cadeau empoisonné si le média est déjà déficitaire?', 'Les salariés seraient-ils mieux à même de gérer?'] },
-    { id: 'neutralite', title: 'Neutralité & Sémantique', icon: FileText, color: '#a0751a', summary: "Informer ≠ Convaincre — La neutralité n'existe pas",
+    { id: 'neutralite', title: 'Neutralité & Sémantique', icon: FileText, color: '#A0751A', summary: "Informer ≠ Convaincre — La neutralité n'existe pas",
       details: ['Distinction fondamentale : information vs opinion', 'Ligne éditoriale : chacun en a une, la neutralité est une illusion', '"Edit" = couper — une ligne éditoriale coupe', "Le choix même d'un sujet est déjà un parti pris"],
       questions: ["Réappropriation des mots : qu'est-ce que l'information à l'ère digitale?", 'Inclure la distinction informer/convaincre dans les statuts SCOP?', 'Est-ce le système ou une croyance populaire qui fait croire à la neutralité?'] },
-    { id: 'ia', title: 'IA & Guerre cognitive', icon: Bot, color: '#835c07', summary: 'Brouillage réel/fictif, information instrumentalisée',
+    { id: 'ia', title: 'IA & Guerre cognitive', icon: Bot, color: '#835C07', summary: 'Brouillage réel/fictif, information instrumentalisée',
       details: ['Nouveau réflexe : on doute de chaque info/photo (vraie ou générée?)', 'Exemple : photo Macron Ray-Ban crue fake mais vraie', 'Risque : Guerre cognitive'],
       questions: ["Comment intégrer l'IA dans la réflexion sur l'avenir des médias?", 'Un label "conçu sans IA" serait-il intéressant?', 'Comment protéger les petits médias?'] },
-    { id: 'reseaux', title: 'Réseaux sociaux & Ingérences', icon: Share2, color: '#523f02', summary: "Effet arroseur arrosé : outil d'ingénierie sociale devenu vecteur d'info alternative",
+    { id: 'reseaux', title: 'Réseaux sociaux & Ingérences', icon: Share2, color: '#523F02', summary: "Effet arroseur arrosé : outil d'ingénierie sociale devenu vecteur d'info alternative",
       details: [
         'Réseaux sociaux originellement conçus pour "débiliser" les populations (ingénierie sociale)',
         'Effet inverse : ont permis de révéler des informations ignorées par les médias mainstream',
         'Régulation massive et urgente récente — coïncidence ou volonté de contrôle ?',
-        'Comptes propagandesques (ex: Josiane Lepine sur X) : contenus absurdes mais très mis en avant',
+        'Comptes "propagandesques" (ex: Josiane Lepine sur X) : contenus absurdes mais très mis en avant',
         'Ces comptes ont un réel following/engagement et sont gérés par des personnes physiques'
       ],
       questions: [
@@ -175,7 +175,7 @@ const dossierSyntheseData = {
     'Outils sociocratiques (7 piliers + 80 patterns)', 
     'Audit public : qui prend combien via quelle structure',
     'Étudier le système de mise en avant algorithmique sur X et autres plateformes',
-    "Documenter les comptes propagandesques : origine, financement, réseaux",
+    'Documenter les comptes 'propagandesques' : origine, financement, réseaux',
     'Réflexion sur la régulation différenciée : réseaux sociaux vs TV traditionnelle'
   ]
 };
@@ -1310,7 +1310,7 @@ const App = () => {
         })}
       </nav>
 
-      {/* Vue Carte */}
+      {/* Vue Carte - MODIFICATION: Police Flamengo pour les titres des thèmes */}
       {syntheseView === 'carte' && (
         <GlassCard hover={false} style={{ marginBottom: '24px', textAlign: 'center' }}>
           <h2 style={{ fontFamily: titleFont, fontSize: (fs.title - 2) + 'px', color: colors.primary, marginBottom: '16px' }}>
@@ -1319,7 +1319,7 @@ const App = () => {
           <p style={{ color: colors.text, fontSize: fs.base + 'px', marginBottom: '24px', fontFamily: textFont }}>
             Cliquez sur "Thèmes" pour explorer chaque sujet en détail
           </p>
-          {/* Mini preview des thèmes */}
+          {/* Mini preview des thèmes - MODIFICATION: fontFamily: titleFont */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
             {dossierSyntheseData.themes.map(theme => {
               const IconComp = theme.icon;
@@ -1339,8 +1339,8 @@ const App = () => {
                     transition: 'all 0.2s ease'
                   }}
                 >
-                  <IconComp size={16} color={darkMode ? theme.color : '#333'} />
-                  <span style={{ fontSize: (fs.base - 2) + 'px', color: colors.text, fontFamily: textFont }}>{theme.title}</span>
+                  <IconComp size={16} color={theme.color} />
+                  <span style={{ fontSize: (fs.base - 2) + 'px', color: colors.text, fontFamily: titleFont }}>{theme.title}</span>
                 </div>
               );
             })}
@@ -1348,12 +1348,12 @@ const App = () => {
         </GlassCard>
       )}
 
-      {/* Vue Thèmes */}
+      {/* Vue Thèmes - MODIFICATION: Couleur du titre = theme.color */}
       {syntheseView === 'themes' && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '24px' }}>
           {dossierSyntheseData.themes.map(theme => {
             const IconComp = theme.icon;
-            const themeColor = darkMode ? theme.color : '#333';
+            const themeColor = theme.color; // Utiliser directement la couleur du thème
             const isExpanded = activeSyntheseTheme === theme.id;
             
             return (
@@ -1374,7 +1374,7 @@ const App = () => {
                 <h3 style={{
                   fontFamily: titleFont,
                   fontSize: fs.base + 'px',
-                  color: colors.primary,
+                  color: themeColor, // MODIFICATION: Couleur du titre = couleur du thème
                   marginBottom: '8px',
                   display: 'flex',
                   alignItems: 'center',
@@ -1390,7 +1390,7 @@ const App = () => {
                     <p style={{
                       fontSize: '12px',
                       fontFamily: titleFont,
-                      color: colors.primary,
+                      color: themeColor, // Utiliser la couleur du thème aussi pour les sous-titres
                       textTransform: 'uppercase',
                       letterSpacing: '0.05em',
                       marginBottom: '8px'
@@ -1408,7 +1408,7 @@ const App = () => {
                     <p style={{
                       fontSize: '12px',
                       fontFamily: titleFont,
-                      color: colors.primary,
+                      color: themeColor, // Utiliser la couleur du thème aussi pour les sous-titres
                       textTransform: 'uppercase',
                       letterSpacing: '0.05em',
                       marginBottom: '8px',
@@ -1433,7 +1433,7 @@ const App = () => {
         </div>
       )}
 
-      {/* Vue Actions */}
+      {/* Vue Actions - MODIFICATION: Noms des médias en Flamengo et #EEC21D */}
       {syntheseView === 'actions' && (
         <GlassCard hover={false}>
           <h2 style={{ fontFamily: titleFont, fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '20px' }}>
@@ -1450,7 +1450,8 @@ const App = () => {
                 padding: '14px'
               }}>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontWeight: '600', color: darkMode ? '#fff' : '#111', fontSize: (fs.base - 1) + 'px', marginBottom: '4px', fontFamily: textFont }}>{c.name}</div>
+                  {/* MODIFICATION: fontFamily: titleFont et color: '#EEC21D' */}
+                  <div style={{ fontFamily: titleFont, color: '#EEC21D', fontSize: (fs.base - 1) + 'px', marginBottom: '4px' }}>{c.name}</div>
                   <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.primary, fontFamily: textFont }}>{c.desc}</div>
                 </div>
                 <span style={{
@@ -2084,7 +2085,7 @@ const App = () => {
     }
 
     // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Government Sachs (intro, exemples, mondial)
+    // HANDLER: Government Sachs (intro, exemples, mondial) - CORRIGÉ
     // ═══════════════════════════════════════════════════════════════════════
     if (item.intro && item.exemples && item.mondial) {
       return (
@@ -2101,20 +2102,36 @@ const App = () => {
                   background: colors.buttonBg,
                   border: `1px solid ${colors.cardBorder}`,
                   borderRadius: '12px',
-                  padding: '16px',
-                  display: 'grid',
-                  gridTemplateColumns: '1fr auto 1fr',
-                  gap: '12px',
-                  alignItems: 'center'
+                  padding: '16px'
                 }}>
-                  <div>
-                    <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, marginBottom: '2px', fontFamily: textFont }}>Avant</div>
-                    <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{ex.avant}</div>
-                  </div>
-                  <ArrowRight size={16} color={colors.textVeryMuted} />
-                  <div>
-                    <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, marginBottom: '2px', fontFamily: textFont }}>Après</div>
-                    <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{ex.apres}</div>
+                  {/* MODIFICATION: Affichage du nom en haut de la carte */}
+                  {ex.nom && (
+                    <div style={{ 
+                      fontFamily: titleFont, 
+                      fontSize: fs.base + 'px', 
+                      color: colors.primary, 
+                      marginBottom: '12px',
+                      paddingBottom: '8px',
+                      borderBottom: `1px solid ${colors.cardBorder}`
+                    }}>
+                      {ex.nom}
+                    </div>
+                  )}
+                  <div style={{
+                    display: 'grid',
+                    gridTemplateColumns: '1fr auto 1fr',
+                    gap: '12px',
+                    alignItems: 'center'
+                  }}>
+                    <div>
+                      <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, marginBottom: '2px', fontFamily: textFont }}>Avant</div>
+                      <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{ex.avant}</div>
+                    </div>
+                    <ArrowRight size={16} color={colors.textVeryMuted} />
+                    <div>
+                      <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, marginBottom: '2px', fontFamily: textFont }}>Après</div>
+                      <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{ex.apres}</div>
+                    </div>
                   </div>
                 </div>
               ))}
