@@ -175,7 +175,7 @@ const dossierSyntheseData = {
     'Outils sociocratiques (7 piliers + 80 patterns)', 
     'Audit public : qui prend combien via quelle structure',
     'Étudier le système de mise en avant algorithmique sur X et autres plateformes',
-    'Documenter les comptes propagandesques : origine, financement, réseaux',
+    "Documenter les comptes propagandesques : origine, financement, réseaux",
     'Réflexion sur la régulation différenciée : réseaux sociaux vs TV traditionnelle'
   ]
 };
@@ -1340,7 +1340,7 @@ const App = () => {
                   }}
                 >
                   <IconComp size={16} color={theme.color} />
-                  <span style={{ fontSize: (fs.base - 2) + 'px', color: colors.text, fontFamily: titleFont }}>{theme.title}</span>
+                  <span style={{ fontSize: (fs.base - 2) + 'px', color: theme.color, fontFamily: titleFont }}>{theme.title}</span>
                 </div>
               );
             })}
