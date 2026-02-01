@@ -2381,6 +2381,37 @@ const App = () => {
       );
     }
 
+// ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Réseau individuel (nom, depuis, description, membres)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.nom && item.depuis && item.description && item.membres) {
+      return (
+        <div key={key} style={{
+          background: colors.buttonBg,
+          border: `1px solid ${colors.cardBorder}`,
+          borderRadius: '16px',
+          padding: '20px'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+            <Users size={24} color={ICON_COLOR} />
+            <div>
+              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary }}>{item.nom}</div>
+              <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>Depuis {item.depuis}</div>
+            </div>
+          </div>
+          <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '8px', fontFamily: textFont }}>{item.description}</div>
+          <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>
+            <strong>Membres/Format :</strong> {item.membres}
+          </div>
+          {item.cout && (
+            <div style={{ marginTop: '8px', fontSize: (fs.base - 2) + 'px', color: colors.primary, fontFamily: textFont }}>
+              💰 Coût : {item.cout}
+            </div>
+          )}
+        </div>
+      );
+    }
+    
     // ═══════════════════════════════════════════════════════════════════════
     // HANDLER: Réseaux d'élites (array avec nom, depuis, description, membres)
     // ═══════════════════════════════════════════════════════════════════════
