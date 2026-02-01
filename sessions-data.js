@@ -27,7 +27,7 @@
 // └─────────────────────────────────────────────────────────────────────────┘
 
 export const prochaineSession = {
-  titre: "Session 5 : Les mesures du Projet",
+  titre: "Session 5 : La sélection avant l'élection",
   date: "Jeudi 5 février à 18h",
   theme: "pantouflage"
 };
@@ -40,8 +40,9 @@ export const sessionsConfig = {
   ],
   pantouflage: [
     { id: 'session4', titre: "Introduction au pantouflage", date: "29/01", available: true },
-    { id: 'session5', titre: "Les mesures du Projet", date: "05/02", available: false },
-    { id: 'session6', titre: "Questions et Réflexions", date: "08/02", available: false },
+    { id: 'session5', titre: "La sélection avant l'élection", date: "05/02", available: true },
+    { id: 'session6', titre: "Les mesures du Projet", date: "08/02", available: false },
+    { id: 'session7', titre: "Questions et Réflexions", date: "12/02", available: false },
   ]
 };
 
@@ -276,11 +277,11 @@ export const mediasOligarchiques = {
 export const pantouflage = {
 
   // ═══════════════════════════════════════════════════════════════════════
-  // SESSION 4 — Introduction au pantouflage (29 janvier 2025)
+  // SESSION 4 — Introduction au pantouflage (29 janvier 2026)
   // ═══════════════════════════════════════════════════════════════════════
   session4: {
     title: "Introduction au pantouflage",
-    date: "29 janvier 2025",
+    date: "29 janvier 2026",
     duration: "2h",
     sections: {
       definition: {
@@ -394,14 +395,271 @@ export const pantouflage = {
         ]
       }
     }
+  },
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // SESSION 5 — La sélection avant l'élection (5 février 2026)
+  // ═══════════════════════════════════════════════════════════════════════
+  session5: {
+    title: "La sélection avant l'élection",
+    date: "5 février 2026",
+    duration: "2h",
+    sections: {
+      rappel: {
+        title: "Rappel de la session précédente",
+        content: [
+          "L'origine du pantouflage remonte à l'École Polytechnique sous Napoléon : « la botte » (servir l'État 10 ans) vs « la pantoufle » (partir vers le privé).",
+          "Ce qui était un choix individuel est devenu un système structurel de concentration des pouvoirs.",
+          "Les programmes Young Global Leaders (WEF, French-American Foundation) identifient et mettent en réseau les futurs dirigeants bien avant leur accession au pouvoir.",
+          "Promotion 1993 du WEF : Angela Merkel, Tony Blair, Nicolas Sarkozy, Viktor Orbán, José Manuel Barroso, Bill Gates — tous devenus dirigeants ou milliardaires 10 ans plus tard."
+        ]
+      },
+      patternRichesse: {
+        title: "Le pattern de croissance exponentielle",
+        content: {
+          intro: "Une caractéristique troublante apparaît chez les alumni YGL : succès exponentiel après leur sélection, richesse qui explose malgré des dons philanthropiques massifs.",
+          exemples: [
+            { nom: "Bill Gates", detail: "Déjà leader avant 1993, succès exponentiel après, richesse qui explose malgré des dons massifs" },
+            { nom: "Larry Page", detail: "Sélectionné YGL en 2002, succès exponentiel après, richesse qui explose malgré des dons massifs" },
+            { nom: "Jeff Bezos", detail: "Sélectionné YGL en 1998, succès exponentiel après, richesse qui explose malgré des dons massifs" },
+            { nom: "Mark Zuckerberg", detail: "Sélectionné YGL en 2009, même pattern de croissance exponentielle" }
+          ],
+          question: "Et les milliardaires qui n'ont PAS été YGL ? Warren Buffett, Michael Bloomberg, Bernard Arnault... même pattern de croissance. Auraient-ils participé à d'autres programmes similaires ?"
+        }
+      },
+      elonMusk: {
+        title: "Le cas Elon Musk",
+        content: {
+          constat: "Selon les archives Internet, Elon Musk figurait parmi les YGL 2008, identifié comme 'Chairman de Tesla Motors'. Son nom a depuis été retiré de la liste publique des alumni.",
+          paradoxe: "Il critique maintenant le WEF comme 'gouvernement mondial non élu que personne n'a demandé'... mais il a été sélectionné et mis en réseau par ce programme en 2008.",
+          question: "En janvier 2026, ce même Elon Musk est interviewé à Davos... par le PDG de BlackRock. Vrai dissident ou opposition contrôlée ?"
+        }
+      },
+      givingPledge: {
+        title: "Le Giving Pledge",
+        content: {
+          definition: "En 2010, Warren Buffett et Bill Gates lancent le 'Giving Pledge' : un engagement public par lequel des milliardaires promettent de donner au moins la moitié de leur fortune à des causes philanthropiques.",
+          membres: "Plus de 250 signataires de 30 pays : Michael Bloomberg, Mark Zuckerberg, Elon Musk, MacKenzie Scott (ex-Bezos)...",
+          realite: {
+            source: "Institute for Policy Studies (2025)",
+            revelations: [
+              "Les 32 signataires américains originaux de 2010 sont devenus collectivement 166% plus riches depuis qu'ils ont signé",
+              "Sur les 22 signataires décédés, seuls 8 avaient effectivement donné la moitié de leur fortune",
+              "~80% des dons identifiables sont allés vers des fondations privées qu'ils contrôlent eux-mêmes"
+            ]
+          },
+          conclusion: "Le Giving Pledge fonctionne moins comme un acte de générosité que comme un réseau de mise en relation entre ultra-riches. Un journaliste de Bloomberg l'a qualifié de 'club' plutôt que d'engagement réel."
+        }
+      },
+      autresReseaux: {
+        title: "L'écosystème des réseaux d'élites",
+        content: [
+          {
+            nom: "La Commission Trilatérale",
+            depuis: "1973 (fondée par David Rockefeller)",
+            description: "Réunit des dirigeants d'Amérique du Nord, d'Europe et d'Asie-Pacifique",
+            membres: "Henry Kissinger, Alan Greenspan, Paul Volcker (futurs présidents de la Fed), Larry Fink (PDG BlackRock)"
+          },
+          {
+            nom: "Atlantic Council — Millennium Fellowship",
+            depuis: "2015",
+            description: "Programme de 9 mois pour 'jeunes leaders émergents en affaires internationales'",
+            membres: "Voyages, rencontres avec responsables gouvernementaux à huis clos, réseau d'alumni mondial",
+            cout: "3 000 à 15 000$ selon secteur public/privé"
+          },
+          {
+            nom: "Aspen Global Leadership Network",
+            depuis: "2009",
+            description: "Plus de 4 000 alumni dans 60+ pays",
+            membres: "Rhétorique similaire au WEF : 'transformer les leaders du succès vers la signification'"
+          },
+          {
+            nom: "Le groupe Bilderberg",
+            depuis: "1954",
+            description: "Cercle très fermé réunissant les personnalités les plus influentes des États-Unis et d'Europe",
+            membres: "120-150 personnes pendant 3 jours dans un lieu secret, échanges soumis à la règle de Chatham House"
+          }
+        ]
+      },
+      bilderberg: {
+        title: "Le groupe Bilderberg en détail",
+        content: {
+          origine: "Nom venant de l'hôtel Bilderberg (Oosterbeek, Pays-Bas) où s'est tenue la première réunion en mai 1954. Initiative du prince Bernhard des Pays-Bas avec le soutien des services de renseignement américains (documents déclassifiés CIA).",
+          objectif: "Officiellement : renforcer la coopération Europe-Amérique du Nord pendant la Guerre froide et créer des liens entre élites des deux côtés de l'Atlantique.",
+          securite: "Hôtels entièrement vidés, lieux encerclés par police/gardes armés/armée, salles scannées pour dispositifs d'écoute, aucun journaliste autorisé, aucun CR officiel publié.",
+          citation: {
+            auteur: "Denis Healey",
+            texte: "Dire que nous cherchions à créer un gouvernement mondial est exagéré, mais pas totalement inexact. Nous pensions qu'on ne pouvait pas continuer éternellement à se battre pour rien et à tuer des gens.",
+            source: "The Guardian, 2000 (cofondateur Bilderberg, 30 ans au comité directeur)"
+          },
+          timing: [
+            { nom: "Bill Clinton", detail: "Bilderberg 1991 → Président USA 1993 (2 ans après)" },
+            { nom: "Tony Blair", detail: "Bilderberg 1993 + YGL 1993 → Premier ministre UK 1997 (4 ans après)" },
+            { nom: "Emmanuel Macron", detail: "Bilderberg 2014 → YGL 2016 → Président 2017 (3 ans après)" }
+          ]
+        }
+      },
+      chathamHouse: {
+        title: "La règle de Chatham House",
+        content: {
+          definition: "Protocole de confidentialité créé en 1927 par le Royal Institute of International Affairs (think tank britannique basé dans Chatham House, ancienne résidence de trois Premiers ministres britanniques).",
+          regle: "« Quand une réunion se déroule sous la règle de Chatham House, les participants sont libres d'utiliser les informations reçues, mais ils ne doivent révéler ni l'identité, ni l'affiliation des personnes qui les ont communiquées. »",
+          implication: "Vous pouvez dire 'j'ai entendu proposer telle politique' mais pas QUI l'a proposé. Les idées circulent, les sources restent protégées.",
+          argument: "Officiellement : encourager la franchise. Les participants peuvent s'exprimer librement sans craindre d'être cités.",
+          sanction: "Pas juridiquement contraignante — 'accord entre gentlemen'. Seule sanction : exclusion du réseau.",
+          application: "S'applique aux réunions Bilderberg, French-American Foundation, certaines sessions du WEF..."
+        }
+      },
+      usinesNarratifs: {
+        title: "Des usines à narratifs ?",
+        content: {
+          probleme: "Qui sont les participants à ces forums ? Des héritiers, des politiques, des PDG, des artistes... Être né dans la bonne famille ou avoir réussi dans les affaires ne confère pas automatiquement la capacité de comprendre un accord commercial international ou les implications d'une réforme bancaire.",
+          hypothese: "Ces réunions ne sont pas des 'think tanks' où l'on pense collectivement, mais des usines à narratifs où l'on distribue les mêmes éléments de langage à des relais d'influence.",
+          fonctionnement: "Le PDG le dira aux investisseurs, le politique le dira à l'Assemblée, l'artiste le dira sur les réseaux sociaux, le journaliste l'écrira dans son éditorial — même message, mille voix différentes.",
+          observation: "Sur certains sujets (climat, numérique, 'réformes structurelles'), on entend exactement les mêmes formulations, les mêmes arguments, les mêmes métaphores, d'un pays à l'autre, d'un parti à l'autre, d'un média à l'autre.",
+          questionCle: "La Chatham House Rule protège-t-elle la franchise des débats... ou la source du narratif ?"
+        }
+      },
+      artistes: {
+        title: "Les artistes dans les réseaux YGL",
+        content: {
+          intro: "Les Young Global Leaders ne se limitent pas aux affaires, à la finance ou à la politique. On y trouve un nombre significatif d'artistes, d'acteurs, de musiciens et de sportifs — ce n'est pas anodin.",
+          musique: [
+            {
+              nom: "Bono (U2)",
+              annee: "1993 (première promotion)",
+              suites: "Co-fondateur de ONE (lobbying pauvreté, financé par Gates & Soros) et RED (lancé à Davos 2006, plus gros contributeur privé du Global Fund)"
+            },
+            {
+              nom: "Shakira",
+              annee: "2008",
+              suites: "Fondation Pies Descalzos (1997), plus jeune ambassadrice UNICEF (2003), Crystal Award WEF 2017"
+            },
+            {
+              nom: "A.R. Rahman",
+              annee: "2008",
+              suites: "Compositeur Slumdog Millionaire, A.R. Rahman Foundation (2006), ambassadeur Stop TB Partnership (OMS)"
+            },
+            {
+              nom: "Wyclef Jean (Fugees)",
+              annee: "2010",
+              suites: "Fondation Yélé Haiti — scandale : sur 16M$ levés après le séisme, seul 1/3 utilisé pour les secours. Sélectionné YGL malgré le scandale en cours."
+            }
+          ],
+          cinema: [
+            {
+              nom: "Leonardo DiCaprio",
+              annee: "2008",
+              suites: "Messager de la Paix de l'ONU sur le climat (2014), Clinton Global Citizen Award (2014), Crystal Award WEF (2016)"
+            },
+            {
+              nom: "Charlize Theron",
+              annee: "2014",
+              suites: "Fondatrice Charlize Theron Africa Outreach Project"
+            },
+            {
+              nom: "Amal Clooney",
+              annee: "2016",
+              suites: "Co-fondatrice Clooney Foundation for Justice (2016), partenariats avec Obama Foundation et Melinda French Gates"
+            }
+          ],
+          sport: [
+            { nom: "Roger Federer", annee: "2010", suites: "Sélectionné parmi 5 000 candidats avec Evan Williams (Twitter) et Wyclef Jean" },
+            { nom: "Michael Schumacher", annee: "Alumni", suites: "7 titres de champion du monde F1" }
+          ],
+          france: [
+            { nom: "JR (artiste)", annee: "2020", suites: "Même promotion que Gabriel Attal (futur Premier ministre 2024)" }
+          ]
+        }
+      },
+      heritiers: {
+        title: "Les héritiers dans les réseaux",
+        content: {
+          intro: "Ces héritiers ne sont pas sélectionnés pour leurs accomplissements personnels mais parce qu'ils sont les futurs gestionnaires de fortunes et d'influence colossales — le WEF ne forme plus seulement des leaders, il intègre des dynasties.",
+          exemples: [
+            { nom: "Chelsea Clinton", annee: "2013", detail: "Fille de Bill et Hillary Clinton" },
+            { nom: "Ivanka Trump", annee: "2015", detail: "Fille de Donald Trump (avant même qu'il ne devienne président)" },
+            { nom: "Nathaniel Rothschild", annee: "2005", detail: "Fils de Jacob Rothschild, 4e Baron Rothschild" },
+            { nom: "Alexander Soros", annee: "2018", detail: "Fils de George Soros" }
+          ],
+          paradoxe: "Donald Trump critique le WEF comme 'gouvernement mondial non élu'... alors que sa fille en est membre depuis 2015."
+        }
+      },
+      pourquoiArtistes: {
+        title: "Pourquoi intégrer ces profils ?",
+        content: {
+          raison: "Ce sont des faiseurs d'opinion avec une influence culturelle massive.",
+          mecanisme: [
+            "Quand Leonardo DiCaprio parle du climat, des millions de personnes écoutent",
+            "Quand Bono défend une cause, elle gagne en visibilité mondiale",
+            "Quand Roger Federer ou Shakira s'associent à une initiative, elle devient 'cool', acceptable"
+          ],
+          pattern: "Ces artistes deviennent systématiquement des porte-parole de causes globales (climat, pauvreté, éducation, santé mondiale) — causes qui correspondent précisément aux agendas promus par le WEF.",
+          angleMort: "Ces appartenances ne sont quasiment jamais mentionnées dans les médias. Quand Leonardo DiCaprio parle du climat à la télévision, personne ne précise qu'il est YGL du WEF depuis 2008.",
+          enjeu: "Le public a le droit de savoir si la personne qui lui parle est membre d'un réseau d'influence, tout comme on exige des élus qu'ils déclarent leurs conflits d'intérêts."
+        }
+      },
+      ecosysteme: {
+        title: "Un écosystème à plusieurs niveaux",
+        content: {
+          niveaux: [
+            {
+              niveau: "Pour les jeunes 'à fort potentiel'",
+              programmes: "Young Global Leaders (WEF), Young Leaders (FAF), Millennium Fellowship (Atlantic Council), Aspen Institute..."
+            },
+            {
+              niveau: "Pour les dirigeants en exercice",
+              programmes: "Commission Trilatérale, groupe Bilderberg, sommets de Davos..."
+            },
+            {
+              niveau: "Pour les ultra-riches",
+              programmes: "Giving Pledge — crée une communauté et des occasions de collaboration entre milliardaires"
+            },
+            {
+              niveau: "Dimension culturelle",
+              programmes: "Artistes, sportifs, célébrités intégrés comme relais d'influence auprès du grand public"
+            }
+          ],
+          chevauchement: "Ces cercles se chevauchent : on peut être YGL à 35 ans, rejoindre la Commission Trilatérale à 50 ans, signer le Giving Pledge à 60 ans et participer à Bilderberg tout au long de sa carrière — et à chaque étape, on croise les mêmes artistes engagés, les mêmes sportifs ambassadeurs, les mêmes célébrités militantes.",
+          exemple: "Larry Fink (PDG BlackRock) : membre du Council on Foreign Relations, membre de la Commission Trilatérale, trustee du WEF, intervieweur d'Elon Musk à Davos 2026."
+        }
+      },
+      conclusion: {
+        title: "Ce que révèle cette cartographie",
+        content: {
+          constat: "Le pantouflage — ce passage du public au privé qu'on tente de réguler — n'est que la façade visible d'un système bien plus vaste.",
+          amont: "En amont de toute élection, il y a un système de sélection, de formation et de mise en réseau qui prépare les trajectoires. Des individus sont identifiés jeunes, mis en contact les uns avec les autres, formés aux mêmes idées et accompagnés tout au long de leur ascension.",
+          exempleAttal: "Gabriel Attal, Young Global Leader 2020, est devenu Premier ministre en 2024.",
+          questionsOuvertes: [
+            "Peut-on réellement réguler le pantouflage sans s'intéresser à ce qui le prépare ?",
+            "Faut-il exiger la transparence sur la participation à ces programmes ?",
+            "Un élu ou haut fonctionnaire formé dans ces réseaux est-il de facto en situation de conflit d'intérêts structurel ?",
+            "Qui choisit réellement nos dirigeants : le peuple à travers le vote, ou un système parallèle de sélection ?"
+          ],
+          indicateur: "Quand quelqu'un est autant attaqué pour ce qu'il EST et non pour ce qu'il DIT, ça vaut le coup de creuser. Et à l'inverse, quand quelqu'un est invité à Davos, sélectionné YGL ou récompensé par un Crystal Award... ça vaut peut-être le coup de se demander pourquoi."
+        }
+      }
+    }
   }
 
   // ═══════════════════════════════════════════════════════════════════════
-  // SESSION 5 — Les mesures du Projet (À VENIR)
+  // SESSION 6 — Les mesures du Projet (8 février 2026) — À VENIR
   // ═══════════════════════════════════════════════════════════════════════
-  // session5: {
+  // session6: {
   //   title: "Les mesures du Projet",
-  //   date: "5 février 2025",
+  //   date: "8 février 2026",
+  //   duration: "2h",
+  //   sections: {
+  //     // À compléter après la session
+  //   }
+  // }
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // SESSION 7 — Questions et Réflexions (12 février 2026) — À VENIR
+  // ═══════════════════════════════════════════════════════════════════════
+  // session7: {
+  //   title: "Questions et Réflexions",
+  //   date: "12 février 2026",
   //   duration: "2h",
   //   sections: {
   //     // À compléter après la session
