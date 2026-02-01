@@ -452,7 +452,7 @@ export const pantouflage = {
         }
       },
       autresReseaux: {
-        title: "L'écosystème des réseaux d'élites",
+        title: "L'écosystème des réseaux privés",
         content: [
           {
             nom: "La Commission Trilatérale",
