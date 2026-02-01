@@ -121,7 +121,7 @@ const sessionsHistorique = {
   ],
   pantouflage: [
     { id: 'session4', numero: '004', titre: 'Introduction au pantouflage', date: '29/01/2026', disponible: true },
-    { id: 'session5', numero: '005', titre: 'La sélection avant l'élection', date: '05/02/2026', disponible: true },
+    { id: 'session5', numero: '005', titre: "La sélection avant l'élection", date: '05/02/2026', disponible: true },
     { id: 'session6', numero: '006', titre: 'Les mesures du Projet', date: '08/02/2026', disponible: false },
     { id: 'session7', numero: '007', titre: 'Questions et Réflexions', date: '12/02/2026', disponible: false },
   ]
