@@ -2244,6 +2244,662 @@ const App = () => {
       );
     }
 
+// ═══════════════════════════════════════════════════════════════════════════
+// HANDLERS À AJOUTER DANS App.jsx — dans la fonction renderContentItem
+// ═══════════════════════════════════════════════════════════════════════════
+// 
+// Copie-colle ces handlers JUSTE AVANT le commentaire "// FALLBACK: Affichage JSON pour debug"
+// (vers la fin de la fonction renderContentItem, avant le "console.warn")
+//
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Pattern richesse (intro, exemples avec nom/detail, question)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.intro && item.exemples && item.question) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.intro}</p>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {item.exemples.map((ex, i) => (
+              <div key={i} style={{
+                background: colors.buttonBg,
+                border: `1px solid ${colors.cardBorder}`,
+                borderRadius: '12px',
+                padding: '16px'
+              }}>
+                <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{ex.nom}</div>
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{ex.detail}</div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{
+            background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
+            borderRadius: '12px',
+            padding: '16px',
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '12px'
+          }}>
+            <HelpCircle size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.question}</div>
+          </div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Cas Elon Musk (constat, paradoxe, question)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.constat && item.paradoxe && item.question) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{
+            background: colors.buttonBg,
+            borderLeft: `4px solid ${colors.primary}`,
+            borderRadius: '0 12px 12px 0',
+            padding: '16px'
+          }}>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.constat}</div>
+          </div>
+          
+          <div style={{
+            background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+            border: '1px solid rgba(239, 68, 68, 0.3)',
+            borderRadius: '12px',
+            padding: '16px'
+          }}>
+            <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '8px' }}>Paradoxe</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.paradoxe}</div>
+          </div>
+
+          <div style={{
+            background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
+            borderRadius: '12px',
+            padding: '16px',
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: '12px'
+          }}>
+            <HelpCircle size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
+            <div style={{ fontSize: fs.base + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.question}</div>
+          </div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Giving Pledge (definition, membres, realite, conclusion)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.definition && item.membres && item.realite && item.conclusion) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.definition}</p>
+          
+          <div style={{
+            background: colors.buttonBg,
+            borderRadius: '12px',
+            padding: '16px'
+          }}>
+            <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Membres notables</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.membres}</div>
+          </div>
+
+          <div style={{
+            background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+            border: '1px solid rgba(239, 68, 68, 0.3)',
+            borderRadius: '12px',
+            padding: '20px'
+          }}>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#ef4444', marginBottom: '12px' }}>
+              La réalité — {item.realite.source}
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {item.realite.revelations.map((rev, i) => (
+                <div key={i} style={{
+                  background: 'rgba(239, 68, 68, 0.1)',
+                  borderRadius: '8px',
+                  padding: '10px 12px',
+                  fontSize: (fs.base - 1) + 'px',
+                  color: colors.text,
+                  fontFamily: textFont
+                }}>• {rev}</div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{
+            background: colors.buttonBg,
+            borderLeft: `4px solid ${colors.primary}`,
+            borderRadius: '0 12px 12px 0',
+            padding: '16px'
+          }}>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.conclusion}</div>
+          </div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Réseaux d'élites (array avec nom, depuis, description, membres)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (Array.isArray(item) && item.length > 0 && item[0].nom && item[0].depuis && item[0].description) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          {item.map((reseau, i) => (
+            <div key={i} style={{
+              background: colors.buttonBg,
+              border: `1px solid ${colors.cardBorder}`,
+              borderRadius: '16px',
+              padding: '20px'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
+                <Users size={24} color={ICON_COLOR} />
+                <div>
+                  <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary }}>{reseau.nom}</div>
+                  <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>Depuis {reseau.depuis}</div>
+                </div>
+              </div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '8px', fontFamily: textFont }}>{reseau.description}</div>
+              <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>
+                <strong>Membres/Format :</strong> {reseau.membres}
+              </div>
+              {reseau.cout && (
+                <div style={{ marginTop: '8px', fontSize: (fs.base - 2) + 'px', color: colors.primary, fontFamily: textFont }}>
+                  💰 Coût : {reseau.cout}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Bilderberg (origine, objectif, securite, citation, timing)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.origine && item.objectif && item.securite && item.timing) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div style={{
+            background: darkMode
+              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)'
+              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
+            borderRadius: '16px',
+            padding: '20px'
+          }}>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Origine</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.origine}</div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '12px' }}>
+            <div style={{
+              background: colors.buttonBg,
+              border: `1px solid ${colors.cardBorder}`,
+              borderRadius: '12px',
+              padding: '16px'
+            }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Objectif officiel</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.objectif}</div>
+            </div>
+            <div style={{
+              background: colors.buttonBg,
+              border: `1px solid ${colors.cardBorder}`,
+              borderRadius: '12px',
+              padding: '16px'
+            }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Sécurité</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.securite}</div>
+            </div>
+          </div>
+
+          {item.citation && (
+            <div style={{
+              background: colors.buttonBg,
+              borderLeft: `4px solid ${colors.primary}`,
+              borderRadius: '0 12px 12px 0',
+              padding: '20px'
+            }}>
+              <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>
+                « {item.citation.texte} »
+              </p>
+              <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px', fontFamily: textFont }}>— {item.citation.auteur}</p>
+              {item.citation.source && <p style={{ color: colors.textVeryMuted, fontSize: (fs.base - 3) + 'px', marginTop: '4px', fontFamily: textFont }}>{item.citation.source}</p>}
+            </div>
+          )}
+
+          <div>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>
+              📅 Timing troublant
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {item.timing.map((t, i) => (
+                <div key={i} style={{
+                  background: colors.buttonBg,
+                  borderLeft: `3px solid ${colors.primary}`,
+                  borderRadius: '0 10px 10px 0',
+                  padding: '12px 16px',
+                  fontSize: (fs.base - 1) + 'px',
+                  fontFamily: textFont
+                }}>
+                  <span style={{ color: colors.primary, fontWeight: '600' }}>{t.nom}</span>
+                  <span style={{ color: colors.textMuted }}> — {t.detail}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Chatham House (definition, regle, implication, argument, sanction, application)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.definition && item.regle && item.implication && item.sanction) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.definition}</p>
+          
+          <div style={{
+            background: darkMode
+              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)'
+              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0.05) 100%)',
+            borderRadius: '16px',
+            padding: '20px',
+            textAlign: 'center'
+          }}>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>La règle</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, fontStyle: 'italic', lineHeight: 1.6, fontFamily: textFont }}>
+              {item.regle}
+            </div>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
+            <div style={{
+              background: colors.buttonBg,
+              border: `1px solid ${colors.cardBorder}`,
+              borderRadius: '12px',
+              padding: '16px'
+            }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Implication</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.implication}</div>
+            </div>
+            <div style={{
+              background: colors.buttonBg,
+              border: `1px solid ${colors.cardBorder}`,
+              borderRadius: '12px',
+              padding: '16px'
+            }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Argument officiel</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.argument}</div>
+            </div>
+            <div style={{
+              background: colors.buttonBg,
+              border: `1px solid ${colors.cardBorder}`,
+              borderRadius: '12px',
+              padding: '16px'
+            }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Sanction</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.sanction}</div>
+            </div>
+          </div>
+
+          {item.application && (
+            <div style={{
+              background: colors.buttonBg,
+              borderRadius: '12px',
+              padding: '16px',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '12px'
+            }}>
+              <Globe size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>
+                <strong>Application :</strong> {item.application}
+              </div>
+            </div>
+          )}
+
+          {item.questionCle && (
+            <div style={{
+              background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
+              borderRadius: '12px',
+              padding: '16px',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '12px'
+            }}>
+              <HelpCircle size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
+              <div style={{ fontSize: fs.base + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.questionCle}</div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Usines à narratifs (probleme, hypothese, fonctionnement, observation, questionCle)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.probleme && item.hypothese && item.fonctionnement && item.observation) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.probleme}</p>
+          
+          <div style={{
+            background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+            border: '1px solid rgba(239, 68, 68, 0.3)',
+            borderRadius: '12px',
+            padding: '16px'
+          }}>
+            <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '8px' }}>Hypothèse</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.hypothese}</div>
+          </div>
+
+          <div style={{
+            background: colors.buttonBg,
+            borderRadius: '12px',
+            padding: '16px'
+          }}>
+            <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Fonctionnement</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.fonctionnement}</div>
+          </div>
+
+          <div style={{
+            background: colors.buttonBg,
+            borderLeft: `4px solid ${colors.primary}`,
+            borderRadius: '0 12px 12px 0',
+            padding: '16px'
+          }}>
+            <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Observation</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.observation}</div>
+          </div>
+
+          {item.questionCle && (
+            <div style={{
+              background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
+              borderRadius: '12px',
+              padding: '16px',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '12px'
+            }}>
+              <HelpCircle size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
+              <div style={{ fontSize: fs.base + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.questionCle}</div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Artistes YGL (intro, musique, cinema, sport, france)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.intro && (item.musique || item.cinema || item.sport)) {
+      const categories = [
+        { key: 'musique', label: '🎵 Musique', data: item.musique },
+        { key: 'cinema', label: '🎬 Cinéma', data: item.cinema },
+        { key: 'sport', label: '⚽ Sport', data: item.sport },
+        { key: 'france', label: '🇫🇷 France', data: item.france }
+      ].filter(c => c.data && c.data.length > 0);
+
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.intro}</p>
+          
+          {categories.map((cat) => (
+            <div key={cat.key}>
+              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>
+                {cat.label}
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {cat.data.map((artiste, i) => (
+                  <div key={i} style={{
+                    background: colors.buttonBg,
+                    border: `1px solid ${colors.cardBorder}`,
+                    borderRadius: '12px',
+                    padding: '16px'
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+                      <span style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary }}>{artiste.nom}</span>
+                      <span style={{ fontSize: '11px', padding: '2px 8px', background: colors.buttonBgHover, borderRadius: '10px', color: colors.textMuted, fontFamily: textFont }}>
+                        YGL {artiste.annee}
+                      </span>
+                    </div>
+                    <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{artiste.suites}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Héritiers (intro, exemples avec nom/annee/detail, paradoxe)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.intro && item.exemples && item.paradoxe) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.intro}</p>
+          
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px' }}>
+            {item.exemples.map((ex, i) => (
+              <div key={i} style={{
+                background: colors.buttonBg,
+                border: `1px solid ${colors.cardBorder}`,
+                borderRadius: '12px',
+                padding: '16px'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
+                  <span style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary }}>{ex.nom}</span>
+                  <span style={{ fontSize: '10px', padding: '2px 8px', background: colors.buttonBgHover, borderRadius: '10px', color: colors.textMuted }}>{ex.annee}</span>
+                </div>
+                <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>{ex.detail}</div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{
+            background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+            border: '1px solid rgba(239, 68, 68, 0.3)',
+            borderRadius: '12px',
+            padding: '16px'
+          }}>
+            <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '8px' }}>Paradoxe</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.paradoxe}</div>
+          </div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Pourquoi artistes (raison, mecanisme, pattern, angleMort, enjeu)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.raison && item.mecanisme && item.pattern) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div style={{
+            background: darkMode
+              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)'
+              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
+            borderRadius: '16px',
+            padding: '20px'
+          }}>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Raison</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.raison}</div>
+          </div>
+
+          <div>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Mécanisme</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {item.mecanisme.map((m, i) => (
+                <div key={i} style={{
+                  background: colors.buttonBg,
+                  borderLeft: `3px solid ${colors.primary}`,
+                  borderRadius: '0 10px 10px 0',
+                  padding: '12px 16px',
+                  fontSize: (fs.base - 1) + 'px',
+                  color: colors.text,
+                  fontFamily: textFont
+                }}>{m}</div>
+              ))}
+            </div>
+          </div>
+
+          <div style={{
+            background: colors.buttonBg,
+            borderRadius: '12px',
+            padding: '16px'
+          }}>
+            <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Pattern</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.pattern}</div>
+          </div>
+
+          {item.angleMort && (
+            <div style={{
+              background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)',
+              border: '1px solid rgba(239, 68, 68, 0.3)',
+              borderRadius: '12px',
+              padding: '16px'
+            }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '8px' }}>Angle mort médiatique</div>
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.angleMort}</div>
+            </div>
+          )}
+
+          {item.enjeu && (
+            <div style={{
+              background: darkMode ? 'rgba(68, 112, 29, 0.15)' : 'rgba(68, 112, 29, 0.1)',
+              border: '1px solid rgba(68, 112, 29, 0.3)',
+              borderRadius: '12px',
+              padding: '16px'
+            }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#44701D', marginBottom: '8px' }}>Enjeu</div>
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.enjeu}</div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Écosystème (niveaux, chevauchement, exemple)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.niveaux && item.chevauchement) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {item.niveaux.map((n, i) => (
+              <div key={i} style={{
+                background: colors.buttonBg,
+                border: `1px solid ${colors.cardBorder}`,
+                borderRadius: '12px',
+                padding: '16px'
+              }}>
+                <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>{n.niveau}</div>
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{n.programmes}</div>
+              </div>
+            ))}
+          </div>
+
+          <div style={{
+            background: darkMode
+              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)'
+              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
+            borderRadius: '16px',
+            padding: '20px'
+          }}>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Chevauchement des cercles</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.chevauchement}</div>
+          </div>
+
+          {item.exemple && (
+            <div style={{
+              background: colors.buttonBg,
+              borderLeft: `4px solid ${colors.primary}`,
+              borderRadius: '0 12px 12px 0',
+              padding: '16px'
+            }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Exemple concret</div>
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.exemple}</div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Conclusion (constat, amont, exempleAttal, questionsOuvertes, indicateur)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.constat && item.amont && item.questionsOuvertes) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div style={{
+            background: darkMode
+              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)'
+              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0.05) 100%)',
+            borderRadius: '16px',
+            padding: '20px',
+            textAlign: 'center'
+          }}>
+            <div style={{ fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', lineHeight: 1.6, fontFamily: textFont }}>{item.constat}</div>
+          </div>
+
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.amont}</p>
+
+          {item.exempleAttal && (
+            <div style={{
+              background: colors.buttonBg,
+              borderLeft: `4px solid ${colors.primary}`,
+              borderRadius: '0 12px 12px 0',
+              padding: '16px'
+            }}>
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{item.exempleAttal}</div>
+            </div>
+          )}
+
+          <div>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#9E876E', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <HelpCircle size={18} color="#9E876E" /> Questions ouvertes
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {item.questionsOuvertes.map((q, i) => (
+                <div key={i} style={{
+                  background: 'rgba(158, 135, 110, 0.15)',
+                  border: '1px solid rgba(158, 135, 110, 0.3)',
+                  borderRadius: '10px',
+                  padding: '12px 16px',
+                  color: colors.text,
+                  fontSize: (fs.base - 1) + 'px',
+                  fontFamily: textFont
+                }}>{q}</div>
+              ))}
+            </div>
+          </div>
+
+          {item.indicateur && (
+            <div style={{
+              background: darkMode ? 'rgba(68, 112, 29, 0.15)' : 'rgba(68, 112, 29, 0.1)',
+              border: '1px solid rgba(68, 112, 29, 0.3)',
+              borderRadius: '12px',
+              padding: '16px'
+            }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#44701D', marginBottom: '8px' }}>💡 Indicateur</div>
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.indicateur}</div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+// ═══════════════════════════════════════════════════════════════════════════
+// FIN DES HANDLERS À AJOUTER
+// ═══════════════════════════════════════════════════════════════════════════
+
+
+    
     // ═══════════════════════════════════════════════════════════════════════
     // FALLBACK: Affichage JSON pour debug
     // ═══════════════════════════════════════════════════════════════════════
