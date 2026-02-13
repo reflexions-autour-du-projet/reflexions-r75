@@ -27,8 +27,8 @@
 // └─────────────────────────────────────────────────────────────────────────┘
 
 export const prochaineSession = {
-  titre: "Session 5 : La sélection avant l'élection",
-  date: "Jeudi 5 février à 18h",
+  titre: "Session 6 : Les mesures du Projet",
+  date: "Vendredi 13 février à 18h",
   theme: "pantouflage"
 };
 
