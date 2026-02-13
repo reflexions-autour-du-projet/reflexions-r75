@@ -27,8 +27,8 @@
 // └─────────────────────────────────────────────────────────────────────────┘
 
 export const prochaineSession = {
-  titre: "Session 6 : Les mesures du Projet",
-  date: "Vendredi 13 février à 18h",
+  titre: "Session 7 : Questions et Réflexions",
+  date: "Jeudi 19 février à 18h",
   theme: "pantouflage"
 };
 
@@ -41,7 +41,7 @@ export const sessionsConfig = {
   pantouflage: [
     { id: 'session4', titre: "Introduction au pantouflage", date: "29/01", available: true },
     { id: 'session5', titre: "La sélection avant l'élection", date: "05/02", available: true },
-    { id: 'session6', titre: "Les mesures du Projet", date: "13/02", available: false },
+    { id: 'session6', titre: "Les mesures du Projet", date: "13/02", available: true },
     { id: 'session7', titre: "Questions et Réflexions", date: "19/02", available: false },
   ]
 };
@@ -640,19 +640,274 @@ export const pantouflage = {
         }
       }
     }
-  }
+  },
 
   // ═══════════════════════════════════════════════════════════════════════
-  // SESSION 6 — Les mesures du Projet (13 février 2026) — À VENIR
+  // SESSION 6 — Les mesures du Projet (13 février 2026)
   // ═══════════════════════════════════════════════════════════════════════
-  // session6: {
-  //   title: "Les mesures du Projet",
-  //   date: "13 février 2026",
-  //   duration: "2h",
-  //   sections: {
-  //     // À compléter après la session
-  //   }
-  // }
+  session6: {
+    title: "Les mesures du Projet",
+    date: "13 février 2026",
+    duration: "2h",
+    sections: {
+      rappel: {
+        title: "Rappel des sessions précédentes",
+        content: [
+          "Depuis trois sessions, on travaille sur le pantouflage : ses origines (la botte vs la pantoufle sous Napoléon), son amplification avec les privatisations des années 80, puis son explosion depuis 2017 avec plus de 40 conseillers ministériels partis vers le privé.",
+          "Des cas concrets en France (Macron, Kohler, Djebbari, Pénicaud), en Europe (Barroso, Kroes, De Gucht) et à l'international avec le phénomène 'Government Sachs'.",
+          "Tout un écosystème de programmes de sélection (YGL du WEF, French-American Foundation, Commission Trilatérale, Atlantic Council, Aspen Institute, groupe Bilderberg, Giving Pledge) fonctionnant sous la règle de Chatham House.",
+          "Des artistes, sportifs et célébrités intégrés comme relais d'influence (Shakira, DiCaprio, Federer, Bono), dont les affiliations ne sont jamais mentionnées dans les médias."
+        ]
+      },
+      casMontchalin: {
+        title: "Le cas Amélie de Montchalin",
+        content: {
+          intro: "Le 11 février 2026, Macron a nommé Amélie de Montchalin à la tête de la Cour des comptes, en remplacement de Pierre Moscovici — un cas d'école pour illustrer tout ce qu'on a vu depuis deux sessions.",
+          parcours: {
+            formation: [
+              { ecole: "HEC Paris", type: "École de commerce de l'élite économique française" },
+              { ecole: "Harvard Kennedy School of Government", type: "École de formation des dirigeants politiques internationaux" }
+            ],
+            prive: {
+              periode: "2008-2017 (9 ans)",
+              postes: [
+                { entreprise: "BNP Paribas", role: "Finance — l'un des plus gros groupes bancaires mondiaux" },
+                { entreprise: "AXA", role: "Affaires publiques — lobbying auprès des pouvoirs publics" }
+              ]
+            },
+            politique: [
+              { periode: "2017", poste: "Élue députée LREM de l'Essonne (première élection)", detail: "Coordinatrice du groupe macroniste à la commission des finances" },
+              { periode: "2019-2020", poste: "Secrétaire d'État aux Affaires européennes" },
+              { periode: "2020-2022", poste: "Ministre de la Transformation et de la Fonction publiques", detail: "Pilote la plus grande réforme de la haute fonction publique depuis 1945, suppression de l'ENA" },
+              { periode: "2022", poste: "Battue aux législatives dans l'Essonne" },
+              { periode: "2024", poste: "Ministre de l'Action et des Comptes publics (gouv. Bayrou puis Lecornu)", detail: "En charge du budget de l'État" },
+              { periode: "11/02/2026", poste: "Nommée Première présidente de la Cour des comptes" }
+            ],
+            reseaux: [
+              { programme: "Young Leader — French-American Foundation", annee: "2018", detail: "Sélectionnée alors qu'elle n'est députée que depuis un an. La promotion 2019 a été reçue au ministère des Affaires étrangères par Montchalin elle-même." },
+              { programme: "Young Global Leader — World Economic Forum", annee: "2021", detail: "Sélectionnée avec 112 autres personnes, présentée comme 'ministre de la Transformation et de la Fonction publique'. Doublement labellisée comme Macron avant elle." }
+            ],
+            famille: "Mariée à Guillaume de Montchalin, partner au Boston Consulting Group — l'un des principaux bénéficiaires des marchés publics de cabinets de conseil (commission d'enquête sénatoriale 2022). L'épouse d'un partner du BCG dirigera l'institution censée contrôler les comptes de l'État qui paie ces cabinets."
+          },
+          paradoxe: "Une Young Global Leader du WEF et Young Leader de la FAF a piloté la plus grande réforme de la haute fonction publique française depuis 1945."
+        }
+      },
+      courDesComptes: {
+        title: "La Cour des comptes et ses implications",
+        content: {
+          role: {
+            missions: [
+              "Contrôle la régularité des comptes publics",
+              "Vérifie que l'argent des contribuables est bien utilisé",
+              "Évalue les politiques publiques (~200 rapports par an)",
+              "Le Premier président préside aussi le Haut Conseil des finances publiques et le Conseil des prélèvements obligatoires"
+            ],
+            enjeu: "C'est le poste clé du contrôle des finances de la nation."
+          },
+          irrevocabilite: {
+            regle: "Pas de durée de mandat, seule limite : 68 ans",
+            consequence: "Amélie a 40 ans → potentiellement 28 ans à la tête de l'institution",
+            perspective: "28 ans = plus long que tous les mandats présidentiels de la Ve République (sauf De Gaulle et Mitterrand), 5 élections présidentielles, 4-5 changements de président",
+            precedent: "L'usage n'avait jamais vu un président nommé avant 58 ans (sénatrice LR Christine Lavarde). En nommant quelqu'un de jeune, on maximise la durée du verrouillage."
+          },
+          conflitInterets: [
+            "Dès avril 2026 : la Cour publiera son rapport sur l'exécution du budget 2025, celui qu'Amélie a elle-même préparé comme ministre des Comptes publics",
+            "En juillet : état des lieux des finances publiques — des finances qu'elle gérait elle-même quelques semaines plus tôt",
+            "Rupture de l'usage (depuis Sarkozy) de nommer une personnalité issue de l'opposition pour garantir l'indépendance",
+            "Nomination exclusivement du ressort du chef de l'État : aucune approbation parlementaire, aucun vote des commissions"
+          ]
+        }
+      },
+      verrouillage: {
+        title: "La stratégie de verrouillage institutionnel avant 2027",
+        content: {
+          contexte: "Macron ne peut pas se représenter (3e mandat consécutif interdit). Les sondages donnent une alternance probable. Stratégie : placer des fidèles à des postes irrévocables qui survivront à l'alternance.",
+          nominations: [
+            {
+              nom: "Richard Ferrand — Conseil constitutionnel",
+              date: "Février 2025",
+              profil: "Cofondateur d'En Marche, premier président LREM de l'Assemblée nationale (2018-2022), le plus proche fidèle de Macron",
+              detail: "58 parlementaires ont voté contre sur 97, seulement 39 pour. Passé à UNE voix près (il fallait 59 voix contre, 3/5e). 16 députés RN se sont abstenus sur consigne de Marine Le Pen.",
+              enjeu: "Pas juriste (il l'a reconnu lui-même). Nommé pour 9 ans non renouvelables (→ 2034). Validera les présidentielles de 2027 et 2032.",
+              lienLP: "Plusieurs observateurs ont lié l'abstention du RN au fait que le Conseil devait se prononcer sur une QPC concernant l'éligibilité de Marine Le Pen."
+            },
+            {
+              nom: "François Villeroy de Galhau — Banque de France",
+              date: "Annonce de démission le même jour que la nomination Montchalin",
+              profil: "Polytechnicien, énarque, inspecteur des finances, passé par la Direction du Trésor, cabinet de DSK, puis Cetelem et BNP Paribas — parcours de pantouflage classique",
+              detail: "Mandat devait courir jusqu'à l'automne 2027 (après la présidentielle). En partant en juin 2026, il offre la nomination de son successeur à Macron au lieu du prochain président.",
+              enjeu: "Successeur nommé pour 6 ans (→ 2032 minimum). Siège au Conseil des gouverneurs de la BCE. Bloomberg a titré : 'Villeroy quitte la Banque de France, laissant Macron choisir le prochain gouverneur'."
+            },
+            {
+              nom: "Vice-président du Conseil d'État",
+              date: "Départ à la retraite le 21 mai 2026",
+              detail: "Le vice-président est le patron réel de l'institution (le président formel est le Premier ministre qui ne siège jamais). Plus haute juridiction administrative, conseille le gouvernement sur tous les projets de loi, juge les litiges entre citoyens et administration.",
+              enjeu: "Encore une nomination qui reviendra à Macron avant 2027."
+            },
+            {
+              nom: "30 hauts fonctionnaires en un seul Conseil des ministres",
+              date: "26 juin 2024 — 4 jours avant le premier tour des législatives après la dissolution",
+              detail: "Recteurs d'académie, ambassadeurs, hauts magistrats, patrons d'ARS, état-major de l'armée de l'air, gouverneur militaire de Paris, représentant permanent à l'OTAN — 30 nominations en un seul jour."
+            }
+          ],
+          bilan: "Quatre des institutions les plus puissantes de la République (Cour des comptes, Conseil constitutionnel, Banque de France, Conseil d'État) — toutes entre les mains de personnes nommées par Macron, toutes en poste bien au-delà de 2027.",
+          retour2032: "La Revue Politique et Parlementaire affirme que Macron aurait confié à des proches son souhait de 'revenir en 2032'. La Constitution interdit un 3e mandat consécutif, mais pas après une interruption — ces nominations stratégiques prendraient alors un autre sens.",
+          conclusion: "Si la Cour des comptes, le Conseil constitutionnel, la Banque de France et le Conseil d'État sont tous dirigés par des personnes nommées par le même président, dans la même fenêtre temporelle, avec la même motivation de verrouillage — alors la séparation des pouvoirs est une fiction."
+        }
+      },
+      mesure1: {
+        title: "Mesure 1 : Démission définitive du corps",
+        content: {
+          aujourdhui: {
+            systeme: "La 'disponibilité'",
+            fonctionnement: "Un haut fonctionnaire qui veut se présenter à une élection se met 'en disponibilité' — s'il perd, il retrouve son poste; s'il gagne, il exerce son mandat; à la fin, il peut revenir.",
+            consequence: "Aucun risque pour les hauts fonctionnaires : la 'carrière tournante' (allers-retours privé/public) est sans fin et sans conséquence. Macron pourrait en théorie revenir au corps de l'Inspection après son mandat."
+          },
+          projet: {
+            principe: "Si tu es haut fonctionnaire et que tu veux devenir élu, tu démissionnes de ton corps. Définitivement. Pas de filet de sécurité, pas de plan B, pas de retour possible.",
+            logique: "Soit tu choisis de servir le peuple en tant qu'élu, soit tu choisis de servir l'État en tant qu'administrateur — mais tu ne fais pas les deux alternativement au gré des opportunités."
+          },
+          congeRepublicain: {
+            principe: "6 mois, deux fois par carrière, pour les citoyens ordinaires (salariés du privé, indépendants)",
+            effet: "Double sens : rendre l'entrée en politique plus difficile pour les élites administratives (suppression du filet) et plus facile pour les citoyens ordinaires (congé protégé)"
+          },
+          applicationMontchalin: "Montchalin n'est pas issue d'un grand corps — elle vient du privé. Cette mesure ne l'aurait pas empêchée directement, mais aurait empêché le parcours type de beaucoup de ses collègues macronistes (Conseil d'État, Inspection des finances, Cour des comptes)."
+        }
+      },
+      mesure2: {
+        title: "Mesure 2 : Période de carence de 5 ans",
+        content: {
+          aujourdhui: {
+            systeme: "Période de carence de 3 ans (public → privé), contrôlée par la HATVP",
+            failles: [
+              "Djebbari : avis réservé de la HATVP, interdit d'exercer dans les transports pendant 3 ans → devenu consultant pour des entreprises du secteur sous couvert d'un cabinet de conseil",
+              "Quasi rien n'existe pour le passage inverse (élection → haute fonction publique)",
+              "Montchalin : zéro jour d'attente entre le ministère des Comptes publics et la Cour des comptes"
+            ]
+          },
+          projet: {
+            duree: "5 ans au lieu de 3",
+            effets: [
+              "Les dossiers changent de main, les interlocuteurs changent, les enjeux évoluent",
+              "Les contacts directs perdent en pertinence",
+              "Le 'capital informationnel' (secrets, failles, leviers d'influence) se déprécie",
+              "Couvre un mandat présidentiel entier",
+              "S'applique dans les DEUX sens : public → privé ET élection → haute fonction publique"
+            ]
+          },
+          applicationMontchalin: "Avec une carence de 5 ans, elle n'aurait pas pu passer du ministère à la Cour des comptes avant 2031. Le budget 2025 serait de l'histoire ancienne, un autre président serait en poste, et la stratégie de verrouillage avant 2027 serait impossible.",
+          questionsOuvertes: [
+            "5 ans suffisants quand les réseaux opèrent sur des décennies ?",
+            "Faudrait-il différencier selon le niveau de responsabilité (5 ans pour un député, 7-10 ans pour un ministre) ?",
+            "Le 'pantouflage triangulaire' (privé → public → institution de contrôle) est-il couvert ? La carence de 5 ans ne traite que le dernier passage, pas la trajectoire d'ensemble."
+          ]
+        }
+      },
+      mesure3: {
+        title: "Mesure 3 : Transparence décennale et publication des avis",
+        content: {
+          aujourdhui: {
+            problemes: [
+              "Déclarations de patrimoine et d'intérêts : périmètre limité, souvent incomplètes, difficiles à exploiter",
+              "Avis de la commission de déontologie : confidentiels — le citoyen ne sait rien de qui a demandé quoi",
+              "Aucune obligation de déclarer les appartenances à des réseaux ou programmes de formation (YGL, FAF...)",
+              "Aucun suivi dans le temps — on contrôle au moment du passage, mais on ne suit pas les trajectoires"
+            ]
+          },
+          projet: {
+            transparenceDecennale: {
+              principe: "Ne plus regarder un instant T mais une période de 10 ans",
+              effet: "Comme passer d'une photo à un film : on voit les enrichissements suspects, les coïncidences temporelles, on connecte les événements dans leur chronologie et leurs conséquences"
+            },
+            publicationRetroactive: "Tous les avis rendus depuis la création de la commission deviendraient publics — on pourrait voir a posteriori quelles autorisations ont été données et croiser avec ce que les personnes sont devenues",
+            refonteCommission: "La commission de déontologie ne serait plus un organe entre pairs : elle intégrerait des citoyens et serait rattachée au défenseur du peuple (élu, pas nommé par le président) — la fin du contrôle de soi par et pour soi"
+          },
+          applicationMontchalin: "Le parcours d'Amélie aurait été documenté et rendu public dans sa continuité. Pas un seul média mainstream n'a mentionné ses affiliations YGL et FAF cette semaine. Si la déclaration d'intérêts incluait ces appartenances, le débat public serait tout autre."
+        }
+      },
+      mesure4: {
+        title: "Mesure 4 : Réforme structurelle de la haute fonction publique",
+        content: {
+          grandCorpsDecennaux: {
+            titre: "A) Grands corps pour des durées décennales",
+            aujourdhui: "Quand on intègre un grand corps (Inspection des finances, Conseil d'État, Cour des comptes), c'est à vie.",
+            projet: "Appartenance limitée à 10 ans — les grands corps ne seraient plus des clubs à vie où l'on accumule du capital social sur 30 ans.",
+            applicationMontchalin: "La nomination d'Amélie aurait une portée de 10 ans maximum au lieu de 28."
+          },
+          ouvertureAcces: {
+            titre: "B) Ouverture de l'accès par le bas",
+            aujourdhui: "Les grands corps sont peuplés quasi exclusivement par les anciens de Polytechnique, Sciences Po/INSP.",
+            projet: "Accès sur concours à toutes les catégories de fonctionnaires, avec mise sous tutelle politique des jurys pour éviter la cooptation — la VRAIE démocratisation de la haute fonction publique."
+          },
+          fusionEcoles: {
+            titre: "C) Fusion des écoles en une École d'État unique",
+            projet: "ENM (magistrature) + INET (administration territoriale) + INSP (ex-ENA) fusionnent. Les élèves choisissent une branche et sont interdits de changement pendant 10 ans.",
+            effet: "Casse le tourisme institutionnel, la base du pantouflage interne."
+          },
+          fusionAntiCorruption: {
+            titre: "D) Fusion des organes anti-corruption",
+            projet: "L'AFA, la MICAF, la HATVP et les offices d'enquête sont fusionnés en un seul organisme.",
+            effet: "Un seul interlocuteur, une seule base de données, une seule capacité d'enquête et de sanction — la fin du 'saupoudrage' anti-corruption."
+          }
+        }
+      },
+      anglesMorts: {
+        title: "Les angles morts du Projet",
+        content: {
+          reseauxTransnationaux: {
+            probleme: "Les mesures s'attaquent au moment du passage entre les fonctions, mais aucune ne traite ce qui se passe en amont : la sélection, la formation, la construction d'un sentiment d'appartenance à un groupe transnational.",
+            illustration: "Montchalin = YL FAF 2018, YGL WEF 2021 — affiliations absentes de toute déclaration officielle, dont aucun média mainstream ne parle.",
+            propositions: [
+              "Déclaration obligatoire de toute participation à ces programmes, intégrée à la déclaration d'intérêts",
+              "Registre public de ces affiliations, consultable par les citoyens",
+              "Audit systématique des conflits d'intérêts liés à ces affiliations avant toute nomination",
+              "Transparence sur le financement de ces programmes : qui paie pour former nos futurs dirigeants ?"
+            ]
+          },
+          irrevocabilite: {
+            probleme: "Le Projet propose des durées décennales pour les grands corps, mais qu'en est-il des postes de Premier président de la Cour des comptes (irrévocable), vice-président du Conseil d'État, gouverneur de la Banque de France (6 ans renouvelables), président du Conseil constitutionnel (9 ans) ?",
+            propositions: [
+              "Mandats limités pour tous les postes à la tête des institutions (10 ans max)",
+              "Interdiction de nommer dans les 12-18 derniers mois d'un mandat présidentiel"
+            ]
+          },
+          preSelectionExtraDemocratique: {
+            probleme: "Les programmes YGL, FAF, Bilderberg identifient et labellisent les futurs dirigeants bien avant que les citoyens n'aient leur mot à dire.",
+            reponseProjet: "RIC en toutes matières, mandats révocables, élection des magistrats, 100 000 signatures citoyennes, tirage au sort de citoyens dans les instances de contrôle.",
+            question: "Est-ce suffisant pour contrebalancer des réseaux opérant en amont, à l'international, avec des moyens financiers et organisationnels considérables ?"
+          },
+          medias: {
+            probleme: "Ces réseaux intègrent artistes, sportifs et célébrités comme relais d'influence (DiCaprio, Bono, Shakira, Federer — tous YGL, jamais présentés comme tels dans les médias).",
+            reponseProjet: "Expropriation des médias oligarchiques et transformation en SCOP.",
+            question: "Si les médias sont détenus par leurs salariés et non par des oligarques eux-mêmes intégrés à ces réseaux, la transparence émerge-t-elle naturellement ?"
+          }
+        }
+      },
+      questionsOuvertes: {
+        title: "Questions ouvertes pour la suite",
+        content: [
+          "Comment définir un registre public des affiliations sans tomber dans le fichage, tout en garantissant la transparence ?",
+          "Faut-il appliquer la logique décennale du Projet à tous les postes institutionnels clés ?",
+          "Faut-il ajouter une question de rétroactivité pour les nominations en cours ?",
+          "5 ans de carence sont-ils suffisants face à des réseaux opérant sur des décennies ?",
+          "Le pantouflage triangulaire (privé → public → institution de contrôle) est-il suffisamment couvert ?",
+          "Peut-on réguler un système quand les régulateurs en sont eux-mêmes issus ?",
+          "Le Projet répond par les citoyens tirés au sort et le RIC en toute matière — est-ce suffisant ?"
+        ]
+      },
+      conclusion: {
+        title: "Conclusion",
+        content: {
+          bilan: "Le pantouflage est un mécanisme structurel, préparé en amont par des réseaux de sélection transatlantiques et consolidé en aval par des nominations irrévocables.",
+          mesuresProjet: "Démission définitive, carence de 5 ans, transparence décennale, réforme structurelle de la haute fonction publique — des mesures concrètes et significatives.",
+          limites: "Ces mesures s'attaquent au moment du passage sans couvrir directement ce qui le prépare en amont, ni ce qui le verrouille en aval.",
+          actualite: "Le cas Montchalin, Ferrand et les autres démontrent que le verrouillage est en cours — c'est exactement ce contre quoi le Projet cherche à nous prémunir.",
+          objectif: "L'objectif n'est pas de trouver toutes les réponses, mais d'identifier les bonnes questions — celles que les mesures actuelles ne posent pas.",
+          prochaine: "La semaine prochaine : nouveau volet sur la transparence (patrimoine des hauts fonctionnaires, agendas ministériels publics)."
+        }
+      }
+    }
+  }
 
   // ═══════════════════════════════════════════════════════════════════════
   // SESSION 7 — Questions et Réflexions (19 février 2026) — À VENIR
