@@ -643,11 +643,11 @@ export const pantouflage = {
   }
 
   // ═══════════════════════════════════════════════════════════════════════
-  // SESSION 6 — Les mesures du Projet (8 février 2026) — À VENIR
+  // SESSION 6 — Les mesures du Projet (13 février 2026) — À VENIR
   // ═══════════════════════════════════════════════════════════════════════
   // session6: {
   //   title: "Les mesures du Projet",
-  //   date: "8 février 2026",
+  //   date: "13 février 2026",
   //   duration: "2h",
   //   sections: {
   //     // À compléter après la session
@@ -655,11 +655,11 @@ export const pantouflage = {
   // }
 
   // ═══════════════════════════════════════════════════════════════════════
-  // SESSION 7 — Questions et Réflexions (12 février 2026) — À VENIR
+  // SESSION 7 — Questions et Réflexions (19 février 2026) — À VENIR
   // ═══════════════════════════════════════════════════════════════════════
   // session7: {
   //   title: "Questions et Réflexions",
-  //   date: "12 février 2026",
+  //   date: "19 février 2026",
   //   duration: "2h",
   //   sections: {
   //     // À compléter après la session
