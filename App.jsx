@@ -109,6 +109,41 @@ const sessionsSyntheses = {
       "Consulter les sites Legifrance et Europa Lex pour suivre les textes en discussion"
     ],
     citation: { texte: "Ce dont nous sommes très fiers maintenant, c'est que nous pénétrons les cabinets des gouvernements à travers le monde avec nos Young Global Leaders", auteur: "Klaus Schwab", source: "Harvard University, 2017" }
+  },
+  session6: {
+    titre: "Synthèse — Session #006", theme: 'pantouflage',
+    grandesIdees: [
+      "Cas d'école Montchalin : HEC/Harvard → BNP/AXA → députée LREM → Young Leader FAF 2018 → YGL WEF 2021 → ministre → Cour des comptes (poste irrévocable, potentiellement 28 ans en poste)",
+      "Conflit d'intérêts direct : elle évaluera dès avril le budget 2025 qu'elle a elle-même préparé comme ministre des Comptes publics",
+      "Rupture avec l'usage de nommer une personnalité de l'opposition à la Cour des comptes — et nomination la plus jeune (40 ans vs 58 ans historique)",
+      "Lien familial BCG : son mari est partner au Boston Consulting Group, un des principaux bénéficiaires des marchés publics de conseil que la Cour est censée contrôler",
+      "Stratégie de verrouillage avant 2027 : Ferrand au Conseil constitutionnel (→2034), Montchalin à la Cour des comptes (→2054), Banque de France et Conseil d'État à nommer",
+      "Ferrand nommé président du Conseil constitutionnel à une voix près grâce à l'abstention de 16 députés RN — soupçon de deal Macron-Le Pen",
+      "Villeroy de Galhau démissionne de la Banque de France le même jour que la nomination Montchalin, offrant la nomination du successeur à Macron avant 2027",
+      "30 nominations de hauts fonctionnaires en un seul Conseil des ministres le 26 juin 2024, à 4 jours du premier tour des législatives",
+      "Boucles WhatsApp de hauts fonctionnaires pour « ralentir et empêcher le RN d'exercer le pouvoir » en cas de victoire (Europe 1)",
+      "Mesures du Projet : démission définitive du corps, carence de 5 ans (vs 3 actuellement), transparence décennale, congé républicain de 6 mois, grands corps décennaux, fusion ENM/INET/INSP, fusion AFA/MICAF/HATVP",
+      "Angles morts : réseaux transnationaux non déclarés (YGL, FAF, Bilderberg), irrévocabilité des postes, pré-sélection extra-démocratique, opacité médiatique"
+    ],
+    questionsOuvertes: [
+      "La déclaration obligatoire des appartenances aux réseaux (YGL, FAF, Bilderberg...) est-elle réaliste sans tomber dans le fichage ?",
+      "Faut-il plafonner tous les mandats institutionnels à 10 ans maximum ?",
+      "Faut-il interdire les nominations aux postes clés dans les 12-18 derniers mois d'un mandat présidentiel ?",
+      "La carence de 5 ans est-elle suffisante face à des réseaux qui opèrent sur des décennies ?",
+      "Le pantouflage triangulaire (privé → public → institution de contrôle) est-il couvert par les mesures du Projet ?",
+      "Peut-on réguler un système quand les régulateurs en sont issus ? Le RIC et les citoyens tirés au sort suffisent-ils ?",
+      "Comment éviter les failles de circumvention (type Polytechnique 2000-2015) ?",
+      "L'ensemble des mesures du Projet aurait-il empêché la stratégie de verrouillage en cours ?"
+    ],
+    pistesAction: [
+      "Proposer la déclaration obligatoire des appartenances aux programmes de sélection transatlantiques pour tout candidat ou haut fonctionnaire",
+      "Étudier l'interdiction de nommer aux postes institutionnels clés dans les 12-18 derniers mois d'un mandat présidentiel",
+      "Porter la réflexion sur les mandats limités (10 ans max) pour tous les postes institutionnels",
+      "Documenter les trajectoires de verrouillage en cours (Ferrand, Montchalin, Banque de France, Conseil d'État) comme dossier de plaidoyer",
+      "Proposer l'approbation parlementaire renforcée (majorité simple pour valider au lieu de 3/5e pour bloquer)",
+      "Intégrer la transparence des agendas ministériels pour rendre visibles les contacts avec les réseaux"
+    ],
+    citation: { texte: "Des hauts fonctionnaires confirment l'existence de boucles d'échanges privés sur WhatsApp où certains discutent de comment ralentir et empêcher le Rassemblement national d'exercer le pouvoir en cas de victoire en 2027", auteur: "Europe 1", source: "Février 2026" }
   }
 };
 
@@ -122,8 +157,8 @@ const sessionsHistorique = {
   pantouflage: [
     { id: 'session4', numero: '004', titre: 'Introduction au pantouflage', date: '29/01/2026', disponible: true },
     { id: 'session5', numero: '005', titre: "La sélection avant l'élection", date: '05/02/2026', disponible: true },
-    { id: 'session6', numero: '006', titre: 'Les mesures du Projet', date: '08/02/2026', disponible: false },
-    { id: 'session7', numero: '007', titre: 'Questions et Réflexions', date: '12/02/2026', disponible: false },
+    { id: 'session6', numero: '006', titre: 'Les mesures du Projet', date: '13/02/2026', disponible: true },
+    { id: 'session7', numero: '007', titre: 'Questions et Réflexions', date: '15/02/2026', disponible: false },
   ]
 };
 
@@ -1313,7 +1348,7 @@ const App = () => {
         })}
       </nav>
 
-      {/* Vue Carte - MODIFICATION: Police Flamengo pour les titres des thèmes */}
+      {/* Vue Carte */}
       {syntheseView === 'carte' && (
         <GlassCard hover={false} style={{ marginBottom: '24px', textAlign: 'center' }}>
           <h2 style={{ fontFamily: titleFont, fontSize: (fs.title - 2) + 'px', color: colors.primary, marginBottom: '16px' }}>
@@ -1322,7 +1357,6 @@ const App = () => {
           <p style={{ color: colors.text, fontSize: fs.base + 'px', marginBottom: '24px', fontFamily: textFont }}>
             Cliquez sur "Thèmes" pour explorer chaque sujet en détail
           </p>
-          {/* Mini preview des thèmes - MODIFICATION: fontFamily: titleFont */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
             {dossierSyntheseData.themes.map(theme => {
               const IconComp = theme.icon;
@@ -1351,12 +1385,12 @@ const App = () => {
         </GlassCard>
       )}
 
-      {/* Vue Thèmes - MODIFICATION: Couleur du titre = theme.color */}
+      {/* Vue Thèmes */}
       {syntheseView === 'themes' && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '24px' }}>
           {dossierSyntheseData.themes.map(theme => {
             const IconComp = theme.icon;
-            const themeColor = theme.color; // Utiliser directement la couleur du thème
+            const themeColor = theme.color;
             const isExpanded = activeSyntheseTheme === theme.id;
             
             return (
@@ -1377,7 +1411,7 @@ const App = () => {
                 <h3 style={{
                   fontFamily: titleFont,
                   fontSize: fs.base + 'px',
-                  color: themeColor, // MODIFICATION: Couleur du titre = couleur du thème
+                  color: themeColor,
                   marginBottom: '8px',
                   display: 'flex',
                   alignItems: 'center',
@@ -1393,7 +1427,7 @@ const App = () => {
                     <p style={{
                       fontSize: '12px',
                       fontFamily: titleFont,
-                      color: themeColor, // Utiliser la couleur du thème aussi pour les sous-titres
+                      color: themeColor,
                       textTransform: 'uppercase',
                       letterSpacing: '0.05em',
                       marginBottom: '8px'
@@ -1411,7 +1445,7 @@ const App = () => {
                     <p style={{
                       fontSize: '12px',
                       fontFamily: titleFont,
-                      color: themeColor, // Utiliser la couleur du thème aussi pour les sous-titres
+                      color: themeColor,
                       textTransform: 'uppercase',
                       letterSpacing: '0.05em',
                       marginBottom: '8px',
@@ -1436,7 +1470,7 @@ const App = () => {
         </div>
       )}
 
-      {/* Vue Actions - MODIFICATION: Noms des médias en Flamengo et #EEC21D */}
+      {/* Vue Actions */}
       {syntheseView === 'actions' && (
         <GlassCard hover={false}>
           <h2 style={{ fontFamily: titleFont, fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '20px' }}>
@@ -1453,7 +1487,6 @@ const App = () => {
                 padding: '14px'
               }}>
                 <div style={{ flex: 1 }}>
-                  {/* MODIFICATION: fontFamily: titleFont et color toggle dark/light */}
                   <div style={{ fontFamily: titleFont, color: darkMode ? '#EEC21D' : '#111111', fontSize: (fs.base - 1) + 'px', marginBottom: '4px' }}>{c.name}</div>
                   <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.primary, fontFamily: textFont }}>{c.desc}</div>
                 </div>
@@ -1704,7 +1737,6 @@ const App = () => {
     if (item.stat && item.citation && item.exemples) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          {/* Stat principale */}
           <div style={{
             background: darkMode
               ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)'
@@ -1717,7 +1749,6 @@ const App = () => {
             <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{item.stat.label}</div>
           </div>
 
-          {/* Citation */}
           <div style={{
             background: colors.buttonBg,
             borderLeft: `4px solid ${colors.primary}`,
@@ -1730,7 +1761,6 @@ const App = () => {
             <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px', fontFamily: textFont }}>— {item.citation.source}</p>
           </div>
 
-          {/* Exemples */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {item.exemples.map((ex, i) => (
               <div key={i} style={{
@@ -1881,7 +1911,7 @@ const App = () => {
     }
 
     // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Avantages et questions - #5F7E43 pour avantages
+    // HANDLER: Avantages et questions
     // ═══════════════════════════════════════════════════════════════════════
     if (item.avantages && item.questions) {
       return (
@@ -1982,7 +2012,6 @@ const App = () => {
     if (item.principal && item.autres) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          {/* Principal - Macron */}
           <div style={{
             background: darkMode
               ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)'
@@ -2019,7 +2048,6 @@ const App = () => {
             </div>
           </div>
 
-          {/* Autres exemples */}
           <div>
             <h4 style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Autres exemples</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -2037,7 +2065,6 @@ const App = () => {
             </div>
           </div>
 
-          {/* Stat */}
           {item.stat && (
             <div style={{
               background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)',
@@ -2088,7 +2115,7 @@ const App = () => {
     }
 
     // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Government Sachs (intro, exemples, mondial) - CORRIGÉ
+    // HANDLER: Government Sachs (intro, exemples, mondial)
     // ═══════════════════════════════════════════════════════════════════════
     if (item.intro && item.exemples && item.mondial) {
       return (
@@ -2107,7 +2134,6 @@ const App = () => {
                   borderRadius: '12px',
                   padding: '16px'
                 }}>
-                  {/* MODIFICATION: Affichage du nom en haut de la carte */}
                   {ex.nom && (
                     <div style={{ 
                       fontFamily: titleFont, 
@@ -2174,7 +2200,6 @@ const App = () => {
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.concept}</p>
 
-          {/* Citation */}
           <div style={{
             background: colors.buttonBg,
             borderLeft: `4px solid ${colors.primary}`,
@@ -2188,7 +2213,6 @@ const App = () => {
             {item.citation.source && <p style={{ color: colors.textVeryMuted, fontSize: (fs.base - 3) + 'px', marginTop: '4px', fontFamily: textFont }}>{item.citation.source}</p>}
           </div>
 
-          {/* Programmes */}
           {item.programmes.map((prog, i) => (
             <div key={i} style={{
               background: colors.buttonBg,
@@ -2243,14 +2267,6 @@ const App = () => {
         </div>
       );
     }
-
-// ═══════════════════════════════════════════════════════════════════════════
-// HANDLERS À AJOUTER DANS App.jsx — dans la fonction renderContentItem
-// ═══════════════════════════════════════════════════════════════════════════
-// 
-// Copie-colle ces handlers JUSTE AVANT le commentaire "// FALLBACK: Affichage JSON pour debug"
-// (vers la fin de la fonction renderContentItem, avant le "console.warn")
-//
 
     // ═══════════════════════════════════════════════════════════════════════
     // HANDLER: Pattern richesse (intro, exemples avec nom/detail, question)
@@ -2381,7 +2397,7 @@ const App = () => {
       );
     }
 
-// ═══════════════════════════════════════════════════════════════════════
+    // ═══════════════════════════════════════════════════════════════════════
     // HANDLER: Réseau individuel (nom, depuis, description, membres)
     // ═══════════════════════════════════════════════════════════════════════
     if (item.nom && item.depuis && item.description && item.membres) {
@@ -2465,55 +2481,29 @@ const App = () => {
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '12px' }}>
-            <div style={{
-              background: colors.buttonBg,
-              border: `1px solid ${colors.cardBorder}`,
-              borderRadius: '12px',
-              padding: '16px'
-            }}>
+            <div style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Objectif officiel</div>
               <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.objectif}</div>
             </div>
-            <div style={{
-              background: colors.buttonBg,
-              border: `1px solid ${colors.cardBorder}`,
-              borderRadius: '12px',
-              padding: '16px'
-            }}>
+            <div style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Sécurité</div>
               <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.securite}</div>
             </div>
           </div>
 
           {item.citation && (
-            <div style={{
-              background: colors.buttonBg,
-              borderLeft: `4px solid ${colors.primary}`,
-              borderRadius: '0 12px 12px 0',
-              padding: '20px'
-            }}>
-              <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>
-                « {item.citation.texte} »
-              </p>
+            <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '20px' }}>
+              <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>« {item.citation.texte} »</p>
               <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px', fontFamily: textFont }}>— {item.citation.auteur}</p>
               {item.citation.source && <p style={{ color: colors.textVeryMuted, fontSize: (fs.base - 3) + 'px', marginTop: '4px', fontFamily: textFont }}>{item.citation.source}</p>}
             </div>
           )}
 
           <div>
-            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>
-              📅 Timing troublant
-            </div>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>📅 Timing troublant</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.timing.map((t, i) => (
-                <div key={i} style={{
-                  background: colors.buttonBg,
-                  borderLeft: `3px solid ${colors.primary}`,
-                  borderRadius: '0 10px 10px 0',
-                  padding: '12px 16px',
-                  fontSize: (fs.base - 1) + 'px',
-                  fontFamily: textFont
-                }}>
+                <div key={i} style={{ background: colors.buttonBg, borderLeft: `3px solid ${colors.primary}`, borderRadius: '0 10px 10px 0', padding: '12px 16px', fontSize: (fs.base - 1) + 'px', fontFamily: textFont }}>
                   <span style={{ color: colors.primary, fontWeight: '600' }}>{t.nom}</span>
                   <span style={{ color: colors.textMuted }}> — {t.detail}</span>
                 </div>
@@ -2536,71 +2526,34 @@ const App = () => {
             background: darkMode
               ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)'
               : 'linear-gradient(135deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0.05) 100%)',
-            borderRadius: '16px',
-            padding: '20px',
-            textAlign: 'center'
+            borderRadius: '16px', padding: '20px', textAlign: 'center'
           }}>
             <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>La règle</div>
-            <div style={{ fontSize: fs.base + 'px', color: colors.text, fontStyle: 'italic', lineHeight: 1.6, fontFamily: textFont }}>
-              {item.regle}
-            </div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, fontStyle: 'italic', lineHeight: 1.6, fontFamily: textFont }}>{item.regle}</div>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
-            <div style={{
-              background: colors.buttonBg,
-              border: `1px solid ${colors.cardBorder}`,
-              borderRadius: '12px',
-              padding: '16px'
-            }}>
-              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Implication</div>
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.implication}</div>
-            </div>
-            <div style={{
-              background: colors.buttonBg,
-              border: `1px solid ${colors.cardBorder}`,
-              borderRadius: '12px',
-              padding: '16px'
-            }}>
-              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Argument officiel</div>
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.argument}</div>
-            </div>
-            <div style={{
-              background: colors.buttonBg,
-              border: `1px solid ${colors.cardBorder}`,
-              borderRadius: '12px',
-              padding: '16px'
-            }}>
-              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Sanction</div>
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.sanction}</div>
-            </div>
+            {[
+              { label: 'Implication', value: item.implication },
+              { label: 'Argument officiel', value: item.argument },
+              { label: 'Sanction', value: item.sanction }
+            ].map((el, i) => (
+              <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
+                <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>{el.label}</div>
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{el.value}</div>
+              </div>
+            ))}
           </div>
 
           {item.application && (
-            <div style={{
-              background: colors.buttonBg,
-              borderRadius: '12px',
-              padding: '16px',
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '12px'
-            }}>
+            <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
               <Globe size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
-              <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>
-                <strong>Application :</strong> {item.application}
-              </div>
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}><strong>Application :</strong> {item.application}</div>
             </div>
           )}
 
           {item.questionCle && (
-            <div style={{
-              background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
-              borderRadius: '12px',
-              padding: '16px',
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '12px'
-            }}>
+            <div style={{ background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
               <HelpCircle size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
               <div style={{ fontSize: fs.base + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.questionCle}</div>
             </div>
@@ -2617,44 +2570,23 @@ const App = () => {
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.probleme}</p>
           
-          <div style={{
-            background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-            border: '1px solid rgba(239, 68, 68, 0.3)',
-            borderRadius: '12px',
-            padding: '16px'
-          }}>
+          <div style={{ background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '8px' }}>Hypothèse</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.hypothese}</div>
           </div>
 
-          <div style={{
-            background: colors.buttonBg,
-            borderRadius: '12px',
-            padding: '16px'
-          }}>
+          <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Fonctionnement</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.fonctionnement}</div>
           </div>
 
-          <div style={{
-            background: colors.buttonBg,
-            borderLeft: `4px solid ${colors.primary}`,
-            borderRadius: '0 12px 12px 0',
-            padding: '16px'
-          }}>
+          <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Observation</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.observation}</div>
           </div>
 
           {item.questionCle && (
-            <div style={{
-              background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
-              borderRadius: '12px',
-              padding: '16px',
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '12px'
-            }}>
+            <div style={{ background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
               <HelpCircle size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
               <div style={{ fontSize: fs.base + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.questionCle}</div>
             </div>
@@ -2680,22 +2612,13 @@ const App = () => {
           
           {categories.map((cat) => (
             <div key={cat.key}>
-              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>
-                {cat.label}
-              </div>
+              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>{cat.label}</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {cat.data.map((artiste, i) => (
-                  <div key={i} style={{
-                    background: colors.buttonBg,
-                    border: `1px solid ${colors.cardBorder}`,
-                    borderRadius: '12px',
-                    padding: '16px'
-                  }}>
+                  <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
                       <span style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary }}>{artiste.nom}</span>
-                      <span style={{ fontSize: '11px', padding: '2px 8px', background: colors.buttonBgHover, borderRadius: '10px', color: colors.textMuted, fontFamily: textFont }}>
-                        YGL {artiste.annee}
-                      </span>
+                      <span style={{ fontSize: '11px', padding: '2px 8px', background: colors.buttonBgHover, borderRadius: '10px', color: colors.textMuted, fontFamily: textFont }}>YGL {artiste.annee}</span>
                     </div>
                     <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{artiste.suites}</div>
                   </div>
@@ -2717,12 +2640,7 @@ const App = () => {
           
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px' }}>
             {item.exemples.map((ex, i) => (
-              <div key={i} style={{
-                background: colors.buttonBg,
-                border: `1px solid ${colors.cardBorder}`,
-                borderRadius: '12px',
-                padding: '16px'
-              }}>
+              <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
                   <span style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary }}>{ex.nom}</span>
                   <span style={{ fontSize: '10px', padding: '2px 8px', background: colors.buttonBgHover, borderRadius: '10px', color: colors.textMuted }}>{ex.annee}</span>
@@ -2732,12 +2650,7 @@ const App = () => {
             ))}
           </div>
 
-          <div style={{
-            background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-            border: '1px solid rgba(239, 68, 68, 0.3)',
-            borderRadius: '12px',
-            padding: '16px'
-          }}>
+          <div style={{ background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '8px' }}>Paradoxe</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.paradoxe}</div>
           </div>
@@ -2752,11 +2665,8 @@ const App = () => {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div style={{
-            background: darkMode
-              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)'
-              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
-            borderRadius: '16px',
-            padding: '20px'
+            background: darkMode ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)' : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
+            borderRadius: '16px', padding: '20px'
           }}>
             <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Raison</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.raison}</div>
@@ -2766,47 +2676,25 @@ const App = () => {
             <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Mécanisme</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.mecanisme.map((m, i) => (
-                <div key={i} style={{
-                  background: colors.buttonBg,
-                  borderLeft: `3px solid ${colors.primary}`,
-                  borderRadius: '0 10px 10px 0',
-                  padding: '12px 16px',
-                  fontSize: (fs.base - 1) + 'px',
-                  color: colors.text,
-                  fontFamily: textFont
-                }}>{m}</div>
+                <div key={i} style={{ background: colors.buttonBg, borderLeft: `3px solid ${colors.primary}`, borderRadius: '0 10px 10px 0', padding: '12px 16px', fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{m}</div>
               ))}
             </div>
           </div>
 
-          <div style={{
-            background: colors.buttonBg,
-            borderRadius: '12px',
-            padding: '16px'
-          }}>
+          <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Pattern</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.pattern}</div>
           </div>
 
           {item.angleMort && (
-            <div style={{
-              background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-              border: '1px solid rgba(239, 68, 68, 0.3)',
-              borderRadius: '12px',
-              padding: '16px'
-            }}>
+            <div style={{ background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '8px' }}>Angle mort médiatique</div>
               <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.angleMort}</div>
             </div>
           )}
 
           {item.enjeu && (
-            <div style={{
-              background: darkMode ? 'rgba(68, 112, 29, 0.15)' : 'rgba(68, 112, 29, 0.1)',
-              border: '1px solid rgba(68, 112, 29, 0.3)',
-              borderRadius: '12px',
-              padding: '16px'
-            }}>
+            <div style={{ background: darkMode ? 'rgba(68, 112, 29, 0.15)' : 'rgba(68, 112, 29, 0.1)', border: '1px solid rgba(68, 112, 29, 0.3)', borderRadius: '12px', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#44701D', marginBottom: '8px' }}>Enjeu</div>
               <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.enjeu}</div>
             </div>
@@ -2823,12 +2711,7 @@ const App = () => {
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {item.niveaux.map((n, i) => (
-              <div key={i} style={{
-                background: colors.buttonBg,
-                border: `1px solid ${colors.cardBorder}`,
-                borderRadius: '12px',
-                padding: '16px'
-              }}>
+              <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
                 <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>{n.niveau}</div>
                 <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{n.programmes}</div>
               </div>
@@ -2836,23 +2719,15 @@ const App = () => {
           </div>
 
           <div style={{
-            background: darkMode
-              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)'
-              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
-            borderRadius: '16px',
-            padding: '20px'
+            background: darkMode ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)' : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
+            borderRadius: '16px', padding: '20px'
           }}>
             <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Chevauchement des cercles</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.chevauchement}</div>
           </div>
 
           {item.exemple && (
-            <div style={{
-              background: colors.buttonBg,
-              borderLeft: `4px solid ${colors.primary}`,
-              borderRadius: '0 12px 12px 0',
-              padding: '16px'
-            }}>
+            <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Exemple concret</div>
               <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.exemple}</div>
             </div>
@@ -2871,9 +2746,7 @@ const App = () => {
             background: darkMode
               ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)'
               : 'linear-gradient(135deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0.05) 100%)',
-            borderRadius: '16px',
-            padding: '20px',
-            textAlign: 'center'
+            borderRadius: '16px', padding: '20px', textAlign: 'center'
           }}>
             <div style={{ fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', lineHeight: 1.6, fontFamily: textFont }}>{item.constat}</div>
           </div>
@@ -2881,12 +2754,7 @@ const App = () => {
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.amont}</p>
 
           {item.exempleAttal && (
-            <div style={{
-              background: colors.buttonBg,
-              borderLeft: `4px solid ${colors.primary}`,
-              borderRadius: '0 12px 12px 0',
-              padding: '16px'
-            }}>
+            <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
               <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{item.exempleAttal}</div>
             </div>
           )}
@@ -2911,12 +2779,7 @@ const App = () => {
           </div>
 
           {item.indicateur && (
-            <div style={{
-              background: darkMode ? 'rgba(68, 112, 29, 0.15)' : 'rgba(68, 112, 29, 0.1)',
-              border: '1px solid rgba(68, 112, 29, 0.3)',
-              borderRadius: '12px',
-              padding: '16px'
-            }}>
+            <div style={{ background: darkMode ? 'rgba(68, 112, 29, 0.15)' : 'rgba(68, 112, 29, 0.1)', border: '1px solid rgba(68, 112, 29, 0.3)', borderRadius: '12px', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#44701D', marginBottom: '8px' }}>💡 Indicateur</div>
               <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.indicateur}</div>
             </div>
@@ -2925,12 +2788,292 @@ const App = () => {
       );
     }
 
-// ═══════════════════════════════════════════════════════════════════════════
-// FIN DES HANDLERS À AJOUTER
-// ═══════════════════════════════════════════════════════════════════════════
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Mesure du Projet (type: "mesure", numero, intitule, actuel, projet, application, limites)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.type === 'mesure' && item.intitule) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {/* Intitulé de la mesure */}
+          <div style={{
+            background: darkMode
+              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)'
+              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0.05) 100%)',
+            borderLeft: `4px solid ${colors.primary}`,
+            borderRadius: '0 16px 16px 0',
+            padding: '20px 24px'
+          }}>
+            {item.numero && (
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 2) + 'px', color: colors.textMuted, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>
+                Mesure {item.numero}
+              </div>
+            )}
+            <div style={{ fontFamily: titleFont, fontSize: fs.title + 'px', color: colors.primary, marginBottom: '8px' }}>{item.intitule}</div>
+            {item.citation && (
+              <div style={{ fontStyle: 'italic', fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>
+                « {item.citation} »
+              </div>
+            )}
+          </div>
 
+          {/* Ce qui existe aujourd'hui */}
+          {item.actuel && (
+            <div style={{
+              background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.08)',
+              border: '1px solid rgba(239, 68, 68, 0.2)',
+              borderRadius: '12px',
+              padding: '20px'
+            }}>
+              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#ef4444', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                ⚠️ Ce qui existe aujourd'hui
+              </div>
+              {typeof item.actuel === 'string' ? (
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.actuel}</div>
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {item.actuel.map((a, i) => (
+                    <div key={i} style={{
+                      background: 'rgba(239, 68, 68, 0.08)',
+                      borderRadius: '8px',
+                      padding: '10px 12px',
+                      fontSize: (fs.base - 1) + 'px',
+                      color: colors.text,
+                      fontFamily: textFont
+                    }}>{a}</div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
 
-    
+          {/* Ce que ça change avec le Projet */}
+          {item.projet && (
+            <div style={{
+              background: darkMode ? 'rgba(68, 112, 29, 0.12)' : 'rgba(68, 112, 29, 0.08)',
+              border: '1px solid rgba(68, 112, 29, 0.25)',
+              borderRadius: '12px',
+              padding: '20px'
+            }}>
+              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#44701D', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <CheckCircle size={18} color="#44701D" /> Ce que ça change avec le Projet
+              </div>
+              {typeof item.projet === 'string' ? (
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.projet}</div>
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                  {item.projet.map((p, i) => (
+                    <div key={i} style={{
+                      background: 'rgba(68, 112, 29, 0.1)',
+                      borderLeft: `3px solid #44701D`,
+                      borderRadius: '0 8px 8px 0',
+                      padding: '10px 12px',
+                      fontSize: (fs.base - 1) + 'px',
+                      color: colors.text,
+                      fontFamily: textFont
+                    }}>{p}</div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Application au cas concret */}
+          {item.application && (
+            <div style={{
+              background: colors.buttonBg,
+              borderLeft: `4px solid ${colors.primary}`,
+              borderRadius: '0 12px 12px 0',
+              padding: '16px'
+            }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>📌 Application concrète</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.application}</div>
+            </div>
+          )}
+
+          {/* Limites identifiées */}
+          {item.limites && (
+            <div style={{
+              background: 'rgba(158, 135, 110, 0.12)',
+              border: '1px solid rgba(158, 135, 110, 0.25)',
+              borderRadius: '12px',
+              padding: '16px'
+            }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#9E876E', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <HelpCircle size={16} color="#9E876E" /> Limites identifiées
+              </div>
+              {typeof item.limites === 'string' ? (
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.limites}</div>
+              ) : (
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  {item.limites.map((l, i) => (
+                    <div key={i} style={{
+                      fontSize: (fs.base - 1) + 'px',
+                      color: colors.text,
+                      fontFamily: textFont,
+                      paddingLeft: '12px',
+                      borderLeft: `2px solid rgba(158, 135, 110, 0.3)`
+                    }}>{l}</div>
+                  ))}
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Parcours détaillé (type: "parcours", nom, etapes, liens)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.type === 'parcours' && item.etapes) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {item.nom && (
+            <div style={{ fontFamily: titleFont, fontSize: fs.title + 'px', color: colors.primary }}>{item.nom}</div>
+          )}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {item.etapes.map((etape, i) => (
+              <div key={i} style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '12px',
+                padding: '10px 14px',
+                background: etape.type === 'public' ? 'rgba(59, 130, 246, 0.1)' : etape.type === 'privé' ? 'rgba(239, 68, 68, 0.1)' : etape.type === 'réseau' ? 'rgba(168, 85, 247, 0.1)' : etape.type === 'institution' ? 'rgba(238, 194, 29, 0.1)' : colors.buttonBg,
+                borderRadius: '10px',
+                borderLeft: `3px solid ${etape.type === 'public' ? '#3b82f6' : etape.type === 'privé' ? '#ef4444' : etape.type === 'réseau' ? '#a855f7' : etape.type === 'institution' ? '#eec21d' : colors.primary}`
+              }}>
+                <span style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, minWidth: '80px', fontFamily: textFont }}>{etape.periode}</span>
+                <span style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, flex: 1, fontFamily: textFont }}>{etape.poste}</span>
+                <span style={{
+                  fontSize: '10px',
+                  padding: '2px 8px',
+                  borderRadius: '10px',
+                  background: etape.type === 'public' ? 'rgba(59, 130, 246, 0.2)' : etape.type === 'privé' ? 'rgba(239, 68, 68, 0.2)' : etape.type === 'réseau' ? 'rgba(168, 85, 247, 0.2)' : etape.type === 'institution' ? 'rgba(238, 194, 29, 0.2)' : colors.buttonBgHover,
+                  color: etape.type === 'public' ? '#3b82f6' : etape.type === 'privé' ? '#ef4444' : etape.type === 'réseau' ? '#a855f7' : etape.type === 'institution' ? '#eec21d' : colors.primary,
+                  textTransform: 'uppercase',
+                  fontFamily: textFont
+                }}>{etape.type}</span>
+              </div>
+            ))}
+          </div>
+          {item.liens && (
+            <div style={{
+              background: colors.buttonBg,
+              borderRadius: '12px',
+              padding: '16px',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '12px'
+            }}>
+              <Paperclip size={18} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.liens}</div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Verrouillage (type: "verrouillage", institutions, alerte)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.type === 'verrouillage' && item.institutions) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {item.intro && <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.intro}</p>}
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {item.institutions.map((inst, i) => (
+              <div key={i} style={{
+                background: colors.buttonBg,
+                border: `1px solid ${colors.cardBorder}`,
+                borderRadius: '12px',
+                padding: '16px',
+                display: 'grid',
+                gridTemplateColumns: '1fr',
+                gap: '8px'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
+                  <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary }}>{inst.institution}</div>
+                  {inst.jusqua && (
+                    <span style={{
+                      fontSize: '11px',
+                      padding: '4px 10px',
+                      background: darkMode ? 'rgba(239, 68, 68, 0.15)' : 'rgba(239, 68, 68, 0.1)',
+                      border: '1px solid rgba(239, 68, 68, 0.3)',
+                      borderRadius: '20px',
+                      color: '#ef4444',
+                      fontFamily: textFont,
+                      fontWeight: '600'
+                    }}>→ {inst.jusqua}</span>
+                  )}
+                </div>
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>
+                  <strong>{inst.personne}</strong> — {inst.duree}
+                </div>
+                {inst.detail && <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>{inst.detail}</div>}
+              </div>
+            ))}
+          </div>
+
+          {item.alerte && (
+            <div style={{
+              background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.08)',
+              border: '1px solid rgba(239, 68, 68, 0.3)',
+              borderRadius: '12px',
+              padding: '16px'
+            }}>
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.alerte}</div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Angle mort (type: "angle_mort", titre, contenu, propositions)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.type === 'angle_mort') {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          {item.titre && (
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#9E876E', display: 'flex', alignItems: 'center', gap: '8px' }}>
+              <HelpCircle size={18} color="#9E876E" /> {item.titre}
+            </div>
+          )}
+          {item.contenu && (
+            <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>
+              {typeof item.contenu === 'string' ? item.contenu : item.contenu.map((c, i) => (
+                <div key={i} style={{
+                  background: 'rgba(158, 135, 110, 0.1)',
+                  borderRadius: '8px',
+                  padding: '10px 12px',
+                  marginBottom: '6px'
+                }}>{c}</div>
+              ))}
+            </div>
+          )}
+          {item.propositions && (
+            <div>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#5F7E43', marginBottom: '8px' }}>Propositions complémentaires</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                {item.propositions.map((p, i) => (
+                  <div key={i} style={{
+                    background: 'rgba(95, 126, 67, 0.1)',
+                    borderLeft: `3px solid #5F7E43`,
+                    borderRadius: '0 8px 8px 0',
+                    padding: '10px 12px',
+                    fontSize: (fs.base - 1) + 'px',
+                    color: colors.text,
+                    fontFamily: textFont
+                  }}>{p}</div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
     // ═══════════════════════════════════════════════════════════════════════
     // FALLBACK: Affichage JSON pour debug
     // ═══════════════════════════════════════════════════════════════════════
