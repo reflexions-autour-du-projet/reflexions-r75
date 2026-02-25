@@ -11,9 +11,9 @@
 // COMMENT AJOUTER UNE NOUVELLE SESSION :
 // ═══════════════════════════════════════════════════════════════════════════
 // 
-// 1. Trouve le thème concerné (mediasOligarchiques ou pantouflage)
+// 1. Trouve le thème concerné (mediasOligarchiques, pantouflage ou violencesPolitiques)
 // 2. Copie un bloc "sessionX" existant
-// 3. Colle-le à la suite, change le numéro (session5, session6...)
+// 3. Colle-le à la suite, change le numéro (session8, session9...)
 // 4. Remplis le contenu avec tes notes de session
 // 5. Va dans "sessionsConfig" ci-dessous
 // 6. Change "available: false" en "available: true" pour ta nouvelle session
@@ -27,9 +27,9 @@
 // └─────────────────────────────────────────────────────────────────────────┘
 
 export const prochaineSession = {
-  titre: "Session 6 : Les mesures du Projet",
-  date: "Vendredi 13 février à 18h",
-  theme: "pantouflage"
+  titre: "Session 7 : Commissions d'enquête et violences politiques",
+  date: "Mercredi 25 février à 18h",
+  theme: "violencesPolitiques"
 };
 
 export const sessionsConfig = {
@@ -42,7 +42,9 @@ export const sessionsConfig = {
     { id: 'session4', titre: "Introduction au pantouflage", date: "29/01", available: true },
     { id: 'session5', titre: "La sélection avant l'élection", date: "05/02", available: true },
     { id: 'session6', titre: "Les mesures du Projet", date: "13/02", available: true },
-    { id: 'session7', titre: "Questions et Réflexions", date: "19/02", available: false },
+  ],
+  violencesPolitiques: [
+    { id: 'session7', titre: "Commissions d'enquête et violences politiques", date: "25/02", available: true },
   ]
 };
 
@@ -908,13 +910,380 @@ export const pantouflage = {
       }
     }
   }
+};
+
+
+// ┌─────────────────────────────────────────────────────────────────────────┐
+// │  ⚖️ THÈME 3 : LES VIOLENCES POLITIQUES                                │
+// └─────────────────────────────────────────────────────────────────────────┘
+
+export const violencesPolitiques = {
 
   // ═══════════════════════════════════════════════════════════════════════
-  // SESSION 7 — Questions et Réflexions (19 février 2026) — À VENIR
+  // SESSION 7 — Commissions d'enquête et violences politiques (25 février 2026)
   // ═══════════════════════════════════════════════════════════════════════
-  // session7: {
-  //   title: "Questions et Réflexions",
-  //   date: "19 février 2026",
+  session7: {
+    title: "Commissions d'enquête et violences politiques",
+    date: "25 février 2026",
+    duration: "2h",
+    sections: {
+      rappel: {
+        title: "Rappel des sessions précédentes",
+        content: [
+          "Lors des trois dernières sessions, on s'est plongés dans le pantouflage : ses origines, ses mécanismes, les réseaux de sélection transatlantiques (YGL, French-American Foundation), la stratégie de verrouillage institutionnel avant 2027.",
+          "Les quatre mesures du Projet : démission définitive du corps, carence de 5 ans, transparence décennale, réforme structurelle de la haute fonction publique.",
+          "Le cas Montchalin a illustré concrètement pourquoi ces mesures sont plus que nécessaires.",
+          "Ce soir, on ouvre un nouveau chapitre : les violences politiques et la proposition du Projet de créer des commissions d'enquête sur ces violences."
+        ]
+      },
+      definition: {
+        title: "Qu'est-ce que les violences politiques ?",
+        content: {
+          intro: "Les violences politiques ne se limitent pas aux coups de matraque ou aux tirs de LBD. C'est l'ensemble des moyens par lesquels le pouvoir impose sa volonté aux citoyens en dehors du cadre démocratique normal.",
+          formes: [
+            { icon: "🛡️", type: "Violence physique d'État", detail: "Maintien de l'ordre devenu répression : charges sans sommation, tirs de LBD dans les visages, grenades de désencerclement, nasses, gardes à vue préventives, violence dans les lieux de privation de liberté" },
+            { icon: "⚖️", type: "Violence judiciaire", detail: "Utilisation du système judiciaire comme arme politique : gardes à vue massives, comparutions immédiates expéditives, poursuites disproportionnées contre des manifestants, impunité des responsables de violences d'État" },
+            { icon: "🏛️", type: "Violence institutionnelle", detail: "Verrouillage des institutions, passage en force via le 49.3, nominations pour neutraliser les contre-pouvoirs, refus d'appliquer les recommandations des organes de contrôle" },
+            { icon: "💶", type: "Violence économique", detail: "Précarisation organisée, destruction des services publics, privatisations, violence de l'impôt injuste ou de l'austérité imposée" },
+            { icon: "🗣️", type: "Violence symbolique", detail: "Mépris de classe institutionnalisé ('gens qui ne sont rien', 'traverser la rue'), criminalisation du mouvement social (manifestants transformés en 'casseurs' ou 'ultras')" }
+          ],
+          objectifCommun: "Toutes ces formes de violence servent le même objectif : maintenir l'ordre oligarchique en place, décourager la contestation et protéger les intérêts de ceux qui détiennent le pouvoir."
+        }
+      },
+      intimidation: {
+        title: "Le système d'intimidation à quatre niveaux",
+        content: [
+          { niveau: "1. La dissuasion", detail: "Quand manifester signifie risquer de perdre un œil, une main, ou de se retrouver en garde à vue 24 heures, le calcul coût-bénéfice de la protestation change radicalement. Castaner a décoré ~9 000 agents au titre d'une 'promotion exceptionnelle médaille de la sécurité intérieure Gilets jaunes' — dont certains impliqués dans des enquêtes pour violences." },
+          { niveau: "2. L'asymétrie de la sanction", detail: "Les manifestants sont poursuivis massivement et condamnés rapidement. Les agents responsables de violences bénéficient d'une impunité quasi totale. Message : le pouvoir peut faire ce qu'il veut, vous non." },
+          { niveau: "3. La normalisation", detail: "À force de répétition, la violence d'État devient 'le maintien de l'ordre'. Les commissions d'enquête produisent des rapports que personne n'applique. L'IGPN classe la majorité des plaintes sans suite. La CJR protège les ministres." },
+          { niveau: "4. Le verrouillage", detail: "Les mêmes personnes qui ordonnent ou couvrent ces violences sont ensuite nommées à des postes de contrôle irrévocables. Le système se protège lui-même." }
+        ]
+      },
+      giletsJaunes: {
+        title: "Le cas des Gilets jaunes : un laboratoire de la répression",
+        content: {
+          intro: "Le mouvement des Gilets jaunes (17 novembre 2018) est un cas d'école pour comprendre l'ampleur des violences politiques en France.",
+          coteManifestants: {
+            source: "Ministère de l'Intérieur, décompte David Dufresne",
+            chiffres: [
+              { number: "2 495", label: "personnes blessées (chiffres officiels)" },
+              { number: "23-25", label: "personnes éborgnées" },
+              { number: "5", label: "mains arrachées" },
+              { number: "1", label: "personne amputée d'un testicule" },
+              { number: "11", label: "personnes décédées (accidents liés aux blocages)" }
+            ]
+          },
+          repressionJudiciaire: {
+            source: "Ministère de la Justice, France Bleu (15 nov. 2019)",
+            chiffres: [
+              { number: "12 107", label: "interpellations en six mois" },
+              { number: "10 852", label: "gardes à vue" },
+              { number: "3 200", label: "condamnations (dont 40% de prison ferme)" }
+            ]
+          },
+          enquetesPolicieres: {
+            chiffres: [
+              { number: "401", label: "enquêtes judiciaires confiées à l'IGPN (source : ministère de la Justice, janv. 2020)" },
+              { number: "155", label: "classées sans suite (plus d'un tiers — source : Le JDD, janv. 2020)" },
+              { number: "0", label: "policier condamné pour les 23 personnes éborgnées, cinq ans après (source : AFP / Factuel, nov. 2023)" }
+            ]
+          },
+          asymetrie: "3 200 condamnations de manifestants, zéro condamnation de policier pour les personnes éborgnées. L'asymétrie est structurelle."
+        }
+      },
+      armesUtilisees: {
+        title: "Les armes utilisées",
+        content: {
+          contexte: "La France est l'un des seuls pays d'Europe occidentale à utiliser ce type d'armement contre des manifestants.",
+          chiffresGlobaux: [
+            { number: "12 908", label: "tirs de LBD recensés en six mois (source : Franceinfo, 18 mai 2019)" }
+          ],
+          journee1erDecembre: {
+            date: "1er décembre 2018 à Paris (CRS uniquement)",
+            munitions: [
+              { number: "7 940", label: "grenades lacrymogènes" },
+              { number: "800", label: "grenades de désencerclement" },
+              { number: "339", label: "grenades GLI-F4 (contenant 25g de TNT)" },
+              { number: "776", label: "cartouches de LBD" }
+            ],
+            note: "Total toutes forces confondues : estimé entre 10 000 et 15 000 grenades"
+          },
+          alertes: "Amnesty International, l'ONU, le Conseil de l'Europe, le Défenseur des droits se sont inquiétés de l'usage excessif de la force en France.",
+          lancet: {
+            source: "The Lancet (Chauvin et al., 2 nov. 2019)",
+            resultat: "43 cas de blessures oculaires causées par les armes 'non-létales' sur la période fév. 2016-août 2019, dont l'immense majorité concentrée sur 2018-2019"
+          }
+        }
+      },
+      auDelaGiletsJaunes: {
+        title: "Au-delà des Gilets jaunes",
+        content: [
+          { source: "Basta!", stat: "864 morts suite à interventions policières, 1977-2022 (45 ans)" },
+          { source: "ACAT (2016), rapport 'L'ordre et la force'", stat: "89 cas de violences policières entre 2005 et 2015, dont 26 mortels. Sur ces cas, 7 seulement ont donné lieu à des condamnations." },
+          "Manifestations contre la réforme des retraites (2023), Sainte-Soline, émeutes après la mort de Nahel — à chaque fois le même schéma : violence disproportionnée, enquêtes opaques, impunité quasi systématique."
+        ]
+      },
+      commissionsEnquete: {
+        title: "Les commissions d'enquête parlementaires",
+        content: {
+          fondement: "Article 51-2 de la Constitution (révision de 2008), ordonnance du 17 novembre 1958.",
+          pouvoirsTheoriques: [
+            "Droit de citation directe (toute personne convoquée est tenue de se présenter)",
+            "Auditions sous serment (faux témoignage passible de 5 ans de prison et 75 000€ d'amende, art. 434-13 à 434-15 du code pénal)",
+            "Pouvoir d'investigation sur pièces et sur place",
+            "Droit de tirage (chaque groupe politique peut obtenir une commission par an, institué le 15 sept. 1988)"
+          ],
+          droitOpposition: "Les fonctions de président ou de rapporteur reviennent de droit à un membre d'un groupe d'opposition."
+        }
+      },
+      limites: {
+        title: "Pourquoi c'est du théâtre",
+        content: [
+          {
+            limite: "Temporalité",
+            detail: "Mission limitée à 6 mois maximum. Impossible de reconstituer sur le même sujet pendant 12 mois. Six mois pour enquêter sur des violences systémiques couvrant des années."
+          },
+          {
+            limite: "Aucun pouvoir judiciaire",
+            detail: "Les commissions ne rendent pas la justice. Elles constatent et recommandent, mais ne peuvent ni poursuivre, ni condamner, ni sanctionner. Comme le dit Jean-Jacques Urvoas : 'le juge cherche des responsabilités ; le Parlement des dysfonctionnements'."
+          },
+          {
+            limite: "Irrecevabilité judiciaire",
+            detail: "Une commission ne peut pas enquêter sur des faits faisant l'objet de poursuites judiciaires (art. 6, ordonnance 1958). Dès qu'une information judiciaire est ouverte — même si elle ne mène nulle part — le Parlement est bloqué."
+          },
+          {
+            limite: "Composition politique",
+            detail: "30 membres à la proportionnelle des groupes : la majorité présidentielle y est représentée. La commission sur le maintien de l'ordre (2020) a produit des recommandations (limitation du LBD, réforme de l'IGPN). Pratiquement aucune appliquée."
+          },
+          {
+            limite: "Les auditions sont un jeu de dupes",
+            detail: "Serment obligatoire mais pas de droit à un avocat, pas d'accès au dossier, pas de droit au silence. La CEDH (arrêt Corbet et autres c/ France, 2015) a jugé que ce régime pose problème au regard du droit de ne pas s'auto-incriminer. Résultat : les auditionnés mentent (risque infime) ou se retranchent derrière leur droit. Pendant ce temps, les parlementaires bénéficient de l'immunité (art. 26)."
+          }
+        ]
+      },
+      bilanCommissions: {
+        title: "Le bilan concret des commissions",
+        content: {
+          condamnation: {
+            nombre: "1 seule condamnation pour faux témoignage depuis 1958",
+            qui: "Professeur Michel Aubier, condamné en appel (2018) à 20 000€ d'amende pour avoir omis de déclarer qu'il était salarié de Total lors de son audition sur la pollution de l'air (Sénat, 2015)",
+            source: "Le Club des Juristes ; Cour d'appel de Paris, 9 nov. 2018"
+          },
+          affaireBenalla: {
+            contexte: "Février 2019, le Sénat conclut que Benalla et Crase 'se sont rendus coupables de faux témoignage'. Mars 2019, le Bureau du Sénat transmet 5 noms au parquet : Benalla, Crase, Kohler, Strzoda, général Lavergne.",
+            resultat: "Juin 2019 : le procureur Rémy Heitz classe sans suite les cas de Strzoda, Kohler et Lavergne. L'enquête pour faux témoignage de Benalla et Crase, ouverte en avril 2019, est toujours pendante plus de six ans après. Zéro condamnation pour parjure.",
+            sources: "Rapport Sénat n°18-324 ; Public Sénat (21 mars 2019, 27 juin 2019)"
+          },
+          affaireMcKinsey: {
+            contexte: "Mars 2022, le Sénat saisit la justice pour suspicion de faux témoignage de Karim Tadjeddine (McKinsey) — déclarait payer l'IS en France alors que le cabinet n'en avait pas payé depuis au moins dix ans.",
+            resultat: "À ce jour, pas de condamnation.",
+            source: "Public Sénat, 25 mars 2022"
+          },
+          synthese: "Des dizaines de commissions d'enquête en 70 ans de Ve République. Des centaines d'auditions. Des milliers de pages de rapports. Et au bout : une condamnation pour parjure, des recommandations classées sans suite, et un système qui continue.",
+          citationFondapol: {
+            source: "Fondapol (octobre 2025), 'Le Parlement enquête, le droit vacille'",
+            texte: "Le délit de faux témoignage se révèle 'faiblement dissuasif'. Les parlementaires les plus déterminés dénoncent des faux témoignages 'avant tout pour rechercher un effet médiatique'."
+          }
+        }
+      },
+      cjr: {
+        title: "La Cour de justice de la République",
+        content: {
+          creation: "Créée en 1993 dans le contexte de l'affaire du sang contaminé, pour juger les membres du gouvernement pour les actes commis dans l'exercice de leurs fonctions.",
+          composition: "15 juges : seulement 3 magistrats de la Cour de cassation et 12 parlementaires (6 députés + 6 sénateurs). Des ministres jugés par leurs collègues.",
+          citation: {
+            auteur: "Cécile Guérin-Bargues (Pr. droit public, Paris-Panthéon-Assas)",
+            texte: "Les décisions de la CJR sont 'peu convaincantes', les condamnations 'très faibles', la composition crée un 'soupçon de complaisance' ou 'une politisation de la justice'."
+          }
+        }
+      },
+      bilanCJR: {
+        title: "Le bilan de la CJR en 30 ans",
+        content: {
+          stats: [
+            { number: "22 166", label: "requêtes reçues (source : RDLF, 2025)" },
+            { number: "17", label: "informations ouvertes" },
+            { number: "9", label: "décisions rendues (concernant 12 ministres)" },
+            { number: "0", label: "condamnation à de la prison ferme" }
+          ],
+          decisions: {
+            relaxes: [
+              "Laurent Fabius et Georgina Dufoix (sang contaminé, 1999)",
+              "Ségolène Royal (diffamation, 2000)",
+              "Édouard Balladur (affaire Karachi, 2021)",
+              "Éric Dupond-Moretti (prise illégale d'intérêts, 2023 — relaxé alors que le PNF estimait l'infraction caractérisée)"
+            ],
+            dispensesDePeine: [
+              "Edmond Hervé (sang contaminé, déclaré coupable mais dispensé de sanction, 1999)",
+              "Christine Lagarde (affaire Tapie, déclarée coupable mais dispensée de peine, 2016 — affaire ayant coûté 403M€ aux contribuables)"
+            ],
+            condamnationsAvecSursis: [
+              "Michel Gillibert (3 ans avec sursis, 2004, après 10 ans d'instruction)",
+              "Charles Pasqua (1 an avec sursis, 2010)",
+              "Jean-Jacques Urvoas (1 mois avec sursis, 2019)",
+              "François Léotard (2 ans avec sursis, 2021)",
+              "Kader Arif (1 an avec sursis)"
+            ]
+          },
+          covid: {
+            date: "7 juillet 2025",
+            resultat: "Non-lieu général — Édouard Philippe, Agnès Buzyn et Olivier Véran bénéficient tous d'un non-lieu. Plus de 20 000 des 22 166 requêtes étaient liées au Covid.",
+            source: "Vie-publique.fr, juillet 2025"
+          },
+          paradoxe: "Une prise illégale d'intérêts est punie moins gravement si son auteur est ministre que s'il est un agent public subalterne — alors que le principe du droit veut qu'une infraction est plus grave quand commise par quelqu'un qui a un devoir de probité.",
+          casPasqua: "La CJR a relaxé Charles Pasqua des accusations de corruption passive, alors que la cour d'appel de Paris avait condamné deux prévenus pour corruption active au bénéfice de ce même ministre — deux corrupteurs avérés, mais aucun corrompu.",
+          citationLeGall: {
+            auteur: "Henri-Claude Le Gall (ancien président de la CJR)",
+            texte: "Très souvent les juges, sénateurs ou députés, connaissent très bien les ministres qu'ils jugent, et ont beaucoup de mal à rester détachés et à juger objectivement."
+          },
+          synthese: "22 000+ requêtes, 9 décisions, 0 prison ferme — c'est ce que le Projet appelle une 'impunité de facto'."
+        }
+      },
+      mesure1: {
+        title: "Mesure 1 : Tribunal populaire et Comité de clémence",
+        content: {
+          principe: "Création d'un Tribunal populaire et d'un Comité de clémence chargés de la 'transition républicaine', dont l'autorité sera déclinée localement, avec une existence de dix ans.",
+          droitSpecial: "Droit spécial, rétroactif, à compétence limitée aux faits passés, pouvoir de sanction limité à des peines courtes. Pas de justice expéditive ni de vengeance, mais un mécanisme temporaire et borné.",
+          comiteClemence: "Après une période de latence, les condamnés pourront voir leur situation révisée, même si leur 'dignité nationale' ne pourra pas être restituée. Modèle inspiré des commissions vérité et réconciliation.",
+          comparaison: "Aujourd'hui : un policier mutile un manifestant → enquête IGPN → plus d'un tiers des plaintes classées sans suite. Avec le Tribunal populaire : faits examinés par une instance indépendante, avec rétroactivité.",
+          page: "pp. 10"
+        }
+      },
+      mesure2: {
+        title: "Mesure 2 : Comité de poursuites",
+        content: {
+          cible: "L'ensemble des fonctionnaires ayant participé, supervisé ou donné visa à des opérations de maintien de l'ordre menées sous les trois mandats précédents.",
+          principe: "Briser la chaîne de commandement de l'impunité : on ne poursuit pas seulement l'agent qui a tiré, mais aussi celui qui a donné l'ordre, supervisé, couvert.",
+          rattachement: "Placé sous la direction du Tribunal populaire, avec 'pleins pouvoirs administratifs', sous le seul contrôle du Comité de clémence.",
+          comparaison: "Aujourd'hui : les poursuites sont exercées par le parquet → ministère de la Justice → gouvernement. Le gouvernement qui ordonne les violences est le même qui décide des poursuites."
+        }
+      },
+      mesure3: {
+        title: "Mesure 3 : Enquêtes spécifiques",
+        content: {
+          enquetes: [
+            "Responsabilité des dirigeants dans la crise du Covid-19 et destruction du système de santé (rappel : non-lieu CJR, juillet 2025)",
+            "Laboratoires d'expérimentation et de guerre bactériologique, en particulier le laboratoire P4 de Wuhan",
+            "Levée du secret défense sur les conseils de défense organisés à l'Élysée concernant le Covid-19",
+            "Cabinets de consultance (McKinsey, BCG — rappel : lien familial Montchalin/BCG)",
+            "Spoliation de biens nationaux (Alcatel, Arcelor, Alstom, Areva)",
+            "Infractions touchant au respect de la souveraineté populaire et nationale, via un Procureur de la Nation élu"
+          ]
+        }
+      },
+      mesure4: {
+        title: "Mesure 4 : Loi d'amnistie et commission de réparation",
+        content: {
+          principe: "Amnistie et commission de réparation pour les Gilets jaunes, les militants des convois, les soignants sanctionnés et les militants politiques réprimés lors des trois mandats précédents.",
+          rappel: "3 200 condamnations de manifestants pendant les Gilets jaunes (40% de prison ferme). Des milliers de vies brisées pour avoir exercé un droit constitutionnel.",
+          temoignage: {
+            nom: "Alexandre Frey",
+            detail: "Blessé le 8 décembre 2018 à Paris, déclarait à l'AFP n'avoir 'aucune nouvelle de mon dossier, même par rapport à mes avocats, il n'y a personne au bout du fil, c'est le néant'."
+          }
+        }
+      },
+      mesure5: {
+        title: "Mesure 5 : Transformation de la CJR",
+        content: {
+          principe: "Transformation en haute cour sous l'autorité du Tribunal populaire et du Comité de clémence, avec tirage au sort intégral du jury.",
+          effet: "Fin du jugement des pairs par les pairs. Plus de parlementaires qui jugent leurs collègues ministres. Des citoyens tirés au sort.",
+          page: "pp. 15-17"
+        }
+      },
+      mesure6: {
+        title: "Mesure 6 : Réformes structurelles de la justice et de l'intérieur",
+        content: {
+          justice: [
+            { mesure: "Élection des magistrats et création d'un Procureur de la Nation élu", effet: "Fin de la dépendance du parquet vis-à-vis de l'exécutif" },
+            { mesure: "Fusion AFA, MICAF, HATVP et offices d'enquête en un seul organisme", effet: "Un seul interlocuteur, une seule base de données, une seule capacité d'enquête et de sanction" },
+            { mesure: "Reversement des effectifs de police judiciaire de la DGSI à la PJ et interdiction de communication entre renseignements et parquets", effet: "Fin de l'utilisation des services de renseignement à des fins politiques" },
+            { mesure: "Transcription par IA des étapes de la procédure pénale, enregistrement et diffusion systématique des audiences", effet: "Transparence totale du processus judiciaire" }
+          ],
+          interieur: [
+            { mesure: "Création d'un corps d'inspection indépendant des forces de l'ordre", effet: "Fin de l'IGPN telle qu'on la connaît" },
+            { mesure: "Dissolution des BRAV-M", effet: "Fin des Brigades de Répression de l'Action Violente Motorisées" },
+            { mesure: "Suppression des BAC", effet: "Au profit d'une police de proximité" },
+            { mesure: "Récépissé de contrôle d'identité, enregistrement systématique des interventions, port obligatoire du matricule", effet: "Traçabilité de chaque intervention" },
+            { mesure: "Contraventionnalisation de l'outrage", effet: "L'outrage ne serait plus un délit passible de prison mais une contravention — fin de l'outil de pression" },
+            { mesure: "Abandon des outils de maintien de l'ordre 'intermédiaires', fin de l'utilisation d'unités non-spécialisées", effet: "Fin de l'armement disproportionné contre les manifestants" }
+          ],
+          pages: "pp. 15-19"
+        }
+      },
+      questionsOuvertes: {
+        title: "Questions ouvertes",
+        content: [
+          "Comment garantir l'indépendance d'un tribunal qui traite de violences politiques (par nature politique) ? Le modèle des commissions vérité et réconciliation (Afrique du Sud) montre que c'est possible, mais repose sur une volonté politique exceptionnelle.",
+          "La limitation à dix ans et à des peines courtes est-elle suffisante ? Le caractère rétroactif du droit spécial pose-t-il un problème au regard du principe de non-rétroactivité de la loi pénale ?",
+          "Le Projet propose un corps d'inspection indépendant, mais comment le protéger de la cooptation à terme ? L'IGPN montre que même un organe créé pour contrôler finit par protéger. Faut-il des jurys citoyens systématiques pour chaque plainte ?",
+          "Faut-il aller jusqu'à l'interdiction pure et simple du LBD et des grenades de désencerclement, comme le demande Amnesty International ?",
+          "La transformation de la CJR en haute cour avec jury citoyen résout la partialité, mais comment éviter que le nouveau système reproduise le même entonnoir (22 000+ requêtes, 9 procès) ?",
+          "Peut-on réformer un système de l'intérieur quand les gardiens du système sont ceux-là mêmes qu'il faudrait contrôler ?",
+          "Le Projet répond par la souveraineté populaire (RIC, mandats révocables, tirage au sort, élection des magistrats). Mais ces outils supposent un transfert de pouvoir que le pouvoir en place n'a aucun intérêt à concéder."
+        ]
+      },
+      conclusion: {
+        title: "Conclusion",
+        content: {
+          constat: "Les violences politiques en France ne sont pas des 'bavures' ou des 'dérapages' isolés, mais un mécanisme structurel au service du maintien de l'ordre oligarchique.",
+          commissions: "Les commissions d'enquête parlementaires sont structurellement incapables de produire des résultats concrets : 6 mois de travaux, aucun pouvoir de sanction, recommandations ignorées, une seule condamnation pour parjure en 70 ans de Ve République.",
+          cjrBilan: "La CJR, en 30 ans et 22 000+ requêtes, n'a prononcé aucune peine de prison ferme et a relaxé la majorité des ministres — y compris l'affaire Covid classée par un non-lieu général en juillet 2025.",
+          igpn: "L'IGPN a classé plus d'un tiers des enquêtes Gilets jaunes sans suite. Cinq ans après, aucun policier condamné pour les personnes éborgnées.",
+          reponseProjet: "Face à ce système d'impunité structurelle, le Projet propose une rupture : Tribunal populaire temporaire avec rétroactivité, comité de poursuites ciblant la chaîne de commandement, transformation de la CJR en haute cour citoyenne, élection des magistrats, fusion des organes anti-corruption, corps d'inspection indépendant.",
+          prochaine: "La semaine prochaine : focus sur la transparence (patrimoines des hauts fonctionnaires, agendas ministériels publics)."
+        }
+      },
+      sources: {
+        title: "Sources et références",
+        content: {
+          giletsJaunes: [
+            "Ministère de l'Intérieur : 2 495 blessés côté manifestants (oct. 2019)",
+            "France Bleu (15 nov. 2019) : 11 000 gardes à vue, 3 200 condamnations, 313 enquêtes IGPN",
+            "David Dufresne / Mediapart : 24 éborgnés, 5 mains arrachées",
+            "Le JDD (janv. 2020) : 401 enquêtes, 155 classées sans suite",
+            "AFP / Factuel (nov. 2023) : 23 éborgnés, zéro condamnation",
+            "The Lancet (Chauvin et al., 2 nov. 2019) : 43 cas de blessures oculaires",
+            "ACAT (2016), 'L'ordre et la force' : 89 cas, 26 mortels, 7 condamnations",
+            "Basta! : 864 morts suite à interventions policières (1977-2022)",
+            "Franceinfo (18 mai 2019) : 12 908 tirs de LBD",
+            "Amnesty International France (2019) : demande de suspension du LBD",
+            "Mediapart (17 juil. 2019) : 9 162 agents décorés"
+          ],
+          commissionsEnquete: [
+            "Vie-publique.fr / Philippe Blachèr (oct. 2023) : art. 51-2, ordonnance 1958",
+            "Assemblée nationale : fiches de synthèse n°61",
+            "Fondapol (oct. 2025) : 'Le Parlement enquête, le droit vacille'",
+            "Le Club des Juristes (mai 2025) : une seule condamnation (Michel Aubier)",
+            "Dalloz Actualité : 'Audition devant la commission d'enquête : un résidu de barbarie'",
+            "Public Sénat : affaire Benalla (21 mars 2019, 27 juin 2019)",
+            "Sénat : Rapport n°18-324 (20 fév. 2019)",
+            "Public Sénat : McKinsey (25 mars 2022)",
+            "Rapport AN n°3786 : commission maintien de l'ordre (janv. 2021)",
+            "CEDH : Corbet et autres c/ France (19 mars 2015)"
+          ],
+          cjr: [
+            "Vie-publique.fr (juil. 2025) : non-lieu Covid, bilan des 9 décisions",
+            "RDLF (2025) : 22 166 requêtes, 17 informations, 9 décisions",
+            "RDLF (2025) : 'Repenser la responsabilité pénale des ministres'",
+            "France 24 (nov. 2023) : juridiction d'exception contestée",
+            "Cécile Guérin-Bargues (Paris-Panthéon-Assas, RDLF 2025) : anomalie institutionnelle"
+          ],
+          projet: [
+            "Le Projet (8e édition) : 'Fin de l'Impunité' (pp. 10) — Tribunal populaire, Comité de clémence, comité de poursuites",
+            "Le Projet : 'La Justice' (pp. 15-17) — transformation CJR, élection magistrats, fusion AFA/MICAF/HATVP",
+            "Le Projet : 'L'Intérieur' (pp. 18-19) — corps d'inspection indépendant, dissolution BRAV-M, suppression BAC"
+          ]
+        }
+      }
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // SESSION 8 — La transparence (4 mars 2026) — À VENIR
+  // ═══════════════════════════════════════════════════════════════════════
+  // session8: {
+  //   title: "La transparence",
+  //   date: "4 mars 2026",
   //   duration: "2h",
   //   sections: {
   //     // À compléter après la session
