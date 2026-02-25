@@ -684,7 +684,7 @@ const App = () => {
               color: colors.primary,
               letterSpacing: '0.15em',
               marginBottom: '20px'
-            }}>R75</p>
+            }}>RUCHE 75 PARIS</p>
             <SearchBar />
           </header>
 
