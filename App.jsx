@@ -733,6 +733,15 @@ const App = () => {
 
           {/* Thèmes */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', marginBottom: '48px' }}>
+
+              <GlassCard onClick={() => goToTheme('violencesPolitiques')}>
+              <div style={{ marginBottom: '16px' }}><ShieldAlert size={48} color={ICON_COLOR} strokeWidth={1.5} /></div>
+              <h2 style={{ fontFamily: titleFont, fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '12px' }}>Les violences politiques</h2>
+              <p style={{ color: colors.textMuted, fontSize: fs.base + 'px', marginBottom: '16px', lineHeight: 1.6, fontFamily: textFont }}>Commissions d'enquête, impunité structurelle et réformes de la justice</p>
+              <div style={{ display: 'inline-block', padding: '6px 16px', background: colors.buttonBg, borderRadius: '20px', fontSize: (fs.base - 1) + 'px', color: colors.primary, fontFamily: textFont }}>{violencesCount} session{violencesCount > 1 ? 's' : ''}</div>
+              <div style={{ position: 'absolute', right: '24px', bottom: '24px', color: colors.textVeryMuted }}><ArrowRight size={24} /></div>
+            </GlassCard>
+            
             <GlassCard onClick={() => goToTheme('pantouflage')}>
               <div style={{ marginBottom: '16px' }}><Briefcase size={48} color={ICON_COLOR} strokeWidth={1.5} /></div>
               <h2 style={{ fontFamily: titleFont, fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '12px' }}>Le pantouflage</h2>
@@ -749,13 +758,6 @@ const App = () => {
               <div style={{ position: 'absolute', right: '24px', bottom: '24px', color: colors.textVeryMuted }}><ArrowRight size={24} /></div>
             </GlassCard>
             
-            <GlassCard onClick={() => goToTheme('violencesPolitiques')}>
-              <div style={{ marginBottom: '16px' }}><ShieldAlert size={48} color={ICON_COLOR} strokeWidth={1.5} /></div>
-              <h2 style={{ fontFamily: titleFont, fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '12px' }}>Les violences politiques</h2>
-              <p style={{ color: colors.textMuted, fontSize: fs.base + 'px', marginBottom: '16px', lineHeight: 1.6, fontFamily: textFont }}>Commissions d'enquête, impunité structurelle et réformes de la justice</p>
-              <div style={{ display: 'inline-block', padding: '6px 16px', background: colors.buttonBg, borderRadius: '20px', fontSize: (fs.base - 1) + 'px', color: colors.primary, fontFamily: textFont }}>{violencesCount} session{violencesCount > 1 ? 's' : ''}</div>
-              <div style={{ position: 'absolute', right: '24px', bottom: '24px', color: colors.textVeryMuted }}><ArrowRight size={24} /></div>
-            </GlassCard>
           </div>
 
           {/* Bouton Projet */}
