@@ -798,7 +798,6 @@ const App = () => {
             <p style={{ marginTop: '8px' }}>
               Sessions : <strong style={{ color: colors.primary }}>Mercredis 18h</strong>
             </p>
-            <p>sauf si réunion</p>
           </footer>
         </div>
       </div>
