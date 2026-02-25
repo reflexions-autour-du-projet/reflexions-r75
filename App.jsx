@@ -3,9 +3,9 @@ import {
   Tv, Briefcase, Calendar, Clock, Landmark, Coins, Scale, Handshake, FileText, Bot, 
   Search, Lightbulb, HelpCircle, Check, Lock, Map, FolderOpen, ClipboardList,
   ArrowRight, ArrowLeft, Paperclip, CheckCircle, X, Sun, Moon, History, Quote, Users, Globe, Award,
-  Share2
+  Share2, ShieldAlert
 } from 'lucide-react';
-import { mediasOligarchiques, pantouflage, sessionsConfig, prochaineSession } from './sessions-data.js';
+import { mediasOligarchiques, pantouflage, violencesPolitiques, sessionsConfig, prochaineSession } from './sessions-data.js';
 
 const DISCORD_FORUM_URL = "https://discord.com/channels/1426932365896454337/1462537887592743096";
 
@@ -158,7 +158,9 @@ const sessionsHistorique = {
     { id: 'session4', numero: '004', titre: 'Introduction au pantouflage', date: '29/01/2026', disponible: true },
     { id: 'session5', numero: '005', titre: "La sélection avant l'élection", date: '05/02/2026', disponible: true },
     { id: 'session6', numero: '006', titre: 'Les mesures du Projet', date: '13/02/2026', disponible: true },
-    { id: 'session7', numero: '007', titre: 'Questions et Réflexions', date: '15/02/2026', disponible: false },
+  ],
+  violencesPolitiques: [
+    { id: 'session7', numero: '007', titre: "Commissions d'enquête et violences politiques", date: '25/02/2026', disponible: true },
   ]
 };
 
@@ -344,9 +346,9 @@ const App = () => {
     setShowHistorique(false);
   };
 
-  const goToSession = (sessionId) => {
+    const goToSession = (sessionId) => {
     setCurrentSession(sessionId);
-    const data = currentTheme === 'medias' ? mediasOligarchiques : pantouflage;
+    const data = currentTheme === 'medias' ? mediasOligarchiques : currentTheme === 'pantouflage' ? pantouflage : violencesPolitiques;
     const sessionData = data[sessionId];
     if (sessionData) {
       setCurrentSection(Object.keys(sessionData.sections)[0]);
@@ -405,7 +407,7 @@ const App = () => {
     setShowSearchResults(false);
     setCurrentTheme(result.theme);
     setCurrentSession(result.sessionId);
-    const data = result.theme === 'medias' ? mediasOligarchiques : pantouflage;
+    const data = result.theme === 'medias' ? mediasOligarchiques : result.theme === 'pantouflage' ? pantouflage : violencesPolitiques;
     const sessionData = data[result.sessionId];
     if (sessionData) {
       setCurrentSection(Object.keys(sessionData.sections)[0]);
@@ -657,8 +659,9 @@ const App = () => {
   // RENDU - ACCUEIL
   // ═══════════════════════════════════════════════════════════════════════════
   const renderAccueil = () => {
-    const mediasCount = sessionsConfig.medias.filter(s => s.available).length;
+  const mediasCount = sessionsConfig.medias.filter(s => s.available).length;
     const pantouflageCount = sessionsConfig.pantouflage.filter(s => s.available).length;
+    const violencesCount = sessionsConfig.violencesPolitiques.filter(s => s.available).length;
 
     return (
       <div style={{ minHeight: '100vh', position: 'relative' }}>
@@ -745,6 +748,14 @@ const App = () => {
               <div style={{ display: 'inline-block', padding: '6px 16px', background: colors.buttonBg, borderRadius: '20px', fontSize: (fs.base - 1) + 'px', color: colors.primary, fontFamily: textFont }}>{mediasCount} session{mediasCount > 1 ? 's' : ''}</div>
               <div style={{ position: 'absolute', right: '24px', bottom: '24px', color: colors.textVeryMuted }}><ArrowRight size={24} /></div>
             </GlassCard>
+            
+            <GlassCard onClick={() => goToTheme('violencesPolitiques')}>
+              <div style={{ marginBottom: '16px' }}><ShieldAlert size={48} color={ICON_COLOR} strokeWidth={1.5} /></div>
+              <h2 style={{ fontFamily: titleFont, fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '12px' }}>Les violences politiques</h2>
+              <p style={{ color: colors.textMuted, fontSize: fs.base + 'px', marginBottom: '16px', lineHeight: 1.6, fontFamily: textFont }}>Commissions d'enquête, impunité structurelle et réformes de la justice</p>
+              <div style={{ display: 'inline-block', padding: '6px 16px', background: colors.buttonBg, borderRadius: '20px', fontSize: (fs.base - 1) + 'px', color: colors.primary, fontFamily: textFont }}>{violencesCount} session{violencesCount > 1 ? 's' : ''}</div>
+              <div style={{ position: 'absolute', right: '24px', bottom: '24px', color: colors.textVeryMuted }}><ArrowRight size={24} /></div>
+            </GlassCard>
           </div>
 
           {/* Bouton Projet */}
@@ -783,7 +794,7 @@ const App = () => {
           }}>
             <p>Butiner notre futur ensemble, abeille par abeille, réflexion après réflexion...</p>
             <p style={{ marginTop: '8px' }}>
-              Sessions : <strong style={{ color: colors.primary }}>Jeudis 18h</strong> et <strong style={{ color: colors.primary }}>Dimanches 17h</strong>
+              Sessions : <strong style={{ color: colors.primary }}>Mercredis 18h</strong>
             </p>
             <p>sauf si réunion</p>
           </footer>
@@ -797,10 +808,11 @@ const App = () => {
   // ═══════════════════════════════════════════════════════════════════════════
   const renderThemeHub = () => {
     const isMedias = currentTheme === 'medias';
-    const sessions = isMedias ? sessionsConfig.medias : sessionsConfig.pantouflage;
-    const historique = isMedias ? sessionsHistorique.medias : sessionsHistorique.pantouflage;
-    const themeTitle = isMedias ? "Les médias oligarchiques" : "Le pantouflage";
-    const ThemeIcon = isMedias ? Tv : Briefcase;
+    const isViolences = currentTheme === 'violencesPolitiques';
+    const sessions = isMedias ? sessionsConfig.medias : isViolences ? sessionsConfig.violencesPolitiques : sessionsConfig.pantouflage;
+    const historique = isMedias ? sessionsHistorique.medias : isViolences ? sessionsHistorique.violencesPolitiques : sessionsHistorique.pantouflage;
+    const themeTitle = isMedias ? "Les médias oligarchiques" : isViolences ? "Les violences politiques" : "Le pantouflage";
+    const ThemeIcon = isMedias ? Tv : isViolences ? ShieldAlert : Briefcase;
 
     return (
       <div style={{ minHeight: '100vh', padding: '24px', maxWidth: '900px', margin: '0 auto' }}>
@@ -929,7 +941,7 @@ const App = () => {
               hover={session.available}
             >
               <div style={{ fontSize: fs.title + 'px', fontFamily: titleFont, color: colors.primary, marginBottom: '12px' }}>
-                0{idx + (isMedias ? 1 : 4)}
+                0{idx + (isMedias ? 1 : isViolences ? 7 : 4)}
               </div>
               <h3 style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{session.titre}</h3>
               <p style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{session.date}</p>
@@ -977,7 +989,7 @@ const App = () => {
   // RENDU - SESSION
   // ═══════════════════════════════════════════════════════════════════════════
   const renderSession = () => {
-    const data = currentTheme === 'medias' ? mediasOligarchiques : pantouflage;
+  const data = currentTheme === 'medias' ? mediasOligarchiques : currentTheme === 'pantouflage' ? pantouflage : violencesPolitiques;
     const sessionData = data[currentSession];
     if (!sessionData) return null;
 
@@ -3613,6 +3625,607 @@ const App = () => {
               <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{item.prochaine}</div>
             </div>
           )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Violences — définition (intro, formes[], objectifCommun)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.intro && item.formes && item.objectifCommun) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.intro}</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            {item.formes.map((f, i) => (
+              <div key={i} style={{
+                background: colors.buttonBg,
+                border: `1px solid ${colors.cardBorder}`,
+                borderRadius: '12px',
+                padding: '16px',
+                display: 'flex',
+                alignItems: 'flex-start',
+                gap: '12px'
+              }}>
+                <span style={{ fontSize: '24px' }}>{f.icon}</span>
+                <div style={{ flex: 1 }}>
+                  <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '4px' }}>{f.type}</div>
+                  <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.6, fontFamily: textFont }}>{f.detail}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div style={{
+            background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
+            borderRadius: '12px',
+            padding: '16px'
+          }}>
+            <div style={{ fontSize: fs.base + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.objectifCommun}</div>
+          </div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Niveau + detail (intimidation, etc.)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.niveau && item.detail) {
+      return (
+        <div key={key} style={{
+          background: colors.buttonBg,
+          border: `1px solid ${colors.cardBorder}`,
+          borderRadius: '12px',
+          padding: '16px'
+        }}>
+          <div style={{ fontWeight: '600', color: colors.primary, marginBottom: '6px', fontSize: fs.base + 'px', fontFamily: titleFont }}>{item.niveau}</div>
+          <div style={{ fontSize: fs.base + 'px', color: colors.textMuted, lineHeight: 1.6, fontFamily: textFont }}>{item.detail}</div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Limite + detail (commissions d'enquête)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.limite && item.detail) {
+      return (
+        <div key={key} style={{
+          background: colors.buttonBg,
+          border: `1px solid ${colors.cardBorder}`,
+          borderRadius: '12px',
+          padding: '16px'
+        }}>
+          <div style={{ fontWeight: '600', color: '#ef4444', marginBottom: '6px', fontSize: fs.base + 'px', fontFamily: titleFont }}>{item.limite}</div>
+          <div style={{ fontSize: fs.base + 'px', color: colors.textMuted, lineHeight: 1.6, fontFamily: textFont }}>{item.detail}</div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Source + stat (violences au-delà des GJ)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.source && item.stat && !item.chiffre && !item.chiffres) {
+      return (
+        <div key={key} style={{
+          background: colors.buttonBg,
+          border: `1px solid ${colors.cardBorder}`,
+          borderRadius: '12px',
+          padding: '16px'
+        }}>
+          <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}>{item.stat}</div>
+          <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>— {item.source}</div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Gilets jaunes / Stats multi-sections (intro + sections avec chiffres + asymetrie)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.intro && item.coteManifestants) {
+      const statSections = [
+        item.coteManifestants && { label: 'Côté manifestants', source: item.coteManifestants.source, chiffres: item.coteManifestants.chiffres },
+        item.repressionJudiciaire && { label: 'Répression judiciaire', source: item.repressionJudiciaire.source, chiffres: item.repressionJudiciaire.chiffres },
+        item.enquetesPolicieres && { label: 'Enquêtes policières', source: null, chiffres: item.enquetesPolicieres.chiffres }
+      ].filter(Boolean);
+
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.intro}</p>
+          {statSections.map((section, i) => (
+            <div key={i}>
+              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>
+                {section.label}
+                {section.source && <span style={{ fontSize: (fs.base - 3) + 'px', color: colors.textMuted, marginLeft: '8px', fontFamily: textFont }}>({section.source})</span>}
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px' }}>
+                {section.chiffres.map((c, j) => (
+                  <div key={j} style={{
+                    background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)',
+                    border: '1px solid rgba(239, 68, 68, 0.2)',
+                    borderRadius: '12px',
+                    padding: '14px',
+                    textAlign: 'center'
+                  }}>
+                    <div style={{ fontFamily: titleFont, fontSize: (fs.large + 4) + 'px', color: '#ef4444', marginBottom: '4px' }}>{c.number}</div>
+                    <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.text, fontFamily: textFont }}>{c.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+          {item.asymetrie && (
+            <div style={{
+              background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.08)',
+              border: '1px solid rgba(239, 68, 68, 0.3)',
+              borderRadius: '12px',
+              padding: '16px',
+              textAlign: 'center'
+            }}>
+              <div style={{ fontSize: fs.base + 'px', color: '#ef4444', fontWeight: '600', lineHeight: 1.6, fontFamily: textFont }}>{item.asymetrie}</div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Armes utilisées (contexte, chiffresGlobaux, journee, alertes, lancet)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.contexte && item.chiffresGlobaux && item.journee1erDecembre) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.contexte}</p>
+          
+          {item.chiffresGlobaux.map((c, i) => (
+            <div key={i} style={{
+              background: darkMode ? 'rgba(239, 68, 68, 0.12)' : 'rgba(239, 68, 68, 0.08)',
+              borderRadius: '16px', padding: '20px', textAlign: 'center'
+            }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.large + 12) + 'px', color: '#ef4444', marginBottom: '4px' }}>{c.number}</div>
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{c.label}</div>
+            </div>
+          ))}
+
+          <div style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px' }}>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '4px' }}>
+              {item.journee1erDecembre.date}
+            </div>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '10px', marginTop: '12px' }}>
+              {item.journee1erDecembre.munitions.map((m, i) => (
+                <div key={i} style={{
+                  background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)',
+                  borderRadius: '10px', padding: '12px', textAlign: 'center'
+                }}>
+                  <div style={{ fontFamily: titleFont, fontSize: (fs.title + 2) + 'px', color: '#ef4444' }}>{m.number}</div>
+                  <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>{m.label}</div>
+                </div>
+              ))}
+            </div>
+            {item.journee1erDecembre.note && (
+              <div style={{ marginTop: '12px', fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontStyle: 'italic', fontFamily: textFont }}>{item.journee1erDecembre.note}</div>
+            )}
+          </div>
+
+          {item.alertes && <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.alertes}</p>}
+          
+          {item.lancet && (
+            <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{item.lancet.source}</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.lancet.resultat}</div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Commissions d'enquête (fondement, pouvoirsTheoriques, droitOpposition)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.fondement && item.pouvoirsTheoriques) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <div style={{
+            background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`,
+            borderRadius: '0 12px 12px 0', padding: '16px'
+          }}>
+            <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Fondement juridique</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{item.fondement}</div>
+          </div>
+          <div>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Pouvoirs théoriques</div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {item.pouvoirsTheoriques.map((p, i) => (
+                <div key={i} style={{
+                  background: darkMode ? 'rgba(68, 112, 29, 0.1)' : 'rgba(68, 112, 29, 0.08)',
+                  borderLeft: '3px solid #44701D',
+                  borderRadius: '0 10px 10px 0',
+                  padding: '12px 16px',
+                  fontSize: (fs.base - 1) + 'px',
+                  color: colors.text,
+                  fontFamily: textFont
+                }}>{p}</div>
+              ))}
+            </div>
+          </div>
+          {item.droitOpposition && (
+            <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+              <Scale size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
+              <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{item.droitOpposition}</div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Bilan commissions (condamnation, affaires, synthese, citation)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.condamnation && item.synthese && (item.affaireBenalla || item.affaireMcKinsey)) {
+      const affaires = [item.affaireBenalla, item.affaireMcKinsey].filter(Boolean);
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {/* Condamnation unique */}
+          <div style={{
+            background: darkMode ? 'rgba(239, 68, 68, 0.12)' : 'rgba(239, 68, 68, 0.08)',
+            border: '1px solid rgba(239, 68, 68, 0.3)',
+            borderRadius: '16px', padding: '20px', textAlign: 'center'
+          }}>
+            <div style={{ fontFamily: titleFont, fontSize: (fs.large + 8) + 'px', color: '#ef4444', marginBottom: '8px' }}>{item.condamnation.nombre}</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '8px', fontFamily: textFont }}>{item.condamnation.qui}</div>
+            <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>— {item.condamnation.source}</div>
+          </div>
+
+          {/* Affaires */}
+          {affaires.map((affaire, i) => (
+            <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px' }}>
+              {affaire.contexte && <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, marginBottom: '12px', fontFamily: textFont }}>{affaire.contexte}</div>}
+              {affaire.resultat && (
+                <div style={{
+                  background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)',
+                  borderLeft: '3px solid #ef4444', borderRadius: '0 8px 8px 0',
+                  padding: '10px 14px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '8px', fontFamily: textFont
+                }}>{affaire.resultat}</div>
+              )}
+              {affaire.sources && <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>Sources : {affaire.sources}</div>}
+              {affaire.source && <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>Source : {affaire.source}</div>}
+            </div>
+          ))}
+
+          {/* Synthèse */}
+          <div style={{
+            background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
+            borderRadius: '12px', padding: '16px'
+          }}>
+            <div style={{ fontSize: fs.base + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.synthese}</div>
+          </div>
+
+          {/* Citation Fondapol */}
+          {item.citationFondapol && (
+            <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
+              <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>« {item.citationFondapol.texte} »</p>
+              <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px', fontFamily: textFont }}>— {item.citationFondapol.source}</p>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: CJR (creation, composition, citation)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.creation && item.composition && item.citation) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.creation}</p>
+          <div style={{
+            background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)',
+            border: '1px solid rgba(239, 68, 68, 0.2)',
+            borderRadius: '12px', padding: '16px'
+          }}>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{item.composition}</div>
+          </div>
+          <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
+            <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>« {item.citation.texte} »</p>
+            <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px', fontFamily: textFont }}>— {item.citation.auteur}</p>
+          </div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Bilan CJR (stats, decisions, covid, paradoxe, synthese)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.stats && item.decisions && item.synthese) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {/* Stats */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '10px' }}>
+            {item.stats.map((s, i) => (
+              <div key={i} style={{
+                background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.06)',
+                border: '1px solid rgba(239, 68, 68, 0.2)',
+                borderRadius: '12px', padding: '16px', textAlign: 'center'
+              }}>
+                <div style={{ fontFamily: titleFont, fontSize: (fs.large + 8) + 'px', color: '#ef4444' }}>{s.number}</div>
+                <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.text, fontFamily: textFont }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Décisions */}
+          {item.decisions.relaxes && (
+            <div style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#ef4444', marginBottom: '12px' }}>Relaxes</div>
+              {item.decisions.relaxes.map((r, i) => (
+                <div key={i} style={{ background: 'rgba(239, 68, 68, 0.06)', borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}>{r}</div>
+              ))}
+            </div>
+          )}
+          {item.decisions.dispensesDePeine && (
+            <div style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#9E876E', marginBottom: '12px' }}>Dispenses de peine</div>
+              {item.decisions.dispensesDePeine.map((d, i) => (
+                <div key={i} style={{ background: 'rgba(158, 135, 110, 0.1)', borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}>{d}</div>
+              ))}
+            </div>
+          )}
+          {item.decisions.condamnationsAvecSursis && (
+            <div style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Condamnations avec sursis</div>
+              {item.decisions.condamnationsAvecSursis.map((c, i) => (
+                <div key={i} style={{ background: colors.buttonBgHover, borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}>{c}</div>
+              ))}
+            </div>
+          )}
+
+          {/* Covid */}
+          {item.covid && (
+            <div style={{ background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', padding: '16px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '8px' }}>Covid — {item.covid.date}</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{item.covid.resultat}</div>
+            </div>
+          )}
+
+          {item.paradoxe && <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.paradoxe}</p>}
+          {item.casPasqua && <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.casPasqua}</p>}
+
+          {item.citationLeGall && (
+            <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
+              <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>« {item.citationLeGall.texte} »</p>
+              <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px', fontFamily: textFont }}>— {item.citationLeGall.auteur}</p>
+            </div>
+          )}
+
+          <div style={{
+            background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
+            borderRadius: '12px', padding: '16px', textAlign: 'center'
+          }}>
+            <div style={{ fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', lineHeight: 1.6, fontFamily: textFont }}>{item.synthese}</div>
+          </div>
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Mesure simple (principe + effet/page/comparaison/droitSpecial/etc.)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.principe && !item.projet && !item.aujourdhui && !item.type) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{
+            background: darkMode ? 'rgba(68, 112, 29, 0.12)' : 'rgba(68, 112, 29, 0.08)',
+            border: '1px solid rgba(68, 112, 29, 0.25)',
+            borderRadius: '12px', padding: '20px'
+          }}>
+            <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#44701D', marginBottom: '8px' }}>Principe</div>
+            <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.principe}</div>
+          </div>
+
+          {item.droitSpecial && (
+            <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Droit spécial</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.droitSpecial}</div>
+            </div>
+          )}
+
+          {item.comiteClemence && (
+            <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Comité de clémence</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.comiteClemence}</div>
+            </div>
+          )}
+
+          {item.cible && (
+            <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Cible</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.cible}</div>
+            </div>
+          )}
+
+          {item.rattachement && (
+            <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.6, fontFamily: textFont }}>{item.rattachement}</div>
+            </div>
+          )}
+
+          {item.comparaison && (
+            <div style={{
+              background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)',
+              borderLeft: '3px solid #ef4444', borderRadius: '0 10px 10px 0',
+              padding: '12px 16px'
+            }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '6px' }}>Aujourd'hui</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{item.comparaison}</div>
+            </div>
+          )}
+
+          {item.effet && (
+            <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.effet}</div>
+            </div>
+          )}
+
+          {item.rappel && <p style={{ color: colors.textMuted, lineHeight: 1.7, fontSize: (fs.base - 1) + 'px', fontFamily: textFont }}>{item.rappel}</p>}
+
+          {item.temoignage && (
+            <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{item.temoignage.nom}</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontStyle: 'italic', fontFamily: textFont }}>{item.temoignage.detail}</div>
+            </div>
+          )}
+
+          {item.page && (
+            <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, display: 'flex', alignItems: 'center', gap: '6px', fontFamily: textFont }}>
+              <FileText size={14} color={ICON_COLOR} /> {item.page}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Enquêtes spécifiques (enquetes array)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.enquetes && Array.isArray(item.enquetes)) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+          {item.enquetes.map((e, i) => (
+            <div key={i} style={{
+              background: colors.buttonBg,
+              borderLeft: `3px solid ${colors.primary}`,
+              borderRadius: '0 10px 10px 0',
+              padding: '14px 16px',
+              fontSize: fs.base + 'px',
+              color: colors.text,
+              lineHeight: 1.6,
+              fontFamily: textFont
+            }}>{e}</div>
+          ))}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Réformes justice + intérieur (justice[], interieur[], pages)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.justice && item.interieur) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          {[
+            { label: '⚖️ Justice', data: item.justice, accentColor: '#3b82f6' },
+            { label: '🛡️ Intérieur', data: item.interieur, accentColor: '#ef4444' }
+          ].map((section, i) => (
+            <div key={i}>
+              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>{section.label}</div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {section.data.map((r, j) => (
+                  <div key={j} style={{
+                    background: colors.buttonBg,
+                    border: `1px solid ${colors.cardBorder}`,
+                    borderRadius: '12px',
+                    padding: '16px'
+                  }}>
+                    <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: section.accentColor, marginBottom: '6px' }}>{r.mesure}</div>
+                    <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{r.effet}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+          {item.pages && (
+            <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, display: 'flex', alignItems: 'center', gap: '6px', fontFamily: textFont }}>
+              <FileText size={14} color={ICON_COLOR} /> {item.pages}
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Sources par catégorie (objet avec clés → arrays de strings)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.giletsJaunes && item.commissionsEnquete && item.cjr) {
+      const categories = Object.entries(item).filter(([_, v]) => Array.isArray(v));
+      const catLabels = {
+        giletsJaunes: 'Gilets jaunes',
+        commissionsEnquete: "Commissions d'enquête",
+        cjr: 'Cour de justice de la République',
+        projet: 'Le Projet'
+      };
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          {categories.map(([catKey, sources]) => (
+            <div key={catKey}>
+              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '10px' }}>
+                {catLabels[catKey] || catKey}
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                {sources.map((s, i) => (
+                  <div key={i} style={{
+                    background: colors.buttonBg,
+                    borderRadius: '8px',
+                    padding: '10px 14px',
+                    fontSize: (fs.base - 2) + 'px',
+                    color: colors.textMuted,
+                    lineHeight: 1.5,
+                    fontFamily: textFont
+                  }}>{s}</div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      );
+    }
+
+    // ═══════════════════════════════════════════════════════════════════════
+    // HANDLER: Conclusion session 7 (constat, commissions, cjrBilan, igpn, reponseProjet, prochaine)
+    // ═══════════════════════════════════════════════════════════════════════
+    if (item.constat && item.commissions && item.reponseProjet) {
+      const parts = [
+        { text: item.constat, style: 'emphasis' },
+        { text: item.commissions, style: 'alert' },
+        { text: item.cjrBilan, style: 'alert' },
+        { text: item.igpn, style: 'alert' },
+        { text: item.reponseProjet, style: 'positive' },
+        { text: item.prochaine, style: 'next' }
+      ].filter(p => p.text);
+
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          {parts.map((p, i) => {
+            if (p.style === 'emphasis') return (
+              <div key={i} style={{
+                background: darkMode ? 'rgba(238, 194, 29, 0.15)' : 'rgba(17, 17, 17, 0.15)',
+                borderRadius: '16px', padding: '20px', textAlign: 'center'
+              }}>
+                <div style={{ fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', lineHeight: 1.6, fontFamily: textFont }}>{p.text}</div>
+              </div>
+            );
+            if (p.style === 'alert') return (
+              <div key={i} style={{
+                background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)',
+                borderLeft: '3px solid #ef4444', borderRadius: '0 10px 10px 0',
+                padding: '12px 16px', fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont
+              }}>{p.text}</div>
+            );
+            if (p.style === 'positive') return (
+              <div key={i} style={{
+                background: darkMode ? 'rgba(68, 112, 29, 0.12)' : 'rgba(68, 112, 29, 0.08)',
+                border: '1px solid rgba(68, 112, 29, 0.25)',
+                borderRadius: '12px', padding: '16px', fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont
+              }}>{p.text}</div>
+            );
+            if (p.style === 'next') return (
+              <div key={i} style={{
+                background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`,
+                borderRadius: '0 12px 12px 0', padding: '16px'
+              }}>
+                <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>📅 Prochaine session</div>
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{p.text}</div>
+              </div>
+            );
+            return null;
+          })}
         </div>
       );
     }
