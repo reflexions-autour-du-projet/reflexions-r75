@@ -1262,7 +1262,7 @@ export const violencesPolitiques = {
       }
 
     }
-  }
+  },
 
 // ═══════════════════════════════════════════════════════════════════════
   // SESSION 8 — Aux origines des violences politiques (4 mars 2026)
@@ -1550,7 +1550,7 @@ export const violencesPolitiques = {
       }
 
     }
-  }
+  },
   
   // ═══════════════════════════════════════════════════════════════════════
   // SESSION 9 — Les mesures du Projet (11 mars 2026) — À VENIR
