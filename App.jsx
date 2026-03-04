@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { 
   Tv, Briefcase, Calendar, Clock, Landmark, Coins, Scale, Handshake, FileText, Bot, 
   Search, Lightbulb, HelpCircle, Check, Lock, Map, FolderOpen, ClipboardList,
-  ArrowRight, ArrowLeft, Paperclip, CheckCircle, X, Sun, Moon, History, Quote, Users, Globe, Award,
+  ArrowRight, ArrowLeft, Paperclip, CheckCircle, X, History, Quote, Users, Globe, Award,
   Share2, ShieldAlert
 } from 'lucide-react';
 import { mediasOligarchiques, pantouflage, violencesPolitiques, sessionsConfig, prochaineSession } from './sessions-data.js';
@@ -235,10 +235,6 @@ const App = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [showSearchResults, setShowSearchResults] = useState(false);
-  const [darkMode, setDarkMode] = useState(() => {
-    const saved = localStorage.getItem('r75-darkMode');
-    return saved !== null ? JSON.parse(saved) : true;
-  });
   const [fontSize, setFontSize] = useState(() => localStorage.getItem('r75-fontSize') || 'normal');
   const [isLoading, setIsLoading] = useState(true);
   const [countdown, setCountdown] = useState({ days: 0, hours: 0, minutes: 0 });
@@ -246,10 +242,6 @@ const App = () => {
   // ═══════════════════════════════════════════════════════════════════════════
   // EFFETS
   // ═══════════════════════════════════════════════════════════════════════════
-  useEffect(() => {
-    localStorage.setItem('r75-darkMode', JSON.stringify(darkMode));
-  }, [darkMode]);
-
   useEffect(() => {
     localStorage.setItem('r75-fontSize', fontSize);
   }, [fontSize]);
@@ -271,7 +263,6 @@ const App = () => {
         const jour = parseInt(match[1]);
         const mois = moisFr[match[2].toLowerCase()];
         const heure = parseInt(match[3]);
-        // Année 2026 pour les sessions à venir
         const annee = 2026;
         const targetDate = new Date(annee, mois, jour, heure, 0, 0);
         const diff = targetDate - new Date();
@@ -292,9 +283,9 @@ const App = () => {
   }, []);
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // COULEURS ET TAILLES
+  // COULEURS — THÈME FIXE SOMBRE
   // ═══════════════════════════════════════════════════════════════════════════
-  const colors = darkMode ? {
+  const colors = {
     background: '#111111',
     primary: '#EEC21D',
     text: '#fae8a4',
@@ -307,26 +298,11 @@ const App = () => {
     buttonBg: 'rgba(238, 194, 29, 0.1)',
     buttonBgHover: 'rgba(238, 194, 29, 0.2)',
     gradientOverlay: 'radial-gradient(ellipse at 20% 20%, rgba(238, 194, 29, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(238, 194, 29, 0.05) 0%, transparent 50%)',
-  } : {
-    background: '#EEC21D',
-    primary: '#111111',
-    text: '#111111',
-    textMuted: 'rgba(17, 17, 17, 0.7)',
-    textVeryMuted: 'rgba(17, 17, 17, 0.5)',
-    cardBg: 'linear-gradient(135deg, rgba(17,17,17,0.08) 0%, rgba(17,17,17,0.02) 100%)',
-    cardBorder: 'rgba(17, 17, 17, 0.15)',
-    cardBorderHover: 'rgba(17, 17, 17, 0.4)',
-    inputBg: 'rgba(17, 17, 17, 0.06)',
-    buttonBg: 'rgba(17, 17, 17, 0.1)',
-    buttonBgHover: 'rgba(17, 17, 17, 0.2)',
-    gradientOverlay: 'radial-gradient(ellipse at 20% 20%, rgba(17, 17, 17, 0.08) 0%, transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(17, 17, 17, 0.05) 0%, transparent 50%)',
   };
 
   const ICON_COLOR = colors.primary;
   
-  // Police Avenir pour le texte courant
   const textFont = "'Avenir', 'Avenir Next', -apple-system, BlinkMacSystemFont, sans-serif";
-  // Police Flamengo pour les titres et boutons de navigation
   const titleFont = "'Flamengo', Georgia, serif";
 
   const fontSizes = {
@@ -346,7 +322,7 @@ const App = () => {
     setShowHistorique(false);
   };
 
-    const goToSession = (sessionId) => {
+  const goToSession = (sessionId) => {
     setCurrentSession(sessionId);
     const data = currentTheme === 'medias' ? mediasOligarchiques : currentTheme === 'pantouflage' ? pantouflage : violencesPolitiques;
     const sessionData = data[sessionId];
@@ -421,7 +397,7 @@ const App = () => {
     return (
       <>
         {text.slice(0, idx)}
-        <span style={{ background: darkMode ? 'rgba(238, 194, 29, 0.4)' : 'rgba(17, 17, 17, 0.2)', borderRadius: '2px', padding: '0 2px' }}>
+        <span style={{ background: 'rgba(238, 194, 29, 0.4)', borderRadius: '2px', padding: '0 2px' }}>
           {text.slice(idx, idx + query.length)}
         </span>
         {text.slice(idx + query.length)}
@@ -466,12 +442,12 @@ const App = () => {
   );
 
   const HexLogo = ({ size = 80, color = "#eec21d" }) => (
-    <svg width={size} height={size * 1.15} viewBox="0 0 100 115" style={{ filter: `drop-shadow(0 0 20px ${darkMode ? 'rgba(238, 194, 29, 0.3)' : 'rgba(17, 17, 17, 0.2)'})` }}>
+    <svg width={size} height={size * 1.15} viewBox="0 0 100 115" style={{ filter: 'drop-shadow(0 0 20px rgba(238, 194, 29, 0.3))' }}>
       <defs>
         <linearGradient id="hexGold" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor={darkMode ? "#f4d03f" : "#222222"} />
+          <stop offset="0%" stopColor="#f4d03f" />
           <stop offset="50%" stopColor={color} />
-          <stop offset="100%" stopColor={darkMode ? "#d4a516" : "#000000"} />
+          <stop offset="100%" stopColor="#d4a516" />
         </linearGradient>
       </defs>
       <polygon points="50,2 95,28 95,87 50,113 5,87 5,28" fill="none" stroke="url(#hexGold)" strokeWidth="4" />
@@ -498,7 +474,7 @@ const App = () => {
           position: 'relative',
           overflow: 'hidden',
           transform: isHovered && hover && onClick ? 'translateY(-4px)' : 'translateY(0)',
-          boxShadow: isHovered && hover && onClick ? `0 20px 40px ${darkMode ? 'rgba(238, 194, 29, 0.15)' : 'rgba(17, 17, 17, 0.15)'}` : 'none',
+          boxShadow: isHovered && hover && onClick ? '0 20px 40px rgba(238, 194, 29, 0.15)' : 'none',
           ...customStyle
         }}
       >
@@ -509,21 +485,6 @@ const App = () => {
 
   const AccessibilityControls = () => (
     <div style={{ position: 'fixed', top: '16px', right: '16px', display: 'flex', gap: '8px', zIndex: 100 }}>
-      <button
-        onClick={() => setDarkMode(!darkMode)}
-        style={{
-          width: '40px', height: '40px', borderRadius: '50%',
-          background: colors.buttonBg,
-          border: `1px solid ${colors.cardBorder}`,
-          color: colors.primary,
-          cursor: 'pointer',
-          display: 'flex', alignItems: 'center', justifyContent: 'center',
-          transition: 'all 0.3s ease'
-        }}
-        title={darkMode ? 'Mode clair' : 'Mode sombre'}
-      >
-        {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-      </button>
       <div style={{
         display: 'flex',
         background: colors.buttonBg,
@@ -538,10 +499,10 @@ const App = () => {
             style={{
               padding: '8px 12px',
               background: fontSize === size
-                ? (darkMode ? 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)' : 'linear-gradient(135deg, #111111 0%, #333333 100%)')
+                ? 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)'
                 : 'transparent',
               border: 'none',
-              color: fontSize === size ? (darkMode ? '#111' : '#EEC21D') : colors.primary,
+              color: fontSize === size ? '#111' : colors.primary,
               cursor: 'pointer',
               fontFamily: titleFont,
               fontSize: i === 0 ? '12px' : i === 1 ? '14px' : '16px',
@@ -589,7 +550,6 @@ const App = () => {
         )}
       </div>
       
-      {/* Style pour le placeholder en #eec21d */}
       <style>{`
         input::placeholder {
           color: ${colors.primary} !important;
@@ -601,11 +561,11 @@ const App = () => {
       {showSearchResults && searchResults.length > 0 && (
         <div style={{
           position: 'absolute', top: '100%', left: 0, right: 0, marginTop: '8px',
-          background: darkMode ? 'rgba(17, 17, 17, 0.98)' : 'rgba(238, 194, 29, 0.98)',
+          background: 'rgba(17, 17, 17, 0.98)',
           backdropFilter: 'blur(20px)',
           border: `1px solid ${colors.cardBorder}`,
           borderRadius: '14px', overflow: 'hidden', zIndex: 100,
-          boxShadow: `0 10px 40px ${darkMode ? 'rgba(0, 0, 0, 0.5)' : 'rgba(17, 17, 17, 0.2)'}`
+          boxShadow: '0 10px 40px rgba(0, 0, 0, 0.5)'
         }}>
           <div style={{
             padding: '10px 14px', borderBottom: `1px solid ${colors.cardBorder}`,
@@ -643,7 +603,7 @@ const App = () => {
       {showSearchResults && searchQuery.length >= 2 && searchResults.length === 0 && (
         <div style={{
           position: 'absolute', top: '100%', left: 0, right: 0, marginTop: '8px',
-          background: darkMode ? 'rgba(17, 17, 17, 0.98)' : 'rgba(238, 194, 29, 0.98)',
+          background: 'rgba(17, 17, 17, 0.98)',
           backdropFilter: 'blur(20px)',
           border: `1px solid ${colors.cardBorder}`,
           borderRadius: '14px', padding: '16px', textAlign: 'center', zIndex: 100
@@ -659,7 +619,7 @@ const App = () => {
   // RENDU - ACCUEIL
   // ═══════════════════════════════════════════════════════════════════════════
   const renderAccueil = () => {
-  const mediasCount = sessionsConfig.medias.filter(s => s.available).length;
+    const mediasCount = sessionsConfig.medias.filter(s => s.available).length;
     const pantouflageCount = sessionsConfig.pantouflage.filter(s => s.available).length;
     const violencesCount = sessionsConfig.violencesPolitiques.filter(s => s.available).length;
 
@@ -676,7 +636,7 @@ const App = () => {
               color: colors.primary,
               marginBottom: '8px',
               letterSpacing: '0.05em',
-              textShadow: darkMode ? '0 2px 20px rgba(238, 194, 29, 0.3)' : '0 2px 20px rgba(17, 17, 17, 0.2)'
+              textShadow: '0 2px 20px rgba(238, 194, 29, 0.3)'
             }}>RÉFLEXIONS AUTOUR DU PROJET</h1>
             <p style={{
               fontFamily: titleFont,
@@ -691,10 +651,8 @@ const App = () => {
           {/* Prochaine session */}
           <GlassCard hover={false} style={{
             marginBottom: '40px',
-            background: darkMode
-              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.12) 0%, rgba(238, 194, 29, 0.03) 100%)'
-              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.12) 0%, rgba(17, 17, 17, 0.03) 100%)',
-            border: `1px solid ${darkMode ? 'rgba(238, 194, 29, 0.25)' : 'rgba(17, 17, 17, 0.25)'}`
+            background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.12) 0%, rgba(238, 194, 29, 0.03) 100%)',
+            border: '1px solid rgba(238, 194, 29, 0.25)'
           }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
               <Calendar size={32} color={ICON_COLOR} strokeWidth={1.5} />
@@ -734,7 +692,7 @@ const App = () => {
           {/* Thèmes */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px', marginBottom: '48px' }}>
 
-              <GlassCard onClick={() => goToTheme('violencesPolitiques')}>
+            <GlassCard onClick={() => goToTheme('violencesPolitiques')}>
               <div style={{ marginBottom: '16px' }}><ShieldAlert size={48} color={ICON_COLOR} strokeWidth={1.5} /></div>
               <h2 style={{ fontFamily: titleFont, fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '12px' }}>Les violences politiques</h2>
               <p style={{ color: colors.textMuted, fontSize: fs.base + 'px', marginBottom: '16px', lineHeight: 1.6, fontFamily: textFont }}>Commissions d'enquête, impunité structurelle et réformes de la justice</p>
@@ -765,17 +723,17 @@ const App = () => {
             <button
               onClick={() => setShowProjet(true)}
               style={{
-                background: darkMode ? 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)' : 'linear-gradient(135deg, #111111 0%, #333333 100%)',
+                background: 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)',
                 border: 'none',
                 borderRadius: '30px',
                 padding: '16px 32px',
-                color: darkMode ? '#111' : '#EEC21D',
+                color: '#111',
                 fontFamily: titleFont,
                 fontSize: fs.base + 'px',
                 fontWeight: 'bold',
                 cursor: 'pointer',
                 transition: 'all 0.3s ease',
-                boxShadow: darkMode ? '0 4px 20px rgba(238, 194, 29, 0.3)' : '0 4px 20px rgba(17, 17, 17, 0.3)'
+                boxShadow: '0 4px 20px rgba(238, 194, 29, 0.3)'
               }}
               onMouseEnter={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
               onMouseLeave={(e) => e.currentTarget.style.transform = 'scale(1)'}
@@ -961,10 +919,8 @@ const App = () => {
             <GlassCard
               onClick={() => setShowDossierSynthese(true)}
               style={{
-                background: darkMode
-                  ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)'
-                  : 'linear-gradient(135deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0.05) 100%)',
-                border: `1px solid ${darkMode ? 'rgba(238, 194, 29, 0.3)' : 'rgba(17, 17, 17, 0.3)'}`,
+                background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)',
+                border: '1px solid rgba(238, 194, 29, 0.3)',
                 textAlign: 'center'
               }}
             >
@@ -990,7 +946,7 @@ const App = () => {
   // RENDU - SESSION
   // ═══════════════════════════════════════════════════════════════════════════
   const renderSession = () => {
-  const data = currentTheme === 'medias' ? mediasOligarchiques : currentTheme === 'pantouflage' ? pantouflage : violencesPolitiques;
+    const data = currentTheme === 'medias' ? mediasOligarchiques : currentTheme === 'pantouflage' ? pantouflage : violencesPolitiques;
     const sessionData = data[currentSession];
     if (!sessionData) return null;
 
@@ -1023,9 +979,7 @@ const App = () => {
 
         {/* Header session */}
         <header style={{
-          background: darkMode
-            ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)'
-            : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
+          background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)',
           borderRadius: '20px',
           padding: '32px',
           marginBottom: '24px'
@@ -1072,14 +1026,12 @@ const App = () => {
                 onClick={() => setCurrentSection(key)}
                 style={{
                   background: isActive
-                    ? (darkMode ? 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)' : 'linear-gradient(135deg, #111111 0%, #333333 100%)')
+                    ? 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)'
                     : 'transparent',
                   border: 'none',
                   borderRadius: '12px',
                   padding: '10px 16px',
-                  color: isActive
-                    ? (darkMode ? '#111' : '#EEC21D')
-                    : colors.primary,
+                  color: isActive ? '#111' : colors.primary,
                   cursor: 'pointer',
                   fontFamily: titleFont,
                   fontSize: (fs.base - 2) + 'px',
@@ -1172,9 +1124,7 @@ const App = () => {
 
       {/* Header */}
       <header style={{
-        background: darkMode
-          ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)'
-          : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
+        background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)',
         borderRadius: '20px',
         padding: '32px',
         marginBottom: '24px',
@@ -1206,7 +1156,7 @@ const App = () => {
         flexWrap: 'wrap',
         marginBottom: '24px',
         padding: '8px',
-        background: darkMode ? 'rgba(0, 0, 0, 0.3)' : 'rgba(17, 17, 17, 0.1)',
+        background: 'rgba(0, 0, 0, 0.3)',
         borderRadius: '16px',
         justifyContent: 'center'
       }}>
@@ -1222,12 +1172,12 @@ const App = () => {
               onClick={() => { setSyntheseView(key); setActiveSyntheseTheme(null); }}
               style={{
                 background: isActive
-                  ? (darkMode ? 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)' : 'linear-gradient(135deg, #111111 0%, #333333 100%)')
+                  ? 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)'
                   : colors.buttonBg,
                 border: 'none',
                 borderRadius: '12px',
                 padding: '10px 20px',
-                color: isActive ? (darkMode ? '#111' : '#EEC21D') : colors.text,
+                color: isActive ? '#111' : colors.text,
                 cursor: 'pointer',
                 fontFamily: titleFont,
                 fontSize: (fs.base - 2) + 'px',
@@ -1237,7 +1187,7 @@ const App = () => {
                 gap: '8px'
               }}
             >
-              <IconComp size={16} color={isActive ? (darkMode ? '#111' : '#EEC21D') : colors.text} />
+              <IconComp size={16} color={isActive ? '#111' : colors.text} />
               {label}
             </button>
           );
@@ -1383,7 +1333,7 @@ const App = () => {
                 padding: '14px'
               }}>
                 <div style={{ flex: 1 }}>
-                  <div style={{ fontFamily: titleFont, color: darkMode ? '#EEC21D' : '#111111', fontSize: (fs.base - 1) + 'px', marginBottom: '4px' }}>{c.name}</div>
+                  <div style={{ fontFamily: titleFont, color: '#EEC21D', fontSize: (fs.base - 1) + 'px', marginBottom: '4px' }}>{c.name}</div>
                   <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.primary, fontFamily: textFont }}>{c.desc}</div>
                 </div>
                 <span style={{
@@ -1421,7 +1371,7 @@ const App = () => {
   );
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // RENDU - CONTENU DE SECTION (CORRIGÉ AVEC TOUS LES HANDLERS)
+  // RENDU - CONTENU DE SECTION
   // ═══════════════════════════════════════════════════════════════════════════
   const renderSectionContent = (content) => {
     if (!content) return null;
@@ -1440,22 +1390,17 @@ const App = () => {
       return <p key={key} style={{ color: colors.textMuted, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item}</p>;
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Définition classique (term, meaning, etymology)
-    // ═══════════════════════════════════════════════════════════════════════
     if ((item.type === 'definition' && item.term) || (item.term && item.meaning)) {
       return (
         <div key={key} style={{
-          background: darkMode
-            ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)'
-            : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
+          background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)',
           borderLeft: `4px solid ${colors.primary}`,
           borderRadius: '0 16px 16px 0',
           padding: '20px 24px'
         }}>
           <div style={{ fontFamily: titleFont, fontSize: fs.title + 'px', color: colors.primary, marginBottom: '8px' }}>{item.term}</div>
           {item.etymology && <div style={{ color: colors.textMuted, fontSize: fs.base + 'px', fontStyle: 'italic', marginBottom: '8px', fontFamily: textFont }}>{item.etymology}</div>}
-          <div style={{ color: darkMode ? '#fff' : '#111', fontSize: fs.base + 'px', fontFamily: textFont }}>{item.meaning}</div>
+          <div style={{ color: '#fff', fontSize: fs.base + 'px', fontFamily: textFont }}>{item.meaning}</div>
           {item.principes && (
             <ul style={{ marginTop: '16px', paddingLeft: '20px' }}>
               {item.principes.map((p, i) => (
@@ -1465,16 +1410,9 @@ const App = () => {
           )}
           {item.note && (
             <div style={{
-              marginTop: '16px',
-              padding: '12px',
-              background: colors.buttonBg,
-              borderRadius: '10px',
-              fontSize: fs.base + 'px',
-              color: colors.primary,
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '8px',
-              fontFamily: textFont
+              marginTop: '16px', padding: '12px', background: colors.buttonBg,
+              borderRadius: '10px', fontSize: fs.base + 'px', color: colors.primary,
+              display: 'flex', alignItems: 'flex-start', gap: '8px', fontFamily: textFont
             }}>
               <Paperclip size={16} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
               {item.note}
@@ -1484,17 +1422,11 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Définition pantouflage (origine, terminologie, remboursement)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.type === 'definition' && item.origine && item.terminologie) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          {/* Origine */}
           <div style={{
-            background: darkMode
-              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)'
-              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
+            background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)',
             borderLeft: `4px solid ${colors.primary}`,
             borderRadius: '0 16px 16px 0',
             padding: '20px 24px'
@@ -1506,32 +1438,16 @@ const App = () => {
             <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}><strong>Contexte :</strong> {item.origine.contexte}</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}><strong>École :</strong> {item.origine.ecole}</div>
           </div>
-
-          {/* Terminologie */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '12px' }}>
             {item.terminologie.map((t, i) => (
-              <div key={i} style={{
-                background: colors.buttonBg,
-                border: `1px solid ${colors.cardBorder}`,
-                borderRadius: '12px',
-                padding: '16px'
-              }}>
+              <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
                 <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{t.terme}</div>
                 <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{t.signification}</div>
               </div>
             ))}
           </div>
-
-          {/* Remboursement */}
           {item.remboursement && (
-            <div style={{
-              background: colors.buttonBg,
-              borderRadius: '12px',
-              padding: '16px',
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '12px'
-            }}>
+            <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
               <Coins size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
               <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.remboursement}</div>
             </div>
@@ -1540,32 +1456,16 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Numéroté (numero, titre, description, page)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.numero !== undefined) {
       return (
         <div key={key} style={{
-          display: 'flex',
-          gap: '16px',
-          background: colors.buttonBg,
-          border: `1px solid ${colors.cardBorder}`,
-          borderRadius: '16px',
-          padding: '20px',
-          alignItems: 'flex-start'
+          display: 'flex', gap: '16px', background: colors.buttonBg,
+          border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px', alignItems: 'flex-start'
         }}>
           <div style={{
-            width: '40px',
-            height: '40px',
-            background: colors.buttonBgHover,
-            borderRadius: '50%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontFamily: titleFont,
-            fontSize: (fs.title - 4) + 'px',
-            color: colors.primary,
-            flexShrink: 0
+            width: '40px', height: '40px', background: colors.buttonBgHover, borderRadius: '50%',
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            fontFamily: titleFont, fontSize: (fs.title - 4) + 'px', color: colors.primary, flexShrink: 0
           }}>{item.numero}</div>
           <div style={{ flex: 1 }}>
             <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '6px' }}>{item.titre}</div>
@@ -1580,19 +1480,11 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Pouvoirs oligarchiques (icon, name, detail)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.icon && item.name && item.detail) {
       return (
         <div key={key} style={{
-          background: colors.buttonBg,
-          border: `1px solid ${colors.cardBorder}`,
-          borderRadius: '12px',
-          padding: '16px',
-          display: 'flex',
-          alignItems: 'flex-start',
-          gap: '12px'
+          background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`,
+          borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px'
         }}>
           <span style={{ fontSize: '24px' }}>{item.icon}</span>
           <div style={{ flex: 1 }}>
@@ -1603,21 +1495,13 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Comparaison (type: "comparaison", elements)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.type === 'comparaison' && item.elements) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           {item.elements.map((el, i) => (
             <div key={i} style={{
-              background: colors.buttonBg,
-              border: `1px solid ${colors.cardBorder}`,
-              borderRadius: '12px',
-              padding: '16px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '4px'
+              background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`,
+              borderRadius: '12px', padding: '16px', display: 'flex', flexDirection: 'column', gap: '4px'
             }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{el.label}</div>
               <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{el.value}</div>
@@ -1627,44 +1511,23 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Subventions (stat, citation, exemples)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.stat && item.citation && item.exemples) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div style={{
-            background: darkMode
-              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)'
-              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0.05) 100%)',
-            borderRadius: '16px',
-            padding: '24px',
-            textAlign: 'center'
+            background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)',
+            borderRadius: '16px', padding: '24px', textAlign: 'center'
           }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.large + 8) + 'px', color: colors.primary, marginBottom: '8px' }}>{item.stat.number}</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{item.stat.label}</div>
           </div>
-
-          <div style={{
-            background: colors.buttonBg,
-            borderLeft: `4px solid ${colors.primary}`,
-            borderRadius: '0 12px 12px 0',
-            padding: '20px'
-          }}>
-            <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>
-              « {item.citation.texte} »
-            </p>
+          <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '20px' }}>
+            <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>« {item.citation.texte} »</p>
             <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px', fontFamily: textFont }}>— {item.citation.source}</p>
           </div>
-
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {item.exemples.map((ex, i) => (
-              <div key={i} style={{
-                background: colors.buttonBg,
-                border: `1px solid ${colors.cardBorder}`,
-                borderRadius: '12px',
-                padding: '16px'
-              }}>
+              <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
                 <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{ex.nom}</div>
                 <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{ex.detail}</div>
               </div>
@@ -1674,18 +1537,11 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Type stat seul (type: "stat", number, label, detail)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.type === 'stat' && item.number) {
       return (
         <div key={key} style={{
-          background: darkMode
-            ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)'
-            : 'linear-gradient(135deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0.05) 100%)',
-          borderRadius: '16px',
-          padding: '24px',
-          textAlign: 'center'
+          background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)',
+          borderRadius: '16px', padding: '24px', textAlign: 'center'
         }}>
           <div style={{ fontFamily: titleFont, fontSize: (fs.large + 16) + 'px', color: colors.primary, marginBottom: '8px' }}>{item.number}</div>
           <div style={{ fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', marginBottom: '8px', fontFamily: textFont }}>{item.label}</div>
@@ -1694,36 +1550,22 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Marché à double versant (explication, versants, insight)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.explication && item.versants) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.explication}</p>
-          
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '16px' }}>
             {item.versants.map((v, i) => (
-              <div key={i} style={{
-                background: colors.buttonBg,
-                border: `1px solid ${colors.cardBorder}`,
-                borderRadius: '12px',
-                padding: '20px'
-              }}>
+              <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '20px' }}>
                 <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{v.titre}</div>
                 <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{v.detail}</div>
               </div>
             ))}
           </div>
-
           {item.insight && (
             <div style={{
-              background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
-              borderRadius: '12px',
-              padding: '16px',
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '12px'
+              background: 'rgba(238, 194, 29, 0.1)',
+              borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px'
             }}>
               <Lightbulb size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
               <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.insight}</div>
@@ -1733,53 +1575,21 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Info vs Opinion (probleme, exemples, proposition, reference)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.probleme && item.exemples && item.proposition) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.probleme}</p>
-          
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {item.exemples.map((ex, i) => (
-              <div key={i} style={{
-                background: colors.buttonBg,
-                borderLeft: `3px solid ${colors.primary}`,
-                borderRadius: '0 10px 10px 0',
-                padding: '12px 16px',
-                color: colors.text,
-                fontSize: (fs.base - 1) + 'px',
-                fontFamily: textFont
-              }}>{ex}</div>
+              <div key={i} style={{ background: colors.buttonBg, borderLeft: `3px solid ${colors.primary}`, borderRadius: '0 10px 10px 0', padding: '12px 16px', color: colors.text, fontSize: (fs.base - 1) + 'px', fontFamily: textFont }}>{ex}</div>
             ))}
           </div>
-
-          <div style={{
-            background: darkMode ? 'rgba(68, 112, 29, 0.15)' : 'rgba(68, 112, 29, 0.1)',
-            border: '1px solid rgba(68, 112, 29, 0.3)',
-            borderRadius: '12px',
-            padding: '16px',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '12px'
-          }}>
+          <div style={{ background: 'rgba(68, 112, 29, 0.15)', border: '1px solid rgba(68, 112, 29, 0.3)', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
             <CheckCircle size={20} color="#44701D" style={{ flexShrink: 0, marginTop: '2px' }} />
             <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}><strong>Proposition :</strong> {item.proposition}</div>
           </div>
-
           {item.reference && (
-            <div style={{
-              background: colors.buttonBg,
-              borderRadius: '10px',
-              padding: '12px 16px',
-              fontSize: (fs.base - 1) + 'px',
-              color: colors.textMuted,
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '8px',
-              fontFamily: textFont
-            }}>
+            <div style={{ background: colors.buttonBg, borderRadius: '10px', padding: '12px 16px', fontSize: (fs.base - 1) + 'px', color: colors.textMuted, display: 'flex', alignItems: 'flex-start', gap: '8px', fontFamily: textFont }}>
               <FileText size={16} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
               {item.reference}
             </div>
@@ -1788,17 +1598,9 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Médias coopératifs (nom, modele, resultat)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.nom && item.modele && item.resultat) {
       return (
-        <div key={key} style={{
-          background: colors.buttonBg,
-          border: `1px solid ${colors.cardBorder}`,
-          borderRadius: '12px',
-          padding: '16px'
-        }}>
+        <div key={key} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
           <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '8px' }}>{item.nom}</div>
           <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, marginBottom: '6px', fontFamily: textFont }}><strong>Modèle :</strong> {item.modele}</div>
           <div style={{ fontSize: (fs.base - 1) + 'px', color: '#44701D', fontFamily: textFont }}>✓ {item.resultat}</div>
@@ -1806,61 +1608,26 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Avantages et questions
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.avantages && item.questions) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <div>
-            <h4 style={{
-              fontFamily: titleFont,
-              fontSize: fs.base + 'px',
-              color: '#5F7E43',
-              marginBottom: '12px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px'
-            }}>
+            <h4 style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#5F7E43', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <CheckCircle size={18} color="#5F7E43" /> Avantages
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.avantages.map((av, i) => (
-                <div key={i} style={{
-                  background: 'rgba(95, 126, 67, 0.1)',
-                  border: '1px solid rgba(95, 126, 67, 0.2)',
-                  borderRadius: '10px',
-                  padding: '12px 16px',
-                  color: '#5F7E43',
-                  fontSize: fs.base + 'px',
-                  fontFamily: textFont
-                }}>{av}</div>
+                <div key={i} style={{ background: 'rgba(95, 126, 67, 0.1)', border: '1px solid rgba(95, 126, 67, 0.2)', borderRadius: '10px', padding: '12px 16px', color: '#5F7E43', fontSize: fs.base + 'px', fontFamily: textFont }}>{av}</div>
               ))}
             </div>
           </div>
           <div>
-            <h4 style={{
-              fontFamily: titleFont,
-              fontSize: fs.base + 'px',
-              color: colors.primary,
-              marginBottom: '12px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '8px'
-            }}>
+            <h4 style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <HelpCircle size={18} color={colors.primary} /> Questions ouvertes
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.questions.map((q, i) => (
-                <div key={i} style={{
-                  background: colors.buttonBg,
-                  border: `1px solid ${colors.cardBorder}`,
-                  borderRadius: '10px',
-                  padding: '12px 16px',
-                  color: colors.primary,
-                  fontSize: fs.base + 'px',
-                  fontFamily: textFont
-                }}>{q}</div>
+                <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '10px', padding: '12px 16px', color: colors.primary, fontSize: fs.base + 'px', fontFamily: textFont }}>{q}</div>
               ))}
             </div>
           </div>
@@ -1868,61 +1635,33 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Oligarques médias (name, medias)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.name && item.medias) {
       return (
-        <div key={key} style={{
-          background: colors.buttonBg,
-          border: `1px solid ${colors.cardBorder}`,
-          borderRadius: '12px',
-          padding: '16px'
-        }}>
+        <div key={key} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
           <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{item.name}</div>
           <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.medias}</div>
         </div>
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Titre + detail simple
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.titre && item.detail && !item.numero) {
       return (
-        <div key={key} style={{
-          background: colors.buttonBg,
-          border: `1px solid ${colors.cardBorder}`,
-          borderRadius: '12px',
-          padding: '16px'
-        }}>
-          <div style={{ fontWeight: '600', color: darkMode ? '#fff' : '#111', marginBottom: '6px', fontSize: fs.base + 'px', fontFamily: textFont }}>{item.titre}</div>
+        <div key={key} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
+          <div style={{ fontWeight: '600', color: '#fff', marginBottom: '6px', fontSize: fs.base + 'px', fontFamily: textFont }}>{item.titre}</div>
           <div style={{ fontSize: fs.base + 'px', color: colors.textMuted, lineHeight: 1.6, fontFamily: textFont }}>{item.detail}</div>
         </div>
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Exemples français pantouflage (principal, autres, stat)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.principal && item.autres) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          <div style={{
-            background: darkMode
-              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)'
-              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
-            borderRadius: '16px',
-            padding: '24px'
-          }}>
+          <div style={{ background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)', borderRadius: '16px', padding: '24px' }}>
             <div style={{ fontFamily: titleFont, fontSize: fs.title + 'px', color: colors.primary, marginBottom: '16px' }}>{item.principal.nom}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.principal.parcours.map((p, i) => (
                 <div key={i} style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '12px',
-                  padding: '8px 12px',
+                  display: 'flex', alignItems: 'center', gap: '12px', padding: '8px 12px',
                   background: p.type === 'public' ? 'rgba(59, 130, 246, 0.1)' : p.type === 'privé' ? 'rgba(239, 68, 68, 0.1)' : colors.buttonBg,
                   borderRadius: '8px',
                   borderLeft: `3px solid ${p.type === 'public' ? '#3b82f6' : p.type === 'privé' ? '#ef4444' : colors.primary}`
@@ -1930,45 +1669,28 @@ const App = () => {
                   <span style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, minWidth: '80px', fontFamily: textFont }}>{p.periode}</span>
                   <span style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{p.poste}</span>
                   <span style={{
-                    marginLeft: 'auto',
-                    fontSize: '10px',
-                    padding: '2px 8px',
-                    borderRadius: '10px',
+                    marginLeft: 'auto', fontSize: '10px', padding: '2px 8px', borderRadius: '10px',
                     background: p.type === 'public' ? 'rgba(59, 130, 246, 0.2)' : p.type === 'privé' ? 'rgba(239, 68, 68, 0.2)' : colors.buttonBgHover,
                     color: p.type === 'public' ? '#3b82f6' : p.type === 'privé' ? '#ef4444' : colors.primary,
-                    textTransform: 'uppercase',
-                    fontFamily: textFont
+                    textTransform: 'uppercase', fontFamily: textFont
                   }}>{p.type}</span>
                 </div>
               ))}
             </div>
           </div>
-
           <div>
             <h4 style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Autres exemples</h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {item.autres.map((a, i) => (
-                <div key={i} style={{
-                  background: colors.buttonBg,
-                  border: `1px solid ${colors.cardBorder}`,
-                  borderRadius: '12px',
-                  padding: '16px'
-                }}>
+                <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
                   <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{a.nom}</div>
                   <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{a.detail}</div>
                 </div>
               ))}
             </div>
           </div>
-
           {item.stat && (
-            <div style={{
-              background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-              border: '1px solid rgba(239, 68, 68, 0.3)',
-              borderRadius: '12px',
-              padding: '20px',
-              textAlign: 'center'
-            }}>
+            <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '20px', textAlign: 'center' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.large + 8) + 'px', color: '#ef4444', marginBottom: '8px' }}>{item.stat.number}</div>
               <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{item.stat.label}</div>
             </div>
@@ -1977,32 +1699,18 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Exemples européens (exemples, stat avec source/chiffre)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.exemples && item.stat && item.stat.source) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {item.exemples.map((ex, i) => (
-              <div key={i} style={{
-                background: colors.buttonBg,
-                border: `1px solid ${colors.cardBorder}`,
-                borderRadius: '12px',
-                padding: '16px'
-              }}>
+              <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
                 <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{ex.nom}</div>
                 <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{ex.detail}</div>
               </div>
             ))}
           </div>
-
-          <div style={{
-            background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
-            borderRadius: '12px',
-            padding: '20px',
-            textAlign: 'center'
-          }}>
+          <div style={{ background: 'rgba(238, 194, 29, 0.1)', borderRadius: '12px', padding: '20px', textAlign: 'center' }}>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '8px', fontFamily: textFont }}>{item.stat.chiffre}</div>
             <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>— {item.stat.source}</div>
           </div>
@@ -2010,44 +1718,21 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Government Sachs (intro, exemples, mondial)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.intro && item.exemples && item.mondial) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.intro}</p>
-
           <div>
             <h4 style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Users size={18} color={ICON_COLOR} /> Exemples américains
             </h4>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
               {item.exemples.map((ex, i) => (
-                <div key={i} style={{
-                  background: colors.buttonBg,
-                  border: `1px solid ${colors.cardBorder}`,
-                  borderRadius: '12px',
-                  padding: '16px'
-                }}>
+                <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
                   {ex.nom && (
-                    <div style={{ 
-                      fontFamily: titleFont, 
-                      fontSize: fs.base + 'px', 
-                      color: colors.primary, 
-                      marginBottom: '12px',
-                      paddingBottom: '8px',
-                      borderBottom: `1px solid ${colors.cardBorder}`
-                    }}>
-                      {ex.nom}
-                    </div>
+                    <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', paddingBottom: '8px', borderBottom: `1px solid ${colors.cardBorder}` }}>{ex.nom}</div>
                   )}
-                  <div style={{
-                    display: 'grid',
-                    gridTemplateColumns: '1fr auto 1fr',
-                    gap: '12px',
-                    alignItems: 'center'
-                  }}>
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', gap: '12px', alignItems: 'center' }}>
                     <div>
                       <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, marginBottom: '2px', fontFamily: textFont }}>Avant</div>
                       <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{ex.avant}</div>
@@ -2062,19 +1747,13 @@ const App = () => {
               ))}
             </div>
           </div>
-
           <div>
             <h4 style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Globe size={18} color={ICON_COLOR} /> Influence mondiale
             </h4>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
               {item.mondial.map((m, i) => (
-                <div key={i} style={{
-                  background: colors.buttonBg,
-                  border: `1px solid ${colors.cardBorder}`,
-                  borderRadius: '12px',
-                  padding: '14px'
-                }}>
+                <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '14px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
                     <span style={{ fontSize: (fs.base - 1) + 'px', color: colors.primary, fontWeight: '600', fontFamily: textFont }}>{m.nom}</span>
                     <span style={{ fontSize: '10px', padding: '2px 8px', background: colors.buttonBgHover, borderRadius: '10px', color: colors.textMuted, fontFamily: textFont }}>{m.pays}</span>
@@ -2088,34 +1767,17 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Young Leaders (concept, citation, programmes)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.concept && item.citation && item.programmes) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.concept}</p>
-
-          <div style={{
-            background: colors.buttonBg,
-            borderLeft: `4px solid ${colors.primary}`,
-            borderRadius: '0 12px 12px 0',
-            padding: '20px'
-          }}>
-            <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>
-              « {item.citation.texte} »
-            </p>
+          <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '20px' }}>
+            <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>« {item.citation.texte} »</p>
             <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px', fontFamily: textFont }}>— {item.citation.auteur}</p>
             {item.citation.source && <p style={{ color: colors.textVeryMuted, fontSize: (fs.base - 3) + 'px', marginTop: '4px', fontFamily: textFont }}>{item.citation.source}</p>}
           </div>
-
           {item.programmes.map((prog, i) => (
-            <div key={i} style={{
-              background: colors.buttonBg,
-              border: `1px solid ${colors.cardBorder}`,
-              borderRadius: '16px',
-              padding: '20px'
-            }}>
+            <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
                 <Award size={24} color={ICON_COLOR} />
                 <div>
@@ -2123,23 +1785,12 @@ const App = () => {
                   <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>Depuis {prog.depuis}</div>
                 </div>
               </div>
-              
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '12px', padding: '10px', background: darkMode ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.3)', borderRadius: '8px', fontFamily: textFont }}>
-                {prog.format}
-              </div>
-
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '12px', padding: '10px', background: 'rgba(0,0,0,0.2)', borderRadius: '8px', fontFamily: textFont }}>{prog.format}</div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
                 {prog.exemples.map((ex, j) => {
                   const isObject = typeof ex === 'object';
                   return (
-                    <div key={j} style={{
-                      padding: '6px 12px',
-                      background: colors.buttonBgHover,
-                      borderRadius: '20px',
-                      fontSize: (fs.base - 2) + 'px',
-                      color: colors.text,
-                      fontFamily: textFont
-                    }}>
+                    <div key={j} style={{ padding: '6px 12px', background: colors.buttonBgHover, borderRadius: '20px', fontSize: (fs.base - 2) + 'px', color: colors.text, fontFamily: textFont }}>
                       {isObject ? (
                         <span>{ex.nom} <span style={{ color: colors.textMuted, fontSize: '10px' }}>({ex.delai})</span></span>
                       ) : ex}
@@ -2153,9 +1804,6 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Array générique
-    // ═══════════════════════════════════════════════════════════════════════
     if (Array.isArray(item)) {
       return (
         <div key={key} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
@@ -2164,36 +1812,19 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Pattern richesse (intro, exemples avec nom/detail, question)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.intro && item.exemples && item.question) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.intro}</p>
-          
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {item.exemples.map((ex, i) => (
-              <div key={i} style={{
-                background: colors.buttonBg,
-                border: `1px solid ${colors.cardBorder}`,
-                borderRadius: '12px',
-                padding: '16px'
-              }}>
+              <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
                 <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{ex.nom}</div>
                 <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{ex.detail}</div>
               </div>
             ))}
           </div>
-
-          <div style={{
-            background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
-            borderRadius: '12px',
-            padding: '16px',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '12px'
-          }}>
+          <div style={{ background: 'rgba(238, 194, 29, 0.1)', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
             <HelpCircle size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.question}</div>
           </div>
@@ -2201,39 +1832,17 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Cas Elon Musk (constat, paradoxe, question)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.constat && item.paradoxe && item.question) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div style={{
-            background: colors.buttonBg,
-            borderLeft: `4px solid ${colors.primary}`,
-            borderRadius: '0 12px 12px 0',
-            padding: '16px'
-          }}>
+          <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.constat}</div>
           </div>
-          
-          <div style={{
-            background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-            border: '1px solid rgba(239, 68, 68, 0.3)',
-            borderRadius: '12px',
-            padding: '16px'
-          }}>
+          <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '8px' }}>Paradoxe</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.paradoxe}</div>
           </div>
-
-          <div style={{
-            background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
-            borderRadius: '12px',
-            padding: '16px',
-            display: 'flex',
-            alignItems: 'flex-start',
-            gap: '12px'
-          }}>
+          <div style={{ background: 'rgba(238, 194, 29, 0.1)', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
             <HelpCircle size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
             <div style={{ fontSize: fs.base + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.question}</div>
           </div>
@@ -2241,69 +1850,32 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Giving Pledge (definition, membres, realite, conclusion)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.definition && item.membres && item.realite && item.conclusion) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.definition}</p>
-          
-          <div style={{
-            background: colors.buttonBg,
-            borderRadius: '12px',
-            padding: '16px'
-          }}>
+          <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Membres notables</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.membres}</div>
           </div>
-
-          <div style={{
-            background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)',
-            border: '1px solid rgba(239, 68, 68, 0.3)',
-            borderRadius: '12px',
-            padding: '20px'
-          }}>
-            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#ef4444', marginBottom: '12px' }}>
-              La réalité — {item.realite.source}
-            </div>
+          <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '20px' }}>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#ef4444', marginBottom: '12px' }}>La réalité — {item.realite.source}</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.realite.revelations.map((rev, i) => (
-                <div key={i} style={{
-                  background: 'rgba(239, 68, 68, 0.1)',
-                  borderRadius: '8px',
-                  padding: '10px 12px',
-                  fontSize: (fs.base - 1) + 'px',
-                  color: colors.text,
-                  fontFamily: textFont
-                }}>• {rev}</div>
+                <div key={i} style={{ background: 'rgba(239, 68, 68, 0.1)', borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>• {rev}</div>
               ))}
             </div>
           </div>
-
-          <div style={{
-            background: colors.buttonBg,
-            borderLeft: `4px solid ${colors.primary}`,
-            borderRadius: '0 12px 12px 0',
-            padding: '16px'
-          }}>
+          <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.conclusion}</div>
           </div>
         </div>
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Réseau individuel (nom, depuis, description, membres)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.nom && item.depuis && item.description && item.membres) {
       return (
-        <div key={key} style={{
-          background: colors.buttonBg,
-          border: `1px solid ${colors.cardBorder}`,
-          borderRadius: '16px',
-          padding: '20px'
-        }}>
+        <div key={key} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
             <Users size={24} color={ICON_COLOR} />
             <div>
@@ -2312,70 +1884,19 @@ const App = () => {
             </div>
           </div>
           <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '8px', fontFamily: textFont }}>{item.description}</div>
-          <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>
-            <strong>Membres/Format :</strong> {item.membres}
-          </div>
-          {item.cout && (
-            <div style={{ marginTop: '8px', fontSize: (fs.base - 2) + 'px', color: colors.primary, fontFamily: textFont }}>
-              💰 Coût : {item.cout}
-            </div>
-          )}
-        </div>
-      );
-    }
-    
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Réseaux d'élites (array avec nom, depuis, description, membres)
-    // ═══════════════════════════════════════════════════════════════════════
-    if (Array.isArray(item) && item.length > 0 && item[0].nom && item[0].depuis && item[0].description) {
-      return (
-        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          {item.map((reseau, i) => (
-            <div key={i} style={{
-              background: colors.buttonBg,
-              border: `1px solid ${colors.cardBorder}`,
-              borderRadius: '16px',
-              padding: '20px'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-                <Users size={24} color={ICON_COLOR} />
-                <div>
-                  <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary }}>{reseau.nom}</div>
-                  <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>Depuis {reseau.depuis}</div>
-                </div>
-              </div>
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '8px', fontFamily: textFont }}>{reseau.description}</div>
-              <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>
-                <strong>Membres/Format :</strong> {reseau.membres}
-              </div>
-              {reseau.cout && (
-                <div style={{ marginTop: '8px', fontSize: (fs.base - 2) + 'px', color: colors.primary, fontFamily: textFont }}>
-                  💰 Coût : {reseau.cout}
-                </div>
-              )}
-            </div>
-          ))}
+          <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}><strong>Membres/Format :</strong> {item.membres}</div>
+          {item.cout && <div style={{ marginTop: '8px', fontSize: (fs.base - 2) + 'px', color: colors.primary, fontFamily: textFont }}>💰 Coût : {item.cout}</div>}
         </div>
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Bilderberg (origine, objectif, securite, citation, timing)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.origine && item.objectif && item.securite && item.timing) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <div style={{
-            background: darkMode
-              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)'
-              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
-            borderRadius: '16px',
-            padding: '20px'
-          }}>
+          <div style={{ background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)', borderRadius: '16px', padding: '20px' }}>
             <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Origine</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.origine}</div>
           </div>
-
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '12px' }}>
             <div style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Objectif officiel</div>
@@ -2386,7 +1907,6 @@ const App = () => {
               <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.securite}</div>
             </div>
           </div>
-
           {item.citation && (
             <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '20px' }}>
               <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>« {item.citation.texte} »</p>
@@ -2394,7 +1914,6 @@ const App = () => {
               {item.citation.source && <p style={{ color: colors.textVeryMuted, fontSize: (fs.base - 3) + 'px', marginTop: '4px', fontFamily: textFont }}>{item.citation.source}</p>}
             </div>
           )}
-
           <div>
             <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>📅 Timing troublant</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -2410,24 +1929,14 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Chatham House (definition, regle, implication, argument, sanction, application)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.definition && item.regle && item.implication && item.sanction) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.definition}</p>
-          
-          <div style={{
-            background: darkMode
-              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)'
-              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0.05) 100%)',
-            borderRadius: '16px', padding: '20px', textAlign: 'center'
-          }}>
+          <div style={{ background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)', borderRadius: '16px', padding: '20px', textAlign: 'center' }}>
             <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>La règle</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, fontStyle: 'italic', lineHeight: 1.6, fontFamily: textFont }}>{item.regle}</div>
           </div>
-
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
             {[
               { label: 'Implication', value: item.implication },
@@ -2440,16 +1949,14 @@ const App = () => {
               </div>
             ))}
           </div>
-
           {item.application && (
             <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
               <Globe size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
               <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}><strong>Application :</strong> {item.application}</div>
             </div>
           )}
-
           {item.questionCle && (
-            <div style={{ background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+            <div style={{ background: 'rgba(238, 194, 29, 0.1)', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
               <HelpCircle size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
               <div style={{ fontSize: fs.base + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.questionCle}</div>
             </div>
@@ -2458,31 +1965,24 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Usines à narratifs (probleme, hypothese, fonctionnement, observation, questionCle)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.probleme && item.hypothese && item.fonctionnement && item.observation) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.probleme}</p>
-          
-          <div style={{ background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '16px' }}>
+          <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '8px' }}>Hypothèse</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.hypothese}</div>
           </div>
-
           <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Fonctionnement</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.fonctionnement}</div>
           </div>
-
           <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Observation</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.observation}</div>
           </div>
-
           {item.questionCle && (
-            <div style={{ background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+            <div style={{ background: 'rgba(238, 194, 29, 0.1)', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
               <HelpCircle size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
               <div style={{ fontSize: fs.base + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.questionCle}</div>
             </div>
@@ -2491,9 +1991,6 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Artistes YGL (intro, musique, cinema, sport, france)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.intro && (item.musique || item.cinema || item.sport)) {
       const categories = [
         { key: 'musique', label: '🎵 Musique', data: item.musique },
@@ -2505,7 +2002,6 @@ const App = () => {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.intro}</p>
-          
           {categories.map((cat) => (
             <div key={cat.key}>
               <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>{cat.label}</div>
@@ -2526,14 +2022,10 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Héritiers (intro, exemples avec nom/annee/detail, paradoxe)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.intro && item.exemples && item.paradoxe) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.intro}</p>
-          
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '12px' }}>
             {item.exemples.map((ex, i) => (
               <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
@@ -2545,8 +2037,7 @@ const App = () => {
               </div>
             ))}
           </div>
-
-          <div style={{ background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '16px' }}>
+          <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '8px' }}>Paradoxe</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.paradoxe}</div>
           </div>
@@ -2554,20 +2045,13 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Pourquoi artistes (raison, mecanisme, pattern, angleMort, enjeu)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.raison && item.mecanisme && item.pattern) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <div style={{
-            background: darkMode ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)' : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
-            borderRadius: '16px', padding: '20px'
-          }}>
+          <div style={{ background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)', borderRadius: '16px', padding: '20px' }}>
             <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Raison</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.raison}</div>
           </div>
-
           <div>
             <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Mécanisme</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
@@ -2576,21 +2060,18 @@ const App = () => {
               ))}
             </div>
           </div>
-
           <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Pattern</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.pattern}</div>
           </div>
-
           {item.angleMort && (
-            <div style={{ background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '16px' }}>
+            <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '8px' }}>Angle mort médiatique</div>
               <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.angleMort}</div>
             </div>
           )}
-
           {item.enjeu && (
-            <div style={{ background: darkMode ? 'rgba(68, 112, 29, 0.15)' : 'rgba(68, 112, 29, 0.1)', border: '1px solid rgba(68, 112, 29, 0.3)', borderRadius: '12px', padding: '16px' }}>
+            <div style={{ background: 'rgba(68, 112, 29, 0.15)', border: '1px solid rgba(68, 112, 29, 0.3)', borderRadius: '12px', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#44701D', marginBottom: '8px' }}>Enjeu</div>
               <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.enjeu}</div>
             </div>
@@ -2599,9 +2080,6 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Écosystème (niveaux, chevauchement, exemple)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.niveaux && item.chevauchement) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
@@ -2613,15 +2091,10 @@ const App = () => {
               </div>
             ))}
           </div>
-
-          <div style={{
-            background: darkMode ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)' : 'linear-gradient(135deg, rgba(17, 17, 17, 0.1) 0%, transparent 100%)',
-            borderRadius: '16px', padding: '20px'
-          }}>
+          <div style={{ background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.1) 0%, transparent 100%)', borderRadius: '16px', padding: '20px' }}>
             <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Chevauchement des cercles</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.chevauchement}</div>
           </div>
-
           {item.exemple && (
             <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Exemple concret</div>
@@ -2632,50 +2105,30 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Conclusion (constat, amont, exempleAttal, questionsOuvertes, indicateur)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.constat && item.amont && item.questionsOuvertes) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <div style={{
-            background: darkMode
-              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)'
-              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0.05) 100%)',
-            borderRadius: '16px', padding: '20px', textAlign: 'center'
-          }}>
+          <div style={{ background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)', borderRadius: '16px', padding: '20px', textAlign: 'center' }}>
             <div style={{ fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', lineHeight: 1.6, fontFamily: textFont }}>{item.constat}</div>
           </div>
-
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.amont}</p>
-
           {item.exempleAttal && (
             <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
               <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{item.exempleAttal}</div>
             </div>
           )}
-
           <div>
             <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#9E876E', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
               <HelpCircle size={18} color="#9E876E" /> Questions ouvertes
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.questionsOuvertes.map((q, i) => (
-                <div key={i} style={{
-                  background: 'rgba(158, 135, 110, 0.15)',
-                  border: '1px solid rgba(158, 135, 110, 0.3)',
-                  borderRadius: '10px',
-                  padding: '12px 16px',
-                  color: colors.text,
-                  fontSize: (fs.base - 1) + 'px',
-                  fontFamily: textFont
-                }}>{q}</div>
+                <div key={i} style={{ background: 'rgba(158, 135, 110, 0.15)', border: '1px solid rgba(158, 135, 110, 0.3)', borderRadius: '10px', padding: '12px 16px', color: colors.text, fontSize: (fs.base - 1) + 'px', fontFamily: textFont }}>{q}</div>
               ))}
             </div>
           </div>
-
           {item.indicateur && (
-            <div style={{ background: darkMode ? 'rgba(68, 112, 29, 0.15)' : 'rgba(68, 112, 29, 0.1)', border: '1px solid rgba(68, 112, 29, 0.3)', borderRadius: '12px', padding: '16px' }}>
+            <div style={{ background: 'rgba(68, 112, 29, 0.15)', border: '1px solid rgba(68, 112, 29, 0.3)', borderRadius: '12px', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#44701D', marginBottom: '8px' }}>💡 Indicateur</div>
               <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.indicateur}</div>
             </div>
@@ -2684,72 +2137,35 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Mesure du Projet (type: "mesure", numero, intitule, actuel, projet, application, limites)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.type === 'mesure' && item.intitule) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          {/* Intitulé de la mesure */}
           <div style={{
-            background: darkMode
-              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)'
-              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0.05) 100%)',
-            borderLeft: `4px solid ${colors.primary}`,
-            borderRadius: '0 16px 16px 0',
-            padding: '20px 24px'
+            background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)',
+            borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 16px 16px 0', padding: '20px 24px'
           }}>
             {item.numero && (
-              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 2) + 'px', color: colors.textMuted, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>
-                Mesure {item.numero}
-              </div>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 2) + 'px', color: colors.textMuted, textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '8px' }}>Mesure {item.numero}</div>
             )}
             <div style={{ fontFamily: titleFont, fontSize: fs.title + 'px', color: colors.primary, marginBottom: '8px' }}>{item.intitule}</div>
-            {item.citation && (
-              <div style={{ fontStyle: 'italic', fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>
-                « {item.citation} »
-              </div>
-            )}
+            {item.citation && <div style={{ fontStyle: 'italic', fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>« {item.citation} »</div>}
           </div>
-
-          {/* Ce qui existe aujourd'hui */}
           {item.actuel && (
-            <div style={{
-              background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.08)',
-              border: '1px solid rgba(239, 68, 68, 0.2)',
-              borderRadius: '12px',
-              padding: '20px'
-            }}>
-              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#ef4444', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                ⚠️ Ce qui existe aujourd'hui
-              </div>
+            <div style={{ background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', padding: '20px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#ef4444', marginBottom: '12px' }}>⚠️ Ce qui existe aujourd'hui</div>
               {typeof item.actuel === 'string' ? (
                 <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.actuel}</div>
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {item.actuel.map((a, i) => (
-                    <div key={i} style={{
-                      background: 'rgba(239, 68, 68, 0.08)',
-                      borderRadius: '8px',
-                      padding: '10px 12px',
-                      fontSize: (fs.base - 1) + 'px',
-                      color: colors.text,
-                      fontFamily: textFont
-                    }}>{a}</div>
+                    <div key={i} style={{ background: 'rgba(239, 68, 68, 0.08)', borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{a}</div>
                   ))}
                 </div>
               )}
             </div>
           )}
-
-          {/* Ce que ça change avec le Projet */}
           {item.projet && (
-            <div style={{
-              background: darkMode ? 'rgba(68, 112, 29, 0.12)' : 'rgba(68, 112, 29, 0.08)',
-              border: '1px solid rgba(68, 112, 29, 0.25)',
-              borderRadius: '12px',
-              padding: '20px'
-            }}>
+            <div style={{ background: 'rgba(68, 112, 29, 0.12)', border: '1px solid rgba(68, 112, 29, 0.25)', borderRadius: '12px', padding: '20px' }}>
               <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#44701D', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <CheckCircle size={18} color="#44701D" /> Ce que ça change avec le Projet
               </div>
@@ -2758,42 +2174,20 @@ const App = () => {
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                   {item.projet.map((p, i) => (
-                    <div key={i} style={{
-                      background: 'rgba(68, 112, 29, 0.1)',
-                      borderLeft: `3px solid #44701D`,
-                      borderRadius: '0 8px 8px 0',
-                      padding: '10px 12px',
-                      fontSize: (fs.base - 1) + 'px',
-                      color: colors.text,
-                      fontFamily: textFont
-                    }}>{p}</div>
+                    <div key={i} style={{ background: 'rgba(68, 112, 29, 0.1)', borderLeft: '3px solid #44701D', borderRadius: '0 8px 8px 0', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{p}</div>
                   ))}
                 </div>
               )}
             </div>
           )}
-
-          {/* Application au cas concret */}
           {item.application && (
-            <div style={{
-              background: colors.buttonBg,
-              borderLeft: `4px solid ${colors.primary}`,
-              borderRadius: '0 12px 12px 0',
-              padding: '16px'
-            }}>
+            <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>📌 Application concrète</div>
               <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.application}</div>
             </div>
           )}
-
-          {/* Limites identifiées */}
           {item.limites && (
-            <div style={{
-              background: 'rgba(158, 135, 110, 0.12)',
-              border: '1px solid rgba(158, 135, 110, 0.25)',
-              borderRadius: '12px',
-              padding: '16px'
-            }}>
+            <div style={{ background: 'rgba(158, 135, 110, 0.12)', border: '1px solid rgba(158, 135, 110, 0.25)', borderRadius: '12px', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#9E876E', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <HelpCircle size={16} color="#9E876E" /> Limites identifiées
               </div>
@@ -2802,13 +2196,7 @@ const App = () => {
               ) : (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                   {item.limites.map((l, i) => (
-                    <div key={i} style={{
-                      fontSize: (fs.base - 1) + 'px',
-                      color: colors.text,
-                      fontFamily: textFont,
-                      paddingLeft: '12px',
-                      borderLeft: `2px solid rgba(158, 135, 110, 0.3)`
-                    }}>{l}</div>
+                    <div key={i} style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont, paddingLeft: '12px', borderLeft: '2px solid rgba(158, 135, 110, 0.3)' }}>{l}</div>
                   ))}
                 </div>
               )}
@@ -2818,22 +2206,14 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Parcours détaillé (type: "parcours", nom, etapes, liens)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.type === 'parcours' && item.etapes) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          {item.nom && (
-            <div style={{ fontFamily: titleFont, fontSize: fs.title + 'px', color: colors.primary }}>{item.nom}</div>
-          )}
+          {item.nom && <div style={{ fontFamily: titleFont, fontSize: fs.title + 'px', color: colors.primary }}>{item.nom}</div>}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
             {item.etapes.map((etape, i) => (
               <div key={i} style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-                padding: '10px 14px',
+                display: 'flex', alignItems: 'center', gap: '12px', padding: '10px 14px',
                 background: etape.type === 'public' ? 'rgba(59, 130, 246, 0.1)' : etape.type === 'privé' ? 'rgba(239, 68, 68, 0.1)' : etape.type === 'réseau' ? 'rgba(168, 85, 247, 0.1)' : etape.type === 'institution' ? 'rgba(238, 194, 29, 0.1)' : colors.buttonBg,
                 borderRadius: '10px',
                 borderLeft: `3px solid ${etape.type === 'public' ? '#3b82f6' : etape.type === 'privé' ? '#ef4444' : etape.type === 'réseau' ? '#a855f7' : etape.type === 'institution' ? '#eec21d' : colors.primary}`
@@ -2841,26 +2221,16 @@ const App = () => {
                 <span style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, minWidth: '80px', fontFamily: textFont }}>{etape.periode}</span>
                 <span style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, flex: 1, fontFamily: textFont }}>{etape.poste}</span>
                 <span style={{
-                  fontSize: '10px',
-                  padding: '2px 8px',
-                  borderRadius: '10px',
+                  fontSize: '10px', padding: '2px 8px', borderRadius: '10px',
                   background: etape.type === 'public' ? 'rgba(59, 130, 246, 0.2)' : etape.type === 'privé' ? 'rgba(239, 68, 68, 0.2)' : etape.type === 'réseau' ? 'rgba(168, 85, 247, 0.2)' : etape.type === 'institution' ? 'rgba(238, 194, 29, 0.2)' : colors.buttonBgHover,
                   color: etape.type === 'public' ? '#3b82f6' : etape.type === 'privé' ? '#ef4444' : etape.type === 'réseau' ? '#a855f7' : etape.type === 'institution' ? '#eec21d' : colors.primary,
-                  textTransform: 'uppercase',
-                  fontFamily: textFont
+                  textTransform: 'uppercase', fontFamily: textFont
                 }}>{etape.type}</span>
               </div>
             ))}
           </div>
           {item.liens && (
-            <div style={{
-              background: colors.buttonBg,
-              borderRadius: '12px',
-              padding: '16px',
-              display: 'flex',
-              alignItems: 'flex-start',
-              gap: '12px'
-            }}>
+            <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
               <Paperclip size={18} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
               <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.liens}</div>
             </div>
@@ -2869,55 +2239,26 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Verrouillage (type: "verrouillage", institutions, alerte)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.type === 'verrouillage' && item.institutions) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           {item.intro && <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.intro}</p>}
-          
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {item.institutions.map((inst, i) => (
-              <div key={i} style={{
-                background: colors.buttonBg,
-                border: `1px solid ${colors.cardBorder}`,
-                borderRadius: '12px',
-                padding: '16px',
-                display: 'grid',
-                gridTemplateColumns: '1fr',
-                gap: '8px'
-              }}>
+              <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px', display: 'grid', gridTemplateColumns: '1fr', gap: '8px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '8px' }}>
                   <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary }}>{inst.institution}</div>
                   {inst.jusqua && (
-                    <span style={{
-                      fontSize: '11px',
-                      padding: '4px 10px',
-                      background: darkMode ? 'rgba(239, 68, 68, 0.15)' : 'rgba(239, 68, 68, 0.1)',
-                      border: '1px solid rgba(239, 68, 68, 0.3)',
-                      borderRadius: '20px',
-                      color: '#ef4444',
-                      fontFamily: textFont,
-                      fontWeight: '600'
-                    }}>→ {inst.jusqua}</span>
+                    <span style={{ fontSize: '11px', padding: '4px 10px', background: 'rgba(239, 68, 68, 0.15)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '20px', color: '#ef4444', fontFamily: textFont, fontWeight: '600' }}>→ {inst.jusqua}</span>
                   )}
                 </div>
-                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>
-                  <strong>{inst.personne}</strong> — {inst.duree}
-                </div>
+                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}><strong>{inst.personne}</strong> — {inst.duree}</div>
                 {inst.detail && <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>{inst.detail}</div>}
               </div>
             ))}
           </div>
-
           {item.alerte && (
-            <div style={{
-              background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.08)',
-              border: '1px solid rgba(239, 68, 68, 0.3)',
-              borderRadius: '12px',
-              padding: '16px'
-            }}>
+            <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '16px' }}>
               <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.alerte}</div>
             </div>
           )}
@@ -2925,26 +2266,14 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Angle mort (type: "angle_mort", titre, contenu, propositions)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.type === 'angle_mort') {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          {item.titre && (
-            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#9E876E', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <HelpCircle size={18} color="#9E876E" /> {item.titre}
-            </div>
-          )}
+          {item.titre && <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#9E876E', display: 'flex', alignItems: 'center', gap: '8px' }}><HelpCircle size={18} color="#9E876E" /> {item.titre}</div>}
           {item.contenu && (
             <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>
               {typeof item.contenu === 'string' ? item.contenu : item.contenu.map((c, i) => (
-                <div key={i} style={{
-                  background: 'rgba(158, 135, 110, 0.1)',
-                  borderRadius: '8px',
-                  padding: '10px 12px',
-                  marginBottom: '6px'
-                }}>{c}</div>
+                <div key={i} style={{ background: 'rgba(158, 135, 110, 0.1)', borderRadius: '8px', padding: '10px 12px', marginBottom: '6px' }}>{c}</div>
               ))}
             </div>
           )}
@@ -2953,15 +2282,7 @@ const App = () => {
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#5F7E43', marginBottom: '8px' }}>Propositions complémentaires</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 {item.propositions.map((p, i) => (
-                  <div key={i} style={{
-                    background: 'rgba(95, 126, 67, 0.1)',
-                    borderLeft: `3px solid #5F7E43`,
-                    borderRadius: '0 8px 8px 0',
-                    padding: '10px 12px',
-                    fontSize: (fs.base - 1) + 'px',
-                    color: colors.text,
-                    fontFamily: textFont
-                  }}>{p}</div>
+                  <div key={i} style={{ background: 'rgba(95, 126, 67, 0.1)', borderLeft: '3px solid #5F7E43', borderRadius: '0 8px 8px 0', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{p}</div>
                 ))}
               </div>
             </div>
@@ -2970,69 +2291,38 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Cas Montchalin (intro, parcours with formation/prive/politique/reseaux/famille, paradoxe)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.intro && item.parcours && item.parcours.formation) {
       const p = item.parcours;
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.intro}</p>
-
-          {/* Formation */}
           <div>
-            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Award size={18} color={ICON_COLOR} /> Formation
-            </div>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}><Award size={18} color={ICON_COLOR} /> Formation</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {p.formation.map((f, i) => (
-                <div key={i} style={{
-                  background: 'rgba(168, 85, 247, 0.1)',
-                  borderLeft: '3px solid #a855f7',
-                  borderRadius: '0 10px 10px 0',
-                  padding: '12px 16px'
-                }}>
+                <div key={i} style={{ background: 'rgba(168, 85, 247, 0.1)', borderLeft: '3px solid #a855f7', borderRadius: '0 10px 10px 0', padding: '12px 16px' }}>
                   <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#a855f7' }}>{f.ecole}</div>
                   <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>{f.type}</div>
                 </div>
               ))}
             </div>
           </div>
-
-          {/* Secteur privé */}
           <div>
-            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#ef4444', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Briefcase size={18} color="#ef4444" /> Secteur privé ({p.prive.periode})
-            </div>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#ef4444', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}><Briefcase size={18} color="#ef4444" /> Secteur privé ({p.prive.periode})</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {p.prive.postes.map((poste, i) => (
-                <div key={i} style={{
-                  background: 'rgba(239, 68, 68, 0.1)',
-                  borderLeft: '3px solid #ef4444',
-                  borderRadius: '0 10px 10px 0',
-                  padding: '12px 16px'
-                }}>
+                <div key={i} style={{ background: 'rgba(239, 68, 68, 0.1)', borderLeft: '3px solid #ef4444', borderRadius: '0 10px 10px 0', padding: '12px 16px' }}>
                   <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444' }}>{poste.entreprise}</div>
                   <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>{poste.role}</div>
                 </div>
               ))}
             </div>
           </div>
-
-          {/* Parcours politique */}
           <div>
-            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#3b82f6', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Landmark size={18} color="#3b82f6" /> Parcours politique
-            </div>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#3b82f6', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}><Landmark size={18} color="#3b82f6" /> Parcours politique</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {p.politique.map((etape, i) => (
-                <div key={i} style={{
-                  display: 'flex', alignItems: 'flex-start', gap: '12px',
-                  padding: '10px 14px',
-                  background: 'rgba(59, 130, 246, 0.1)',
-                  borderRadius: '10px',
-                  borderLeft: '3px solid #3b82f6'
-                }}>
+                <div key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px', padding: '10px 14px', background: 'rgba(59, 130, 246, 0.1)', borderRadius: '10px', borderLeft: '3px solid #3b82f6' }}>
                   <span style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, minWidth: '80px', fontFamily: textFont, flexShrink: 0 }}>{etape.periode}</span>
                   <div style={{ flex: 1 }}>
                     <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{etape.poste}</div>
@@ -3042,20 +2332,11 @@ const App = () => {
               ))}
             </div>
           </div>
-
-          {/* Réseaux */}
           <div>
-            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#a855f7', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Globe size={18} color="#a855f7" /> Réseaux
-            </div>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#a855f7', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}><Globe size={18} color="#a855f7" /> Réseaux</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {p.reseaux.map((r, i) => (
-                <div key={i} style={{
-                  background: 'rgba(168, 85, 247, 0.1)',
-                  border: '1px solid rgba(168, 85, 247, 0.3)',
-                  borderRadius: '12px',
-                  padding: '16px'
-                }}>
+                <div key={i} style={{ background: 'rgba(168, 85, 247, 0.1)', border: '1px solid rgba(168, 85, 247, 0.3)', borderRadius: '12px', padding: '16px' }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '6px' }}>
                     <span style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#a855f7' }}>{r.programme}</span>
                     <span style={{ fontSize: '10px', padding: '2px 8px', background: 'rgba(168, 85, 247, 0.2)', borderRadius: '10px', color: '#a855f7', fontFamily: textFont }}>{r.annee}</span>
@@ -3065,29 +2346,14 @@ const App = () => {
               ))}
             </div>
           </div>
-
-          {/* Famille */}
           {p.famille && (
-            <div style={{
-              background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.08)',
-              border: '1px solid rgba(239, 68, 68, 0.2)',
-              borderRadius: '12px',
-              padding: '16px',
-              display: 'flex', alignItems: 'flex-start', gap: '12px'
-            }}>
+            <div style={{ background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
               <Users size={20} color="#ef4444" style={{ flexShrink: 0, marginTop: '2px' }} />
               <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{p.famille}</div>
             </div>
           )}
-
-          {/* Paradoxe */}
           {item.paradoxe && (
-            <div style={{
-              background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
-              borderRadius: '12px',
-              padding: '16px',
-              display: 'flex', alignItems: 'flex-start', gap: '12px'
-            }}>
+            <div style={{ background: 'rgba(238, 194, 29, 0.1)', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
               <HelpCircle size={20} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />
               <div style={{ fontSize: fs.base + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.paradoxe}</div>
             </div>
@@ -3096,51 +2362,21 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Cour des comptes (role with missions/enjeu, irrevocabilite, conflitInterets)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.role && item.role.missions && item.irrevocabilite) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-          {/* Rôle */}
           <div>
-            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Landmark size={18} color={ICON_COLOR} /> Missions
-            </div>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}><Landmark size={18} color={ICON_COLOR} /> Missions</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.role.missions.map((m, i) => (
-                <div key={i} style={{
-                  background: colors.buttonBg,
-                  borderLeft: `3px solid ${colors.primary}`,
-                  borderRadius: '0 10px 10px 0',
-                  padding: '12px 16px',
-                  fontSize: (fs.base - 1) + 'px',
-                  color: colors.text,
-                  fontFamily: textFont
-                }}>{m}</div>
+                <div key={i} style={{ background: colors.buttonBg, borderLeft: `3px solid ${colors.primary}`, borderRadius: '0 10px 10px 0', padding: '12px 16px', fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{m}</div>
               ))}
             </div>
             {item.role.enjeu && (
-              <div style={{
-                marginTop: '12px',
-                background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
-                borderRadius: '12px',
-                padding: '16px',
-                fontSize: fs.base + 'px',
-                color: colors.primary,
-                fontWeight: '600',
-                fontFamily: textFont
-              }}>{item.role.enjeu}</div>
+              <div style={{ marginTop: '12px', background: 'rgba(238, 194, 29, 0.1)', borderRadius: '12px', padding: '16px', fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', fontFamily: textFont }}>{item.role.enjeu}</div>
             )}
           </div>
-
-          {/* Irrévocabilité */}
-          <div style={{
-            background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.08)',
-            border: '1px solid rgba(239, 68, 68, 0.2)',
-            borderRadius: '16px',
-            padding: '20px'
-          }}>
+          <div style={{ background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '16px', padding: '20px' }}>
             <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#ef4444', marginBottom: '16px' }}>⚠️ Irrévocabilité</div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px' }}>
               {[
@@ -3149,36 +2385,19 @@ const App = () => {
                 { label: 'Perspective', value: item.irrevocabilite.perspective },
                 { label: 'Précédent', value: item.irrevocabilite.precedent }
               ].filter(el => el.value).map((el, i) => (
-                <div key={i} style={{
-                  background: 'rgba(239, 68, 68, 0.08)',
-                  borderRadius: '10px',
-                  padding: '12px'
-                }}>
+                <div key={i} style={{ background: 'rgba(239, 68, 68, 0.08)', borderRadius: '10px', padding: '12px' }}>
                   <div style={{ fontFamily: titleFont, fontSize: (fs.base - 2) + 'px', color: '#ef4444', marginBottom: '6px', textTransform: 'uppercase', letterSpacing: '0.05em' }}>{el.label}</div>
                   <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.5, fontFamily: textFont }}>{el.value}</div>
                 </div>
               ))}
             </div>
           </div>
-
-          {/* Conflits d'intérêts */}
           {item.conflitInterets && (
             <div>
-              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#9E876E', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <HelpCircle size={18} color="#9E876E" /> Conflits d'intérêts
-              </div>
+              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#9E876E', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}><HelpCircle size={18} color="#9E876E" /> Conflits d'intérêts</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {item.conflitInterets.map((c, i) => (
-                  <div key={i} style={{
-                    background: 'rgba(158, 135, 110, 0.12)',
-                    border: '1px solid rgba(158, 135, 110, 0.25)',
-                    borderRadius: '10px',
-                    padding: '12px 16px',
-                    fontSize: (fs.base - 1) + 'px',
-                    color: colors.text,
-                    lineHeight: 1.6,
-                    fontFamily: textFont
-                  }}>{c}</div>
+                  <div key={i} style={{ background: 'rgba(158, 135, 110, 0.12)', border: '1px solid rgba(158, 135, 110, 0.25)', borderRadius: '10px', padding: '12px 16px', fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{c}</div>
                 ))}
               </div>
             </div>
@@ -3187,93 +2406,33 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Verrouillage institutionnel (contexte, nominations[], bilan, retour2032, conclusion)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.contexte && item.nominations && item.bilan) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.contexte}</p>
-
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
             {item.nominations.map((n, i) => (
-              <div key={i} style={{
-                background: colors.buttonBg,
-                border: `1px solid ${colors.cardBorder}`,
-                borderRadius: '16px',
-                padding: '20px'
-              }}>
+              <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px' }}>
                 <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '4px' }}>{n.nom}</div>
                 {n.date && <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, marginBottom: '12px', fontFamily: textFont }}>{n.date}</div>}
-                {n.profil && (
-                  <div style={{
-                    background: darkMode ? 'rgba(0,0,0,0.2)' : 'rgba(255,255,255,0.3)',
-                    borderRadius: '8px',
-                    padding: '10px 12px',
-                    fontSize: (fs.base - 1) + 'px',
-                    color: colors.text,
-                    marginBottom: '10px',
-                    fontFamily: textFont
-                  }}>{n.profil}</div>
-                )}
+                {n.profil && <div style={{ background: 'rgba(0,0,0,0.2)', borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '10px', fontFamily: textFont }}>{n.profil}</div>}
                 {n.detail && <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>{n.detail}</div>}
-                {n.enjeu && (
-                  <div style={{
-                    background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.08)',
-                    borderLeft: '3px solid #ef4444',
-                    borderRadius: '0 8px 8px 0',
-                    padding: '10px 12px',
-                    fontSize: (fs.base - 1) + 'px',
-                    color: colors.text,
-                    fontFamily: textFont,
-                    marginBottom: n.lienLP ? '8px' : '0'
-                  }}>{n.enjeu}</div>
-                )}
-                {n.lienLP && (
-                  <div style={{
-                    background: 'rgba(158, 135, 110, 0.12)',
-                    borderRadius: '8px',
-                    padding: '10px 12px',
-                    fontSize: (fs.base - 2) + 'px',
-                    color: colors.textMuted,
-                    fontFamily: textFont,
-                    fontStyle: 'italic'
-                  }}>{n.lienLP}</div>
-                )}
+                {n.enjeu && <div style={{ background: 'rgba(239, 68, 68, 0.08)', borderLeft: '3px solid #ef4444', borderRadius: '0 8px 8px 0', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont, marginBottom: n.lienLP ? '8px' : '0' }}>{n.enjeu}</div>}
+                {n.lienLP && <div style={{ background: 'rgba(158, 135, 110, 0.12)', borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont, fontStyle: 'italic' }}>{n.lienLP}</div>}
               </div>
             ))}
           </div>
-
-          <div style={{
-            background: darkMode
-              ? 'linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(239, 68, 68, 0.04) 100%)'
-              : 'linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(239, 68, 68, 0.04) 100%)',
-            border: '1px solid rgba(239, 68, 68, 0.25)',
-            borderRadius: '16px',
-            padding: '20px',
-            textAlign: 'center'
-          }}>
+          <div style={{ background: 'linear-gradient(135deg, rgba(239, 68, 68, 0.12) 0%, rgba(239, 68, 68, 0.04) 100%)', border: '1px solid rgba(239, 68, 68, 0.25)', borderRadius: '16px', padding: '20px', textAlign: 'center' }}>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.7, fontFamily: textFont, fontWeight: '600' }}>{item.bilan}</div>
           </div>
-
           {item.retour2032 && (
-            <div style={{
-              background: colors.buttonBg,
-              borderLeft: `4px solid ${colors.primary}`,
-              borderRadius: '0 12px 12px 0',
-              padding: '16px'
-            }}>
+            <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>📅 Retour en 2032 ?</div>
               <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.retour2032}</div>
             </div>
           )}
-
           {item.conclusion && (
-            <div style={{
-              background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
-              borderRadius: '12px',
-              padding: '16px'
-            }}>
+            <div style={{ background: 'rgba(238, 194, 29, 0.1)', borderRadius: '12px', padding: '16px' }}>
               <div style={{ fontSize: fs.base + 'px', color: colors.primary, lineHeight: 1.7, fontFamily: textFont, fontStyle: 'italic' }}>{item.conclusion}</div>
             </div>
           )}
@@ -3281,73 +2440,23 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Mesures session 6 (aujourdhui{}, projet{}, applicationMontchalin, congeRepublicain?, questionsOuvertes?)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.aujourdhui && item.projet && !item.type) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          {/* Aujourd'hui */}
-          <div style={{
-            background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.08)',
-            border: '1px solid rgba(239, 68, 68, 0.2)',
-            borderRadius: '12px',
-            padding: '20px'
-          }}>
+          <div style={{ background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', padding: '20px' }}>
             <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#ef4444', marginBottom: '12px' }}>⚠️ Ce qui existe aujourd'hui</div>
-            {item.aujourdhui.systeme && (
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.primary, fontWeight: '600', marginBottom: '8px', fontFamily: textFont }}>{item.aujourdhui.systeme}</div>
-            )}
-            {item.aujourdhui.fonctionnement && (
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>{item.aujourdhui.fonctionnement}</div>
-            )}
-            {item.aujourdhui.consequence && (
-              <div style={{
-                background: 'rgba(239, 68, 68, 0.1)', borderRadius: '8px', padding: '10px 12px',
-                fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont
-              }}>{item.aujourdhui.consequence}</div>
-            )}
-            {item.aujourdhui.failles && item.aujourdhui.failles.map((f, i) => (
-              <div key={i} style={{
-                background: 'rgba(239, 68, 68, 0.08)', borderRadius: '8px', padding: '10px 12px',
-                fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont
-              }}>{f}</div>
-            ))}
-            {item.aujourdhui.problemes && item.aujourdhui.problemes.map((p, i) => (
-              <div key={i} style={{
-                background: 'rgba(239, 68, 68, 0.08)', borderRadius: '8px', padding: '10px 12px',
-                fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont
-              }}>{p}</div>
-            ))}
+            {item.aujourdhui.systeme && <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.primary, fontWeight: '600', marginBottom: '8px', fontFamily: textFont }}>{item.aujourdhui.systeme}</div>}
+            {item.aujourdhui.fonctionnement && <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>{item.aujourdhui.fonctionnement}</div>}
+            {item.aujourdhui.consequence && <div style={{ background: 'rgba(239, 68, 68, 0.1)', borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{item.aujourdhui.consequence}</div>}
+            {item.aujourdhui.failles && item.aujourdhui.failles.map((f, i) => <div key={i} style={{ background: 'rgba(239, 68, 68, 0.08)', borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}>{f}</div>)}
+            {item.aujourdhui.problemes && item.aujourdhui.problemes.map((p, i) => <div key={i} style={{ background: 'rgba(239, 68, 68, 0.08)', borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}>{p}</div>)}
           </div>
-
-          {/* Projet */}
-          <div style={{
-            background: darkMode ? 'rgba(68, 112, 29, 0.12)' : 'rgba(68, 112, 29, 0.08)',
-            border: '1px solid rgba(68, 112, 29, 0.25)',
-            borderRadius: '12px',
-            padding: '20px'
-          }}>
-            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#44701D', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <CheckCircle size={18} color="#44701D" /> Ce que propose le Projet
-            </div>
-            {item.projet.principe && (
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont, fontWeight: '600' }}>{item.projet.principe}</div>
-            )}
-            {item.projet.logique && (
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.projet.logique}</div>
-            )}
-            {item.projet.duree && (
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: '#44701D', fontWeight: '600', marginBottom: '12px', fontFamily: textFont }}>{item.projet.duree}</div>
-            )}
-            {item.projet.effets && item.projet.effets.map((e, i) => (
-              <div key={i} style={{
-                background: 'rgba(68, 112, 29, 0.1)', borderLeft: '3px solid #44701D',
-                borderRadius: '0 8px 8px 0', padding: '10px 12px',
-                fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont
-              }}>{e}</div>
-            ))}
-            {/* Transparence décennale (mesure 3) */}
+          <div style={{ background: 'rgba(68, 112, 29, 0.12)', border: '1px solid rgba(68, 112, 29, 0.25)', borderRadius: '12px', padding: '20px' }}>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#44701D', marginBottom: '12px', display: 'flex', alignItems: 'center', gap: '8px' }}><CheckCircle size={18} color="#44701D" /> Ce que propose le Projet</div>
+            {item.projet.principe && <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont, fontWeight: '600' }}>{item.projet.principe}</div>}
+            {item.projet.logique && <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.projet.logique}</div>}
+            {item.projet.duree && <div style={{ fontSize: (fs.base - 1) + 'px', color: '#44701D', fontWeight: '600', marginBottom: '12px', fontFamily: textFont }}>{item.projet.duree}</div>}
+            {item.projet.effets && item.projet.effets.map((e, i) => <div key={i} style={{ background: 'rgba(68, 112, 29, 0.1)', borderLeft: '3px solid #44701D', borderRadius: '0 8px 8px 0', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}>{e}</div>)}
             {item.projet.transparenceDecennale && (
               <div style={{ marginBottom: '12px' }}>
                 <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#44701D', marginBottom: '8px' }}>Transparence décennale</div>
@@ -3355,66 +2464,28 @@ const App = () => {
                 <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.projet.transparenceDecennale.effet}</div>
               </div>
             )}
-            {item.projet.publicationRetroactive && (
-              <div style={{
-                background: 'rgba(68, 112, 29, 0.1)', borderLeft: '3px solid #44701D',
-                borderRadius: '0 8px 8px 0', padding: '10px 12px',
-                fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont
-              }}><strong>Publication rétroactive :</strong> {item.projet.publicationRetroactive}</div>
-            )}
-            {item.projet.refonteCommission && (
-              <div style={{
-                background: 'rgba(68, 112, 29, 0.1)', borderLeft: '3px solid #44701D',
-                borderRadius: '0 8px 8px 0', padding: '10px 12px',
-                fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont
-              }}><strong>Refonte :</strong> {item.projet.refonteCommission}</div>
-            )}
+            {item.projet.publicationRetroactive && <div style={{ background: 'rgba(68, 112, 29, 0.1)', borderLeft: '3px solid #44701D', borderRadius: '0 8px 8px 0', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}><strong>Publication rétroactive :</strong> {item.projet.publicationRetroactive}</div>}
+            {item.projet.refonteCommission && <div style={{ background: 'rgba(68, 112, 29, 0.1)', borderLeft: '3px solid #44701D', borderRadius: '0 8px 8px 0', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}><strong>Refonte :</strong> {item.projet.refonteCommission}</div>}
           </div>
-
-          {/* Congé républicain */}
           {item.congeRepublicain && (
-            <div style={{
-              background: darkMode ? 'rgba(59, 130, 246, 0.1)' : 'rgba(59, 130, 246, 0.08)',
-              border: '1px solid rgba(59, 130, 246, 0.25)',
-              borderRadius: '12px',
-              padding: '16px'
-            }}>
+            <div style={{ background: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.25)', borderRadius: '12px', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#3b82f6', marginBottom: '8px' }}>🏛️ Congé républicain</div>
               <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontWeight: '600', marginBottom: '4px', fontFamily: textFont }}>{item.congeRepublicain.principe}</div>
               <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{item.congeRepublicain.effet}</div>
             </div>
           )}
-
-          {/* Application Montchalin */}
           {item.applicationMontchalin && (
-            <div style={{
-              background: colors.buttonBg,
-              borderLeft: `4px solid ${colors.primary}`,
-              borderRadius: '0 12px 12px 0',
-              padding: '16px'
-            }}>
+            <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>📌 Application au cas Montchalin</div>
               <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.applicationMontchalin}</div>
             </div>
           )}
-
-          {/* Questions ouvertes */}
           {item.questionsOuvertes && (
             <div>
-              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#9E876E', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <HelpCircle size={16} color="#9E876E" /> Questions ouvertes
-              </div>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#9E876E', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}><HelpCircle size={16} color="#9E876E" /> Questions ouvertes</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 {item.questionsOuvertes.map((q, i) => (
-                  <div key={i} style={{
-                    background: 'rgba(158, 135, 110, 0.12)',
-                    border: '1px solid rgba(158, 135, 110, 0.2)',
-                    borderRadius: '10px',
-                    padding: '10px 14px',
-                    fontSize: (fs.base - 1) + 'px',
-                    color: colors.text,
-                    fontFamily: textFont
-                  }}>{q}</div>
+                  <div key={i} style={{ background: 'rgba(158, 135, 110, 0.12)', border: '1px solid rgba(158, 135, 110, 0.2)', borderRadius: '10px', padding: '10px 14px', fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{q}</div>
                 ))}
               </div>
             </div>
@@ -3423,81 +2494,23 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Réforme structurelle (grandCorpsDecennaux, ouvertureAcces, fusionEcoles, fusionAntiCorruption)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.grandCorpsDecennaux && item.ouvertureAcces) {
       const subSections = [item.grandCorpsDecennaux, item.ouvertureAcces, item.fusionEcoles, item.fusionAntiCorruption].filter(Boolean);
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           {subSections.map((sub, i) => (
-            <div key={i} style={{
-              background: colors.buttonBg,
-              border: `1px solid ${colors.cardBorder}`,
-              borderRadius: '16px',
-              padding: '20px'
-            }}>
+            <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px' }}>
               <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '16px' }}>{sub.titre}</div>
-              
-              {sub.aujourdhui && (
-                <div style={{
-                  background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)',
-                  borderLeft: '3px solid #ef4444',
-                  borderRadius: '0 8px 8px 0',
-                  padding: '10px 14px',
-                  fontSize: (fs.base - 1) + 'px',
-                  color: colors.text,
-                  marginBottom: '12px',
-                  fontFamily: textFont
-                }}><span style={{ color: '#ef4444', fontWeight: '600' }}>Aujourd'hui :</span> {sub.aujourdhui}</div>
-              )}
-
-              {sub.projet && (
-                <div style={{
-                  background: darkMode ? 'rgba(68, 112, 29, 0.1)' : 'rgba(68, 112, 29, 0.08)',
-                  borderLeft: '3px solid #44701D',
-                  borderRadius: '0 8px 8px 0',
-                  padding: '10px 14px',
-                  fontSize: (fs.base - 1) + 'px',
-                  color: colors.text,
-                  marginBottom: sub.effet || sub.applicationMontchalin ? '12px' : '0',
-                  fontFamily: textFont
-                }}><span style={{ color: '#44701D', fontWeight: '600' }}>Projet :</span> {sub.projet}</div>
-              )}
-
-              {sub.effet && (
-                <div style={{
-                  background: colors.buttonBg,
-                  borderRadius: '8px',
-                  padding: '10px 14px',
-                  fontSize: (fs.base - 1) + 'px',
-                  color: colors.textMuted,
-                  marginBottom: sub.applicationMontchalin ? '12px' : '0',
-                  fontFamily: textFont,
-                  fontStyle: 'italic'
-                }}>{sub.effet}</div>
-              )}
-
-              {sub.applicationMontchalin && (
-                <div style={{
-                  background: darkMode ? 'rgba(238, 194, 29, 0.08)' : 'rgba(17, 17, 17, 0.05)',
-                  borderLeft: `3px solid ${colors.primary}`,
-                  borderRadius: '0 8px 8px 0',
-                  padding: '10px 14px',
-                  fontSize: (fs.base - 1) + 'px',
-                  color: colors.text,
-                  fontFamily: textFont
-                }}><span style={{ color: colors.primary, fontWeight: '600' }}>Cas Montchalin :</span> {sub.applicationMontchalin}</div>
-              )}
+              {sub.aujourdhui && <div style={{ background: 'rgba(239, 68, 68, 0.08)', borderLeft: '3px solid #ef4444', borderRadius: '0 8px 8px 0', padding: '10px 14px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '12px', fontFamily: textFont }}><span style={{ color: '#ef4444', fontWeight: '600' }}>Aujourd'hui :</span> {sub.aujourdhui}</div>}
+              {sub.projet && <div style={{ background: 'rgba(68, 112, 29, 0.1)', borderLeft: '3px solid #44701D', borderRadius: '0 8px 8px 0', padding: '10px 14px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: sub.effet || sub.applicationMontchalin ? '12px' : '0', fontFamily: textFont }}><span style={{ color: '#44701D', fontWeight: '600' }}>Projet :</span> {sub.projet}</div>}
+              {sub.effet && <div style={{ background: colors.buttonBg, borderRadius: '8px', padding: '10px 14px', fontSize: (fs.base - 1) + 'px', color: colors.textMuted, marginBottom: sub.applicationMontchalin ? '12px' : '0', fontFamily: textFont, fontStyle: 'italic' }}>{sub.effet}</div>}
+              {sub.applicationMontchalin && <div style={{ background: 'rgba(238, 194, 29, 0.08)', borderLeft: `3px solid ${colors.primary}`, borderRadius: '0 8px 8px 0', padding: '10px 14px', fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}><span style={{ color: colors.primary, fontWeight: '600' }}>Cas Montchalin :</span> {sub.applicationMontchalin}</div>}
             </div>
           ))}
         </div>
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Angles morts (reseauxTransnationaux, irrevocabilite, preSelectionExtraDemocratique, medias)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.reseauxTransnationaux && item.preSelectionExtraDemocratique) {
       const angles = [
         { key: 'reseauxTransnationaux', label: '🌐 Réseaux transnationaux', data: item.reseauxTransnationaux },
@@ -3509,53 +2522,21 @@ const App = () => {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           {angles.map((angle) => (
-            <div key={angle.key} style={{
-              background: colors.buttonBg,
-              border: `1px solid ${colors.cardBorder}`,
-              borderRadius: '16px',
-              padding: '20px'
-            }}>
+            <div key={angle.key} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px' }}>
               <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#9E876E', marginBottom: '12px' }}>{angle.label}</div>
-              
-              {angle.data.probleme && (
-                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, marginBottom: '12px', fontFamily: textFont }}>{angle.data.probleme}</div>
-              )}
-
-              {angle.data.illustration && (
-                <div style={{
-                  background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)',
-                  borderRadius: '8px', padding: '10px 12px',
-                  fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '12px', fontFamily: textFont
-                }}>{angle.data.illustration}</div>
-              )}
-
-              {angle.data.reponseProjet && (
-                <div style={{
-                  background: darkMode ? 'rgba(68, 112, 29, 0.1)' : 'rgba(68, 112, 29, 0.08)',
-                  borderLeft: '3px solid #44701D', borderRadius: '0 8px 8px 0',
-                  padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text,
-                  marginBottom: angle.data.question ? '12px' : '0', fontFamily: textFont
-                }}><span style={{ color: '#44701D', fontWeight: '600' }}>Réponse du Projet :</span> {angle.data.reponseProjet}</div>
-              )}
-
+              {angle.data.probleme && <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, marginBottom: '12px', fontFamily: textFont }}>{angle.data.probleme}</div>}
+              {angle.data.illustration && <div style={{ background: 'rgba(239, 68, 68, 0.08)', borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '12px', fontFamily: textFont }}>{angle.data.illustration}</div>}
+              {angle.data.reponseProjet && <div style={{ background: 'rgba(68, 112, 29, 0.1)', borderLeft: '3px solid #44701D', borderRadius: '0 8px 8px 0', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: angle.data.question ? '12px' : '0', fontFamily: textFont }}><span style={{ color: '#44701D', fontWeight: '600' }}>Réponse du Projet :</span> {angle.data.reponseProjet}</div>}
               {angle.data.propositions && (
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '8px' }}>
                   <div style={{ fontFamily: titleFont, fontSize: (fs.base - 2) + 'px', color: '#5F7E43', textTransform: 'uppercase', letterSpacing: '0.05em', marginBottom: '4px' }}>Propositions</div>
                   {angle.data.propositions.map((p, i) => (
-                    <div key={i} style={{
-                      background: 'rgba(95, 126, 67, 0.1)', borderLeft: '3px solid #5F7E43',
-                      borderRadius: '0 8px 8px 0', padding: '10px 12px',
-                      fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont
-                    }}>{p}</div>
+                    <div key={i} style={{ background: 'rgba(95, 126, 67, 0.1)', borderLeft: '3px solid #5F7E43', borderRadius: '0 8px 8px 0', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{p}</div>
                   ))}
                 </div>
               )}
-
               {angle.data.question && (
-                <div style={{
-                  background: 'rgba(158, 135, 110, 0.12)', borderRadius: '10px',
-                  padding: '12px', display: 'flex', alignItems: 'flex-start', gap: '10px'
-                }}>
+                <div style={{ background: 'rgba(158, 135, 110, 0.12)', borderRadius: '10px', padding: '12px', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
                   <HelpCircle size={16} color="#9E876E" style={{ flexShrink: 0, marginTop: '2px' }} />
                   <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontStyle: 'italic', fontFamily: textFont }}>{angle.data.question}</div>
                 </div>
@@ -3566,62 +2547,30 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Conclusion session 6 (bilan, mesuresProjet, limites, actualite, objectif, prochaine)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.bilan && item.mesuresProjet && item.objectif) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <div style={{
-            background: darkMode
-              ? 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)'
-              : 'linear-gradient(135deg, rgba(17, 17, 17, 0.15) 0%, rgba(17, 17, 17, 0.05) 100%)',
-            borderRadius: '16px', padding: '20px', textAlign: 'center'
-          }}>
+          <div style={{ background: 'linear-gradient(135deg, rgba(238, 194, 29, 0.15) 0%, rgba(238, 194, 29, 0.05) 100%)', borderRadius: '16px', padding: '20px', textAlign: 'center' }}>
             <div style={{ fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', lineHeight: 1.6, fontFamily: textFont }}>{item.bilan}</div>
           </div>
-
-          <div style={{
-            background: darkMode ? 'rgba(68, 112, 29, 0.12)' : 'rgba(68, 112, 29, 0.08)',
-            border: '1px solid rgba(68, 112, 29, 0.25)',
-            borderRadius: '12px', padding: '16px'
-          }}>
+          <div style={{ background: 'rgba(68, 112, 29, 0.12)', border: '1px solid rgba(68, 112, 29, 0.25)', borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#44701D', marginBottom: '8px' }}>Mesures du Projet</div>
             <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.mesuresProjet}</div>
           </div>
-
-          <div style={{
-            background: 'rgba(158, 135, 110, 0.12)',
-            border: '1px solid rgba(158, 135, 110, 0.25)',
-            borderRadius: '12px', padding: '16px'
-          }}>
+          <div style={{ background: 'rgba(158, 135, 110, 0.12)', border: '1px solid rgba(158, 135, 110, 0.25)', borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#9E876E', marginBottom: '8px' }}>Limites identifiées</div>
             <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.limites}</div>
           </div>
-
           {item.actualite && (
-            <div style={{
-              background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)',
-              border: '1px solid rgba(239, 68, 68, 0.2)',
-              borderRadius: '12px', padding: '16px'
-            }}>
+            <div style={{ background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', padding: '16px' }}>
               <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.actualite}</div>
             </div>
           )}
-
-          <div style={{
-            background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
-            borderRadius: '12px', padding: '16px'
-          }}>
+          <div style={{ background: 'rgba(238, 194, 29, 0.1)', borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontSize: fs.base + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.objectif}</div>
           </div>
-
           {item.prochaine && (
-            <div style={{
-              background: colors.buttonBg,
-              borderLeft: `4px solid ${colors.primary}`,
-              borderRadius: '0 12px 12px 0', padding: '16px'
-            }}>
+            <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>📅 Prochaine session</div>
               <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{item.prochaine}</div>
             </div>
@@ -3630,24 +2579,13 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Violences — définition (intro, formes[], objectifCommun)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.intro && item.formes && item.objectifCommun) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.intro}</p>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
             {item.formes.map((f, i) => (
-              <div key={i} style={{
-                background: colors.buttonBg,
-                border: `1px solid ${colors.cardBorder}`,
-                borderRadius: '12px',
-                padding: '16px',
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '12px'
-              }}>
+              <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                 <span style={{ fontSize: '24px' }}>{f.icon}</span>
                 <div style={{ flex: 1 }}>
                   <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '4px' }}>{f.type}</div>
@@ -3656,71 +2594,40 @@ const App = () => {
               </div>
             ))}
           </div>
-          <div style={{
-            background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
-            borderRadius: '12px',
-            padding: '16px'
-          }}>
+          <div style={{ background: 'rgba(238, 194, 29, 0.1)', borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontSize: fs.base + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.objectifCommun}</div>
           </div>
         </div>
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Niveau + detail (intimidation, etc.)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.niveau && item.detail) {
       return (
-        <div key={key} style={{
-          background: colors.buttonBg,
-          border: `1px solid ${colors.cardBorder}`,
-          borderRadius: '12px',
-          padding: '16px'
-        }}>
+        <div key={key} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
           <div style={{ fontWeight: '600', color: colors.primary, marginBottom: '6px', fontSize: fs.base + 'px', fontFamily: titleFont }}>{item.niveau}</div>
           <div style={{ fontSize: fs.base + 'px', color: colors.textMuted, lineHeight: 1.6, fontFamily: textFont }}>{item.detail}</div>
         </div>
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Limite + detail (commissions d'enquête)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.limite && item.detail) {
       return (
-        <div key={key} style={{
-          background: colors.buttonBg,
-          border: `1px solid ${colors.cardBorder}`,
-          borderRadius: '12px',
-          padding: '16px'
-        }}>
+        <div key={key} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
           <div style={{ fontWeight: '600', color: '#ef4444', marginBottom: '6px', fontSize: fs.base + 'px', fontFamily: titleFont }}>{item.limite}</div>
           <div style={{ fontSize: fs.base + 'px', color: colors.textMuted, lineHeight: 1.6, fontFamily: textFont }}>{item.detail}</div>
         </div>
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Source + stat (violences au-delà des GJ)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.source && item.stat && !item.chiffre && !item.chiffres) {
       return (
-        <div key={key} style={{
-          background: colors.buttonBg,
-          border: `1px solid ${colors.cardBorder}`,
-          borderRadius: '12px',
-          padding: '16px'
-        }}>
+        <div key={key} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
           <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}>{item.stat}</div>
           <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>— {item.source}</div>
         </div>
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Gilets jaunes / Stats multi-sections (intro + sections avec chiffres + asymetrie)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.intro && item.coteManifestants) {
       const statSections = [
         item.coteManifestants && { label: 'Côté manifestants', source: item.coteManifestants.source, chiffres: item.coteManifestants.chiffres },
@@ -3739,13 +2646,7 @@ const App = () => {
               </div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '10px' }}>
                 {section.chiffres.map((c, j) => (
-                  <div key={j} style={{
-                    background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)',
-                    border: '1px solid rgba(239, 68, 68, 0.2)',
-                    borderRadius: '12px',
-                    padding: '14px',
-                    textAlign: 'center'
-                  }}>
+                  <div key={j} style={{ background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', padding: '14px', textAlign: 'center' }}>
                     <div style={{ fontFamily: titleFont, fontSize: (fs.large + 4) + 'px', color: '#ef4444', marginBottom: '4px' }}>{c.number}</div>
                     <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.text, fontFamily: textFont }}>{c.label}</div>
                   </div>
@@ -3754,13 +2655,7 @@ const App = () => {
             </div>
           ))}
           {item.asymetrie && (
-            <div style={{
-              background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.08)',
-              border: '1px solid rgba(239, 68, 68, 0.3)',
-              borderRadius: '12px',
-              padding: '16px',
-              textAlign: 'center'
-            }}>
+            <div style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
               <div style={{ fontSize: fs.base + 'px', color: '#ef4444', fontWeight: '600', lineHeight: 1.6, fontFamily: textFont }}>{item.asymetrie}</div>
             </div>
           )}
@@ -3768,46 +2663,29 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Armes utilisées (contexte, chiffresGlobaux, journee, alertes, lancet)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.contexte && item.chiffresGlobaux && item.journee1erDecembre) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.contexte}</p>
-          
           {item.chiffresGlobaux.map((c, i) => (
-            <div key={i} style={{
-              background: darkMode ? 'rgba(239, 68, 68, 0.12)' : 'rgba(239, 68, 68, 0.08)',
-              borderRadius: '16px', padding: '20px', textAlign: 'center'
-            }}>
+            <div key={i} style={{ background: 'rgba(239, 68, 68, 0.12)', borderRadius: '16px', padding: '20px', textAlign: 'center' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.large + 12) + 'px', color: '#ef4444', marginBottom: '4px' }}>{c.number}</div>
               <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{c.label}</div>
             </div>
           ))}
-
           <div style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px' }}>
-            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '4px' }}>
-              {item.journee1erDecembre.date}
-            </div>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '4px' }}>{item.journee1erDecembre.date}</div>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '10px', marginTop: '12px' }}>
               {item.journee1erDecembre.munitions.map((m, i) => (
-                <div key={i} style={{
-                  background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)',
-                  borderRadius: '10px', padding: '12px', textAlign: 'center'
-                }}>
+                <div key={i} style={{ background: 'rgba(239, 68, 68, 0.08)', borderRadius: '10px', padding: '12px', textAlign: 'center' }}>
                   <div style={{ fontFamily: titleFont, fontSize: (fs.title + 2) + 'px', color: '#ef4444' }}>{m.number}</div>
                   <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>{m.label}</div>
                 </div>
               ))}
             </div>
-            {item.journee1erDecembre.note && (
-              <div style={{ marginTop: '12px', fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontStyle: 'italic', fontFamily: textFont }}>{item.journee1erDecembre.note}</div>
-            )}
+            {item.journee1erDecembre.note && <div style={{ marginTop: '12px', fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontStyle: 'italic', fontFamily: textFont }}>{item.journee1erDecembre.note}</div>}
           </div>
-
           {item.alertes && <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.alertes}</p>}
-          
           {item.lancet && (
             <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{item.lancet.source}</div>
@@ -3818,16 +2696,10 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Commissions d'enquête (fondement, pouvoirsTheoriques, droitOpposition)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.fondement && item.pouvoirsTheoriques) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          <div style={{
-            background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`,
-            borderRadius: '0 12px 12px 0', padding: '16px'
-          }}>
+          <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Fondement juridique</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{item.fondement}</div>
           </div>
@@ -3835,15 +2707,7 @@ const App = () => {
             <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Pouvoirs théoriques</div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {item.pouvoirsTheoriques.map((p, i) => (
-                <div key={i} style={{
-                  background: darkMode ? 'rgba(68, 112, 29, 0.1)' : 'rgba(68, 112, 29, 0.08)',
-                  borderLeft: '3px solid #44701D',
-                  borderRadius: '0 10px 10px 0',
-                  padding: '12px 16px',
-                  fontSize: (fs.base - 1) + 'px',
-                  color: colors.text,
-                  fontFamily: textFont
-                }}>{p}</div>
+                <div key={i} style={{ background: 'rgba(68, 112, 29, 0.1)', borderLeft: '3px solid #44701D', borderRadius: '0 10px 10px 0', padding: '12px 16px', fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{p}</div>
               ))}
             </div>
           </div>
@@ -3857,49 +2721,26 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Bilan commissions (condamnation, affaires, synthese, citation)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.condamnation && item.synthese && (item.affaireBenalla || item.affaireMcKinsey)) {
       const affaires = [item.affaireBenalla, item.affaireMcKinsey].filter(Boolean);
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          {/* Condamnation unique */}
-          <div style={{
-            background: darkMode ? 'rgba(239, 68, 68, 0.12)' : 'rgba(239, 68, 68, 0.08)',
-            border: '1px solid rgba(239, 68, 68, 0.3)',
-            borderRadius: '16px', padding: '20px', textAlign: 'center'
-          }}>
+          <div style={{ background: 'rgba(239, 68, 68, 0.12)', border: '1px solid rgba(239, 68, 68, 0.3)', borderRadius: '16px', padding: '20px', textAlign: 'center' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.large + 8) + 'px', color: '#ef4444', marginBottom: '8px' }}>{item.condamnation.nombre}</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, marginBottom: '8px', fontFamily: textFont }}>{item.condamnation.qui}</div>
             <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>— {item.condamnation.source}</div>
           </div>
-
-          {/* Affaires */}
           {affaires.map((affaire, i) => (
             <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px' }}>
               {affaire.contexte && <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, marginBottom: '12px', fontFamily: textFont }}>{affaire.contexte}</div>}
-              {affaire.resultat && (
-                <div style={{
-                  background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)',
-                  borderLeft: '3px solid #ef4444', borderRadius: '0 8px 8px 0',
-                  padding: '10px 14px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '8px', fontFamily: textFont
-                }}>{affaire.resultat}</div>
-              )}
+              {affaire.resultat && <div style={{ background: 'rgba(239, 68, 68, 0.08)', borderLeft: '3px solid #ef4444', borderRadius: '0 8px 8px 0', padding: '10px 14px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '8px', fontFamily: textFont }}>{affaire.resultat}</div>}
               {affaire.sources && <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>Sources : {affaire.sources}</div>}
               {affaire.source && <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>Source : {affaire.source}</div>}
             </div>
           ))}
-
-          {/* Synthèse */}
-          <div style={{
-            background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
-            borderRadius: '12px', padding: '16px'
-          }}>
+          <div style={{ background: 'rgba(238, 194, 29, 0.1)', borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontSize: fs.base + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.synthese}</div>
           </div>
-
-          {/* Citation Fondapol */}
           {item.citationFondapol && (
             <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
               <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>« {item.citationFondapol.texte} »</p>
@@ -3910,18 +2751,11 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: CJR (creation, composition, citation)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.creation && item.composition && item.citation) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.creation}</p>
-          <div style={{
-            background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)',
-            border: '1px solid rgba(239, 68, 68, 0.2)',
-            borderRadius: '12px', padding: '16px'
-          }}>
+          <div style={{ background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', padding: '16px' }}>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{item.composition}</div>
           </div>
           <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
@@ -3932,182 +2766,91 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Bilan CJR (stats, decisions, covid, paradoxe, synthese)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.stats && item.decisions && item.synthese) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          {/* Stats */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '10px' }}>
             {item.stats.map((s, i) => (
-              <div key={i} style={{
-                background: darkMode ? 'rgba(239, 68, 68, 0.1)' : 'rgba(239, 68, 68, 0.06)',
-                border: '1px solid rgba(239, 68, 68, 0.2)',
-                borderRadius: '12px', padding: '16px', textAlign: 'center'
-              }}>
+              <div key={i} style={{ background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
                 <div style={{ fontFamily: titleFont, fontSize: (fs.large + 8) + 'px', color: '#ef4444' }}>{s.number}</div>
                 <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.text, fontFamily: textFont }}>{s.label}</div>
               </div>
             ))}
           </div>
-
-          {/* Décisions */}
           {item.decisions.relaxes && (
             <div style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px' }}>
               <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#ef4444', marginBottom: '12px' }}>Relaxes</div>
-              {item.decisions.relaxes.map((r, i) => (
-                <div key={i} style={{ background: 'rgba(239, 68, 68, 0.06)', borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}>{r}</div>
-              ))}
+              {item.decisions.relaxes.map((r, i) => <div key={i} style={{ background: 'rgba(239, 68, 68, 0.06)', borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}>{r}</div>)}
             </div>
           )}
           {item.decisions.dispensesDePeine && (
             <div style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px' }}>
               <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#9E876E', marginBottom: '12px' }}>Dispenses de peine</div>
-              {item.decisions.dispensesDePeine.map((d, i) => (
-                <div key={i} style={{ background: 'rgba(158, 135, 110, 0.1)', borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}>{d}</div>
-              ))}
+              {item.decisions.dispensesDePeine.map((d, i) => <div key={i} style={{ background: 'rgba(158, 135, 110, 0.1)', borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}>{d}</div>)}
             </div>
           )}
           {item.decisions.condamnationsAvecSursis && (
             <div style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '16px', padding: '20px' }}>
               <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>Condamnations avec sursis</div>
-              {item.decisions.condamnationsAvecSursis.map((c, i) => (
-                <div key={i} style={{ background: colors.buttonBgHover, borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}>{c}</div>
-              ))}
+              {item.decisions.condamnationsAvecSursis.map((c, i) => <div key={i} style={{ background: colors.buttonBgHover, borderRadius: '8px', padding: '10px 12px', fontSize: (fs.base - 1) + 'px', color: colors.text, marginBottom: '6px', fontFamily: textFont }}>{c}</div>)}
             </div>
           )}
-
-          {/* Covid */}
           {item.covid && (
-            <div style={{ background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', padding: '16px' }}>
+            <div style={{ background: 'rgba(239, 68, 68, 0.08)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '12px', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '8px' }}>Covid — {item.covid.date}</div>
               <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{item.covid.resultat}</div>
             </div>
           )}
-
           {item.paradoxe && <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.paradoxe}</p>}
           {item.casPasqua && <p style={{ color: colors.text, lineHeight: 1.7, fontSize: fs.base + 'px', fontFamily: textFont }}>{item.casPasqua}</p>}
-
           {item.citationLeGall && (
             <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
               <p style={{ fontStyle: 'italic', color: colors.text, fontSize: fs.base + 'px', lineHeight: 1.6, marginBottom: '8px', fontFamily: textFont }}>« {item.citationLeGall.texte} »</p>
               <p style={{ color: colors.primary, fontSize: (fs.base - 2) + 'px', fontFamily: textFont }}>— {item.citationLeGall.auteur}</p>
             </div>
           )}
-
-          <div style={{
-            background: darkMode ? 'rgba(238, 194, 29, 0.1)' : 'rgba(17, 17, 17, 0.1)',
-            borderRadius: '12px', padding: '16px', textAlign: 'center'
-          }}>
+          <div style={{ background: 'rgba(238, 194, 29, 0.1)', borderRadius: '12px', padding: '16px', textAlign: 'center' }}>
             <div style={{ fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', lineHeight: 1.6, fontFamily: textFont }}>{item.synthese}</div>
           </div>
         </div>
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Mesure simple (principe + effet/page/comparaison/droitSpecial/etc.)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.principe && !item.projet && !item.aujourdhui && !item.type) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-          <div style={{
-            background: darkMode ? 'rgba(68, 112, 29, 0.12)' : 'rgba(68, 112, 29, 0.08)',
-            border: '1px solid rgba(68, 112, 29, 0.25)',
-            borderRadius: '12px', padding: '20px'
-          }}>
+          <div style={{ background: 'rgba(68, 112, 29, 0.12)', border: '1px solid rgba(68, 112, 29, 0.25)', borderRadius: '12px', padding: '20px' }}>
             <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#44701D', marginBottom: '8px' }}>Principe</div>
             <div style={{ fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.principe}</div>
           </div>
-
-          {item.droitSpecial && (
-            <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}>
-              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Droit spécial</div>
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.droitSpecial}</div>
-            </div>
-          )}
-
-          {item.comiteClemence && (
-            <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}>
-              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Comité de clémence</div>
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.comiteClemence}</div>
-            </div>
-          )}
-
-          {item.cible && (
-            <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}>
-              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Cible</div>
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.cible}</div>
-            </div>
-          )}
-
-          {item.rattachement && (
-            <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}>
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.6, fontFamily: textFont }}>{item.rattachement}</div>
-            </div>
-          )}
-
-          {item.comparaison && (
-            <div style={{
-              background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)',
-              borderLeft: '3px solid #ef4444', borderRadius: '0 10px 10px 0',
-              padding: '12px 16px'
-            }}>
-              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '6px' }}>Aujourd'hui</div>
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{item.comparaison}</div>
-            </div>
-          )}
-
-          {item.effet && (
-            <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}>
-              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.effet}</div>
-            </div>
-          )}
-
+          {item.droitSpecial && <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}><div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Droit spécial</div><div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.droitSpecial}</div></div>}
+          {item.comiteClemence && <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}><div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Comité de clémence</div><div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.comiteClemence}</div></div>}
+          {item.cible && <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}><div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px' }}>Cible</div><div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.cible}</div></div>}
+          {item.rattachement && <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}><div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, lineHeight: 1.6, fontFamily: textFont }}>{item.rattachement}</div></div>}
+          {item.comparaison && <div style={{ background: 'rgba(239, 68, 68, 0.08)', borderLeft: '3px solid #ef4444', borderRadius: '0 10px 10px 0', padding: '12px 16px' }}><div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#ef4444', marginBottom: '6px' }}>Aujourd'hui</div><div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{item.comparaison}</div></div>}
+          {item.effet && <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '16px' }}><div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.effet}</div></div>}
           {item.rappel && <p style={{ color: colors.textMuted, lineHeight: 1.7, fontSize: (fs.base - 1) + 'px', fontFamily: textFont }}>{item.rappel}</p>}
-
           {item.temoignage && (
             <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
               <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{item.temoignage.nom}</div>
               <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontStyle: 'italic', fontFamily: textFont }}>{item.temoignage.detail}</div>
             </div>
           )}
-
-          {item.page && (
-            <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, display: 'flex', alignItems: 'center', gap: '6px', fontFamily: textFont }}>
-              <FileText size={14} color={ICON_COLOR} /> {item.page}
-            </div>
-          )}
+          {item.page && <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, display: 'flex', alignItems: 'center', gap: '6px', fontFamily: textFont }}><FileText size={14} color={ICON_COLOR} /> {item.page}</div>}
         </div>
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Enquêtes spécifiques (enquetes array)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.enquetes && Array.isArray(item.enquetes)) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {item.enquetes.map((e, i) => (
-            <div key={i} style={{
-              background: colors.buttonBg,
-              borderLeft: `3px solid ${colors.primary}`,
-              borderRadius: '0 10px 10px 0',
-              padding: '14px 16px',
-              fontSize: fs.base + 'px',
-              color: colors.text,
-              lineHeight: 1.6,
-              fontFamily: textFont
-            }}>{e}</div>
+            <div key={i} style={{ background: colors.buttonBg, borderLeft: `3px solid ${colors.primary}`, borderRadius: '0 10px 10px 0', padding: '14px 16px', fontSize: fs.base + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{e}</div>
           ))}
         </div>
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Réformes justice + intérieur (justice[], interieur[], pages)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.justice && item.interieur) {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -4119,12 +2862,7 @@ const App = () => {
               <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '12px' }}>{section.label}</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
                 {section.data.map((r, j) => (
-                  <div key={j} style={{
-                    background: colors.buttonBg,
-                    border: `1px solid ${colors.cardBorder}`,
-                    borderRadius: '12px',
-                    padding: '16px'
-                  }}>
+                  <div key={j} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '16px' }}>
                     <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: section.accentColor, marginBottom: '6px' }}>{r.mesure}</div>
                     <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{r.effet}</div>
                   </div>
@@ -4132,44 +2870,22 @@ const App = () => {
               </div>
             </div>
           ))}
-          {item.pages && (
-            <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, display: 'flex', alignItems: 'center', gap: '6px', fontFamily: textFont }}>
-              <FileText size={14} color={ICON_COLOR} /> {item.pages}
-            </div>
-          )}
+          {item.pages && <div style={{ fontSize: (fs.base - 2) + 'px', color: colors.textMuted, display: 'flex', alignItems: 'center', gap: '6px', fontFamily: textFont }}><FileText size={14} color={ICON_COLOR} /> {item.pages}</div>}
         </div>
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Sources par catégorie (objet avec clés → arrays de strings)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.giletsJaunes && item.commissionsEnquete && item.cjr) {
       const categories = Object.entries(item).filter(([_, v]) => Array.isArray(v));
-      const catLabels = {
-        giletsJaunes: 'Gilets jaunes',
-        commissionsEnquete: "Commissions d'enquête",
-        cjr: 'Cour de justice de la République',
-        projet: 'Le Projet'
-      };
+      const catLabels = { giletsJaunes: 'Gilets jaunes', commissionsEnquete: "Commissions d'enquête", cjr: 'Cour de justice de la République', projet: 'Le Projet' };
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           {categories.map(([catKey, sources]) => (
             <div key={catKey}>
-              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '10px' }}>
-                {catLabels[catKey] || catKey}
-              </div>
+              <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: colors.primary, marginBottom: '10px' }}>{catLabels[catKey] || catKey}</div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 {sources.map((s, i) => (
-                  <div key={i} style={{
-                    background: colors.buttonBg,
-                    borderRadius: '8px',
-                    padding: '10px 14px',
-                    fontSize: (fs.base - 2) + 'px',
-                    color: colors.textMuted,
-                    lineHeight: 1.5,
-                    fontFamily: textFont
-                  }}>{s}</div>
+                  <div key={i} style={{ background: colors.buttonBg, borderRadius: '8px', padding: '10px 14px', fontSize: (fs.base - 2) + 'px', color: colors.textMuted, lineHeight: 1.5, fontFamily: textFont }}>{s}</div>
                 ))}
               </div>
             </div>
@@ -4178,9 +2894,6 @@ const App = () => {
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // HANDLER: Conclusion session 7 (constat, commissions, cjrBilan, igpn, reponseProjet, prochaine)
-    // ═══════════════════════════════════════════════════════════════════════
     if (item.constat && item.commissions && item.reponseProjet) {
       const parts = [
         { text: item.constat, style: 'emphasis' },
@@ -4194,46 +2907,16 @@ const App = () => {
       return (
         <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
           {parts.map((p, i) => {
-            if (p.style === 'emphasis') return (
-              <div key={i} style={{
-                background: darkMode ? 'rgba(238, 194, 29, 0.15)' : 'rgba(17, 17, 17, 0.15)',
-                borderRadius: '16px', padding: '20px', textAlign: 'center'
-              }}>
-                <div style={{ fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', lineHeight: 1.6, fontFamily: textFont }}>{p.text}</div>
-              </div>
-            );
-            if (p.style === 'alert') return (
-              <div key={i} style={{
-                background: darkMode ? 'rgba(239, 68, 68, 0.08)' : 'rgba(239, 68, 68, 0.06)',
-                borderLeft: '3px solid #ef4444', borderRadius: '0 10px 10px 0',
-                padding: '12px 16px', fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont
-              }}>{p.text}</div>
-            );
-            if (p.style === 'positive') return (
-              <div key={i} style={{
-                background: darkMode ? 'rgba(68, 112, 29, 0.12)' : 'rgba(68, 112, 29, 0.08)',
-                border: '1px solid rgba(68, 112, 29, 0.25)',
-                borderRadius: '12px', padding: '16px', fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont
-              }}>{p.text}</div>
-            );
-            if (p.style === 'next') return (
-              <div key={i} style={{
-                background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`,
-                borderRadius: '0 12px 12px 0', padding: '16px'
-              }}>
-                <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>📅 Prochaine session</div>
-                <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{p.text}</div>
-              </div>
-            );
+            if (p.style === 'emphasis') return <div key={i} style={{ background: 'rgba(238, 194, 29, 0.15)', borderRadius: '16px', padding: '20px', textAlign: 'center' }}><div style={{ fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', lineHeight: 1.6, fontFamily: textFont }}>{p.text}</div></div>;
+            if (p.style === 'alert') return <div key={i} style={{ background: 'rgba(239, 68, 68, 0.08)', borderLeft: '3px solid #ef4444', borderRadius: '0 10px 10px 0', padding: '12px 16px', fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{p.text}</div>;
+            if (p.style === 'positive') return <div key={i} style={{ background: 'rgba(68, 112, 29, 0.12)', border: '1px solid rgba(68, 112, 29, 0.25)', borderRadius: '12px', padding: '16px', fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{p.text}</div>;
+            if (p.style === 'next') return <div key={i} style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}><div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>📅 Prochaine session</div><div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{p.text}</div></div>;
             return null;
           })}
         </div>
       );
     }
 
-    // ═══════════════════════════════════════════════════════════════════════
-    // FALLBACK: Affichage JSON pour debug
-    // ═══════════════════════════════════════════════════════════════════════
     console.warn('Unhandled content item:', item);
     return null;
   };
@@ -4246,43 +2929,27 @@ const App = () => {
     
     return (
       <div style={{
-        position: 'fixed',
-        top: 0, left: 0, right: 0, bottom: 0,
-        background: darkMode ? 'rgba(0, 0, 0, 0.9)' : 'rgba(238, 194, 29, 0.9)',
+        position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+        background: 'rgba(0, 0, 0, 0.9)',
         backdropFilter: 'blur(10px)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        zIndex: 1000,
-        padding: '24px'
+        display: 'flex', alignItems: 'center', justifyContent: 'center',
+        zIndex: 1000, padding: '24px'
       }}>
         <div style={{
-          background: darkMode ? '#1a1a1a' : '#EEC21D',
+          background: '#1a1a1a',
           border: `1px solid ${colors.cardBorder}`,
-          borderRadius: '24px',
-          padding: '32px',
-          maxWidth: '600px',
-          width: '100%',
-          maxHeight: '80vh',
-          overflow: 'auto',
-          position: 'relative'
+          borderRadius: '24px', padding: '32px',
+          maxWidth: '600px', width: '100%',
+          maxHeight: '80vh', overflow: 'auto', position: 'relative'
         }}>
           <button
             onClick={() => setShowProjet(false)}
             style={{
-              position: 'absolute',
-              top: '16px',
-              right: '16px',
-              width: '36px',
-              height: '36px',
-              background: colors.buttonBg,
-              border: `1px solid ${colors.cardBorder}`,
-              borderRadius: '50%',
-              color: colors.text,
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
+              position: 'absolute', top: '16px', right: '16px',
+              width: '36px', height: '36px',
+              background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`,
+              borderRadius: '50%', color: colors.text, cursor: 'pointer',
+              display: 'flex', alignItems: 'center', justifyContent: 'center'
             }}
           >
             <X size={20} />
@@ -4302,16 +2969,7 @@ const App = () => {
               'SOIGNER — Santé, hôpital public, prévention',
               'PARTAGER — Redistribution, solidarité, services publics'
             ].map((item, i) => (
-              <div key={i} style={{
-                padding: '12px 16px',
-                background: colors.buttonBg,
-                border: `1px solid ${colors.cardBorder}`,
-                borderRadius: '10px',
-                fontSize: fs.base + 'px',
-                color: colors.text,
-                marginBottom: '8px',
-                fontFamily: textFont
-              }}>{item}</div>
+              <div key={i} style={{ padding: '12px 16px', background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '10px', fontSize: fs.base + 'px', color: colors.text, marginBottom: '8px', fontFamily: textFont }}>{item}</div>
             ))}
           </div>
 
@@ -4320,17 +2978,11 @@ const App = () => {
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
+              display: 'inline-flex', alignItems: 'center', gap: '8px',
               padding: '16px 22px',
-              background: darkMode ? 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)' : 'linear-gradient(135deg, #111111 0%, #333333 100%)',
-              color: darkMode ? '#111' : '#EEC21D',
-              borderRadius: '12px',
-              textDecoration: 'none',
-              fontWeight: '600',
-              fontSize: fs.base + 'px',
-              fontFamily: titleFont
+              background: 'linear-gradient(135deg, #eec21d 0%, #d4a516 100%)',
+              color: '#111', borderRadius: '12px', textDecoration: 'none',
+              fontWeight: '600', fontSize: fs.base + 'px', fontFamily: titleFont
             }}
           >
             <FileText size={18} /> Lire le Projet
