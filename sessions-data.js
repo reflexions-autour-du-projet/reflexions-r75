@@ -45,7 +45,8 @@ export const sessionsConfig = {
   ],
   violencesPolitiques: [
     { id: 'session7', titre: "Commissions d'enquête et violences politiques", date: "25/02", available: true },
-    { id: 'session8', titre: "Aux origines des violences politiques", date: "04/03", available: false },
+    { id: 'session8', titre: "Aux origines des violences politiques", date: "04/03", available: true },
+    { id: 'session9', titre: "Les mesures du Projet", date: "11/03", available: false },
   ]
 };
 
@@ -1263,12 +1264,300 @@ export const violencesPolitiques = {
     }
   }
 
+// ═══════════════════════════════════════════════════════════════════════
+  // SESSION 8 — Aux origines des violences politiques (4 mars 2026)
   // ═══════════════════════════════════════════════════════════════════════
-  // SESSION 8 — Aux origines des violences politiques (4 mars 2026) — À VENIR
+  session8: {
+    title: "Aux origines des violences politiques",
+    date: "4 mars 2026",
+    duration: "2h",
+    sections: {
+
+      // ─────────────────────────────────────────────────────────────────
+      // BLOC 1 — Rappel de la session précédente
+      // ─────────────────────────────────────────────────────────────────
+      rappel: {
+        title: "Rappel de la session précédente",
+        content: [
+          "Les violences politiques forment un système à cinq niveaux : physique, judiciaire, institutionnelle, économique et symbolique.",
+          "Les Gilets jaunes ont illustré l'asymétrie structurelle : 3 200 manifestants condamnés (40% prison ferme), zéro policier condamné pour 23 personnes éborgnées.",
+          "Les outils de contrôle censés corriger — commissions d'enquête, CJR, IGPN — sont structurellement incapables de produire des sanctions.",
+          "Question centrale de cette session : pourquoi ce système existe-t-il depuis si longtemps, et comment a-t-il évolué pour devenir aussi efficace ?"
+        ]
+      },
+
+      // ─────────────────────────────────────────────────────────────────
+      // BLOC 2 — Origines historiques
+      // ─────────────────────────────────────────────────────────────────
+      originesHistoriques: {
+        title: "Aux origines historiques des violences politiques",
+        content: [
+          {
+            periode: "L'héritage hobbesien (fin XVIIe – XVIIIe siècle)",
+            intro: "Thomas Hobbes, dans le Léviathan (1651), pose les bases théoriques que Max Weber formalisera : l'État détient le monopole de la violence physique légitime. Les individus cèdent leur droit naturel à la violence en échange de la protection du souverain.",
+            probleme: "Cette légitimité est utilisée non pour protéger les citoyens, mais pour protéger les intérêts de ceux qui contrôlent l'État — c'est exactement ce que la Révolution française va mettre en crise, tout en posant les fondements de la violence d'État moderne."
+          },
+          {
+            periode: "La Révolution française (1789–1799) : berceau de la violence politique moderne",
+            intro: "La Révolution invente simultanément deux choses contradictoires : la souveraineté populaire et la Terreur d'État. C'est dans cette tension que naissent toutes les formes de violence politique qu'on connaît aujourd'hui.",
+            elements: [
+              {
+                titre: "Violence physique institutionnalisée",
+                detail: "La Terreur (1793–1794) fait exécuter entre 16 000 et 40 000 personnes selon les estimations — menée au nom du peuple, par des institutions élues (Comité de Salut public, Tribunal révolutionnaire). Pour la première fois, la violence d'État se légitime par la volonté générale, non par la grâce divine."
+              },
+              {
+                titre: "Violence judiciaire comme outil politique",
+                detail: "La loi du 22 prairial an II (juin 1794) supprime toutes les garanties procédurales : plus d'avocat, pas de témoins à charge, seule peine possible : la mort. Modèle de la 'justice d'exception' dont on retrouve l'écho dans les comparutions immédiates actuelles."
+              }
+            ],
+            heritage: "Ce que la Révolution lègue : la violence peut être légitime si exercée au nom du peuple — équation dangereuse utilisée pendant deux siècles pour justifier des répressions que rien ne justifie."
+          },
+          {
+            periode: "Du XIXe siècle à la IIIe République : la professionnalisation de la répression",
+            moments: [
+              {
+                nom: "La répression de juin 1848",
+                detail: "L'armée tire sur les ouvriers insurgés de Paris : 1 500 à 3 000 morts, 12 000 arrestations, 4 000 déportés en Algérie. Première fois que l'État républicain utilise la violence militaire massive contre le mouvement ouvrier. Le général Cavaignac est investi de pouvoirs dictatoriaux par l'Assemblée — prototype de la 'nécessité d'ordre public'."
+              },
+              {
+                nom: "La Commune de Paris (1871) — La Semaine sanglante",
+                detail: "Entre 10 000 et 30 000 morts selon les estimations — la plus grande répression politique de l'histoire française moderne. La IIIe République naissante construit aussitôt un récit de légitimation : les Communards sont présentés comme des 'fous', des 'criminels', des 'pétroleuses'. La violence symbolique suit et couvre la violence physique."
+              },
+              {
+                nom: "La création des 'Brigades du Tigre' (1907)",
+                detail: "Clemenceau crée les premières unités de police spécialisées dans la répression politique. Pour la première fois, l'État dispose d'un outil institutionnel permanent, professionnel et politiquement contrôlé. On passe de la répression militaire occasionnelle à la surveillance et répression permanentes."
+              }
+            ],
+            note: "C'est aussi au XIXe siècle que naît le concept de 'classes dangereuses' (Honoré Frégier, 1840), construisant une association durable entre pauvreté, criminalité et menace politique — une construction idéologique encore opérante dans le discours sur les 'zones de non-droit'."
+          }
+        ]
+      },
+
+      // ─────────────────────────────────────────────────────────────────
+      // BLOC 3 — Formes insidieuses de violences politiques
+      // ─────────────────────────────────────────────────────────────────
+      formesInsidieuses: {
+        title: "Exemples de violences politiques insidieuses au cours de l'histoire",
+        content: [
+          {
+            forme: "La surveillance comme violence préventive",
+            periode: "Second Empire (Napoléon III)",
+            detail: "Invention d'un système de surveillance politique systématique : mouchards, dossiers de police sur les opposants, contrôle des correspondances. L'effet de dissuasion est radical — quand on sait qu'on est surveillé, on s'autocensure. La violence n'a même pas besoin d'être exercée : sa potentialité suffit.",
+            continuite: "Les fichiers de renseignement politique existent toujours en France. La logique est identique, avec des outils numériques infiniment plus puissants."
+          },
+          {
+            forme: "La manipulation de l'information comme arme politique",
+            exemple: "L'affaire Dreyfus (1894–1906)",
+            detail: "Un officier innocent condamné sur la base de faux documents forgés par l'État-Major, avec la complicité des institutions judiciaires et militaires. Quand la vérité commence à émerger, l'appareil d'État produit de nouveaux faux, intimide les témoins et construit une campagne d'opinion. Émile Zola est poursuivi en justice pour sa lettre 'J'accuse' (L'Aurore, 13 janvier 1898).",
+            echo: "On retrouve ce même schéma dans l'affaire Benalla : faux témoignages identifiés, transmis au parquet, classés sans suite. La sophistication des outils change, la logique reste identique."
+          },
+          {
+            forme: "L'utilisation des crises comme vecteur d'expansion du pouvoir",
+            reference: "Naomi Klein, The Shock Doctrine (2007)",
+            detail: "Les crises — économiques, sécuritaires, sanitaires — sont utilisées comme prétexte pour accélérer des réformes qui n'auraient jamais pu passer en temps normal.",
+            exemples: [
+              "Les lois d'exception de 1793, adoptées sous la pression de la guerre",
+              "Le Patriot Act américain : 342 pages adoptées six semaines après le 11 septembre 2001, que quasiment aucun parlementaire n'avait lues",
+              "Les ordonnances Covid-19 : 30 ordonnances adoptées en mars 2020, dans l'opacité totale des conseils de défense à l'Élysée"
+            ],
+            lienProjet: "Le Projet demande la levée du secret défense sur les conseils de défense Covid-19 — parce que c'est là que les décisions ont été prises, loin de tout contrôle démocratique."
+          },
+          {
+            forme: "La disqualification des victimes comme mécanisme systémique",
+            detail: "Constante de l'histoire : avant de réprimer, il faut disqualifier. Les Communards sont des 'fous furieux', les grévistes des 'agitateurs', les Gilets jaunes des 'casseurs', les opposants au vaccin des 'complotistes'. Ce processus disqualifie moralement les victimes avant même que la répression n'ait lieu, rendant celle-ci acceptable — voire souhaitable — aux yeux de l'opinion.",
+            reference: "Violence symbolique au sens de Pierre Bourdieu : elle conditionne l'espace du possible, détermine qui peut parler et être entendu."
+          }
+        ]
+      },
+
+      // ─────────────────────────────────────────────────────────────────
+      // BLOC 4 — Violences politiques psychologiques
+      // ─────────────────────────────────────────────────────────────────
+      violencesPsychologiques: {
+        title: "Les violences politiques psychologiques : définition et mécanismes",
+        content: [
+          {
+            mecanisme: "Le gaslighting institutionnel",
+            origine: "Terme issu du film Gaslight (1944) : un mari manipule sa femme pour lui faire croire qu'elle perd la raison.",
+            definition: "Transposé au niveau politique : nier systématiquement des réalités documentées, faire douter les victimes de leur propre perception, renverser la charge de la preuve.",
+            exemples: [
+              "'Les LBD ne mutilent pas' — alors que 43 cas de blessures oculaires graves sont documentés sur la période Gilets jaunes",
+              "'Il n'y a pas de violences policières en France' — répété par des responsables politiques alors que l'IGPN elle-même a ouvert 401 enquêtes judiciaires",
+              "'Les commissions d'enquête fonctionnent' — alors que leurs recommandations sont systématiquement ignorées",
+              "Covid-19 : 'les masques ne servent à rien' (janvier 2020), puis 'il faut porter le masque' (mai 2020) — contradiction jamais assumée, jamais expliquée"
+            ],
+            caracteristique: "Le gaslighting institutionnel est systémique : il ne vient pas d'un individu mais d'un appareil coordonné (gouvernement, médias, experts institutionnels) qui produit une réalité alternative cohérente et soutenue dans la durée."
+          },
+          {
+            mecanisme: "Le chantage et la coercition",
+            formes: [
+              { type: "Coercition économique", detail: "Menace implicite ou explicite de perdre emploi, subventions, marchés publics pour toute organisation qui s'oppose trop frontalement. Associations, syndicats, médias dépendant de subventions publiques sont particulièrement vulnérables." },
+              { type: "Coercition judiciaire préventive", detail: "Ouverture d'enquêtes préliminaires sans intention nécessaire de poursuivre — suffisante pour déstabiliser un adversaire, l'obliger à se défendre, l'empêcher d'agir." },
+              { type: "Chantage à la réputation", detail: "Fuite d'informations judiciaires — illégale mais rarement sanctionnée — vers des médias complaisants, au moment stratégique." },
+              { type: "Coercition corporelle et soumission chimique", detail: "Octobre 2023 : le sénateur Joël Guerriau mis en examen pour avoir versé de la MDMA dans le verre de la députée Sandrine Josso lors d'un dîner. Illustre la violence chimique comme outil de mise sous emprise. Ce que produit cette forme de violence : honte, doute sur sa propre perception, peur de ne pas être crue — le silence qui suit n'est pas de la complicité, c'est une réponse de survie." }
+            ]
+          },
+          {
+            mecanisme: "L'abus institutionnel et la violence administrative",
+            detail: "La plus banale et la plus méconnue : l'exercice du pouvoir bureaucratique comme outil de contrôle et de punition.",
+            formes: [
+              "Le refus de traiter les dossiers dans les délais légaux",
+              "La multiplication des contrôles fiscaux, sanitaires, administratifs ciblant des opposants — légaux dans leur forme, politiques dans leur ciblage",
+              "La 'mort administrative' : suspendre une association en lui coupant ses subventions, sans jamais justifier cette décision devant une juridiction"
+            ],
+            lienProjet: "Le Projet propose une transparence absolue des agendas ministériels et une réduction des délais administratifs — parce que l'opacité est précisément ce qui permet l'arbitraire."
+          },
+          {
+            mecanisme: "La normalisation et l'habitude",
+            detail: "Le mécanisme psychologique le plus puissant : à force de répétition, l'inacceptable devient normal.",
+            reference: "Stanley Milgram, expériences sur l'obéissance à l'autorité (1963) : des individus ordinaires peuvent administrer ce qu'ils croient être des chocs électriques mortels simplement parce qu'une autorité institutionnelle le demande.",
+            paliers: "Ce qui était une exception devient la règle, ce qui était la règle devient la norme, ce qui était inimaginable devient envisageable. Le LBD40, utilisé pour la première fois en maintien de l'ordre en 2004, est aujourd'hui banal. Les gardes à vue préventives de masse, inimaginables sous la IVe République, sont aujourd'hui courantes."
+          }
+        ]
+      },
+
+      // ─────────────────────────────────────────────────────────────────
+      // BLOC 5 — Le mensonge systématique comme arme politique
+      // ─────────────────────────────────────────────────────────────────
+      mensongeSystematique: {
+        title: "« Tout va bien en France » : le mensonge systématique comme arme politique",
+        content: [
+          {
+            titre: "La genèse : 2005 comme point de bascule",
+            evenements: [
+              {
+                nom: "Le référendum sur le TCE (mai 2005)",
+                detail: "55% des Français votent Non. Réponse du système : faire passer le traité de Lisbonne par voie parlementaire en 2008, sans référendum. Premier grand mensonge systémique de la période : 'votre vote compte' — puis il ne compte pas si vous votez mal."
+              },
+              {
+                nom: "Les émeutes de novembre 2005",
+                detail: "Nicolas Sarkozy qualifie les émeutiers de 'racailles' à 'nettoyer au Kärcher' — pas un dérapage, une stratégie de langage testée et assumée, qui inaugure une ère où l'invective personnelle remplace le débat politique."
+              }
+            ],
+            continuite: "De 2005 à aujourd'hui : chaque crise est suivie non d'une remise en question, mais d'une intensification de la communication — plus d'éléments de langage, plus de novlangue, plus de déni."
+          },
+          {
+            titre: "La fabrique des éléments de langage",
+            detail: "Le mensonge cesse d'être individuel pour devenir industriel. Des formules coordonnées sont distribuées à l'ensemble des responsables pour qu'ils répondent à l'unisson. Quand dix ministres, quarante députés et vingt éditorialistes répètent la même formule dans la même semaine, elle prend la consistance d'une réalité — non parce qu'elle est vraie, mais parce qu'elle est omniprésente.",
+            exemples: [
+              { formule: "'Le quoi qu'il en coûte' (2020)", analyse: "Laisse entendre un effort solidaire exceptionnel — pendant que les contrats McKinsey se multiplient et que les conseils de défense décident dans l'opacité." },
+              { formule: "'En même temps'", analyse: "Figure rhétorique qui noie la contradiction dans une fausse synthèse : réformer les retraites ET être social, taxer les riches ET les exonérer, défendre la souveraineté ET signer des traités de libre-échange." },
+              { formule: "'Il n'y a pas d'alternative'", analyse: "Héritée du thatchérisme (TINA : There Is No Alternative). Transforme un choix politique en nécessité naturelle — la politique monétaire de la BCE, les règles budgétaires, la réforme des retraites deviennent indiscutables." },
+              { formule: "'Les fake news'", analyse: "Retournement sémantique : le pouvoir s'approprie une critique initialement dirigée contre lui pour la retourner contre ses opposants. Quiconque conteste le récit officiel devient vecteur de 'désinformation'." }
+            ]
+          },
+          {
+            titre: "Le parallélisme accusatoire",
+            definition: "Technique rhétorique : face à une accusation légitime, on ne répond pas sur le fond mais on retourne l'accusation contre son auteur.",
+            exemples: [
+              { sujet: "Dette publique", formule: "'C'est la gauche qui a creusé les déficits'" },
+              { sujet: "Violences policières", formule: "'Et les violences contre les policiers ?'" },
+              { sujet: "Pantouflage", formule: "'Tous les partis font ça'" }
+            ],
+            efficacite: "Exploite l'impartialité apparente des médias : pour montrer qu'ils ne prennent pas parti, les journalistes présentent 'les deux sons de cloche', ce qui donne au parallélisme une légitimité qu'il ne mérite pas."
+          },
+          {
+            titre: "La novlangue française",
+            reference: "Orwell, 1984 : la novlangue comme outil de contrôle par l'appauvrissement du langage — moins de mots, moins de nuances, moins de capacité à nommer ce qu'on vit.",
+            dynamiques: [
+              "Simplification du vocabulaire dans les programmes scolaires depuis les années 1980 : moins de mots appris, moins de capacité à nommer précisément et donc à contester.",
+              "Technocratisation : les réformes deviennent des 'plans de transformation', des 'réformes structurelles', des 'ajustements paramétriques'. La réforme des retraites devient un 'rééquilibrage du système par répartition'.",
+              "Euphémisation permanente : plus de 'licenciements' mais des 'plans de sauvegarde de l'emploi'. Plus de 'coupes' dans les budgets hospitaliers mais une 'rationalisation des dépenses'. Plus de 'casse' des services publics mais leur 'modernisation'.",
+              "Réduction du temps de parole : formats en 30 secondes, tweets de 280 caractères, extraits de 15 secondes — structurellement incompatible avec la complexité des sujets, favorise mécaniquement le slogan sur l'argument."
+            ]
+          },
+          {
+            titre: "La censure douce : ce qui ne se dit pas",
+            formes: [
+              { type: "Censure par sélection éditoriale", detail: "La concentration des médias (Bolloré, Arnault, Saadé, Niel, Drahi, Kretinsky) produit non pas une censure par décret, mais une censure par choix éditorial. Certains sujets ne sont pas censurés : ils ne sont simplement pas traités, ou rendus illisibles." },
+              { type: "Censure algorithmique", detail: "Sur les plateformes numériques, des sujets peuvent être 'démonétisés', 'shadowbannés', déprioritisés dans les algorithmes — sans décision explicite, sans recours possible. Le Projet est un exemple documenté de cette censure : comptes désactivés, vidéos retirées, sans justification claire." },
+              { type: "Censure par l'agenda", detail: "Les médias choisissent ce dont on parle et comment. Une réforme impopulaire peut être votée pendant une semaine saturée par un fait divers ou un événement sportif — pas un complot, un mécanisme systémique qui produit les mêmes effets." },
+              { type: "Auto-censure des journalistes", detail: "Dans un paysage médiatique concentré, les journalistes savent ce qu'on peut et ne peut pas écrire. Les rédactions sont des écosystèmes avec des règles implicites." }
+            ]
+          },
+          {
+            titre: "Quelques mensonges d'État documentés depuis 2005",
+            exemples: [
+              { affirmation: "'Le système de santé français est le meilleur du monde'", realite: "Le nombre de lits d'hôpitaux passe de 5,7 pour 1 000 habitants en 2000 à 3,2 en 2022 (OCDE). Les déserts médicaux touchent 8% du territoire." },
+              { affirmation: "'La réforme des retraites est nécessaire pour sauver le système' (2023)", realite: "Le rapport du Conseil d'orientation des retraites lui-même (2022) indiquait que le système était globalement à l'équilibre à horizon 2032 dans plusieurs scénarios." },
+              { affirmation: "'Les masques ne servent à rien' (Buzyn, janvier 2020)", realite: "→ 'Il faut porter le masque' (Castex, mai 2020). Contradiction jamais assumée, construite sur la pénurie de stocks que l'État avait lui-même laissé se vider." },
+              { affirmation: "'La France est une démocratie exemplaire'", realite: "RSF classe la France au 21e rang de la liberté de la presse en 2024. Amnesty International documente chaque année des violations des droits humains lors des manifestations." },
+              { affirmation: "'Nous n'avons rien à cacher' (sur les conseils de défense Covid)", realite: "La demande de levée du secret défense, portée par le Projet, n'a toujours pas abouti." }
+            ]
+          }
+        ]
+      },
+
+      // ─────────────────────────────────────────────────────────────────
+      // BLOC 6 — Évolution dans le temps long
+      // ─────────────────────────────────────────────────────────────────
+      evolutionTempsLong: {
+        title: "Évolution des violences politiques depuis les révolutions : France, Europe, Monde",
+        content: [
+          {
+            periode: "XIXe siècle : de la violence militaire à la violence policière",
+            detail: "Grande transformation : passage de la répression militaire occasionnelle à la surveillance et répression policière permanentes.",
+            comparaison: {
+              france: "1800 (refondation préfecture de police), 1848, 1871 — modèle issu de la gendarmerie napoléonienne.",
+              angleterre: "Massacre de Peterloo (1819) : cavalerie contre manifestants pour le droit de vote. Choc tel que l'État britannique choisit de développer une police civile (Metropolitan Police Act, 1829) — origine du 'bobby', police de proximité sans armes à feu. Un modèle radicalement différent du modèle français, aux conséquences directes sur les cultures policières respectives aujourd'hui."
+            }
+          },
+          {
+            periode: "XXe siècle : l'industrialisation de la violence politique",
+            elements: [
+              { contexte: "Régimes totalitaires", detail: "Développement d'appareils de violence d'État inédits : Gestapo, NKVD soviétique, Stasi est-allemande. Ce qui est nouveau : la systématisation — surveillance de masse, fichiers, délations organisées, torture institutionnalisée." },
+              { contexte: "Démocraties libérales", detail: "Formes plus subtiles : loi McCarthyite aux États-Unis (1950-1954), destruction de carrières par simple association. En France, les 'renseignements généraux' surveillent syndicats, partis politiques, intellectuels." }
+            ]
+          },
+          {
+            periode: "Fin du XXe siècle : la violence psychologique devient dominante",
+            detail: "La violence physique directe devient de moins en moins acceptable politiquement — sous la pression du droit international des droits humains, de la montée des médias, de la société civile. Les appareils d'État s'adaptent.",
+            mutations: [
+              "En France, les 'affaires' des années 1990 montrent que la violence est de plus en plus institutionnelle et financière : l'État est capturé, mais la violence ne s'exerce plus avec des matraques — elle s'exerce avec des nominations, des marchés publics, des conflits d'intérêts.",
+              "Émergence de la 'communication politique' comme outil de contrôle : cabinets de conseil, spin doctors, éléments de langage — professionnalisation du gaslighting institutionnel."
+            ]
+          },
+          {
+            periode: "XXIe siècle : surveillance numérique et retour de la violence physique",
+            detail: "Combinaison du pire des deux mondes : sophistication des outils psychologiques hérités du XXe siècle et retour assumé de la violence physique.",
+            elements: [
+              { evenement: "Scandale Snowden (2013)", detail: "Révèle que les États-Unis surveillent massivement leurs propres citoyens et leurs alliés. La NSA collecte des métadonnées sur l'ensemble des communications mondiales — le Panoptique de Bentham réalisé à l'échelle planétaire." },
+              { evenement: "Lois antiterroristes post-2015", detail: "Élargissent considérablement les pouvoirs de surveillance en Europe, souvent au-delà de ce que la lutte contre le terrorisme justifie. En France, la loi Renseignement de 2015 légalise la surveillance de masse." },
+              { evenement: "Algorithmes de modération", detail: "Deviennent des outils de contrôle de l'information avec une opacité totale sur leurs critères. Forme de violence symbolique exercée non plus par l'État directement, mais par des entreprises privées en interaction avec lui." },
+              { evenement: "Retour de la répression physique", detail: "Gilets jaunes en France, manifestations BLM aux États-Unis, Hong Kong — dans tous ces cas, les États démocratiques utilisent des niveaux de force que la communauté internationale avait théoriquement condamnés." }
+            ]
+          }
+        ]
+      },
+
+      // ─────────────────────────────────────────────────────────────────
+      // BLOC 7 — Conclusion
+      // ─────────────────────────────────────────────────────────────────
+      conclusion: {
+        title: "Conclusion",
+        content: {
+          bilan: "On a remonté un fil long de deux siècles. Les violences politiques qu'on documente aujourd'hui ne sont pas des accidents ou des dérapages, mais le produit d'une construction historique délibérée, qui a perfectionné ses outils à chaque génération.",
+          constante: "De la Terreur révolutionnaire à la surveillance numérique, de la répression de la Commune aux LBD des Gilets jaunes — la logique est constante : protéger l'ordre établi contre ceux qui le contestent, en utilisant l'ensemble des formes de violence disponibles (physique, judiciaire, institutionnelle, économique, symbolique, psychologique).",
+          enjeu: "Ce qui change, c'est la sophistication. Et c'est précisément parce que ces formes sont devenues plus invisibles, plus difficiles à nommer, qu'il est important de mettre des mots sur ces mécanismes — car commencer à les comprendre, c'est aussi commencer à les démanteler.",
+          anglesNonCouvertsByProjet: [
+            "Le gaslighting institutionnel : comment le Projet propose-t-il de contrer la production industrielle du mensonge politique ?",
+            "La surveillance numérique et les algorithmes de modération : angle peu traité dans les mesures actuelles.",
+            "La responsabilité des communicants et spin doctors dans la fabrique des éléments de langage.",
+            "La violence psychologique systématique : peut-on légiférer contre le gaslighting institutionnel ?"
+          ],
+          prochaine: "Session 9 : les mesures du Projet face aux violences politiques — connecter les outils proposés avec les réalités documentées ce soir."
+        }
+      }
+
+    }
+  }
+  
   // ═══════════════════════════════════════════════════════════════════════
-  // session8: {
-  //   title: "Aux origines des violences politiques",
-  //   date: "4 mars 2026",
+  // SESSION 9 — Les mesures du Projet (11 mars 2026) — À VENIR
+  // ═══════════════════════════════════════════════════════════════════════
+  // session9: {
+  //   title: "Les mesures du Projet",
+  //   date: "11 mars 2026",
   //   duration: "2h",
   //   sections: {
   //     // À compléter après la session
