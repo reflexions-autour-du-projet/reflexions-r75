@@ -275,6 +275,133 @@ const dossierSyntheseData = {
   ]
 };
 
+const dossierSynthesePantouflageData = {
+  themes: [
+    { id: 'origines', title: 'Origines historiques', icon: History, color: '#FFEBC0', summary: 'École Polytechnique, Napoléon et la naissance du pantouflage',
+      details: [
+        '"La botte" (servir l\'État 10 ans) vs "la pantoufle" (partir vers le privé) — argot polytechnicien depuis 1814',
+        'Napoléon militarise l\'X en 1814 : engagement décennal, uniforme, casernes',
+        'Aujourd\'hui : ~31 000€ à rembourser si l\'on ne sert pas l\'État pendant 10 ans',
+        'Faille réglementaire 2000-2015 : exemption de fait du remboursement pendant 15 ans',
+        '"Corpsards" (grands corps de l\'État) vs "non-corpsards" (privé) — la distinction perdure'
+      ],
+      questions: [
+        'Comment expliquer que des trajectoires aussi similaires se reproduisent dans des contextes nationaux si différents ?',
+        'Le système crée-t-il intentionnellement la confusion entre intérêt général et intérêts particuliers ?',
+        'La faille 2000-2015 était-elle délibérée ?'
+      ]
+    },
+    { id: 'france', title: 'Pantouflage en France', icon: Landmark, color: '#EBC471', summary: 'Depuis 2017 : +40 conseillers ministériels — du jamais vu',
+      details: [
+        'Macron : ENA → Inspecteur des finances → Rothschild → Ministre → Président',
+        'Alexis Kohler : mis en examen pour "prise illégale d\'intérêts" → DG adjoint Société Générale (oct. 2024)',
+        'Djebbari : retoqué par la HATVP pour rejoindre CMA-CGM — "risques déontologiques substantiels"',
+        'Muriel Pénicaud : réforme la formation professionnelle → conseil d\'administration de Galileo (bénéficiaire direct)',
+        'Éléonore Leprettre : ex-cheffe de cabinet Agriculture → Phytéis (lobby agrochimique)',
+        'Depuis 2017, jamais autant de conseillers ministériels n\'avaient quitté le public pour le privé'
+      ],
+      questions: [
+        'La HATVP est-elle suffisamment indépendante et dotée de moyens pour contrôler les passages ?',
+        'Faut-il créer un casier déontologique public pour tout haut fonctionnaire ?',
+        'Comment traiter les cas où la HATVP valide malgré des conflits d\'intérêts évidents ?'
+      ]
+    },
+    { id: 'govtSachs', title: '"Government Sachs"', icon: Globe, color: '#D9A22C', summary: '88% des lobbyistes de Goldman avaient travaillé pour le gouvernement fédéral US (2016)',
+      details: [
+        'Robert Rubin (co-président GS) → Secrétaire au Trésor sous Clinton',
+        'Henry Paulson (PDG GS) → Secrétaire au Trésor sous Bush, supervise le plan TARP dont GS reçoit 12,9 Mds$',
+        'Mario Draghi (VP GS Europe) → Banque d\'Italie → BCE → Premier ministre italien',
+        'Mark Carney (ancien GS) → Banque du Canada → Banque d\'Angleterre → Premier ministre canadien',
+        'Rishi Sunak (ancien GS) → Premier ministre britannique (2022-2024)',
+        '50% des ex-commissaires européens et 30% des ex-eurodéputés travaillent pour des lobbyistes (Transparency International)'
+      ],
+      questions: [
+        'S\'agit-il de coïncidences ou d\'un phénomène plus structuré ?',
+        'Comment expliquer la reproduction de ce schéma dans des contextes nationaux si différents ?',
+        'Faut-il interdire à d\'anciens banquiers d\'affaires d\'exercer des fonctions de régulation financière ?'
+      ]
+    },
+    { id: 'youngLeaders', title: 'Programmes Young Leaders', icon: Users, color: '#B08B3D', summary: 'French-American Foundation (1981) et WEF Young Global Leaders (1992) — fabrique de réseaux',
+      details: [
+        'Promotion 1993 YGL : Merkel, Blair, Sarkozy, Orbán, Barroso, Gates — 10 ans après, ils dirigeaient leurs pays',
+        'Macron : FAF Young Leader 2012 → Président 5 ans après ; YGL WEF 2016 → Président 1 an après',
+        'Klaus Schwab (Harvard, 2017) : "Nous pénétrons les cabinets des gouvernements à travers le monde"',
+        'Artistes et célébrités comme relais d\'influence : Bono (1993), Shakira (2008), DiCaprio (2008) — lien jamais mentionné dans les médias',
+        'Héritiers sélectionnés : Chelsea Clinton (2013), Ivanka Trump (2015), Nathaniel Rothschild (2005), Alexander Soros (2018)',
+        'Gabriel Attal : YGL 2020 → Premier ministre 2024'
+      ],
+      questions: [
+        'Ces programmes créent-ils, intentionnellement ou non, une classe dirigeante supranationale ?',
+        'Faut-il exiger la transparence sur la participation à ces programmes pour tout candidat à une fonction publique ?',
+        'La sélection précoce des "talents" constitue-t-elle un contournement de la démocratie ?'
+      ]
+    },
+    { id: 'reseaux', title: 'Réseaux transnationaux', icon: Share2, color: '#A0751A', summary: 'Bilderberg, Commission Trilatérale, Giving Pledge — opacité institutionnalisée',
+      details: [
+        'Bilderberg (depuis 1954) : 120-150 personnalités, hôtel secret, aucun CR officiel, aucun journaliste',
+        'Règle de Chatham House : pas de révélation d\'identité — sanction sociale (exclusion du réseau), pas juridique',
+        'Giving Pledge : signataires originaux sont devenus 166% plus riches depuis leur signature (IPS, 2025)',
+        '~80% des dons identifiables vont vers des fondations privées contrôlées par les donateurs eux-mêmes',
+        'Elon Musk : YGL 2008 retiré de la liste officielle — critique virulente du WEF mais interviewé à Davos 2026 par Larry Fink (BlackRock)',
+        'Ces forums fonctionneraient moins comme espaces de réflexion que comme distributeurs d\'éléments de langage'
+      ],
+      questions: [
+        'Comment encadrer la participation à des réseaux transnationaux non démocratiques comme Bilderberg ou la Commission Trilatérale ?',
+        'S\'agit-il d\'une opposition contrôlée ou de vrais dissidents quand des membres critiquent publiquement ces réseaux ?',
+        'Comment garantir la transparence sur le financement de ces programmes — qui paie pour former nos dirigeants ?'
+      ]
+    },
+    { id: 'montchalin', title: 'Cas Montchalin & Verrouillage 2027', icon: Lock, color: '#835C07', summary: 'Pantouflage triangulaire : privé → public → institution de contrôle',
+      details: [
+        'HEC/Harvard → BNP/AXA (lobbying) → députée LREM → Young Leader FAF 2018 → YGL WEF 2021 → ministre → Cour des comptes (irrévocable, potentiellement 28 ans)',
+        'Conflit d\'intérêts direct dès avril : elle évaluera le budget 2025 qu\'elle a elle-même préparé comme ministre des Comptes publics',
+        'Son mari : partner au BCG, principal bénéficiaire des marchés publics de conseil que la Cour est censée contrôler',
+        'Richard Ferrand au Conseil constitutionnel jusqu\'en 2034 — validé à une voix près, 16 députés RN se sont abstenus',
+        'Villeroy de Galhau démissionne de la Banque de France le même jour → Macron nomme le successeur avant 2027',
+        '4 institutions majeures de la République verrouillées dans la même fenêtre temporelle, toutes au-delà de 2027'
+      ],
+      questions: [
+        'Faut-il interdire toute nomination aux postes clés dans les 12-18 derniers mois d\'un mandat présidentiel ?',
+        'L\'irrévocabilité des postes institutionnels est-elle compatible avec la démocratie ?',
+        'Le pantouflage triangulaire (privé → public → institution de contrôle) est-il couvert par les mesures du Projet ?'
+      ]
+    },
+    { id: 'mesures', title: 'Mesures du Projet', icon: Scale, color: '#523F02', summary: 'Carence de 5 ans, démission définitive, transparence décennale, réforme des grands corps',
+      details: [
+        'Démission définitive du corps : fin de la "disponibilité" qui permet de partir puis revenir avec tous ses avantages',
+        'Carence de 5 ans (vs 3 actuellement) — avec Montchalin, elle n\'aurait pu prendre ce poste avant 2031',
+        'Congé républicain de 6 mois pour les salariés du privé : rendre la politique plus accessible pour les citoyens ordinaires',
+        'Transparence décennale : passer d\'une "photo" à un "film" — voir les trajectoires, les enrichissements, les coïncidences',
+        'Grands corps limités à 10 ans (au lieu d\'à vie), fusion ENM/INET/INSP, fusion AFA/MICAF/HATVP',
+        'La stratégie de verrouillage avant 2027 aurait été structurellement impossible avec ces mesures'
+      ],
+      questions: [
+        '5 ans de carence est-ce suffisant face à des réseaux qui opèrent sur des décennies ?',
+        'Peut-on réguler un système quand les régulateurs en sont issus ?',
+        'Le RIC et les citoyens tirés au sort suffisent-ils comme contre-pouvoir ?',
+        'Faut-il différencier les délais selon le niveau de responsabilité (5 ans député, 7-10 ans ministre) ?'
+      ]
+    }
+  ],
+  contacts: [
+    { name: 'HATVP', desc: 'Haute Autorité pour la Transparence de la Vie Publique', status: 'À réformer' },
+    { name: 'Transparency International', desc: 'Rapports sur le lobbying et le pantouflage européen', status: 'Ressource' },
+    { name: 'Legifrance', desc: 'Textes de loi et décrets sur les conflits d\'intérêts', status: 'À surveiller' },
+    { name: 'Europa Lex', desc: 'Directives et textes européens en discussion', status: 'À surveiller' },
+    { name: 'Institute for Policy Studies', desc: 'Rapport 2025 sur le Giving Pledge et les ultra-riches', status: 'Ressource' },
+    { name: 'Internet Archive', desc: 'Archives des listes YGL et Bilderberg effacées', status: 'Outil' }
+  ],
+  idees: [
+    'Déclaration obligatoire d\'appartenance aux programmes Young Leaders / Bilderberg pour tout candidat ou haut fonctionnaire',
+    'Interdire toute nomination aux postes institutionnels clés dans les 12-18 derniers mois d\'un mandat présidentiel',
+    'Mandats limités à 10 ans maximum pour tous les postes à la tête des institutions (Cour des comptes, Conseil d\'État, Banque de France, Conseil constitutionnel)',
+    'Approbation parlementaire renforcée : majorité simple pour valider (et non 3/5e pour bloquer)',
+    'Registre public des trajectoires des hauts fonctionnaires — accessible et lisible par tous',
+    'Transparence des agendas ministériels pour rendre visibles les contacts avec les réseaux d\'influence',
+    'Documenter le "pantouflage triangulaire" (privé → public → institution de contrôle) comme catégorie juridique spécifique'
+  ]
+};
+
 const App = () => {
   // ═══════════════════════════════════════════════════════════════════════════
   // ÉTATS
@@ -968,8 +1095,8 @@ const App = () => {
           ))}
         </div>
 
-        {/* Dossier de synthèse (médias uniquement) */}
-        {currentTheme === 'medias' && (
+        {/* Dossier de synthèse (médias et pantouflage) */}
+        {(currentTheme === 'medias' || currentTheme === 'pantouflage') && (
           <div style={{ marginTop: '32px' }}>
             <GlassCard
               onClick={() => setShowDossierSynthese(true)}
@@ -989,7 +1116,7 @@ const App = () => {
                 fontFamily: titleFont,
                 fontSize: '11px',
                 color: colors.primary
-              }}>Sessions #001 → #003</div>
+              }}>{currentTheme === 'medias' ? 'Sessions #001 → #003' : 'Sessions #004 → #006'}</div>
             </GlassCard>
           </div>
         )}
@@ -1154,7 +1281,14 @@ const App = () => {
   // ═══════════════════════════════════════════════════════════════════════════
   // RENDU - DOSSIER SYNTHÈSE
   // ═══════════════════════════════════════════════════════════════════════════
-  const renderDossierSynthese = () => (
+  const renderDossierSynthese = () => {
+    const isPantouflage = currentTheme === 'pantouflage';
+    const synthData = isPantouflage ? dossierSynthesePantouflageData : dossierSyntheseData;
+    const synthTitle = isPantouflage ? 'Le pantouflage & les réseaux d\'élites' : 'Expropriation des médias oligarchiques';
+    const synthSubtitle = isPantouflage ? 'Synthèse des sessions #004, #005, #006 — Ruche 75' : 'Synthèse des sessions #001, #002, #003 — Ruche 75';
+    const actionsTitle = isPantouflage ? 'Ressources & références' : 'Modèles à explorer';
+
+    return (
     <div style={{ minHeight: '100vh', padding: '24px', maxWidth: '1000px', margin: '0 auto' }}>
       {/* Bouton retour */}
       <button
@@ -1200,8 +1334,8 @@ const App = () => {
           fontSize: `clamp(22px, 5vw, ${fs.large + 8}px)`,
           color: colors.primary,
           marginBottom: '8px'
-        }}>Expropriation des médias oligarchiques</h1>
-        <p style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>Synthèse des sessions #001, #002, #003 — Ruche 75</p>
+        }}>{synthTitle}</h1>
+        <p style={{ fontSize: fs.base + 'px', color: colors.text, fontFamily: textFont }}>{synthSubtitle}</p>
       </header>
 
       {/* Navigation tabs */}
@@ -1259,7 +1393,7 @@ const App = () => {
             Cliquez sur "Thèmes" pour explorer chaque sujet en détail
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', justifyContent: 'center' }}>
-            {dossierSyntheseData.themes.map(theme => {
+            {synthData.themes.map(theme => {
               const IconComp = theme.icon;
               return (
                 <div
@@ -1289,7 +1423,7 @@ const App = () => {
       {/* Vue Thèmes */}
       {syntheseView === 'themes' && (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '16px', marginBottom: '24px' }}>
-          {dossierSyntheseData.themes.map(theme => {
+          {synthData.themes.map(theme => {
             const IconComp = theme.icon;
             const themeColor = theme.color;
             const isExpanded = activeSyntheseTheme === theme.id;
@@ -1375,10 +1509,10 @@ const App = () => {
       {syntheseView === 'actions' && (
         <GlassCard hover={false}>
           <h2 style={{ fontFamily: titleFont, fontSize: (fs.title - 4) + 'px', color: colors.primary, marginBottom: '20px' }}>
-            Modèles à explorer
+            {actionsTitle}
           </h2>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '12px', marginBottom: '24px' }}>
-            {dossierSyntheseData.contacts.map((c, i) => (
+            {synthData.contacts.map((c, i) => (
               <div key={i} style={{
                 display: 'flex',
                 alignItems: 'center',
@@ -1408,7 +1542,7 @@ const App = () => {
             Idées à creuser
           </h3>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            {dossierSyntheseData.idees.map((idee, i) => (
+            {synthData.idees.map((idee, i) => (
               <div key={i} style={{
                 background: colors.buttonBg,
                 borderLeft: `3px solid ${colors.primary}`,
@@ -1423,7 +1557,8 @@ const App = () => {
         </GlassCard>
       )}
     </div>
-  );
+    );
+  };
 
   // ═══════════════════════════════════════════════════════════════════════════
   // RENDU - CONTENU DE SECTION
