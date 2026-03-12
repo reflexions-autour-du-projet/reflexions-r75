@@ -27,8 +27,8 @@
 // └─────────────────────────────────────────────────────────────────────────┘
 
 export const prochaineSession = {
-  titre: "Session 8 : Aux origines des violences politiques",
-  date: "Mercredi 04 mars à 18h",
+  titre: "Session 9 : Les mesures du Projet",
+  date: "Jeudi 12 mars à 18h",
   theme: "violencesPolitiques"
 };
 
@@ -46,7 +46,7 @@ export const sessionsConfig = {
   violencesPolitiques: [
     { id: 'session7', titre: "Commissions d'enquête et violences politiques", date: "25/02", available: true },
     { id: 'session8', titre: "Aux origines des violences politiques", date: "04/03", available: true },
-    { id: 'session9', titre: "Les mesures du Projet", date: "11/03", available: false },
+    { id: 'session9', titre: "Les mesures du Projet", date: "12/03", available: false },
   ]
 };
 
