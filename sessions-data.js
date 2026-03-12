@@ -28,7 +28,7 @@
 
 export const prochaineSession = {
   titre: "Session 9 : Les mesures du Projet",
-  date: "Jeudi 12 Mars à 18h",
+  date: "Jeudi 12 Mars à 18h15",
   theme: "violencesPolitiques"
 };
 
