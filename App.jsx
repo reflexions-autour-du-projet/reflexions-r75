@@ -7,7 +7,7 @@ import {
 } from 'lucide-react';
 import { mediasOligarchiques, pantouflage, violencesPolitiques, sessionsConfig, prochaineSession } from './sessions-data.js';
 
-const DISCORD_FORUM_URL = "https://discord.com/channels/1426932365896454337/1462537887592743096";
+const DISCORD_FORUM_URL = "https://discord.com/channels/1470033751726620704/1472934336004227251";
 
 const sessionsSyntheses = {
   session1: {
