@@ -163,6 +163,33 @@ const sessionsSyntheses = {
       "Étudier la coercition économique sur les associations dépendant de subventions publiques"
     ]
   },
+  session9: {
+    titre: "Synthèse — Session #009", theme: 'violencesPolitiques',
+    grandesIdees: [
+      "Le Projet répond à chacun des 5 niveaux de violence : physique, judiciaire, institutionnelle, économique et symbolique — avec des mesures concrètes et précises",
+      "Face à la violence physique : dissolution des BRAV-M, suppression des BAC, corps d'inspection indépendant, loi d'amnistie pour les Gilets jaunes (3 200 condamnés, 40% de prison ferme)",
+      "Face à la violence judiciaire : Tribunal populaire temporaire rétroactif, Comité de poursuites ciblant la chaîne de commandement, transformation de la CJR en haute cour citoyenne",
+      "Face à la violence institutionnelle : RIC en toutes matières, mandats révocables, transparence absolue des agendas ministériels, levée du secret défense sur les conseils Covid",
+      "Le non-lieu CJR de juillet 2025 sur Covid est l'illustration la plus récente de l'impunité de facto que le Projet cherche à démanteler",
+      "Angles morts du Projet : gaslighting institutionnel non défini juridiquement, surveillance algorithmique privée, responsabilité des communicants",
+      "Outils citoyens : test du gaslighting en 3 questions, repérage du parallélisme accusatoire, traduction systématique de la novlangue",
+      "Question centrale : peut-on démanteler un système de l'intérieur quand ses gardiens sont ceux qu'il faudrait contrôler ?",
+      "À partir de la prochaine session : format YouTube pour les présentations, sessions Discord inchangées"
+    ],
+    questionsOuvertes: [
+      "Les outils du Projet supposent une volonté politique initiale — comment éviter leur colonisation par les logiques qu'ils démantèlent ?",
+      "Le Tribunal populaire est prévu pour dix ans. Est-ce suffisant pour traiter le stock d'impunité accumulé ?",
+      "Faudrait-il un cadre de responsabilité civile pour la production délibérée de désinformation institutionnelle ?",
+      "La media literacy dès l'école primaire (modèle finlandais) est-elle la piste la plus structurante sur le long terme ?",
+      "La redéfinition des commissions d'enquête parlementaires est-elle nécessaire en complément du Tribunal populaire ?"
+    ],
+    pistesAction: [
+      "Créer un Observatoire citoyen indépendant des violences politiques avec mandat permanent et protection juridique",
+      "Proposer une déclaration obligatoire d'intérêts pour les communicants rémunérés sur fonds publics",
+      "Documenter les contradictions d'État (masques, retraites, gestion Covid) comme dossier de plaidoyer public",
+      "Produire les prochaines sessions en format YouTube pour massifier la diffusion"
+    ]
+  },
   session6: {
     titre: "Synthèse — Session #006", theme: 'pantouflage',
     grandesIdees: [
@@ -215,7 +242,7 @@ const sessionsHistorique = {
   violencesPolitiques: [
     { id: 'session7', numero: '007', titre: "Commissions d'enquête et violences politiques", date: '25/02/2026', disponible: true },
     { id: 'session8', numero: '008', titre: "Aux origines des violences politiques", date: '04/03/2026', disponible: true },
-    { id: 'session9', numero: '009', titre: "Les mesures du Projet", date: '11/03/2026', disponible: false },
+    { id: 'session9', numero: '009', titre: "Les mesures du Projet", date: '12/03/2026', disponible: true },
   ]
 };
 
@@ -3300,6 +3327,190 @@ const App = () => {
                   <div key={i} style={{ background: 'rgba(158,135,110,0.1)', border: '1px solid rgba(158,135,110,0.2)', borderRadius: '10px', padding: '10px 14px', fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{a}</div>
                 ))}
               </div>
+            </div>
+          )}
+          {item.prochaine && (
+            <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '14px 16px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '4px' }}>📅 Prochaine session</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{item.prochaine}</div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ─── SESSION 9 : mesuresParViolence item ───
+    // { violence, mesures[], connexionActualite, anglesMorts[], intro? }
+    if (item.violence && item.mesures) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ background: 'linear-gradient(135deg, rgba(239,68,68,0.12) 0%, transparent 100%)', borderLeft: '4px solid #ef4444', borderRadius: '0 16px 16px 0', padding: '16px 20px' }}>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#ef4444', marginBottom: item.intro ? '8px' : '0' }}>{item.violence}</div>
+            {item.intro && <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.7, fontFamily: textFont }}>{item.intro}</div>}
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            {item.mesures.map((m, i) => (
+              <div key={i} style={{ background: 'rgba(68,112,29,0.1)', borderLeft: '3px solid #44701D', borderRadius: '0 10px 10px 0', padding: '12px 16px', fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.5, fontFamily: textFont }}>{m}</div>
+            ))}
+          </div>
+          {item.connexionActualite && (
+            <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '14px 16px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>📌 Connexion avec l'actualité</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.connexionActualite}</div>
+            </div>
+          )}
+          {item.anglesMorts && Array.isArray(item.anglesMorts) && item.anglesMorts.length > 0 && (
+            <div>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#9E876E', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <HelpCircle size={16} color="#9E876E" /> Angles morts
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                {item.anglesMorts.map((a, i) => (
+                  <div key={i} style={{ background: 'rgba(158,135,110,0.1)', border: '1px solid rgba(158,135,110,0.2)', borderRadius: '10px', padding: '10px 14px', fontSize: (fs.base - 1) + 'px', color: colors.text, fontFamily: textFont }}>{a}</div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ─── SESSION 9 : anglesMorts item (blind spots section) ───
+    // { angle, probleme, question?, precedents?, modeles?, definition?, lienProjet?, proposition?, enjeu? }
+    if (item.angle && item.probleme) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          <div style={{ background: 'rgba(158,135,110,0.12)', borderLeft: '4px solid #9E876E', borderRadius: '0 16px 16px 0', padding: '16px 20px' }}>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#9E876E' }}>{item.angle}</div>
+          </div>
+          <div style={{ background: 'rgba(239,68,68,0.08)', borderLeft: '3px solid #ef4444', borderRadius: '0 10px 10px 0', padding: '12px 16px', fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.probleme}</div>
+          {item.question && typeof item.question === 'string' && (
+            <div style={{ background: 'rgba(238,194,29,0.08)', borderRadius: '12px', padding: '14px 16px', fontSize: (fs.base - 1) + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.question}</div>
+          )}
+          {item.precedents && item.precedents.map((p, i) => (
+            <div key={i} style={{ background: colors.buttonBg, borderRadius: '8px', padding: '10px 14px', fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>{p}</div>
+          ))}
+          {item.modeles && item.modeles.map((m, i) => (
+            <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '14px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{m.pays}</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{m.detail}</div>
+            </div>
+          ))}
+          {item.definition && typeof item.definition === 'object' && item.definition.terme && (
+            <div style={{ background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)', borderRadius: '12px', padding: '16px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#3b82f6', marginBottom: '10px' }}>{item.definition.terme}</div>
+              {item.definition.capacites && item.definition.capacites.map((c, i) => (
+                <div key={i} style={{ background: 'rgba(59,130,246,0.1)', borderLeft: '3px solid #3b82f6', borderRadius: '0 8px 8px 0', padding: '8px 12px', fontSize: (fs.base - 2) + 'px', color: colors.text, marginBottom: '4px', fontFamily: textFont }}>{c}</div>
+              ))}
+              {item.definition.exemple && <div style={{ marginTop: '10px', fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontStyle: 'italic', fontFamily: textFont }}>{item.definition.exemple}</div>}
+            </div>
+          )}
+          {item.proposition && <div style={{ background: 'rgba(68,112,29,0.12)', border: '1px solid rgba(68,112,29,0.25)', borderRadius: '12px', padding: '14px 16px', fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.proposition}</div>}
+          {item.enjeu && <div style={{ background: 'rgba(238,194,29,0.08)', borderRadius: '10px', padding: '12px 16px', fontSize: (fs.base - 1) + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.enjeu}</div>}
+          {item.lienProjet && <div style={{ background: colors.buttonBg, borderRadius: '8px', padding: '10px 14px', fontSize: (fs.base - 2) + 'px', color: colors.textMuted, display: 'flex', alignItems: 'flex-start', gap: '8px', fontFamily: textFont }}><FileText size={14} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />{item.lienProjet}</div>}
+        </div>
+      );
+    }
+
+    // ─── SESSION 9 : outilsCitoyens item ───
+    // { outil, intro?, methode?, questions[]?, exemples[]({novlangue,traduction})?, enjeu?, probleme?, proposition?, modeles?, definition?, lienProjet?, precedents? }
+    if (item.outil) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+          <div style={{ background: 'linear-gradient(135deg, rgba(59,130,246,0.12) 0%, transparent 100%)', borderLeft: '4px solid #3b82f6', borderRadius: '0 16px 16px 0', padding: '16px 20px' }}>
+            <div style={{ fontFamily: titleFont, fontSize: fs.base + 'px', color: '#3b82f6' }}>{item.outil}</div>
+          </div>
+          {item.intro && <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.7, fontFamily: textFont }}>{item.intro}</div>}
+          {item.probleme && <div style={{ background: 'rgba(239,68,68,0.08)', borderLeft: '3px solid #ef4444', borderRadius: '0 10px 10px 0', padding: '12px 16px', fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.probleme}</div>}
+          {item.methode && <div style={{ background: colors.buttonBg, borderRadius: '12px', padding: '14px 16px', fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.7, fontFamily: textFont }}>{item.methode}</div>}
+          {item.questions && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {item.questions.map((q, i) => (
+                <div key={i} style={{ background: colors.buttonBg, borderLeft: '3px solid #3b82f6', borderRadius: '0 10px 10px 0', padding: '12px 16px', fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.5, fontFamily: textFont }}>{q}</div>
+              ))}
+            </div>
+          )}
+          {item.exemples && item.exemples.length > 0 && item.exemples[0].novlangue && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {item.exemples.map((ex, i) => (
+                <div key={i} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px' }}>
+                  <div style={{ background: 'rgba(239,68,68,0.08)', borderRadius: '10px', padding: '10px 14px', fontSize: (fs.base - 1) + 'px', color: '#ef4444', fontStyle: 'italic', fontFamily: textFont }}>{ex.novlangue}</div>
+                  <div style={{ background: 'rgba(68,112,29,0.1)', borderRadius: '10px', padding: '10px 14px', fontSize: (fs.base - 1) + 'px', color: '#44701D', fontFamily: textFont }}>→ {ex.traduction}</div>
+                </div>
+              ))}
+            </div>
+          )}
+          {item.precedents && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              {item.precedents.map((p, i) => (
+                <div key={i} style={{ background: colors.buttonBg, borderRadius: '8px', padding: '10px 14px', fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontFamily: textFont }}>{p}</div>
+              ))}
+            </div>
+          )}
+          {item.modeles && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              {item.modeles.map((m, i) => (
+                <div key={i} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '14px' }}>
+                  <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>{m.pays}</div>
+                  <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.textMuted, fontFamily: textFont }}>{m.detail}</div>
+                </div>
+              ))}
+            </div>
+          )}
+          {item.definition && typeof item.definition === 'object' && item.definition.terme && (
+            <div style={{ background: 'rgba(59,130,246,0.08)', border: '1px solid rgba(59,130,246,0.2)', borderRadius: '12px', padding: '16px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#3b82f6', marginBottom: '10px' }}>{item.definition.terme}</div>
+              {item.definition.capacites && item.definition.capacites.map((c, i) => (
+                <div key={i} style={{ background: 'rgba(59,130,246,0.1)', borderLeft: '3px solid #3b82f6', borderRadius: '0 8px 8px 0', padding: '8px 12px', fontSize: (fs.base - 2) + 'px', color: colors.text, marginBottom: '4px', fontFamily: textFont }}>{c}</div>
+              ))}
+              {item.definition.exemple && <div style={{ marginTop: '10px', fontSize: (fs.base - 2) + 'px', color: colors.textMuted, fontStyle: 'italic', fontFamily: textFont }}>{item.definition.exemple}</div>}
+            </div>
+          )}
+          {item.proposition && <div style={{ background: 'rgba(68,112,29,0.12)', border: '1px solid rgba(68,112,29,0.25)', borderRadius: '12px', padding: '14px 16px', fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.proposition}</div>}
+          {item.enjeu && <div style={{ background: 'rgba(238,194,29,0.08)', borderRadius: '10px', padding: '12px 16px', fontSize: (fs.base - 1) + 'px', color: colors.primary, lineHeight: 1.6, fontFamily: textFont, fontStyle: 'italic' }}>{item.enjeu}</div>}
+          {item.lienProjet && <div style={{ background: colors.buttonBg, borderRadius: '8px', padding: '10px 14px', fontSize: (fs.base - 2) + 'px', color: colors.textMuted, display: 'flex', alignItems: 'flex-start', gap: '8px', fontFamily: textFont }}><FileText size={14} color={ICON_COLOR} style={{ flexShrink: 0, marginTop: '2px' }} />{item.lienProjet}</div>}
+        </div>
+      );
+    }
+
+    // ─── SESSION 9 : questionsOuvertes item {theme, question} ───
+    if (item.theme && item.question && typeof item.question === 'string') {
+      return (
+        <div key={key} style={{ background: colors.buttonBg, border: `1px solid ${colors.cardBorder}`, borderRadius: '14px', padding: '18px' }}>
+          <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+            <HelpCircle size={15} color={ICON_COLOR} /> {item.theme}
+          </div>
+          <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.7, fontFamily: textFont }}>{item.question}</div>
+        </div>
+      );
+    }
+
+    // ─── SESSION 9 : conclusion block ───
+    // { bilan, anglesMorts(string), questionCentrale, reponseProjet, formatYoutube?, prochaine? }
+    if (item.bilan && item.questionCentrale && item.reponseProjet) {
+      return (
+        <div key={key} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ background: 'linear-gradient(135deg, rgba(238,194,29,0.15) 0%, rgba(238,194,29,0.05) 100%)', borderRadius: '16px', padding: '20px', textAlign: 'center' }}>
+            <div style={{ fontSize: fs.base + 'px', color: colors.primary, fontWeight: '600', lineHeight: 1.6, fontFamily: textFont }}>{item.bilan}</div>
+          </div>
+          {item.anglesMorts && typeof item.anglesMorts === 'string' && (
+            <div style={{ background: 'rgba(158,135,110,0.1)', border: '1px solid rgba(158,135,110,0.2)', borderRadius: '12px', padding: '16px' }}>
+              <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#9E876E', marginBottom: '8px', display: 'flex', alignItems: 'center', gap: '8px' }}><HelpCircle size={15} color="#9E876E" /> Angles morts subsistants</div>
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.7, fontFamily: textFont }}>{item.anglesMorts}</div>
+            </div>
+          )}
+          <div style={{ background: colors.buttonBg, borderLeft: `4px solid ${colors.primary}`, borderRadius: '0 12px 12px 0', padding: '16px' }}>
+            <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: colors.primary, marginBottom: '6px' }}>❓ Question centrale</div>
+            <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.questionCentrale}</div>
+          </div>
+          <div style={{ background: 'rgba(68,112,29,0.12)', border: '1px solid rgba(68,112,29,0.25)', borderRadius: '12px', padding: '16px' }}>
+            <div style={{ fontFamily: titleFont, fontSize: (fs.base - 1) + 'px', color: '#44701D', marginBottom: '6px', display: 'flex', alignItems: 'center', gap: '8px' }}><CheckCircle size={15} color="#44701D" /> Réponse du Projet</div>
+            <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.reponseProjet}</div>
+          </div>
+          {item.formatYoutube && (
+            <div style={{ background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.15)', borderRadius: '12px', padding: '14px 16px', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+              <Tv size={18} color="#ef4444" style={{ flexShrink: 0, marginTop: '2px' }} />
+              <div style={{ fontSize: (fs.base - 1) + 'px', color: colors.text, lineHeight: 1.6, fontFamily: textFont }}>{item.formatYoutube}</div>
             </div>
           )}
           {item.prochaine && (
