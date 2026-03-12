@@ -27,8 +27,8 @@
 // └─────────────────────────────────────────────────────────────────────────┘
 
 export const prochaineSession = {
-  titre: "Session 9 : Les mesures du Projet",
-  date: "Jeudi 12 mars à 18h",
+  titre: "Session 10 : à venir",
+  date: "Mercredi prochain à 18h",
   theme: "violencesPolitiques"
 };
 
@@ -46,7 +46,7 @@ export const sessionsConfig = {
   violencesPolitiques: [
     { id: 'session7', titre: "Commissions d'enquête et violences politiques", date: "25/02", available: true },
     { id: 'session8', titre: "Aux origines des violences politiques", date: "04/03", available: true },
-    { id: 'session9', titre: "Les mesures du Projet", date: "12/03", available: false },
+    { id: 'session9', titre: "Les mesures du Projet", date: "12/03", available: true },
   ]
 };
 
@@ -931,10 +931,6 @@ export const violencesPolitiques = {
     duration: "2h",
     sections: {
 
-      // ─────────────────────────────────────────────────────────────────
-      // BLOC 1 — Qu'est-ce que les violences politiques ?
-      // (fusion : rappel succinct + definition)
-      // ─────────────────────────────────────────────────────────────────
       definition: {
         title: "Qu'est-ce que les violences politiques ?",
         content: [
@@ -953,10 +949,6 @@ export const violencesPolitiques = {
         ]
       },
 
-      // ─────────────────────────────────────────────────────────────────
-      // BLOC 2 — La répression
-      // (fusion : intimidation + giletsJaunes + armesUtilisees + auDelaGiletsJaunes)
-      // ─────────────────────────────────────────────────────────────────
       repression: {
         title: "La répression",
         content: [
@@ -1020,10 +1012,6 @@ export const violencesPolitiques = {
         ]
       },
 
-      // ─────────────────────────────────────────────────────────────────
-      // BLOC 3 — Commissions d'enquête
-      // (fusion : commissionsEnquete + limites + bilanCommissions)
-      // ─────────────────────────────────────────────────────────────────
       commissions: {
         title: "Commissions d'enquête",
         content: [
@@ -1067,10 +1055,6 @@ export const violencesPolitiques = {
         ]
       },
 
-      // ─────────────────────────────────────────────────────────────────
-      // BLOC 4 — La CJR
-      // (fusion : cjr + bilanCJR)
-      // ─────────────────────────────────────────────────────────────────
       cjr: {
         title: "La CJR",
         content: [
@@ -1124,10 +1108,6 @@ export const violencesPolitiques = {
         ]
       },
 
-      // ─────────────────────────────────────────────────────────────────
-      // BLOC 5 — Mesures 1 à 3
-      // (fusion : mesure1 + mesure2 + mesure3)
-      // ─────────────────────────────────────────────────────────────────
       mesures123: {
         title: "Mesures 1 à 3",
         content: [
@@ -1157,10 +1137,6 @@ export const violencesPolitiques = {
         ]
       },
 
-      // ─────────────────────────────────────────────────────────────────
-      // BLOC 6 — Mesures 4 à 6
-      // (fusion : mesure4 + mesure5 + mesure6)
-      // ─────────────────────────────────────────────────────────────────
       mesures456: {
         title: "Mesures 4 à 6",
         content: [
@@ -1197,10 +1173,6 @@ export const violencesPolitiques = {
         ]
       },
 
-      // ─────────────────────────────────────────────────────────────────
-      // BLOC 7 — Bilan & Sources
-      // (fusion : questionsOuvertes + conclusion + sources)
-      // ─────────────────────────────────────────────────────────────────
       bilanSources: {
         title: "Bilan & Sources",
         content: [
@@ -1264,7 +1236,7 @@ export const violencesPolitiques = {
     }
   },
 
-// ═══════════════════════════════════════════════════════════════════════
+  // ═══════════════════════════════════════════════════════════════════════
   // SESSION 8 — Aux origines des violences politiques (4 mars 2026)
   // ═══════════════════════════════════════════════════════════════════════
   session8: {
@@ -1273,9 +1245,6 @@ export const violencesPolitiques = {
     duration: "2h",
     sections: {
 
-      // ─────────────────────────────────────────────────────────────────
-      // BLOC 1 — Rappel de la session précédente
-      // ─────────────────────────────────────────────────────────────────
       rappel: {
         title: "Rappel de la session précédente",
         content: [
@@ -1286,9 +1255,6 @@ export const violencesPolitiques = {
         ]
       },
 
-      // ─────────────────────────────────────────────────────────────────
-      // BLOC 2 — Origines historiques
-      // ─────────────────────────────────────────────────────────────────
       originesHistoriques: {
         title: "Aux origines historiques des violences politiques",
         content: [
@@ -1333,9 +1299,6 @@ export const violencesPolitiques = {
         ]
       },
 
-      // ─────────────────────────────────────────────────────────────────
-      // BLOC 3 — Formes insidieuses de violences politiques
-      // ─────────────────────────────────────────────────────────────────
       formesInsidieuses: {
         title: "Exemples de violences politiques insidieuses au cours de l'histoire",
         content: [
@@ -1370,9 +1333,6 @@ export const violencesPolitiques = {
         ]
       },
 
-      // ─────────────────────────────────────────────────────────────────
-      // BLOC 4 — Violences politiques psychologiques
-      // ─────────────────────────────────────────────────────────────────
       violencesPsychologiques: {
         title: "Les violences politiques psychologiques : définition et mécanismes",
         content: [
@@ -1416,9 +1376,6 @@ export const violencesPolitiques = {
         ]
       },
 
-      // ─────────────────────────────────────────────────────────────────
-      // BLOC 5 — Le mensonge systématique comme arme politique
-      // ─────────────────────────────────────────────────────────────────
       mensongeSystematique: {
         title: "« Tout va bien en France » : le mensonge systématique comme arme politique",
         content: [
@@ -1488,9 +1445,6 @@ export const violencesPolitiques = {
         ]
       },
 
-      // ─────────────────────────────────────────────────────────────────
-      // BLOC 6 — Évolution dans le temps long
-      // ─────────────────────────────────────────────────────────────────
       evolutionTempsLong: {
         title: "Évolution des violences politiques depuis les révolutions : France, Europe, Monde",
         content: [
@@ -1530,9 +1484,6 @@ export const violencesPolitiques = {
         ]
       },
 
-      // ─────────────────────────────────────────────────────────────────
-      // BLOC 7 — Conclusion
-      // ─────────────────────────────────────────────────────────────────
       conclusion: {
         title: "Conclusion",
         content: {
@@ -1551,16 +1502,226 @@ export const violencesPolitiques = {
 
     }
   },
-  
+
   // ═══════════════════════════════════════════════════════════════════════
-  // SESSION 9 — Les mesures du Projet (11 mars 2026) — À VENIR
+  // SESSION 9 — Les mesures du Projet (12 mars 2026)
   // ═══════════════════════════════════════════════════════════════════════
-  // session9: {
-  //   title: "Les mesures du Projet",
-  //   date: "11 mars 2026",
-  //   duration: "2h",
-  //   sections: {
-  //     // À compléter après la session
-  //   }
-  // }
+  session9: {
+    title: "Les mesures du Projet — Lutter (Partie 3)",
+    date: "12 mars 2026",
+    duration: "2h",
+    sections: {
+
+      // ─────────────────────────────────────────────────────────────────
+      // BLOC 1 — Rappel des sessions précédentes
+      // ─────────────────────────────────────────────────────────────────
+      rappel: {
+        title: "Retour sur les sessions précédentes",
+        content: [
+          "On avait défini les violences politiques comme un système à cinq niveaux : la violence physique d'État (maintien de l'ordre, LBD, grenades, nasses), la violence judiciaire (gardes à vue massives, comparutions immédiates, poursuites asymétriques), la violence institutionnelle (49.3, nominations politiques, neutralisation des contre-pouvoirs), la violence économique (précarisation orchestrée, austérité, destruction des services publics) et la violence symbolique (mépris de classe, criminalisation du mouvement social).",
+          "On avait illustré tout ça avec les chiffres des Gilets jaunes et démontré que les outils censés contrôler — commissions d'enquête parlementaires et CJR — sont structurellement incapables de produire quelconque forme de sanction.",
+          "On est ensuite remontés aux origines historiques depuis la Révolution française, identifié les formes insidieuses — surveillance préventive, manipulation de l'information, stratégie du choc, discrédit de la parole — et posé les mécanismes psychologiques : gaslighting institutionnel, coercition, violence administrative, normalisation.",
+          "On a aussi nommé le mensonge systématique comme arme politique, avec 2005 comme point de bascule.",
+          "Ce soir : qu'est-ce que le Projet propose concrètement face à chacune de ces formes de violence ? Qu'est-ce qu'il règle, qu'est-ce qu'il ne règle qu'à moitié, et qu'est-ce qu'il ne touche pas du tout ? Et qu'est-ce que nous, en tant que citoyens, pouvons apporter à ce travail ?"
+        ]
+      },
+
+      // ─────────────────────────────────────────────────────────────────
+      // BLOC 2 — Les mesures violence par violence
+      // ─────────────────────────────────────────────────────────────────
+      mesuresParViolence: {
+        title: "Les mesures du Projet, violence par violence",
+        content: [
+          {
+            violence: "1. Face à la violence physique d'État",
+            mesures: [
+              "Dissolution des BRAV-M et suppression des BAC au profit d'une police de proximité",
+              "Création d'un corps d'inspection indépendant des forces de l'ordre en remplacement de l'IGPN",
+              "Récépissé de contrôle d'identité et enregistrement systématique des interventions",
+              "Abandon des outils de maintien de l'ordre 'intermédiaires'",
+              "Loi d'amnistie avec commission de réparation pour les Gilets jaunes et les militants réprimés sous les trois mandats précédents — rappelons : 3 200 condamnations, dont 40% de prison ferme, pour avoir exercé un droit constitutionnel"
+            ],
+            connexionActualite: "Les manifestations contre la réforme des retraites en 2023, Sainte-Soline, etc. — à chaque fois, c'est le même schéma, la même géométrie variable, la même impunité.",
+            anglesMorts: [
+              "La question de la formation initiale des forces de l'ordre : peut-on changer une doctrine de maintien de l'ordre sans changer ce qu'on enseigne à l'École nationale de police ?",
+              "La question de l'interdiction explicite du LBD40 et des grenades de désencerclement reste ouverte."
+            ]
+          },
+          {
+            violence: "2. Face à la violence judiciaire",
+            mesures: [
+              "Création d'un Tribunal populaire temporaire (dix ans), rétroactif, à compétence limitée aux faits passés, avec un pouvoir de sanction strictement limité à des peines courtes",
+              "Un Comité de poursuites ciblant la chaîne de commandement : 'l'ensemble des fonctionnaires ayant participé, supervisé ou donné visa à des opérations de maintien de l'ordre', placé sous la direction du Tribunal populaire et non plus sous celle du parquet qui dépend du gouvernement",
+              "Transformation de la CJR en haute cour avec jury citoyen tiré au sort — fin du jugement des pairs par les pairs",
+              "Élection des magistrats et création d'un Procureur de la Nation élu, avec transcription IA et enregistrement systématique des audiences"
+            ],
+            connexionActualite: "Le non-lieu prononcé par la CJR en juillet 2025 sur la gestion du Covid-19 pour Édouard Philippe, Agnès Buzyn et Olivier Véran — après un million de documents de procédure, 168 000 morts et 22 000 requêtes citoyennes — c'est probablement l'illustration la plus récente et la plus documentée de ce que le Projet appelle 'impunité de facto'.",
+            anglesMorts: [
+              "La justice à deux vitesses dans les délais : un manifestant comparaît en 48h en comparution immédiate, une plainte contre un agent s'enlise pendant des années. Le Projet encadre les institutions, mais pas explicitement les délais de traitement des plaintes visant les forces de l'ordre."
+            ]
+          },
+          {
+            violence: "3. Face à la violence institutionnelle",
+            mesures: [
+              "Le RIC en toutes matières — réponse directe au traumatisme de 2005, le Non ignoré par voie parlementaire en 2008",
+              "Les mandats révocables",
+              "La fusion des organes de contrôle en un organisme unique avec capacité d'enquête et de sanction réelles",
+              "La transparence absolue des agendas ministériels",
+              "La levée du secret défense sur les conseils de défense Covid-19"
+            ],
+            connexionActualite: "Le mécanisme du 49.3 utilisé pour faire passer la réforme des retraites en 2023 sans vote — c'est exactement le schéma 'démocratie dans le discours, niée dans les actes'. La demande de levée du secret défense sur les conseils de défense Covid reste sans réponse à ce jour.",
+            anglesMorts: [
+              "Le mécanisme des ordonnances d'urgence : les 30 ordonnances de mars 2020 adoptées dans l'opacité totale ne sont pas encadrées spécifiquement. Qu'est-ce qui empêcherait un futur gouvernement de recourir au même outil ?"
+            ]
+          },
+          {
+            violence: "4. Face à la violence économique",
+            mesures: [
+              "Lancement d'enquêtes sur la spoliation de biens nationaux (Alcatel, Arcelor, Alstom, Areva)",
+              "Enquêtes sur les cabinets de consultance (McKinsey, BCG, etc.)",
+              "Reconstruction des services publics — hôpitaux, école, transports"
+            ],
+            connexionActualite: "Le rapport du Sénat sur McKinsey (2022) reste sans suite judiciaire malgré la transmission au parquet pour suspicion de faux témoignage. Le nombre de lits d'hôpitaux a continué de baisser, de 5,7 pour 1 000 habitants en 2000 à 3,2 en 2022 (OCDE), pendant que les discours officiels continuent d'affirmer que 'le système de santé français est le meilleur du monde'.",
+            anglesMorts: [
+              "La coercition économique exercée sur les associations et les médias dépendant de subventions publiques — il n'y a pas de mesure de protection spécifique dans le Projet tel qu'il est écrit."
+            ]
+          },
+          {
+            violence: "5. Face à la violence symbolique et psychologique",
+            intro: "C'est le terrain le moins balisé du Projet — et pourtant souvent l'un des plus importants, car il conditionne l'efficacité de toutes les autres mesures. Si les gens ne peuvent pas expliquer ce qui leur arrive, les outils institutionnels ne servent pas aussi bien.",
+            mesures: [
+              "La réforme de l'éducation touche à la question de la novlangue et de l'appauvrissement du vocabulaire",
+              "L'encadrement de la concentration des médias s'attaque aux conditions structurelles de la censure douce",
+              "La transparence des agendas et la levée du secret défense sont une réponse partielle au gaslighting institutionnel, en rendant vérifiables les affirmations officielles"
+            ],
+            anglesMorts: [
+              "Le gaslighting institutionnel n'est pas défini juridiquement : une affirmation officielle contraire à des données documentées ne constitue aujourd'hui aucune infraction",
+              "La surveillance algorithmique exercée par des entreprises privées en interaction avec l'État échappe à la souveraineté nationale, et même la régulation européenne (DSA) ne l'a pas résolue",
+              "La réparation psychologique collective : les commissions vérité et réconciliation ont une dimension de reconnaissance publique qui pourrait manquer dans le Projet tel qu'il est écrit"
+            ]
+          }
+        ]
+      },
+
+      // ─────────────────────────────────────────────────────────────────
+      // BLOC 3 — Ce que le Projet ne dit pas — et ce qu'on pourrait proposer
+      // ─────────────────────────────────────────────────────────────────
+      anglesMorts: {
+        title: "Ce que le Projet ne dit pas — et ce qu'on pourrait proposer",
+        content: [
+          {
+            angle: "1. La responsabilité des communicants",
+            probleme: "Les 'éléments de langage' sont produits par des cabinets de conseil en communication, des conseillers politiques ou ces clubs de réseautage définis durant le thème du pantouflage. La novlangue, le parallélisme accusatoire, le gaslighting institutionnel coordonné — ce sont des techniques professionnelles, enseignées et facturées avec l'argent du contribuable.",
+            question: "Faudrait-il envisager un cadre de responsabilité civile ou pénale pour la production délibérée de désinformation institutionnelle ?",
+            precedents: [
+              "La loi sur les fausses informations en période électorale (2018) en France",
+              "Les poursuites 'tobacco playbook' aux États-Unis contre des industries qui ont payé des scientifiques pour nier les effets du tabac",
+              "Le même raisonnement s'applique-t-il à des cabinets payés pour produire des formules contredisant des données documentées ?"
+            ]
+          },
+          {
+            angle: "2. L'éducation aux mécanismes de manipulation",
+            probleme: "Si la novlangue fonctionne parce qu'on a appauvri le vocabulaire, la réponse la plus durable est de le réenrichir — non pas comme exercice littéraire, mais comme réel outil de souveraineté civique.",
+            modeles: [
+              {
+                pays: "Finlande",
+                detail: "Intègre la media literacy dès la primaire depuis les années 90 et arrive systématiquement en tête des classements européens de résistance à la désinformation. La Suède, la Norvège et le Danemark ont suivi des dynamiques similaires."
+              }
+            ],
+            definition: {
+              terme: "Media literacy",
+              capacites: [
+                "Identifier la source d'une information et évaluer sa crédibilité",
+                "Reconnaître les techniques rhétoriques de persuasion (parallélisme accusatoire, novlangue)",
+                "Distinguer un fait, d'une opinion, d'une interprétation",
+                "Comprendre les intérêts économiques et politiques qui structurent la production d'information"
+              ],
+              exemple: "En Finlande, ça commence dès 7 ans : on donne aux enfants deux articles sur le même événement et on leur demande de repérer les différences — pas pour leur dire lequel est 'vrai', mais pour leur apprendre à poser la question."
+            },
+            lienProjet: "Le Projet parle de réforme de l'éducation, mais ne nomme pas spécifiquement l'éducation aux mécanismes de manipulation institutionnelle. C'est peut-être l'investissement le plus structurant sur le long terme."
+          },
+          {
+            angle: "3. L'Observatoire citoyen des violences politiques",
+            probleme: "On a des outils qui existent partiellement, mais ils sont non officiels et dépendants de volontés individuelles.",
+            proposition: "Création d'un observatoire citoyen indépendant des violences politiques, avec un mandat permanent, des moyens publics et une protection juridique pour les lanceurs d'alerte qui l'alimentent."
+          },
+          {
+            angle: "4. La redéfinition des commissions d'enquête parlementaires",
+            probleme: "En près de 70 ans de Ve République, une seule condamnation pour faux témoignage — une amende de 20 000 euros. Le Projet propose de remplacer la CJR, de créer un Tribunal populaire rétroactif, d'élire les magistrats, de fusionner les organes anti-corruption — mais ne pose jamais la question de ce que devrait être une commission d'enquête parlementaire redéfinie.",
+            enjeu: "C'est l'outil de contrôle parlementaire le plus courant, celui auquel les citoyens et les médias se réfèrent en premier quand un scandale éclate — et il reste, en l'état, un théâtre sans sanction.",
+            proposition: "Redéfinir la durée des travaux, la composition pour qu'elle soit indépendante de la majorité, le pouvoir de sanction réel, la déconnexion du blocage judiciaire — pour que le contrôle parlementaire ne soit plus seulement une procédure, mais un vrai contre-pouvoir."
+          }
+        ]
+      },
+
+      // ─────────────────────────────────────────────────────────────────
+      // BLOC 4 — Outiller les citoyens : reconnaître pour résister
+      // ─────────────────────────────────────────────────────────────────
+      outilsCitoyens: {
+        title: "Outiller les citoyens : reconnaître pour résister",
+        content: [
+          {
+            outil: "Le test du gaslighting institutionnel en trois questions",
+            intro: "Quand une affirmation officielle vous trouble, écouter son intuition — et se poser ces questions :",
+            questions: [
+              "Y a-t-il des données documentées qui la contredisent, et si oui, qui les a produites ?",
+              "La contradiction est-elle assumée et expliquée, ou simplement ignorée ?",
+              "Qui bénéficie de cette version des faits ? Est-ce que la formule protège ceux qui sont censés être contrôlés ?"
+            ]
+          },
+          {
+            outil: "Reconnaître le parallélisme accusatoire",
+            methode: "Quand la réponse à une accusation est systématiquement 'et vous ?', la question à poser publiquement est simple : 'La question posée était X — votre réponse est-elle sur X ?' C'est visible, mesurable, et ça rend le déplacement du terrain évident pour les spectateurs neutres."
+          },
+          {
+            outil: "Nommer la novlangue",
+            methode: "Traduire systématiquement les formules officielles dans un vocabulaire direct.",
+            exemples: [
+              { novlangue: "'Plan de sauvegarde de l'emploi'", traduction: "Licenciements collectifs" },
+              { novlangue: "'Rééquilibrage du système de retraite par répartition'", traduction: "Recul de l'âge de départ" }
+            ],
+            enjeu: "Nommer précisément ce qui se passe, c'est un acte de résistance et de souveraineté de la parole et de la pensée."
+          }
+        ]
+      },
+
+      // ─────────────────────────────────────────────────────────────────
+      // BLOC 5 — Questions ouvertes
+      // ─────────────────────────────────────────────────────────────────
+      questionsOuvertes: {
+        title: "Questions ouvertes et réflexion collective",
+        content: [
+          {
+            theme: "Sur l'efficacité des mesures",
+            question: "Les outils proposés par le Projet — Tribunal populaire, corps d'inspection indépendant, Procureur de la Nation élu — supposent tous une volonté politique initiale pour les mettre en place. Dans la période de transition, comment éviter qu'ils soient eux-mêmes colonisés par les logiques qu'ils sont censés démanteler ? L'IGPN avait elle aussi été créée pour contrôler."
+          },
+          {
+            theme: "Sur la temporalité",
+            question: "Le Tribunal populaire est prévu pour dix ans. Est-ce suffisant pour traiter le stock d'impunité accumulé ?"
+          },
+          {
+            theme: "Sur nous",
+            question: "Après trois sessions sur les violences politiques, qu'est-ce qui a changé dans la façon dont vous lisez l'actualité ? Qu'est-ce que vous voyez maintenant que vous ne voyiez pas avant — et qu'est-ce que vous avez envie d'expliquer à quelqu'un qui n'est pas encore là ?"
+          }
+        ]
+      },
+
+      // ─────────────────────────────────────────────────────────────────
+      // BLOC 6 — Conclusion
+      // ─────────────────────────────────────────────────────────────────
+      conclusion: {
+        title: "Conclusion",
+        content: {
+          bilan: "Le Projet répond à une grande partie des violences documentées, avec des mesures concrètes, précises et même parfois radicales.",
+          anglesMorts: "Des angles morts démocratiques subsistent : la violence psychologique, la surveillance algorithmique privée, la responsabilité des communicants — des sujets sur lesquels nos réflexions peuvent nourrir quelque chose qui n'existe pas encore dans le Projet tel qu'il est écrit.",
+          questionCentrale: "La vraie question qui traverse ces trois sessions est la même que celle du pantouflage : peut-on démanteler un système de l'intérieur quand les gardiens de ce système sont précisément ceux qu'il faudrait contrôler ?",
+          reponseProjet: "Le Projet répond par la souveraineté populaire : le RIC, les mandats révocables, le tirage au sort, l'élection des magistrats. C'est un sujet complexe qui mérite d'être poussé aussi loin que possible, et porté au plus grand nombre.",
+          formatYoutube: "À partir de la prochaine session, les présentations seront proposées en format YouTube pour permettre à un public plus large d'y accéder facilement — les sessions vocales sur Discord continuent, mais les présentations deviendront aussi le point de départ d'un contenu qui pourra circuler et contribuer à la massification du mouvement.",
+          prochaine: "La prochaine session aura lieu mercredi prochain, à la même heure."
+        }
+      }
+
+    }
+  }
+
 };
